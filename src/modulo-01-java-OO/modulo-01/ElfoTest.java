@@ -23,4 +23,35 @@ public class ElfoTest
         assertEquals("Arco", elfoDoTeste.getArco().getDescricao());
         assertEquals(1, elfoDoTeste.getArco().getQuantidade());
     }
+    
+    @Test
+    public void elfoNasceComFlecha() {
+        // Act
+        Elfo elfoDoTeste = new Elfo("Vereesa");
+        // Assert
+        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void elfoAtiraFlecha() {
+        // Act
+        Elfo elfoDoTeste = new Elfo("Alleria");
+        elfoDoTeste.atirarFlecha();
+        // Assert
+        assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(1, elfoDoTeste.getExperiencia());
+    }
+    
+    @Test
+    public void elfoAtiraVariasFlechas() {
+        // Arrange
+        int numeroDeFlechas = (int) (Math.random() * 10 + 1);
+        int restante = 42 - numeroDeFlechas;
+        // Act
+        Elfo elfoDoTeste = new Elfo("Sylvanas");
+        for (int i = 0; i < numeroDeFlechas; i++)
+            elfoDoTeste.atirarFlecha();
+        // Assert
+        assertEquals(restante, elfoDoTeste.getFlecha().getQuantidade());
+    }
 }
