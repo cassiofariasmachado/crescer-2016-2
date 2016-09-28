@@ -5,8 +5,8 @@ public class CestoDeLembas{
         this.lembas = lembas;
     }
      
-    public boolean podeDividirEmPares(int quantidade){
-        if (quantidade % 2 == 0 && quantidade > 2)
+    public boolean podeDividirEmPares(){
+        if (lembas % 2 == 0 && lembas > 2)
             return true;
         return false;
     }
