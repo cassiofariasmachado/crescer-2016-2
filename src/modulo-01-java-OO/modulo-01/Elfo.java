@@ -5,9 +5,14 @@ public class Elfo {
     private int experiencia;
 
     public Elfo(String n) {
-        nome = n;
+        // Chamando outro construtor 
+        this(n, 42);
+    }
+    
+    public Elfo(String nome, int quantidadeFlechas){
+        this.nome = nome;
         arco = new Item("Arco", 1);
-        flecha = new Item("Flechas", 42);
+        flecha = new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas);
     }
 
     public void setNome(String n) {
