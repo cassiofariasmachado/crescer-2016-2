@@ -53,5 +53,6 @@ public class ElfoTest
             elfoDoTeste.atirarFlecha();
         // Assert
         assertEquals(restante, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(numeroDeFlechas, elfoDoTeste.getExperiencia());
     }
 }
