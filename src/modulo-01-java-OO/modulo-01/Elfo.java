@@ -44,6 +44,10 @@ public class Elfo {
         }
     }
     
+    public String toString(){
+        return nome + " possui " + flecha.getQuantidade() + " flechas e " + experiencia + " níveis de experiência.";
+    }
+    
     /*public void atirarFlechaRefactory() {
         experiencia++;
         flecha.setQuantidade(flecha.getQuantidade()-1);

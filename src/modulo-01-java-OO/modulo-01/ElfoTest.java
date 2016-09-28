@@ -97,4 +97,54 @@ public class ElfoTest
             assertEquals(100, d.getVida());
         }
     }
+    
+    @Test
+    public void elfoViraString(){
+        // Assert
+        Elfo elfoDoTeste = new Elfo("Legolas");
+        // Act
+        String elfoEmString = elfoDoTeste.toString();
+        // Arrange
+        String[] elfoEmStringDividido = elfoEmString.split(" ");
+        assertEquals("Legolas", elfoEmStringDividido[0]);
+        assertEquals("42", elfoEmStringDividido[2]);
+        assertEquals("0", elfoEmStringDividido[5]);
+    }
+    
+    @Test
+    public void doisElfosViramString(){
+        // Assert
+        Elfo elfoDoTeste1 = new Elfo("Legolas");
+        Elfo elfoDoTeste2 = new Elfo("Cassio");
+        // Act
+        String elfoEmString1 = elfoDoTeste1.toString();
+        String elfoEmString2 = elfoDoTeste2.toString();
+        // Arranges
+        String[] elfoEmStringArray1 = elfoEmString1.split(" ");
+        String[] elfoEmStringArray2 = elfoEmString2.split(" ");
+        // Arrange elfoDoTeste1
+        assertEquals("Legolas", elfoEmStringArray1[0]);
+        assertEquals("42", elfoEmStringArray1[2]);
+        assertEquals("0", elfoEmStringArray1[5]); 
+        // Arrange elfoDoTeste2
+        assertEquals("Cassio", elfoEmStringArray2[0]);
+        assertEquals("42", elfoEmStringArray2[2]);
+        assertEquals("0", elfoEmStringArray2[5]); 
+    }
+    
+     @Test
+    public void variosElfosViramString(){
+        // Assert
+        Elfo [] elfosDoTeste = new Elfo[10];
+        // Act
+        for (int i = 0; i < 10; i++){
+            elfosDoTeste[i] = new Elfo("elfo" + i);
+            String[] elfoEmStringArray = elfosDoTeste[i].toString().split(" ");
+            // Arrange
+            assertEquals("elfo" + i, elfoEmStringArray[0]);
+            assertEquals("42", elfoEmStringArray[2]);
+            assertEquals("0", elfoEmStringArray[5]);
+        }
+    }
+    
 }
