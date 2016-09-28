@@ -55,4 +55,15 @@ public class ElfoTest
         assertEquals(restante, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(numeroDeFlechas, elfoDoTeste.getExperiencia());
     }
+    
+    @Test
+    public void elfoAtiraFlechasDemais(){
+        //Act
+        Elfo elfoDoTeste = new Elfo("Cassio");
+        for (int i = 0; i < 43; i++)
+            elfoDoTeste.atirarFlecha();
+        //Assert
+        assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(42, elfoDoTeste.getExperiencia());
+    }
 }
