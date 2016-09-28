@@ -50,7 +50,16 @@ public class Elfo {
     }
     
     public String toString(){
-        return nome + " possui " + flecha.getQuantidade() + " flechas e " + experiencia + " níveis de experiência.";
+        boolean flechaNoSingular = flecha.getQuantidade() == 1; 
+        boolean nivelNoSingular = this.experiencia == 1;
+        
+        return String.format("%s possui %d %s e %d %s de experiência.", 
+        this.nome, 
+        this.flecha.getQuantidade(), 
+        flechaNoSingular ? "flecha" : "flechas",
+        this.experiencia,
+        nivelNoSingular ? "nível" : "níveis");
+        // return this.nome + " possui " + this.flecha.getQuantidade() + " flechas e " + this.experiencia + " níveis de experiência.";
     }
     
     /*public void atirarFlechaRefactory() {
