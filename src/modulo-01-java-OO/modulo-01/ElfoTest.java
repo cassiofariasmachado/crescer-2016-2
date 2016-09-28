@@ -136,4 +136,21 @@ public class ElfoTest
         }
     }
     
+    @Test
+    public void criarElfoInformandoFlechas(){
+        Elfo elfoDoTeste = new Elfo("Legolas", 10);
+        assertEquals(10, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void criarElfoInformandoFlechasNegativas(){
+        Elfo elfoDoTeste = new Elfo("Legolas", -10);
+        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
+    }
+    
+    @Test
+    public void criarElfoInformandoZeroFlechas(){
+        Elfo elfoDoTeste = new Elfo("Legolas", 0);
+        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
+    }
 }
