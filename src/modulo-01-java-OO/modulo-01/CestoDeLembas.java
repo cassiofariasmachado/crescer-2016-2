@@ -6,9 +6,7 @@ public class CestoDeLembas{
     }
      
     public boolean podeDividirEmPares(){
-        if (lembas % 2 == 0 && lembas > 2)
-            return true;
-        return false;
+        return lembas % 2 == 0 && lembas > 2 && lembas < 100;
     }
     
     public int getLembas(){
