@@ -45,7 +45,7 @@ public class ElfoTest
     @Test
     public void elfoAtiraVariasFlechas() {
         // Arrange
-        int numeroDeFlechas = (int) (Math.random() * 10 + 1);
+        int numeroDeFlechas = 10;
         int restante = 42 - numeroDeFlechas;
         // Act
         Elfo elfoDoTeste = new Elfo("Sylvanas");
