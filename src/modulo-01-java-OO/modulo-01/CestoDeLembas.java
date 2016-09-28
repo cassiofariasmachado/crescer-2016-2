@@ -10,4 +10,8 @@ public class CestoDeLembas{
             return true;
         return false;
     }
+    
+    public int getLembas(){
+        return lembas;
+    }
 }
