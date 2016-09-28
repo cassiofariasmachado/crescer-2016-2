@@ -137,6 +137,29 @@ public class ElfoTest
     }
     
     @Test
+    public void elfoAtiraFlechaEViraString(){
+        // Assert
+        Elfo elfoDoTeste = new Elfo("Legolas");
+        elfoDoTeste.atirarFlecha(new Dwarf());
+        // Act
+        String elfoEmString = elfoDoTeste.toString();
+        // Arrange
+        assertEquals("Legolas possui 41 flechas e 1 nível de experiência.", elfoEmString);
+    }
+    
+    @Test
+    public void elfoAtira41FlechasEViraString(){
+        // Assert
+        Elfo elfoDoTeste = new Elfo("Legolas");
+        for (int i = 0; i < 41; i++)
+            elfoDoTeste.atirarFlecha(new Dwarf());
+        // Act
+        String elfoEmString = elfoDoTeste.toString();
+        // Arrange
+        assertEquals("Legolas possui 1 flecha e 41 níveis de experiência.", elfoEmString);
+    }
+    
+    @Test
     public void criarElfoInformandoFlechas(){
         Elfo elfoDoTeste = new Elfo("Legolas", 10);
         assertEquals(10, elfoDoTeste.getFlecha().getQuantidade());
