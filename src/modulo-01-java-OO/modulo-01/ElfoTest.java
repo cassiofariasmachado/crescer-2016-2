@@ -105,10 +105,7 @@ public class ElfoTest
         // Act
         String elfoEmString = elfoDoTeste.toString();
         // Arrange
-        String[] elfoEmStringDividido = elfoEmString.split(" ");
-        assertEquals("Legolas", elfoEmStringDividido[0]);
-        assertEquals("42", elfoEmStringDividido[2]);
-        assertEquals("0", elfoEmStringDividido[5]);
+        assertEquals("Legolas possui 42 flechas e 0 níveis de experiência.", elfoEmString);
     }
     
     @Test
@@ -119,17 +116,9 @@ public class ElfoTest
         // Act
         String elfoEmString1 = elfoDoTeste1.toString();
         String elfoEmString2 = elfoDoTeste2.toString();
-        // Arranges
-        String[] elfoEmStringArray1 = elfoEmString1.split(" ");
-        String[] elfoEmStringArray2 = elfoEmString2.split(" ");
-        // Arrange elfoDoTeste1
-        assertEquals("Legolas", elfoEmStringArray1[0]);
-        assertEquals("42", elfoEmStringArray1[2]);
-        assertEquals("0", elfoEmStringArray1[5]); 
-        // Arrange elfoDoTeste2
-        assertEquals("Cassio", elfoEmStringArray2[0]);
-        assertEquals("42", elfoEmStringArray2[2]);
-        assertEquals("0", elfoEmStringArray2[5]); 
+        // Arrange
+        assertEquals("Legolas possui 42 flechas e 0 níveis de experiência.", elfoEmString1);
+        assertEquals("Cassio possui 42 flechas e 0 níveis de experiência.", elfoEmString2);
     }
     
      @Test
