@@ -46,6 +46,16 @@ public class DataTerceiraEraTest {
     }
     
     @Test
+    public void testarEhBissextoAno1900() {
+        // Arrange
+        DataTerceiraEra dataPassado = new DataTerceiraEra(23, 03, 1900);
+        // Act
+        boolean ehBissexto = dataPassado.ehBissexto();
+        // Assert
+        assertFalse(ehBissexto);
+    }
+    
+    @Test
     public void testarEhBissextoAno3019(){
         // Arrange
         DataTerceiraEra fimDaGuerraDoAnel = new DataTerceiraEra(1, 10, 3019);
