@@ -113,9 +113,9 @@ public class DwarfTest {
     public void dwarfNaoRecebeFlechaENaoGanhaExperiencia(){
         // Arrange
         Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(12, 12, 2011));
-        boolean teste = dwarf.receberFlecha();
+        dwarf.receberFlecha();
         // Act and Assert
-        assertFalse(teste);
+        assertEquals(110, dwarf.getVida());
         assertEquals(0, dwarf.getExperiencia());
     }
     
@@ -125,9 +125,9 @@ public class DwarfTest {
         Dwarf dwarf = new Dwarf("Nome", new DataTerceiraEra(12, 12, 2012));
         dwarf.perderVida();
         dwarf.perderVida();
-        boolean teste = dwarf.receberFlecha();
+        dwarf.receberFlecha();
         // Act and Assert
-        assertFalse(teste);
+        assertEquals(90, dwarf.getVida());
         assertEquals(2, dwarf.getExperiencia());
     }
     
@@ -136,9 +136,10 @@ public class DwarfTest {
         // Arrange
         Dwarf dwarf = new Dwarf("Qualquer", new DataTerceiraEra(12, 12, 2011));
         // Act 
-        boolean teste = dwarf.receberFlecha();
+        dwarf.receberFlecha();
         // Act and Assert
-        assertTrue(teste);
+        assertEquals(101, dwarf.getNumeroSorte(), 0);
         assertEquals(0, dwarf.getExperiencia());
+        assertEquals(100, dwarf.getVida());
     }
 }

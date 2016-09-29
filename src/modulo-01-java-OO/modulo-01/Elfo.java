@@ -36,10 +36,10 @@ public class Elfo {
     }
     
     public void atirarFlecha(Dwarf dwarf){
-        if (flecha.getQuantidade() > 0 && dwarf.receberFlecha()) {
+        if (flecha.getQuantidade() > 0) {
             flecha.setQuantidade(flecha.getQuantidade() - 1);
+            dwarf.receberFlecha();
             experiencia++;
-            dwarf.perderVida();
         }
     }
     

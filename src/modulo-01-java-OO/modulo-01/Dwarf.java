@@ -33,6 +33,7 @@ public class Dwarf{
     public int getExperiencia() {
         return this.experiencia;
     }
+    
     public DataTerceiraEra getDataNascimento() {
         return this.dataNascimento;
     }
@@ -46,15 +47,15 @@ public class Dwarf{
         return valor;
     }
     
-    public boolean receberFlecha(){
+    public void receberFlecha(){
         double numeroSorte = this.getNumeroSorte();
-        if (numeroSorte < 0) {
+        //numeroSorte menor que zero apenas ganha experiencia
+        if ( numeroSorte < 0 ) 
             this.ganharExperiencia();
-            return false;
-        }
-        if(numeroSorte >= 0 && numeroSorte <= 100 )
-            return false;
-        return true;
+        //numeroSorte maior que zero apenas    
+        if( numeroSorte > 100 )
+                this.perderVida(); 
+        //numeroSorte maior que 0 e menor e igual 100
     }
 }
     
