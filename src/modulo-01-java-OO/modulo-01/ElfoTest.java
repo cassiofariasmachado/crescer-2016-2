@@ -176,4 +176,9 @@ public class ElfoTest
         Elfo elfoDoTeste = new Elfo("Legolas", 0);
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
+    
+    @Test
+    public void elfoNasceComStatus(){
+        assertEquals(Status.VIVO, new Elfo("Legolas").getStatus());
+    }
 }
