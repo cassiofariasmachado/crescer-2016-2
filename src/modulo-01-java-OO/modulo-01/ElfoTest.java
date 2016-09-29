@@ -36,7 +36,7 @@ public class ElfoTest
     public void elfoAtiraFlecha() {
         // Act
         Elfo elfoDoTeste = new Elfo("Alleria");
-        elfoDoTeste.atirarFlecha();
+        elfoDoTeste.atirarFlecha(new Dwarf());
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(1, elfoDoTeste.getExperiencia());
@@ -50,7 +50,7 @@ public class ElfoTest
         // Act
         Elfo elfoDoTeste = new Elfo("Sylvanas");
         for (int i = 0; i < numeroDeFlechas; i++)
-            elfoDoTeste.atirarFlecha();
+            elfoDoTeste.atirarFlecha(new Dwarf());
         // Assert
         assertEquals(restante, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(numeroDeFlechas, elfoDoTeste.getExperiencia());
@@ -61,7 +61,7 @@ public class ElfoTest
         //Act
         Elfo elfoDoTeste = new Elfo("Cassio");
         for (int i = 0; i < 43; i++)
-            elfoDoTeste.atirarFlecha();
+            elfoDoTeste.atirarFlecha(new Dwarf());
         //Assert
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(42, elfoDoTeste.getExperiencia());
