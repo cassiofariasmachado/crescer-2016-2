@@ -67,7 +67,7 @@ public class DwarfTest {
         for (int i = 0; i < 20; i++)
             new Elfo("ElfoToSemCriatividade").atirarFlecha(anaoToSemCriatividade);
         // Assert
-        assertEquals (-90, anaoToSemCriatividade.getVida());
+        assertEquals (0, anaoToSemCriatividade.getVida());
     }
     
     @Test
@@ -141,5 +141,57 @@ public class DwarfTest {
         assertEquals(101, dwarf.getNumeroSorte(), 0);
         assertEquals(0, dwarf.getExperiencia());
         assertEquals(100, dwarf.getVida());
+    }
+    
+    @Test
+    public void dwarfNasceVivo() {
+        assertEquals(Status.VIVO, new Dwarf("AnaoToSemCriatividade").getStatus());
+    }
+    
+    @Test
+    public void dwarvesNascemVivos() {
+        for (int i = 0; i < 10; i++)
+            assertEquals(Status.VIVO, new Dwarf("AnaoToSemCriatividade").getStatus());
+    }
+    
+    @Test
+    public void dwarfNaoNasceMorto() {
+        assertFalse(Status.MORTO.equals(new Dwarf("AnaoToSemCriatividade").getStatus()));
+    }
+    
+    @Test
+    public void dwarfMorre() {
+        Dwarf dwarf = new Dwarf("AnaoToSemCriatividade");
+        Elfo elfo = new Elfo("ElfoToSemCriatividade");
+        for (int i = 0; i < 12; i++)
+            elfo.atirarFlecha(dwarf);
+        assertEquals(Status.MORTO, dwarf.getStatus());
+    }
+    
+    @Test
+    public void dwarfRecebeFlechadasMasNaoMorre() {
+        Dwarf dwarf = new Dwarf("AnaoToSemCriatividade");
+        Elfo elfo = new Elfo("ElfoToSemCriatividade");
+        for (int i = 0; i < 5; i++)
+            elfo.atirarFlecha(dwarf);
+        assertEquals(Status.VIVO, dwarf.getStatus());
+    }
+    
+    @Test
+    public void dwarfFicaComZeroDeVidaEContinua() {
+        Dwarf dwarf = new Dwarf("AnaoToSemCriatividade");
+        Elfo elfo = new Elfo("ElfoToSemCriatividade");
+        for (int i = 0; i < 11; i++)
+            elfo.atirarFlecha(dwarf);
+        assertEquals(0, dwarf.getVida());
+    }
+    
+    @Test
+    public void dwarfNaoFicaComVidaNegativa() {
+        Dwarf dwarf = new Dwarf("AnaoToSemCriatividade");
+        Elfo elfo = new Elfo("ElfoToSemCriatividade");
+        for (int i = 0; i < 12; i++)
+            elfo.atirarFlecha(dwarf);
+        assertEquals(0, dwarf.getVida());
     }
 }
