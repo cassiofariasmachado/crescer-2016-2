@@ -69,4 +69,43 @@ public class DwarfTest {
         // Assert
         assertEquals (-90, anaoToSemCriatividade.getVida());
     }
+    
+    @Test
+    public void dwarfTemSorteAnoBissextoEVida90(){
+        // Arrange
+        Dwarf azarado = new Dwarf("nome", new DataTerceiraEra(12, 12, 2012));
+        azarado.perderVida();
+        azarado.perderVida();
+        // Act and Assert
+        assertEquals(-3333, azarado.getNumeroSorte(), 0);
+    }
+    
+    @Test
+    public void dwarfTemSorteAnoNaoBissextoENomeSeixas(){
+        // Arrange
+        Dwarf azarado = new Dwarf("Seixas", new DataTerceiraEra(12, 12, 2011));
+        azarado.perderVida();
+        azarado.perderVida();
+        // Act and Assert
+        assertEquals(33, azarado.getNumeroSorte(), 0);
+    }
+    
+    
+    @Test
+    public void dwarfTemSorteAnoNaoBissextoENomeMeireles(){
+        // Arrange
+        Dwarf azarado = new Dwarf("Meireles", new DataTerceiraEra(12, 12, 2011));
+        azarado.perderVida();
+        azarado.perderVida();
+        // Act and Assert
+        assertEquals(33, azarado.getNumeroSorte(), 0);
+    }
+    
+    @Test
+    public void dwarfTemSorteInicial(){
+        // Arrange
+        Dwarf azarado = new Dwarf("Silva", new DataTerceiraEra(12, 12, 2011));
+        // Act and Assert
+        assertEquals(101, azarado.getNumeroSorte(), 0);
+    }
 }
