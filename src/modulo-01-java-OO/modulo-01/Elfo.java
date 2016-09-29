@@ -1,10 +1,9 @@
 public class Elfo {
     private String nome;
-    private Item arco;
-    private Item flecha;
+    private Inventario inventario;
     private int experiencia;
     private Status status;
-
+    
     public Elfo(String n) {
         // Chamando outro construtor 
         this(n, 42);
@@ -12,8 +11,9 @@ public class Elfo {
     
     public Elfo(String nome, int quantidadeFlechas){
         this.nome = nome;
-        arco = new Item("Arco", 1);
-        flecha = new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas);
+        this.inventario = new Inventario();
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas));
         status = Status.VIVO;
     }
 
@@ -26,11 +26,11 @@ public class Elfo {
     }
     
     public Item getArco() {
-        return arco;
+        return this.inventario.getItens().get(0);
     }
     
     public Item getFlecha(){
-        return flecha;
+        return this.inventario.getItens().get(1);
     }
     
     public int getExperiencia(){
@@ -41,21 +41,25 @@ public class Elfo {
         return this.status;
     }
     
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+    
     public void atirarFlecha(Dwarf dwarf){
-        if (flecha.getQuantidade() > 0) {
-            flecha.setQuantidade(flecha.getQuantidade() - 1);
+        if (getFlecha().getQuantidade() > 0) {
+            getFlecha().setQuantidade(getFlecha().getQuantidade() - 1);
             dwarf.receberFlecha();
             experiencia++;
         }
     }
     
     public String toString(){
-        boolean flechaNoSingular = flecha.getQuantidade() == 1; 
+        boolean flechaNoSingular = getFlecha().getQuantidade() == 1; 
         boolean nivelNoSingular = this.experiencia == 1;
         
         return String.format("%s possui %d %s e %d %s de experiência.", 
         this.nome, 
-        this.flecha.getQuantidade(), 
+        this.getFlecha().getQuantidade(), 
         flechaNoSingular ? "flecha" : "flechas",
         this.experiencia,
         nivelNoSingular ? "nível" : "níveis");

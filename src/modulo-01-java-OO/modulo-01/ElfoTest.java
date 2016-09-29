@@ -181,4 +181,19 @@ public class ElfoTest
     public void elfoNasceComStatus(){
         assertEquals(Status.VIVO, new Elfo("Legolas").getStatus());
     }
+    
+    @Test
+    public void elfoNasceComInventario(){
+        Elfo elfo = new Elfo("Dwarf");
+        assertTrue(elfo.getInventario() instanceof Inventario);
+        assertEquals(2, elfo.getInventario().getItens().size());
+    }
+    
+    @Test
+    public void elfoNasceComArcoEFlechasNoInventario(){
+        Elfo elfo = new Elfo("Dwarf");
+        assertEquals(2, elfo.getInventario().getItens().size());
+        assertEquals("Arco", elfo.getInventario().getItens().get(0).getDescricao());
+        assertEquals("Flechas", elfo.getInventario().getItens().get(1).getDescricao());
+    }
 }
