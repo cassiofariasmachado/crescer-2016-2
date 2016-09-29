@@ -18,7 +18,15 @@ public class Dwarf{
         this.vida = vida;
     }
     
+    public String getNome(){
+        return this.nome;
+    }
+    
     public int getVida(){
         return this.vida;
+    }
+    
+    public DataTerceiraEra getDataNascimento() {
+        return this.dataNascimento;
     }
 }
