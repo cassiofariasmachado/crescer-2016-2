@@ -1,6 +1,7 @@
 public class Dwarf{
     private String nome;
     private int vida;
+    private int experiencia;
     private DataTerceiraEra dataNascimento;
     
     public Dwarf (){
@@ -18,14 +19,21 @@ public class Dwarf{
         this.vida -= 10;
     }
     
-    public String getNome(){
+    public void ganharExperiencia() {
+        this.experiencia += 2;
+    }
+    
+    public String getNome() {
         return this.nome;
     }
     
-    public int getVida(){
+    public int getVida() {
         return this.vida;
     }
     
+    public int getExperiencia() {
+        return this.experiencia;
+    }
     public DataTerceiraEra getDataNascimento() {
         return this.dataNascimento;
     }
@@ -37,6 +45,17 @@ public class Dwarf{
         if (!dataNascimento.ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))) 
             valor = (valor * 33) % 100;
         return valor;
+    }
+    
+    public boolean receberFlecha(){
+        double numeroSorte = this.getNumeroSorte();
+        if (numeroSorte < 0) {
+            this.ganharExperiencia();
+            return false;
+        }
+        if(numeroSorte >= 0 && numeroSorte <= 100 )
+            return false;
+        return true;
     }
 }
     

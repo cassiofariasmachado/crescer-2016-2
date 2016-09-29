@@ -8,7 +8,7 @@ public class DwarfTest {
     @Test
     public void dwarvesNascemCom110DeVida(){
         //Act
-        Dwarf falstad = new Dwarf();
+        Dwarf falstad = new Dwarf("SemCriatividade");
         //Assert
         assertEquals(110, falstad.getVida());
     }
@@ -16,7 +16,7 @@ public class DwarfTest {
     @Test
     public void dwarvesNascemComDataNascimentoPadrao(){
         // Arrange and Act
-        Dwarf gimli = new Dwarf();
+        Dwarf gimli = new Dwarf("SemCriatividade");
         // Assert
         assertEquals(1, gimli.getDataNascimento().getDia());
         assertEquals(1, gimli.getDataNascimento().getMes());
@@ -44,7 +44,7 @@ public class DwarfTest {
     @Test
     public void dwarvesPerdemVida() {
         // Arrange and Act
-        Dwarf gimli = new Dwarf();
+        Dwarf gimli = new Dwarf("SemCriatividade");
         gimli.perderVida();
         // Assert
         assertEquals (100, gimli.getVida());
@@ -53,7 +53,7 @@ public class DwarfTest {
     @Test
     public void dwarvesPerdemMuitaVida() {
         // Arrange and Act
-        Dwarf anaoToSemCriatividade = new Dwarf();
+        Dwarf anaoToSemCriatividade = new Dwarf("SemCriatividade");
         for (int i = 0; i < 10; i++)
             anaoToSemCriatividade.perderVida();
         // Assert
@@ -63,7 +63,7 @@ public class DwarfTest {
     @Test
     public void dwarvesPerdemMuitaVidaMesmo() {
         // Arrange and Act
-        Dwarf anaoToSemCriatividade = new Dwarf();
+        Dwarf anaoToSemCriatividade = new Dwarf("SemCriatividade");
         for (int i = 0; i < 20; i++)
             anaoToSemCriatividade.perderVida();
         // Assert
@@ -107,5 +107,38 @@ public class DwarfTest {
         Dwarf azarado = new Dwarf("Silva", new DataTerceiraEra(12, 12, 2011));
         // Act and Assert
         assertEquals(101, azarado.getNumeroSorte(), 0);
+    }
+    
+    @Test
+    public void dwarfNaoRecebeFlechaENaoGanhaExperiencia(){
+        // Arrange
+        Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(12, 12, 2011));
+        boolean teste = dwarf.receberFlecha();
+        // Act and Assert
+        assertFalse(teste);
+        assertEquals(0, dwarf.getExperiencia());
+    }
+    
+    @Test
+    public void dwarfNaoRecebeFlechaEGanhaExperiencia(){
+        // Arrange
+        Dwarf dwarf = new Dwarf("Nome", new DataTerceiraEra(12, 12, 2012));
+        dwarf.perderVida();
+        dwarf.perderVida();
+        boolean teste = dwarf.receberFlecha();
+        // Act and Assert
+        assertFalse(teste);
+        assertEquals(2, dwarf.getExperiencia());
+    }
+    
+    @Test
+    public void dwarfRecebeFlecha(){
+        // Arrange
+        Dwarf dwarf = new Dwarf("Qualquer", new DataTerceiraEra(12, 12, 2011));
+        // Act 
+        boolean teste = dwarf.receberFlecha();
+        // Act and Assert
+        assertTrue(teste);
+        assertEquals(0, dwarf.getExperiencia());
     }
 }
