@@ -36,7 +36,7 @@ public class ElfoTest
     public void elfoAtiraFlecha() {
         // Act
         Elfo elfoDoTeste = new Elfo("Alleria");
-        elfoDoTeste.atirarFlecha(new Dwarf());
+        elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(1, elfoDoTeste.getExperiencia());
@@ -50,7 +50,7 @@ public class ElfoTest
         // Act
         Elfo elfoDoTeste = new Elfo("Sylvanas");
         for (int i = 0; i < numeroDeFlechas; i++)
-            elfoDoTeste.atirarFlecha(new Dwarf());
+            elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
         assertEquals(restante, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(numeroDeFlechas, elfoDoTeste.getExperiencia());
@@ -61,7 +61,7 @@ public class ElfoTest
         //Act
         Elfo elfoDoTeste = new Elfo("Cassio");
         for (int i = 0; i < 43; i++)
-            elfoDoTeste.atirarFlecha(new Dwarf());
+            elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         //Assert
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(42, elfoDoTeste.getExperiencia());
@@ -71,7 +71,7 @@ public class ElfoTest
     public void elfoAtiraFlechaEmDwarf(){
         //Act
         Elfo elfoDoTeste = new Elfo("Lordaeron");
-        Dwarf dwarfDoTeste = new Dwarf();
+        Dwarf dwarfDoTeste = new Dwarf("SemCriatividade");
         elfoDoTeste.atirarFlecha(dwarfDoTeste);
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
@@ -85,7 +85,7 @@ public class ElfoTest
         Elfo elfoDoTeste = new Elfo("Legolas");
         Dwarf [] dwarves = new Dwarf [10];
         for (int i = 0; i < 10; i++)
-            dwarves[i] = new Dwarf();
+            dwarves[i] = new Dwarf("SemCriatividade");
         //Act
         for (Dwarf d : dwarves) {
             elfoDoTeste.atirarFlecha(d);
@@ -140,7 +140,7 @@ public class ElfoTest
     public void elfoAtiraFlechaEViraString(){
         // Assert
         Elfo elfoDoTeste = new Elfo("Legolas");
-        elfoDoTeste.atirarFlecha(new Dwarf());
+        elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Act
         String elfoEmString = elfoDoTeste.toString();
         // Arrange
@@ -152,7 +152,7 @@ public class ElfoTest
         // Assert
         Elfo elfoDoTeste = new Elfo("Legolas");
         for (int i = 0; i < 41; i++)
-            elfoDoTeste.atirarFlecha(new Dwarf());
+            elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Act
         String elfoEmString = elfoDoTeste.toString();
         // Arrange
