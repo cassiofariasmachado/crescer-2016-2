@@ -4,9 +4,8 @@ public class Dwarf{
     private int experiencia;
     private DataTerceiraEra dataNascimento;
     
-    public Dwarf (){
-        this.vida = 110;
-        this.dataNascimento = new DataTerceiraEra(1, 1, 1);
+    public Dwarf (String nome){
+        this (nome, new DataTerceiraEra(1, 1, 1));
     }
     
     public Dwarf (String nome, DataTerceiraEra data){
