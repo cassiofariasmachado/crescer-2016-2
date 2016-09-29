@@ -4,6 +4,7 @@ public class Dwarf{
     private int experiencia;
     private DataTerceiraEra dataNascimento;
     private Status status;
+    private Inventario inventario;
     
     public Dwarf (String nome){
         this (nome, new DataTerceiraEra(1, 1, 1));
@@ -14,6 +15,7 @@ public class Dwarf{
         this.vida = 110;
         this.dataNascimento = data;
         this.status = Status.VIVO;
+        this.inventario = new Inventario();
     }
     
     public String getNome() {
@@ -34,6 +36,10 @@ public class Dwarf{
     
     public Status getStatus(){
         return this.status;
+    }
+    
+    public Inventario getInventario() {
+        return this.inventario;
     }
     
     public double getNumeroSorte() {
@@ -58,6 +64,14 @@ public class Dwarf{
                 this.status = this.vida == 0 ? Status.MORTO : Status.VIVO; // Se vida igual a zero, mata Dwarf
         }
         //numeroSorte maior que 0 e menor e igual 100, não faz nada     
+    }
+    
+    public void adicionarItem(Item item) {
+        this.inventario.adicionarItem(item);
+    }
+    
+    public void perderItem(Item item) {
+        this.inventario.removerItem(item);
     }
 }
     

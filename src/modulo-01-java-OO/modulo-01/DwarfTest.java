@@ -194,4 +194,40 @@ public class DwarfTest {
             elfo.atirarFlecha(dwarf);
         assertEquals(0, dwarf.getVida());
     }
+    
+    @Test
+    public void dwarfNasceComInventario(){
+        Dwarf dwarf = new Dwarf("Dwarf");
+        assertTrue(dwarf.getInventario() instanceof Inventario);
+        assertEquals(0, dwarf.getInventario().getItens().size());
+    }
+    
+    @Test
+    public void dwarfAdicionaItemNoInventario(){
+        // Arrange
+        Dwarf dwarf = new Dwarf("Zangado");
+        Item item = new Item("Mosquete", 1);
+        // Act
+        dwarf.adicionarItem(item);
+        // Assert
+        assertEquals(1, dwarf.getInventario().getItens().size());
+        assertEquals(item, dwarf.getInventario().getItens().get(0));
+        assertEquals(1, dwarf.getInventario().getItens().get(0).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfPerdeItemDoInventario(){
+        // Arrange
+        Dwarf dwarf = new Dwarf("Zangado");
+        Item item1 = new Item("Mosquete", 1);
+        Item item2 = new Item("Pistola", 10);
+        dwarf.adicionarItem(item1);
+        dwarf.adicionarItem(item2);
+        // Act
+        dwarf.perderItem(item1);
+        // Assert
+        assertEquals(1, dwarf.getInventario().getItens().size());
+        assertEquals(item2, dwarf.getInventario().getItens().get(0));
+        assertEquals(10, dwarf.getInventario().getItens().get(0).getQuantidade());
+    }
 }
