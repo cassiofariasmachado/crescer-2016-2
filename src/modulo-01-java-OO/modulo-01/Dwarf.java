@@ -42,7 +42,7 @@ public class Dwarf{
         if (this.vida >= 80 && this.vida <= 90 && dataNascimento.ehBissexto())  
             valor *= -33;
         if (!dataNascimento.ehBissexto() && (this.nome.equals("Seixas") || this.nome.equals("Meireles"))) 
-            valor = (valor * 33) % 100;
+            valor = valor * 33 % 100;
         return valor;
     }
     
