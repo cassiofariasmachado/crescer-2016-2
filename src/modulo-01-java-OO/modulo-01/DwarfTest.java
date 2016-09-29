@@ -45,7 +45,7 @@ public class DwarfTest {
     public void dwarvesPerdemVida() {
         // Arrange and Act
         Dwarf gimli = new Dwarf("SemCriatividade");
-        gimli.perderVida();
+        new Elfo("Legolas").atirarFlecha(gimli);
         // Assert
         assertEquals (100, gimli.getVida());
     }
@@ -55,7 +55,7 @@ public class DwarfTest {
         // Arrange and Act
         Dwarf anaoToSemCriatividade = new Dwarf("SemCriatividade");
         for (int i = 0; i < 10; i++)
-            anaoToSemCriatividade.perderVida();
+            new Elfo("ElfoToSemCriatividade").atirarFlecha(anaoToSemCriatividade);
         // Assert
         assertEquals (10, anaoToSemCriatividade.getVida());
     }
@@ -65,7 +65,7 @@ public class DwarfTest {
         // Arrange and Act
         Dwarf anaoToSemCriatividade = new Dwarf("SemCriatividade");
         for (int i = 0; i < 20; i++)
-            anaoToSemCriatividade.perderVida();
+            new Elfo("ElfoToSemCriatividade").atirarFlecha(anaoToSemCriatividade);
         // Assert
         assertEquals (-90, anaoToSemCriatividade.getVida());
     }
@@ -74,8 +74,8 @@ public class DwarfTest {
     public void dwarfTemSorteAnoBissextoEVida90(){
         // Arrange
         Dwarf azarado = new Dwarf("nome", new DataTerceiraEra(12, 12, 2012));
-        azarado.perderVida();
-        azarado.perderVida();
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(azarado);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(azarado);
         // Act and Assert
         assertEquals(-3333, azarado.getNumeroSorte(), 0);
     }
@@ -84,8 +84,8 @@ public class DwarfTest {
     public void dwarfTemSorteAnoNaoBissextoENomeSeixas(){
         // Arrange
         Dwarf azarado = new Dwarf("Seixas", new DataTerceiraEra(12, 12, 2011));
-        azarado.perderVida();
-        azarado.perderVida();
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(azarado);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(azarado);
         // Act and Assert
         assertEquals(33, azarado.getNumeroSorte(), 0);
     }
@@ -95,8 +95,8 @@ public class DwarfTest {
     public void dwarfTemSorteAnoNaoBissextoENomeMeireles(){
         // Arrange
         Dwarf azarado = new Dwarf("Meireles", new DataTerceiraEra(12, 12, 2011));
-        azarado.perderVida();
-        azarado.perderVida();
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(azarado);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(azarado);
         // Act and Assert
         assertEquals(33, azarado.getNumeroSorte(), 0);
     }
@@ -123,8 +123,8 @@ public class DwarfTest {
     public void dwarfNaoRecebeFlechaEGanhaExperiencia(){
         // Arrange
         Dwarf dwarf = new Dwarf("Nome", new DataTerceiraEra(12, 12, 2012));
-        dwarf.perderVida();
-        dwarf.perderVida();
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(dwarf);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(dwarf);
         dwarf.receberFlecha();
         // Act and Assert
         assertEquals(90, dwarf.getVida());

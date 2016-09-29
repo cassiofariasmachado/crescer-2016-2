@@ -14,14 +14,6 @@ public class Dwarf{
         this.dataNascimento = data;
     }
     
-    public void perderVida() {
-        this.vida -= 10;
-    }
-    
-    public void ganharExperiencia() {
-        this.experiencia += 2;
-    }
-    
     public String getNome() {
         return this.nome;
     }
@@ -40,7 +32,7 @@ public class Dwarf{
     
     public double getNumeroSorte() {
         double valor = 101.0;
-        if(this.dataNascimento.ehBissexto()){
+        if( this.dataNascimento.ehBissexto() ) {
             if (this.vida >= 80 && this.vida <= 90)
                 valor *= -33;
         }
@@ -53,10 +45,10 @@ public class Dwarf{
         double numeroSorte = this.getNumeroSorte();
         //numeroSorte menor que zero apenas ganha experiencia
         if ( numeroSorte < 0 ) 
-            this.ganharExperiencia();
+            this.experiencia += 2;
         //numeroSorte maior que zero apenas    
         if( numeroSorte > 100 )
-                this.perderVida(); 
+                this.vida -= 10; 
         //numeroSorte maior que 0 e menor e igual 100
     }
 }
