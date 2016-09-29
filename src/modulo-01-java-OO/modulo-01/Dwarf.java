@@ -14,8 +14,8 @@ public class Dwarf{
         this.dataNascimento = data;
     }
     
-    public void setVida(int vida){
-        this.vida = vida;
+    public void perderVida() {
+        this.vida -= 10;
     }
     
     public String getNome(){
