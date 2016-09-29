@@ -45,6 +45,7 @@ public class DataTerceiraEraTest {
         assertTrue(ehBissexto);
     }
     
+    @Test
     public void testarEhBissextoAno3019(){
         // Arrange
         DataTerceiraEra fimDaGuerraDoAnel = new DataTerceiraEra(1, 10, 3019);
