@@ -77,8 +77,7 @@ public class Dwarf{
     public void tentarSorte() {
         double numeroSorte = getNumeroSorte();
         if (numeroSorte == -3333.) {
-            for (Item i : inventario.getItens())
-                i.setQuantidade(i.getQuantidade() + 1000);
+            this.inventario.aumentar1000UnidadesDosItens();
         }
     }
 }

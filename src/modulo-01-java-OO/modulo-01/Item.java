@@ -18,6 +18,10 @@ public class Item {
     public String getDescricao() {
         return descricao;
     }
+    
+    public void aumentar1000Unidades() {
+        this.quantidade += 1000;
+    }
 }
 
 

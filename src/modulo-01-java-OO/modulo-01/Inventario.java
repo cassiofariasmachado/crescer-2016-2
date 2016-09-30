@@ -15,6 +15,11 @@ public class Inventario {
         itens.remove(item);
     }
     
+    public void aumentar1000UnidadesDosItens(){
+        for (Item itemAtual : itens)
+                itemAtual.aumentar1000Unidades();
+    }
+    
     public String getDescricoesItens() {
         if (!itens.isEmpty()) {
             return getDescricoesItens(0);
