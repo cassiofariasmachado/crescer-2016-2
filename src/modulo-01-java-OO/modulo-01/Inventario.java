@@ -17,12 +17,16 @@ public class Inventario {
     
     public String getDescricoesItens() {
         if (itens.size() > 0) {
-            String retorno = itens.get(0).getDescricao();
-            for (int i = 1; i < itens.size(); i++)
-                retorno += "," + itens.get(i).getDescricao();
-            return retorno;
+            return getDescricoesItens(0);
         }
         return "";
+    }
+    
+    private String getDescricoesItens(int indice) {
+        String descricaoIndice = itens.get(indice).getDescricao();
+        if (indice == itens.size() - 1)
+            return descricaoIndice;
+        return descricaoIndice + "," + getDescricoesItens(indice + 1);
     }
     
     public Item retornarItemMaisPopular(){
