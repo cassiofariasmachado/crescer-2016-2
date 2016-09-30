@@ -20,7 +20,7 @@ public class Inventario {
             String retorno = itens.get(0).getDescricao();
             for (int i = 1; i < itens.size(); i++)
                 retorno += "," + itens.get(i).getDescricao();
-                return retorno;
+            return retorno;
         }
         return "";
     }
