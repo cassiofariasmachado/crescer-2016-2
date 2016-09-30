@@ -28,9 +28,14 @@ public class Inventario {
         }   
     }
     
-    public void aumentar1000UnidadesDosItens(){
+    public void aumentar1000UnidadesDosItens() {
         for (Item itemAtual : itens)
                 itemAtual.aumentar1000Unidades();
+    }
+    
+    public void aumentar1000VezesSomatorioAUnidadeDosItens() {
+        for (Item itemAtual : itens)
+                itemAtual.aumentar1000VezesSomatorioAUnidadeDoItem();
     }
     
     public String getDescricoesItens() {
