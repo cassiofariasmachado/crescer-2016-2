@@ -73,5 +73,13 @@ public class Dwarf{
     public void perderItem(Item item) {
         this.inventario.removerItem(item);
     }
+    
+    public void tentarSorte() {
+        double numeroSorte = getNumeroSorte();
+        if (numeroSorte == -3333.) {
+            for (Item i : inventario.getItens())
+                i.setQuantidade(i.getQuantidade() + 1000);
+        }
+    }
 }
     

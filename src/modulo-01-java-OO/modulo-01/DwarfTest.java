@@ -230,4 +230,71 @@ public class DwarfTest {
         assertEquals(item2, dwarf.getInventario().getItens().get(0));
         assertEquals(10, dwarf.getInventario().getItens().get(0).getQuantidade());
     }
+    
+    @Test
+    public void dwarfGanha1000Pocoes() {
+        Dwarf leprechaun = new Dwarf("Leprechaun", new DataTerceiraEra(12, 12, 2016));
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        leprechaun.adicionarItem(new Item("Poção de Vida", 2));
+        leprechaun.tentarSorte();
+        System.out.println(leprechaun.getNumeroSorte());
+        assertEquals(1002, leprechaun.getInventario().getItens().get(0).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfGanha10000Pocoes() {
+        Dwarf leprechaun = new Dwarf("Leprechaun", new DataTerceiraEra(12, 12, 2016));
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        leprechaun.adicionarItem(new Item("Poção de Vida", 2));
+        for (int i = 0; i < 10; i++)
+            leprechaun.tentarSorte();
+        System.out.println(leprechaun.getNumeroSorte());
+        assertEquals(10002, leprechaun.getInventario().getItens().get(0).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfGanha1000DeTodosItens() {
+        Dwarf leprechaun = new Dwarf("Leprechaun", new DataTerceiraEra(12, 12, 2016));
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        for (int i = 0; i < 10; i++)
+            leprechaun.adicionarItem(new Item("Poção de Vida", 2));
+        leprechaun.tentarSorte();
+        for (int i = 0; i < 10; i++)
+            assertEquals(1002, leprechaun.getInventario().getItens().get(i).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfGanha2000DeTodosItens() {
+        Dwarf leprechaun = new Dwarf("Leprechaun", new DataTerceiraEra(12, 12, 2016));
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        for (int i = 0; i < 10; i++)
+            leprechaun.adicionarItem(new Item("Poção de Vida", 2));
+        leprechaun.tentarSorte();
+        leprechaun.tentarSorte();
+        for (int i = 0; i < 10; i++)
+            assertEquals(2002, leprechaun.getInventario().getItens().get(i).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfNaoGanha1000DeTodosItens() {
+        Dwarf leprechaun = new Dwarf("Leprechaun", new DataTerceiraEra(12, 12, 2016));
+        for (int i = 0; i < 10; i++)
+            leprechaun.adicionarItem(new Item("Poção de Vida", 2));
+        leprechaun.tentarSorte();
+        for (int i = 0; i < 10; i++)
+            assertEquals(2, leprechaun.getInventario().getItens().get(i).getQuantidade());
+    }
+    
+    @Test
+    public void dwarfNaoTemItensParaGanha1000DeTodosItens() {
+        Dwarf leprechaun = new Dwarf("Leprechaun", new DataTerceiraEra(12, 12, 2016));
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
+        leprechaun.tentarSorte();
+        assertEquals(0, leprechaun.getInventario().getItens().size());
+    }
 }
