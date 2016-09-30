@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class InventarioTest {
-    
+
     @Test
     public void adicionarItemNoInventario(){
         // Arrange
@@ -17,7 +17,7 @@ public class InventarioTest {
         assertEquals(item, inventario.getItens().get(0));
         assertEquals(1, inventario.getItens().get(0).getQuantidade());
     }
-    
+
     @Test
     public void adicionarVariosItensNoInventario(){
         // Arrange
@@ -33,7 +33,7 @@ public class InventarioTest {
         assertEquals(3, inventario.getItens().get(0).getQuantidade());
         assertEquals(3, inventario.getItens().get(9).getQuantidade());
     }
-    
+
     @Test
     public void removerItemDoInventario(){
         // Arrange
@@ -49,7 +49,7 @@ public class InventarioTest {
         assertEquals(pistola, inventario.getItens().get(0));
         assertEquals(1, inventario.getItens().get(0).getQuantidade());
     }
-    
+
     @Test
     public void removerItemDuplicadoDoInventario(){
         // Arrange
@@ -65,7 +65,7 @@ public class InventarioTest {
         assertEquals(mosquete2, inventario.getItens().get(0));
         assertEquals(100, inventario.getItens().get(0).getQuantidade());
     }
-    
+
     @Test
     public void removerVariosItensNoInventario(){
         // Arrange
@@ -83,7 +83,7 @@ public class InventarioTest {
         assertEquals(3, inventario.getItens().get(0).getQuantidade());
         assertEquals(3, inventario.getItens().get(4).getQuantidade());
     }
-    
+
     @Test
     public void inventarioImprimeDescricoes() {
         Inventario inventario = new Inventario();
@@ -92,7 +92,7 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Bracelete", 1));
         assertEquals("Adaga,Escudo,Bracelete",inventario.getDescricoesItens());
     }
-    
+
     @Test
     public void inventarioImprimeMuitasDescricoes() {
         Inventario inventario = new Inventario();
@@ -100,54 +100,83 @@ public class InventarioTest {
             inventario.adicionarItem(new Item("Adaga", 1));
         assertEquals("Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga",inventario.getDescricoesItens());
     }
-    
+
     @Test
     public void inventarioImprimeDescricaoVaziaQuandoListaVazia() {
         Inventario inventario = new Inventario();
         assertEquals("",inventario.getDescricoesItens());
     }
-    
+
     @Test
     public void retornaItemMaisPopDeInventario() {
-       Inventario inventario = new Inventario();
+        Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Adaga", 1));
         inventario.adicionarItem(new Item("Escudo", 2));
         inventario.adicionarItem(new Item("Bracelete", 3));
         assertEquals("Bracelete",inventario.retornarItemMaisPopular().getDescricao());
         assertEquals(3,inventario.retornarItemMaisPopular().getQuantidade());
     }
-    
+
     @Test
     public void retornaItemMaisPopDeInventarioComMuitosItens() {
-       Inventario inventario = new Inventario();
-       for (int i = 0; i < 10; i++)
+        Inventario inventario = new Inventario();
+        for (int i = 0; i < 10; i++)
             inventario.adicionarItem(new Item("Adaga", 50));
-       inventario.adicionarItem(new Item("Escudo", 100000000));
-       assertEquals("Escudo",inventario.retornarItemMaisPopular().getDescricao());
-       assertEquals(100000000,inventario.retornarItemMaisPopular().getQuantidade());
+        inventario.adicionarItem(new Item("Escudo", 100000000));
+        assertEquals("Escudo",inventario.retornarItemMaisPopular().getDescricao());
+        assertEquals(100000000,inventario.retornarItemMaisPopular().getQuantidade());
     }
-    
+
     @Test
     public void retornaItemMaisPopDeInventarioComUmItem() {
-       Inventario inventario = new Inventario();
-       inventario.adicionarItem(new Item("Adaga", 50));
-       assertEquals("Adaga",inventario.retornarItemMaisPopular().getDescricao());
-       assertEquals(50,inventario.retornarItemMaisPopular().getQuantidade());
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 50));
+        assertEquals("Adaga",inventario.retornarItemMaisPopular().getDescricao());
+        assertEquals(50,inventario.retornarItemMaisPopular().getQuantidade());
     }
-    
+
     @Test
     public void retornaItemMaisPopDuplicadoDeInventario() {
-       Inventario inventario = new Inventario();
+        Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Adaga", 1));
         inventario.adicionarItem(new Item("Escudo", 3));
         inventario.adicionarItem(new Item("Bracelete", 3));
         assertEquals("Escudo",inventario.retornarItemMaisPopular().getDescricao());
         assertEquals(3,inventario.retornarItemMaisPopular().getQuantidade());
     }
-    
+
     @Test
     public void naoRetornaItemMaisPopPoisInventarioVazio() {
-       Inventario inventario = new Inventario();
-       assertFalse(new Item("Arco", 1).equals(inventario.retornarItemMaisPopular()));
+        Inventario inventario = new Inventario();
+        assertFalse(new Item("Arco", 1).equals(inventario.retornarItemMaisPopular()));
+    }
+
+    @Test
+    public void aumentarEm1000TodosItensInventario3Itens(){
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 1));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 3));
+        inventario.aumentar1000UnidadesDosItens();
+        assertEquals(1001,inventario.getItens().get(0).getQuantidade());
+        assertEquals(1002,inventario.getItens().get(1).getQuantidade());
+        assertEquals(1003,inventario.getItens().get(2).getQuantidade());
+    }
+    
+    @Test
+    public void aumentarEm1000TodosItensInventarioCom10Itens(){
+        Inventario inventario = new Inventario();
+        for(int i = 0; i < 10; i++)
+            inventario.adicionarItem(new Item("Adaga", 1));
+        inventario.aumentar1000UnidadesDosItens();
+        for(int i = 0; i < 10; i++)
+            assertEquals(1001, inventario.getItens().get(i).getQuantidade());
+    }
+    
+    @Test
+    public void aumentarEm1000TodosItensInventarioVazio(){
+        Inventario inventario = new Inventario();
+        inventario.aumentar1000UnidadesDosItens();
+        assertEquals(0, inventario.getItens().size());
     }
 }
