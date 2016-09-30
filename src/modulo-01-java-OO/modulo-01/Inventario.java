@@ -16,7 +16,7 @@ public class Inventario {
     }
     
     public String getDescricoesItens() {
-        if (itens.size() > 0) {
+        if (!itens.isEmpty()) {
             return getDescricoesItens(0);
         }
         return "";
@@ -30,7 +30,7 @@ public class Inventario {
     }
     
     public Item retornarItemMaisPopular(){
-        if (itens.size() > 0){
+        if (!itens.isEmpty()){
             int indice = 0;
             int quantidade = 0;
             for (int i = 0; i < itens.size(); i++) {
