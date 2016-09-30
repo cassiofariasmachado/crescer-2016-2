@@ -106,4 +106,48 @@ public class InventarioTest {
         Inventario inventario = new Inventario();
         assertEquals("",inventario.getDescricoesItens());
     }
+    
+    @Test
+    public void retornaItemMaisPopDeInventario() {
+       Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 1));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 3));
+        assertEquals("Bracelete",inventario.retornarItemMaisPopular().getDescricao());
+        assertEquals(3,inventario.retornarItemMaisPopular().getQuantidade());
+    }
+    
+    @Test
+    public void retornaItemMaisPopDeInventarioComMuitosItens() {
+       Inventario inventario = new Inventario();
+       for (int i = 0; i < 10; i++)
+            inventario.adicionarItem(new Item("Adaga", 50));
+       inventario.adicionarItem(new Item("Escudo", 100000000));
+       assertEquals("Escudo",inventario.retornarItemMaisPopular().getDescricao());
+       assertEquals(100000000,inventario.retornarItemMaisPopular().getQuantidade());
+    }
+    
+    @Test
+    public void retornaItemMaisPopDeInventarioComUmItem() {
+       Inventario inventario = new Inventario();
+       inventario.adicionarItem(new Item("Adaga", 50));
+       assertEquals("Adaga",inventario.retornarItemMaisPopular().getDescricao());
+       assertEquals(50,inventario.retornarItemMaisPopular().getQuantidade());
+    }
+    
+    @Test
+    public void retornaItemMaisPopDuplicadoDeInventario() {
+       Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 1));
+        inventario.adicionarItem(new Item("Escudo", 3));
+        inventario.adicionarItem(new Item("Bracelete", 3));
+        assertEquals("Escudo",inventario.retornarItemMaisPopular().getDescricao());
+        assertEquals(3,inventario.retornarItemMaisPopular().getQuantidade());
+    }
+    
+    @Test
+    public void naoRetornaItemMaisPopPoisInventarioVazio() {
+       Inventario inventario = new Inventario();
+       assertFalse(new Item("Arco", 1).equals(inventario.retornarItemMaisPopular()));
+    }
 }

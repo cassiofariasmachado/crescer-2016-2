@@ -24,4 +24,19 @@ public class Inventario {
         }
         return "";
     }
+    
+    public Item retornarItemMaisPopular(){
+        if (itens.size() > 0){
+            int indice = 0;
+            int quantidade = 0;
+            for (int i = 0; i < itens.size(); i++) {
+                if (quantidade < itens.get(i).getQuantidade()){
+                    indice = i;
+                    quantidade = itens.get(i).getQuantidade();
+                }
+            }
+            return itens.get(indice);
+        }
+        return null;
+    }
 }
