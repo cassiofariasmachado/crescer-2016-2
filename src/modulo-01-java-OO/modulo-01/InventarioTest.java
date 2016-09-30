@@ -83,4 +83,27 @@ public class InventarioTest {
         assertEquals(3, inventario.getItens().get(0).getQuantidade());
         assertEquals(3, inventario.getItens().get(4).getQuantidade());
     }
+    
+    @Test
+    public void inventarioImprimeDescricoes() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 1));
+        inventario.adicionarItem(new Item("Escudo", 1));
+        inventario.adicionarItem(new Item("Bracelete", 1));
+        assertEquals("Adaga,Escudo,Bracelete",inventario.getDescricoesItens());
+    }
+    
+    @Test
+    public void inventarioImprimeMuitasDescricoes() {
+        Inventario inventario = new Inventario();
+        for (int i = 0; i < 10; i++)
+            inventario.adicionarItem(new Item("Adaga", 1));
+        assertEquals("Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga,Adaga",inventario.getDescricoesItens());
+    }
+    
+    @Test
+    public void inventarioImprimeDescricaoVaziaQuandoListaVazia() {
+        Inventario inventario = new Inventario();
+        assertEquals("",inventario.getDescricoesItens());
+    }
 }
