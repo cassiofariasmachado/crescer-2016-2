@@ -179,4 +179,71 @@ public class InventarioTest {
         inventario.aumentar1000UnidadesDosItens();
         assertEquals(0, inventario.getItens().size());
     }
+    
+    @Test
+    public void ordenaInventarioComTresItensNaOrdemDescrescente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 1));
+        inventario.ordenarItens();
+        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+    }
+    
+    @Test
+    public void ordenaInventarioComTresItensNaOrdemCrescente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 1));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 3));
+        inventario.ordenarItens();
+        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+    }
+    
+    @Test
+    public void ordenaInventarioComTresItensNaOrdemAleatoria() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 1));
+        inventario.adicionarItem(new Item("Bracelete", 2));
+        inventario.ordenarItens();
+        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+    }
+    
+    @Test
+    public void ordenaInventarioComDezItensNaOrdemDescrescente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Bracelete", 10));
+        inventario.adicionarItem(new Item("Adaga", 9));
+        inventario.adicionarItem(new Item("Escudo", 8));
+        inventario.adicionarItem(new Item("Bracelete", 7));
+        inventario.adicionarItem(new Item("Adaga", 6));
+        inventario.adicionarItem(new Item("Escudo", 5));
+        inventario.adicionarItem(new Item("Bracelete", 4));
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 1));
+        inventario.ordenarItens();
+        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+    }
+    
+    @Test
+    public void naoOrdenaInventarioComTresItensNaOrdemAleatoria() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 1));
+        inventario.adicionarItem(new Item("Bracelete", 2));
+        assertFalse(verificaSeInvenatarioEstaOrdenado(inventario));
+    }
+    
+    private boolean verificaSeInvenatarioEstaOrdenado(Inventario inventario) {
+        int quantidadeItemAnterior = 0;
+        for (Item itemAtual : inventario.getItens()) {
+            int quantidadeItemAtual = itemAtual.getQuantidade();
+            if (quantidadeItemAtual < quantidadeItemAnterior)
+                return false;
+            quantidadeItemAnterior = quantidadeItemAtual;
+        }
+        return true;
+    }
 }

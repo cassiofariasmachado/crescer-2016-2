@@ -15,6 +15,19 @@ public class Inventario {
         itens.remove(item);
     }
     
+    public void ordenarItens() {
+        // Ordena inventario baseado no método de ordenação insertion sort
+        Item atual;
+        for (int i = 1; i < itens.size(); i++){
+            atual = itens.get(i);
+            int j;
+            for (j = i - 1; j >= 0 && atual.getQuantidade() < itens.get(j).getQuantidade(); j--){
+                itens.set(j + 1, itens.get(j));
+            }
+            itens.set(j + 1, atual);
+        }   
+    }
+    
     public void aumentar1000UnidadesDosItens(){
         for (Item itemAtual : itens)
                 itemAtual.aumentar1000Unidades();
