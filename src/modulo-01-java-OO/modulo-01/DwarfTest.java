@@ -238,7 +238,6 @@ public class DwarfTest {
         new Elfo("ElfoToSemCriatividade").atirarFlecha(leprechaun);
         leprechaun.adicionarItem(new Item("Poção de Vida", 2));
         leprechaun.tentarSorte();
-        System.out.println(leprechaun.getNumeroSorte());
         assertEquals(1002, leprechaun.getInventario().getItens().get(0).getQuantidade());
     }
     
@@ -250,7 +249,6 @@ public class DwarfTest {
         leprechaun.adicionarItem(new Item("Poção de Vida", 2));
         for (int i = 0; i < 10; i++)
             leprechaun.tentarSorte();
-        System.out.println(leprechaun.getNumeroSorte());
         assertEquals(10002, leprechaun.getInventario().getItens().get(0).getQuantidade());
     }
     
