@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.ArrayList;
 
 public class InventarioTest {
 
@@ -162,7 +163,7 @@ public class InventarioTest {
         assertEquals(1002,inventario.getItens().get(1).getQuantidade());
         assertEquals(1003,inventario.getItens().get(2).getQuantidade());
     }
-    
+
     @Test
     public void aumentarEm1000TodosItensInventarioCom10Itens(){
         Inventario inventario = new Inventario();
@@ -172,46 +173,46 @@ public class InventarioTest {
         for(int i = 0; i < 10; i++)
             assertEquals(1001, inventario.getItens().get(i).getQuantidade());
     }
-    
+
     @Test
     public void aumentarEm1000TodosItensInventarioVazio(){
         Inventario inventario = new Inventario();
         inventario.aumentar1000UnidadesDosItens();
         assertEquals(0, inventario.getItens().size());
     }
-    
+
     @Test
-    public void ordenaInventarioComTresItensNaOrdemDescrescente() {
+    public void ordenaInventarioComTresItensNaOrdemDescrescentePassandoTipoOrdenacaoAscendente() {
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Adaga", 3));
         inventario.adicionarItem(new Item("Escudo", 2));
         inventario.adicionarItem(new Item("Bracelete", 1));
-        inventario.ordenarItens();
-        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+        assertTrue(verificaSeInvenatarioEstaOrdemAscendente(inventario));
     }
-    
+
     @Test
-    public void ordenaInventarioComTresItensNaOrdemCrescente() {
+    public void ordenaInventarioComTresItensNaOrdemCrescentePassandoTipoOrdenacaoAscendente() {
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Adaga", 1));
         inventario.adicionarItem(new Item("Escudo", 2));
         inventario.adicionarItem(new Item("Bracelete", 3));
-        inventario.ordenarItens();
-        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+        assertTrue(verificaSeInvenatarioEstaOrdemAscendente(inventario));
     }
-    
+
     @Test
-    public void ordenaInventarioComTresItensNaOrdemAleatoria() {
+    public void ordenaInventarioComTresItensNaOrdemAleatoriaPassandoTipoOrdenacaoAscendente() {
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Adaga", 3));
         inventario.adicionarItem(new Item("Escudo", 1));
         inventario.adicionarItem(new Item("Bracelete", 2));
-        inventario.ordenarItens();
-        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+        assertTrue(verificaSeInvenatarioEstaOrdemAscendente(inventario));
     }
-    
+
     @Test
-    public void ordenaInventarioComDezItensNaOrdemDescrescente() {
+    public void ordenaInventarioComDezItensNaOrdemDescrescentePassandoTipoOrdenacaoAscendente() {
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Bracelete", 10));
         inventario.adicionarItem(new Item("Adaga", 9));
@@ -223,19 +224,76 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Adaga", 3));
         inventario.adicionarItem(new Item("Escudo", 2));
         inventario.adicionarItem(new Item("Bracelete", 1));
-        inventario.ordenarItens();
-        assertTrue(verificaSeInvenatarioEstaOrdenado(inventario));
+        inventario.ordenarItens(TipoOrdenacao.ASCENDENTE);
+        assertTrue(verificaSeInvenatarioEstaOrdemAscendente(inventario));
     }
-    
+
     @Test
-    public void naoOrdenaInventarioComTresItensNaOrdemAleatoria() {
+    public void naoOrdenaInventarioComTresItensNaOrdemAleatoriaPassandoTipoOrdenacaoAscendente() {
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item("Adaga", 3));
         inventario.adicionarItem(new Item("Escudo", 1));
         inventario.adicionarItem(new Item("Bracelete", 2));
-        assertFalse(verificaSeInvenatarioEstaOrdenado(inventario));
+        assertFalse(verificaSeInvenatarioEstaOrdemAscendente(inventario));
     }
-    
+
+    @Test
+    public void ordenaInventarioComTresItensNaOrdemDescrescentePassandoTipoOrdenacaoDescendente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 1));
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        assertTrue(verificaSeInvenatarioEstaOrdemDescendente(inventario));
+    }
+
+    @Test
+    public void ordenaInventarioComTresItensNaOrdemCrescentePassandoTipoOrdenacaoDescendente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 1));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 3));
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        boolean  d = verificaSeInvenatarioEstaOrdemDescendente(inventario);
+        assertTrue(verificaSeInvenatarioEstaOrdemDescendente(inventario));
+    }
+
+    @Test
+    public void ordenaInventarioComTresItensNaOrdemAleatoriaPassandoTipoOrdenacaoDescendente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 1));
+        inventario.adicionarItem(new Item("Bracelete", 2));
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        assertTrue(verificaSeInvenatarioEstaOrdemDescendente(inventario));
+    }
+
+    @Test
+    public void ordenaInventarioComDezItensNaOrdemDescrescentePassandoTipoOrdenacaoDescendente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Bracelete", 10));
+        inventario.adicionarItem(new Item("Adaga", 9));
+        inventario.adicionarItem(new Item("Escudo", 8));
+        inventario.adicionarItem(new Item("Bracelete", 7));
+        inventario.adicionarItem(new Item("Adaga", 6));
+        inventario.adicionarItem(new Item("Escudo", 5));
+        inventario.adicionarItem(new Item("Bracelete", 4));
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 2));
+        inventario.adicionarItem(new Item("Bracelete", 1));
+        inventario.ordenarItens(TipoOrdenacao.DESCENDENTE);
+        assertTrue(verificaSeInvenatarioEstaOrdemDescendente(inventario));
+    }
+
+    @Test
+    public void naoOrdenaInventarioComTresItensNaOrdemAleatoriaPassandoTipoOrdenacaoDescendente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 1));
+        inventario.adicionarItem(new Item("Bracelete", 2));
+        assertFalse(verificaSeInvenatarioEstaOrdemDescendente(inventario));
+    }
+
     @Test
     public void aumentaQuantidadeDeCadaItemComQuantidadeIgualATresEm1000VezesOSomatorio() {
         // Arrange and Act
@@ -245,7 +303,7 @@ public class InventarioTest {
         for (Item item : inventario.getItens())
             assertEquals(6003, item.getQuantidade());
     }
-    
+
     @Test
     public void aumentaQuantidadeDeCadaItemComQuantidadeIgualACincoEm1000VezesOSomatorio() {
         // Arrange and Act
@@ -255,7 +313,7 @@ public class InventarioTest {
         for (Item item : inventario.getItens())
             assertEquals(15005, item.getQuantidade());
     }
-    
+
     @Test
     public void aumentaQuantidadeDeCadaItemComQuantidadeIgualAZeroEm1000VezesOSomatorio() {
         // Arrange and Act
@@ -265,10 +323,11 @@ public class InventarioTest {
         for (Item item : inventario.getItens())
             assertEquals(0, item.getQuantidade());
     }
-    
-    private boolean verificaSeInvenatarioEstaOrdenado(Inventario inventario) {
-        int quantidadeItemAnterior = 0;
-        for (Item itemAtual : inventario.getItens()) {
+
+    private boolean verificaSeInvenatarioEstaOrdemAscendente(Inventario inventario) {
+        ArrayList<Item> itens = inventario.getItens();
+        int quantidadeItemAnterior = itens.get(0).getQuantidade();
+        for (Item itemAtual : itens) {
             int quantidadeItemAtual = itemAtual.getQuantidade();
             if (quantidadeItemAtual < quantidadeItemAnterior)
                 return false;
@@ -276,21 +335,33 @@ public class InventarioTest {
         }
         return true;
     }
-    
+
+    private boolean verificaSeInvenatarioEstaOrdemDescendente(Inventario inventario) {
+        ArrayList<Item> itens = inventario.getItens();
+        int quantidadeItemAnterior = itens.get(0).getQuantidade();
+        for (Item itemAtual : itens) {
+            int quantidadeItemAtual = itemAtual.getQuantidade();
+            if (quantidadeItemAtual > quantidadeItemAnterior)
+                return false;
+            quantidadeItemAnterior = quantidadeItemAtual;
+        }
+        return true;
+    }
+
     private Inventario criarInventarioComDezItensComQuantidadeIgualATres(){
         Inventario inventario = new Inventario();
         for (int i = 0; i < 10; i++)
             inventario.adicionarItem(new Item("Diamantes da Lucy", 3));
         return inventario;
     }
-    
+
     private Inventario criarInventarioComDezItensComQuantidadeIgualACinco(){
         Inventario inventario = new Inventario();
         for (int i = 0; i < 10; i++)
             inventario.adicionarItem(new Item("Diamantes da Lucy", 5));
         return inventario;
     }
-    
+
     private Inventario criarInventarioComDezItensComQuantidadeIgualAZero(){
         Inventario inventario = new Inventario();
         for (int i = 0; i < 10; i++)
