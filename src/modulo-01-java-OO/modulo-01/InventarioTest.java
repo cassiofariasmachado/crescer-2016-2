@@ -236,6 +236,36 @@ public class InventarioTest {
         assertFalse(verificaSeInvenatarioEstaOrdenado(inventario));
     }
     
+    @Test
+    public void aumentaQuantidadeDeCadaItemComQuantidadeIgualATresEm1000VezesOSomatorio() {
+        // Arrange and Act
+        Inventario inventario = criarInventarioComDezItensComQuantidadeIgualATres();
+        inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
+        // Assert
+        for (Item item : inventario.getItens())
+            assertEquals(6003, item.getQuantidade());
+    }
+    
+    @Test
+    public void aumentaQuantidadeDeCadaItemComQuantidadeIgualACincoEm1000VezesOSomatorio() {
+        // Arrange and Act
+        Inventario inventario = criarInventarioComDezItensComQuantidadeIgualACinco();
+        inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
+        // Assert
+        for (Item item : inventario.getItens())
+            assertEquals(15005, item.getQuantidade());
+    }
+    
+    @Test
+    public void aumentaQuantidadeDeCadaItemComQuantidadeIgualAZeroEm1000VezesOSomatorio() {
+        // Arrange and Act
+        Inventario inventario = criarInventarioComDezItensComQuantidadeIgualAZero();
+        inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
+        // Assert
+        for (Item item : inventario.getItens())
+            assertEquals(0, item.getQuantidade());
+    }
+    
     private boolean verificaSeInvenatarioEstaOrdenado(Inventario inventario) {
         int quantidadeItemAnterior = 0;
         for (Item itemAtual : inventario.getItens()) {
@@ -245,5 +275,26 @@ public class InventarioTest {
             quantidadeItemAnterior = quantidadeItemAtual;
         }
         return true;
+    }
+    
+    private Inventario criarInventarioComDezItensComQuantidadeIgualATres(){
+        Inventario inventario = new Inventario();
+        for (int i = 0; i < 10; i++)
+            inventario.adicionarItem(new Item("Diamantes da Lucy", 3));
+        return inventario;
+    }
+    
+    private Inventario criarInventarioComDezItensComQuantidadeIgualACinco(){
+        Inventario inventario = new Inventario();
+        for (int i = 0; i < 10; i++)
+            inventario.adicionarItem(new Item("Diamantes da Lucy", 5));
+        return inventario;
+    }
+    
+    private Inventario criarInventarioComDezItensComQuantidadeIgualAZero(){
+        Inventario inventario = new Inventario();
+        for (int i = 0; i < 10; i++)
+            inventario.adicionarItem(new Item("Diamantes da Lucy", 0));
+        return inventario;
     }
 }
