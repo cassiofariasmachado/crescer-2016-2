@@ -3,7 +3,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class IrishIrishDwarfTest {
+public class IrishDwarfTest {
 
     @Test
     public void irishDwarvesNascemComNome() {
