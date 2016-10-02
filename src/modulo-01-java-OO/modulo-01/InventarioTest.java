@@ -298,7 +298,7 @@ public class InventarioTest {
     public void aumentaQuantidadeDeCadaItemComQuantidadeIgualATresEm1000VezesOSomatorio() {
         // Arrange and Act
         Inventario inventario = criarInventarioComDezItensComQuantidadeIgualATres();
-        inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
+        inventario.aumentar1000VezesSomaUnidadesDosItens();
         // Assert
         for (Item item : inventario.getItens())
             assertEquals(6003, item.getQuantidade());
@@ -308,7 +308,7 @@ public class InventarioTest {
     public void aumentaQuantidadeDeCadaItemComQuantidadeIgualACincoEm1000VezesOSomatorio() {
         // Arrange and Act
         Inventario inventario = criarInventarioComDezItensComQuantidadeIgualACinco();
-        inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
+        inventario.aumentar1000VezesSomaUnidadesDosItens();
         // Assert
         for (Item item : inventario.getItens())
             assertEquals(15005, item.getQuantidade());
@@ -318,7 +318,7 @@ public class InventarioTest {
     public void aumentaQuantidadeDeCadaItemComQuantidadeIgualAZeroEm1000VezesOSomatorio() {
         // Arrange and Act
         Inventario inventario = criarInventarioComDezItensComQuantidadeIgualAZero();
-        inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
+        inventario.aumentar1000VezesSomaUnidadesDosItens();
         // Assert
         for (Item item : inventario.getItens())
             assertEquals(0, item.getQuantidade());

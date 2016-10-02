@@ -27,7 +27,7 @@ public class Item {
         this.quantidade += 1000;
     }
     
-    public void aumentar1000VezesSomatorioAUnidadeDoItem() {
+    public void aumentar1000VezesSomaUnidadeDoItem() {
         this.quantidade += this.getSomatorioAteQuantidade() * 1000;
     }
     

@@ -49,9 +49,9 @@ public class Inventario {
             itemAtual.aumentar1000Unidades();
     }
 
-    public void aumentar1000VezesSomatorioAUnidadeDosItens() {
+    public void aumentar1000VezesSomaUnidadesDosItens() {
         for (Item itemAtual : itens)
-            itemAtual.aumentar1000VezesSomatorioAUnidadeDoItem();
+            itemAtual.aumentar1000VezesSomaUnidadeDoItem();
     }
 
     public String getDescricoesItens() {

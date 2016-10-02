@@ -80,7 +80,7 @@ public class ItemTest {
     public void aumentaQuantidadeDoItemComQuantidadeIgualATresEm1000VezesOSomatorio(){
         // Arrange and Act
         Item item = criaUmItemComTresUnidades();
-        item.aumentar1000VezesSomatorioAUnidadeDoItem();
+        item.aumentar1000VezesSomaUnidadeDoItem();
         // Assert
         assertEquals(6003, item.getQuantidade());
     }
@@ -89,7 +89,7 @@ public class ItemTest {
     public void aumentaQuantidadeDoItemComQuantidadeIgualACincoEm1000VezesOSomatorio(){
         // Arrange and Act
         Item item = criaUmItemComCincoUnidades();
-        item.aumentar1000VezesSomatorioAUnidadeDoItem();
+        item.aumentar1000VezesSomaUnidadeDoItem();
         // Assert
         assertEquals(15005, item.getQuantidade());
     }
@@ -98,7 +98,7 @@ public class ItemTest {
     public void aumentaQuantidadeDoItemComQuantidadeIgualAMenosTresEm1000VezesOSomatorio(){ //troca negativo
         // Arrange and Act
         Item item = criaUmItemComTresUnidadesNegativas();
-        item.aumentar1000VezesSomatorioAUnidadeDoItem();
+        item.aumentar1000VezesSomaUnidadeDoItem();
         // Assert
         assertEquals(5997, item.getQuantidade());
     }
@@ -107,7 +107,7 @@ public class ItemTest {
     public void aumentaQuantidadeDoItemComQuantidadeIgualAMenosCincoEm1000VezesOSomatorio(){ //troca negativo
         // Arrange and Act
         Item item = criaUmItemComCincoUnidadesNegativas();
-        item.aumentar1000VezesSomatorioAUnidadeDoItem();
+        item.aumentar1000VezesSomaUnidadeDoItem();
         // Assert
         assertEquals(14995, item.getQuantidade());
     }

@@ -76,7 +76,7 @@ public class IrishDwarf {
     public void tentarSorte() {
         double numeroSorte = this.getNumeroSorte();
         if (numeroSorte == -3333.) {
-            this.inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
+            this.inventario.aumentar1000VezesSomaUnidadesDosItens();
         }
     }
 }
