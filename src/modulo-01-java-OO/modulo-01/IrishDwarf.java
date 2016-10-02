@@ -7,7 +7,7 @@ public class IrishDwarf {
     private Inventario inventario;
 
     public IrishDwarf (String nome){
-        this (nome, new DataTerceiraEra(1, 1, 1));
+        this(nome, new DataTerceiraEra(1, 1, 1));
     }
 
     public IrishDwarf (String nome, DataTerceiraEra data){
@@ -43,14 +43,13 @@ public class IrishDwarf {
     }
     
     public double getNumeroSorte() {
-        double valor = 101.0;
-        if( this.dataNascimento.ehBissexto() ) {
+        double valorInicial = 101.0;
+        if(this.dataNascimento.ehBissexto())
             if (this.vida >= 80 && this.vida <= 90)
-                valor *= -33;
-        }
-        else if ( this.nome.equals("Seixas") || this.nome.equals("Meireles") ) 
-                    valor = valor * 33 % 100;
-        return valor;
+                return valorInicial * -33;
+        if ("Seixas".equals(this.nome) || "Meireles".equals(this.nome)) 
+            return valorInicial * 33 % 100;
+        return valorInicial;
     }
     
     public void receberFlecha(){
@@ -60,7 +59,7 @@ public class IrishDwarf {
             this.experiencia += 2;
         //numeroSorte maior que zero apenas    
         if( numeroSorte > 100 ) {
-                this.vida = this.vida - 10 < 0 ? 0 : vida - 10; // Se vida menos 10 menor 0, vida recebe 0
+                this.vida = this.vida - 10 < 0 ? 0 : this.vida - 10; // Se vida menos 10 menor 0, vida recebe 0
                 this.status = this.vida == 0 ? Status.MORTO : Status.VIVO; // Se vida igual a zero, mata Dwarf
         }
         //numeroSorte maior que 0 e menor e igual 100, não faz nada     
@@ -75,7 +74,7 @@ public class IrishDwarf {
     }
     
     public void tentarSorte() {
-        double numeroSorte = getNumeroSorte();
+        double numeroSorte = this.getNumeroSorte();
         if (numeroSorte == -3333.) {
             this.inventario.aumentar1000VezesSomatorioAUnidadeDosItens();
         }
