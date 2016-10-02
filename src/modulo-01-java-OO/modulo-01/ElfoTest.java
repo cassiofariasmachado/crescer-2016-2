@@ -3,8 +3,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ElfoTest
-{
+public class ElfoTest {
     @Test
     public void elfoNasceComNome() {
         // Arrange
@@ -23,7 +22,7 @@ public class ElfoTest
         assertEquals("Arco", elfoDoTeste.getArco().getDescricao());
         assertEquals(1, elfoDoTeste.getArco().getQuantidade());
     }
-    
+
     @Test
     public void elfoNasceComFlecha() {
         // Act
@@ -31,7 +30,45 @@ public class ElfoTest
         // Assert
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
-    
+
+    @Test
+    public void elfoNasceInformandoFlechas(){
+        Elfo elfoDoTeste = new Elfo("Legolas", 10);
+        assertEquals(10, elfoDoTeste.getFlecha().getQuantidade());
+    }
+
+    @Test
+    public void elfoNasceInformandoFlechasNegativas(){
+        Elfo elfoDoTeste = new Elfo("Legolas", -10);
+        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
+    }
+
+    @Test
+    public void lefoNasceInformandoZeroFlechas(){
+        Elfo elfoDoTeste = new Elfo("Legolas", 0);
+        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
+    }
+
+    @Test
+    public void elfoNasceComStatus(){
+        assertEquals(Status.VIVO, new Elfo("Legolas").getStatus());
+    }
+
+    @Test
+    public void elfoNasceComInventario(){
+        Elfo elfo = new Elfo("Dwarf");
+        assertTrue(elfo.getInventario() instanceof Inventario);
+        assertEquals(2, elfo.getInventario().getItens().size());
+    }
+
+    @Test
+    public void elfoNasceComArcoEFlechasNoInventario(){
+        Elfo elfo = new Elfo("Dwarf");
+        assertEquals(2, elfo.getInventario().getItens().size());
+        assertEquals("Arco", elfo.getInventario().getItens().get(0).getDescricao());
+        assertEquals("Flechas", elfo.getInventario().getItens().get(1).getDescricao());
+    }
+
     @Test
     public void elfoAtiraFlecha() {
         // Act
@@ -41,7 +78,7 @@ public class ElfoTest
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(1, elfoDoTeste.getExperiencia());
     }
-    
+
     @Test
     public void elfoAtiraVariasFlechas() {
         // Arrange
@@ -55,7 +92,7 @@ public class ElfoTest
         assertEquals(restante, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(numeroDeFlechas, elfoDoTeste.getExperiencia());
     }
-    
+
     @Test
     public void elfoAtiraFlechasDemais(){
         //Act
@@ -66,7 +103,7 @@ public class ElfoTest
         assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(42, elfoDoTeste.getExperiencia());
     }
-    
+
     @Test
     public void elfoAtiraFlechaEmDwarf(){
         //Act
@@ -78,7 +115,7 @@ public class ElfoTest
         assertEquals(1, elfoDoTeste.getExperiencia());
         assertEquals(100, dwarfDoTeste.getVida());
     }
-    
+
     @Test
     public void elfoAtiraFlechaEmVariosDwarfs(){
         // Arrange
@@ -97,7 +134,7 @@ public class ElfoTest
             assertEquals(100, d.getVida());
         }
     }
-    
+
     @Test
     public void elfoViraString(){
         // Assert
@@ -107,7 +144,7 @@ public class ElfoTest
         // Arrange
         assertEquals("Legolas possui 42 flechas e 0 níveis de experiência.", elfoEmString);
     }
-    
+
     @Test
     public void doisElfosViramString(){
         // Assert
@@ -120,8 +157,8 @@ public class ElfoTest
         assertEquals("Legolas possui 42 flechas e 0 níveis de experiência.", elfoEmString1);
         assertEquals("Cassio possui 42 flechas e 0 níveis de experiência.", elfoEmString2);
     }
-    
-     @Test
+
+    @Test
     public void variosElfosViramString(){
         // Assert
         Elfo [] elfosDoTeste = new Elfo[10];
@@ -135,7 +172,7 @@ public class ElfoTest
             assertEquals("0", elfoEmStringArray[5]);
         }
     }
-    
+
     @Test
     public void elfoAtiraFlechaEViraString(){
         // Assert
@@ -146,7 +183,7 @@ public class ElfoTest
         // Arrange
         assertEquals("Legolas possui 41 flechas e 1 nível de experiência.", elfoEmString);
     }
-    
+
     @Test
     public void elfoAtira41FlechasEViraString(){
         // Assert
@@ -157,43 +194,5 @@ public class ElfoTest
         String elfoEmString = elfoDoTeste.toString();
         // Arrange
         assertEquals("Legolas possui 1 flecha e 41 níveis de experiência.", elfoEmString);
-    }
-    
-    @Test
-    public void criarElfoInformandoFlechas(){
-        Elfo elfoDoTeste = new Elfo("Legolas", 10);
-        assertEquals(10, elfoDoTeste.getFlecha().getQuantidade());
-    }
-    
-    @Test
-    public void criarElfoInformandoFlechasNegativas(){
-        Elfo elfoDoTeste = new Elfo("Legolas", -10);
-        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
-    }
-    
-    @Test
-    public void criarElfoInformandoZeroFlechas(){
-        Elfo elfoDoTeste = new Elfo("Legolas", 0);
-        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
-    }
-    
-    @Test
-    public void elfoNasceComStatus(){
-        assertEquals(Status.VIVO, new Elfo("Legolas").getStatus());
-    }
-    
-    @Test
-    public void elfoNasceComInventario(){
-        Elfo elfo = new Elfo("Dwarf");
-        assertTrue(elfo.getInventario() instanceof Inventario);
-        assertEquals(2, elfo.getInventario().getItens().size());
-    }
-    
-    @Test
-    public void elfoNasceComArcoEFlechasNoInventario(){
-        Elfo elfo = new Elfo("Dwarf");
-        assertEquals(2, elfo.getInventario().getItens().size());
-        assertEquals("Arco", elfo.getInventario().getItens().get(0).getDescricao());
-        assertEquals("Flechas", elfo.getInventario().getItens().get(1).getDescricao());
     }
 }
