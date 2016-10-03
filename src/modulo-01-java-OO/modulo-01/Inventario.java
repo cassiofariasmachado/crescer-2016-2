@@ -16,32 +16,21 @@ public class Inventario {
     }
 
     public void ordenarItens() {
-        // Ordena inventario baseado no método de ordenação insertion sort
+        this.ordenarItens(TipoOrdenacao.ASCENDENTE);
+    }
+
+    public void ordenarItens(TipoOrdenacao ordem) {
         Item atual;
+        boolean ascendente = ordem == TipoOrdenacao.ASCENDENTE;
         for (int i = 1; i < itens.size(); i++){
             atual = itens.get(i);
+            int quantidadeItemAtual = atual.getQuantidade();
             int j;
-            for (j = i - 1; j >= 0 && atual.getQuantidade() < itens.get(j).getQuantidade(); j--){
+            for (j = i - 1; j >= 0 && (ascendente ? quantidadeItemAtual < itens.get(j).getQuantidade() : quantidadeItemAtual > itens.get(j).getQuantidade()); j--){
                 itens.set(j + 1, itens.get(j));
             }
             itens.set(j + 1, atual);
         }   
-    }
-
-    public void ordenarItens(TipoOrdenacao ordem) {
-        if (ordem.equals(TipoOrdenacao.ASCENDENTE))
-            this.ordenarItens();
-        else {
-            Item atual;
-            for (int i = 1; i < itens.size(); i++){
-                atual = itens.get(i);
-                int j;
-                for (j = i - 1; j >= 0 && atual.getQuantidade() > itens.get(j).getQuantidade(); j--){
-                    itens.set(j + 1, itens.get(j));
-                }
-                itens.set(j + 1, atual);
-            }   
-        }
     }
 
     public void aumentar1000UnidadesDosItens() {
