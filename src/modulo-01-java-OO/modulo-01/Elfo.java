@@ -1,8 +1,4 @@
-public class Elfo {
-    private String nome;
-    private Inventario inventario;
-    private int experiencia;
-    private Status status;
+public class Elfo extends Personagem {
 
     public Elfo(String nome) {
         // Chamando outro construtor 
@@ -10,19 +6,9 @@ public class Elfo {
     }
 
     public Elfo(String nome, int quantidadeFlechas){
-        this.nome = nome;
-        this.inventario = new Inventario();
+        super (nome);
         this.inventario.adicionarItem(new Item("Arco", 1));
         this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas));
-        this.status = Status.VIVO;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getNome() {
-        return this.nome;
     }
 
     public Item getArco() {
@@ -32,19 +18,7 @@ public class Elfo {
     public Item getFlecha(){
         return this.inventario.getItens().get(1);
     }
-
-    public int getExperiencia(){
-        return this.experiencia;
-    }
-
-    public Status getStatus(){
-        return this.status;
-    }
-
-    public Inventario getInventario() {
-        return this.inventario;
-    }
-
+    
     public void atirarFlecha(Dwarf dwarf){
         int quantidadeFlechas = this.getFlecha().getQuantidade();
         if (quantidadeFlechas > 0) {
