@@ -32,9 +32,8 @@ public class Item {
     }
     
     private int getSomatorioAteQuantidade(int n) {
-        if (n <= 0)
-            return 0;
-        return n + getSomatorioAteQuantidade(n - 1);
+        // Utilizando PA
+        return Math.abs(n * (n + 1)) / 2;
     }
 }
 
