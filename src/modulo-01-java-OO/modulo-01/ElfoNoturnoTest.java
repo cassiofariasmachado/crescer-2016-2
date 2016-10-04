@@ -46,8 +46,6 @@ public class ElfoNoturnoTest {
         ElfoNoturno elfoDoTeste = new ElfoNoturno("Sylvanas");
         elfoDoTeste.getFlecha().setQuantidade(1000);
         Dwarf dwarf = new Dwarf("SemCriatividade");
-        // GAMBIARA CONHECIDA!!!
-        elfoDoTeste.setVida(-10);
         // Act
         for (int i = 0; i < 1000; i++)
             elfoDoTeste.atirarFlecha(dwarf);

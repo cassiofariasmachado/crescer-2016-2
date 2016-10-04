@@ -9,17 +9,12 @@ public class ElfoNoturno extends Elfo {
         if (temFlecha) {
             super.atirarFlecha(dwarf);
             this.vida -= this.vida*0.05; //elfo noturno 5% perde vida
-            this.status = this.vida <= 0. ? status.MORTO : status.VIVO; // elfo noturno morre
+            this.status = this.vida <= 0.9 ? status.MORTO : status.VIVO; // elfo noturno morre
         }
     }
     
     public void ganharExperiencia() {
         this.experiencia += 3;
-    }
-    
-    // GAMBIARRA CONHECIDA!!! Método utilizado apenas na classe de testes.
-    public void setVida(double vida) {
-        this.vida = vida;
     }
     
     /*
