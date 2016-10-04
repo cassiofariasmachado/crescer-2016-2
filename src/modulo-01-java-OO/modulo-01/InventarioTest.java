@@ -389,6 +389,36 @@ public class InventarioTest {
         // mediaQtds => 0
         assertEquals(0, mediaQtds);
     }
+    
+    @Test
+    public void retornaSomatorioDasQuantidadesDosItensDoCliente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 3));
+        inventario.adicionarItem(new Item("Poção HP", 4));
+        inventario.adicionarItem(new Item("Lança", 2));
+        int somatorio = inventario.getSomatorioQuantidades();
+        // somatorio => 9
+        assertEquals(9, somatorio);
+    }
+    
+    @Test
+    public void retornaSomatorioDasQuantidadesDosItensDeInventarioQualquer() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 10));
+        inventario.adicionarItem(new Item("Poção HP", 20));
+        inventario.adicionarItem(new Item("Lança", 30));
+        int somatorio = inventario.getSomatorioQuantidades();
+        // somatorio => 60
+        assertEquals(60, somatorio);
+    }
+    
+    @Test
+    public void retornaSomatorioDasQuantidadesDosItensDeInventarioVazio() {
+        Inventario inventario = new Inventario();
+        int somatorio = inventario.getSomatorioQuantidades();
+        // somatorio => 0
+        assertEquals(0, somatorio);
+    }
 
     private boolean verificaSeInvenatarioEstaOrdemAscendente(Inventario inventario) {
         ArrayList<Item> itens = inventario.getItens();

@@ -72,6 +72,14 @@ public class Inventario {
         return itens.isEmpty() ? 0 : quantidadeTotalItens / itens.size();
     }
     
+    public int getSomatorioQuantidades() {
+        int quantidadeTotalItens = 0;
+        for (Item itemAtual : itens) {
+            quantidadeTotalItens += itemAtual.getQuantidade();
+        }
+        return quantidadeTotalItens;
+    }
+    
     public Item retornarItemMaisPopular(){
         if (!itens.isEmpty()){
             int indice = 0;
