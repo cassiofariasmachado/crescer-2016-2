@@ -32,6 +32,13 @@ public class Inventario {
             itens.set(j + 1, atual);
         }   
     }
+    
+    public Item buscar (String descricao) {
+        for (Item itemAtual : itens)
+           if (descricao.equals(itemAtual.getDescricao()))
+                return itemAtual;
+        return null;
+    }
 
     public void aumentar1000UnidadesDosItens() {
         for (Item itemAtual : itens)

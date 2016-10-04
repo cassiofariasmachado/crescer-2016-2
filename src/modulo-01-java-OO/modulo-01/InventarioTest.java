@@ -323,6 +323,31 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Bracelete", 2));
         assertFalse(verificaSeInvenatarioEstaOrdemDescendente(inventario));
     }
+    
+    @Test
+    public void buscaEEncontraItemEmInventarioComTresItens() {
+        Inventario inventario = new Inventario();
+        Item adaga = new Item("Adaga", 3);
+        inventario.adicionarItem(adaga);
+        inventario.adicionarItem(new Item("Escudo", 1));
+        inventario.adicionarItem(new Item("Bracelete", 2));
+        assertTrue(adaga.equals(inventario.buscar("Adaga")));
+    }
+    
+    @Test
+    public void buscaENaoEncontraItemEmInventarioComTresItens() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Adaga", 3));
+        inventario.adicionarItem(new Item("Escudo", 1));
+        inventario.adicionarItem(new Item("Bracelete", 2));
+        assertTrue(inventario.buscar("Pistola") == null);
+    }
+    
+    @Test
+    public void buscaENaoEncontraItemEmInventarioVazio() {
+        Inventario inventario = new Inventario();
+        assertTrue(inventario.buscar("Pistola") == null);
+    }
 
     private boolean verificaSeInvenatarioEstaOrdemAscendente(Inventario inventario) {
         ArrayList<Item> itens = inventario.getItens();
