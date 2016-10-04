@@ -1,8 +1,15 @@
 public class Personagem {
     protected String nome;
+    protected int vida;
     protected int experiencia;
     protected Status status;
     protected Inventario inventario;
+    
+    public Personagem() {
+        //TO-DO: revisar, possível gambi.
+        this.status = Status.VIVO;
+        this.inventario = new Inventario();
+    }
     
     public Personagem(String nome) {
         this.nome = nome;
