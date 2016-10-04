@@ -34,7 +34,7 @@ public class Dwarf extends Personagem{
         double numeroSorte = this.getNumeroSorte();
         //numeroSorte menor que zero apenas ganha experiencia
         if ( numeroSorte < 0 ) 
-            this.experiencia += 2;
+            this.ganharExperiencia();
         //numeroSorte maior que zero apenas    
         if( numeroSorte > 100 ) {
                 this.vida = this.vida - 10 < 0 ? 0 : this.vida - 10; // Se vida menos 10 menor 0, vida recebe 0
@@ -48,6 +48,10 @@ public class Dwarf extends Personagem{
         if (numeroSorte == -3333.) {
             this.inventario.aumentar1000UnidadesDosItens();
         }
+    }
+    
+    public void ganharExperiencia() {
+        this.experiencia += 2;
     }
 }
     

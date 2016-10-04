@@ -23,7 +23,7 @@ public class Elfo extends Personagem {
         int quantidadeFlechas = this.getFlecha().getQuantidade();
         if (quantidadeFlechas > 0) {
             this.getFlecha().setQuantidade(quantidadeFlechas - 1);
-            this.experiencia++;
+            this.ganharExperiencia();
             dwarf.receberFlecha();
         }
     }

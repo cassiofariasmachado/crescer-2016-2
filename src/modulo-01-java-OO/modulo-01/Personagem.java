@@ -29,6 +29,11 @@ public class Personagem {
     public Status getStatus() {
         return this.status;
     }
+    
+    public void ganharExperiencia() {
+        this.experiencia++;
+    }
+    
     public void adicionarItem(Item item) {
         this.inventario.adicionarItem(item);
     }
