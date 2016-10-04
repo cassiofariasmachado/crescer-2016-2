@@ -37,5 +37,25 @@ public class HobbitContador {
         // Garante retorno positivo segundo propriedade: mdc(-x,y) = mdc (x,-y) = mdc (-x,-y) = mdc(x,y)
         return Math.abs(this.getMDC(y, x % y));
     }
+
+    // Exercício 1: Bolsomito
+    // Primeiro erro: variável limite não declarada nem inicializada, poderia ser o próprio parâmetro;
+    // Segundo erro: continue é desnecessário
+    // Terceiro erro: seria mais performático se começasse pelo final do ArrayList, ai se substituiria o continue pelo break.
+    public int obterMaiorMultiploDeTresAte(int numero) {
+        int maior = numero;
+        for (int i = numero; i >= 0 ; i--) {
+            if (i % 3 == 0) {
+                maior = i;
+                break;
+            }
+        }
+        return maior;
+    }
+
+    //obterMaiorMultiploDeTresAte refatorado
+    //public int obterMaiorMultiploDeTresAte(int n) {
+    //    return n / 3 * 3;
+    //}
 }
 

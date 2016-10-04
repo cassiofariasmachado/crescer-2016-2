@@ -96,6 +96,24 @@ public class HobbitContadorTest {
         assertEquals(-388, criaHobbitContador().calcularDiferenca(arrayDePares));
     }
     
+    @Test 
+    public void obterMaiorMultiploDeTresAte10() {
+        HobbitContador bolseiro = criaHobbitContador();
+        assertEquals(9, bolseiro.obterMaiorMultiploDeTresAte(10));
+    }
+    
+    @Test 
+    public void obterMaiorMultiploDeTresAte20() {
+        HobbitContador bolseiro = criaHobbitContador();
+        assertEquals(18, bolseiro.obterMaiorMultiploDeTresAte(20));
+    }
+    
+    @Test 
+    public void obterMaiorMultiploDeTresAte33() {
+        HobbitContador bolseiro = criaHobbitContador();
+        assertEquals(33, bolseiro.obterMaiorMultiploDeTresAte(33));
+    }
+    
     private HobbitContador criaHobbitContador() {
         return new HobbitContador();
     }
