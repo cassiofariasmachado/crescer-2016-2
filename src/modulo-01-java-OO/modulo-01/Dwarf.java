@@ -43,14 +43,6 @@ public class Dwarf extends Personagem{
         //numeroSorte maior que 0 e menor e igual 100, não faz nada     
     }
     
-    public void adicionarItem(Item item) {
-        this.inventario.adicionarItem(item);
-    }
-    
-    public void perderItem(Item item) {
-        this.inventario.removerItem(item);
-    }
-    
     public void tentarSorte() {
         double numeroSorte = this.getNumeroSorte();
         if (numeroSorte == -3333.) {
