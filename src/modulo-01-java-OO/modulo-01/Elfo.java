@@ -1,4 +1,7 @@
 public class Elfo extends Personagem {
+    {
+        this.vida = 100;
+    }
     
     public Elfo() {
         //TO-DO: revisar, possível gambi.
@@ -11,7 +14,6 @@ public class Elfo extends Personagem {
 
     public Elfo(String nome, int quantidadeFlechas){
         super (nome);
-        this.vida = 100;
         this.inventario.adicionarItem(new Item("Arco", 1));
         this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas));
     }
