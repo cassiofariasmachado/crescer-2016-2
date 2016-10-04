@@ -210,7 +210,7 @@ public class InventarioTest {
         for (Item item : inventario.getItens())
             assertEquals(0, item.getQuantidade());
     }
-    
+
     @Test
     public void ordenaInventarioComTresItensNaOrdemDescrescentePassandoTipoOrdenacaoAscendente() {
         Inventario inventario = new Inventario();
@@ -323,7 +323,7 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Bracelete", 2));
         assertFalse(verificaSeInvenatarioEstaOrdemDescendente(inventario));
     }
-    
+
     @Test
     public void buscaEEncontraItemEmInventarioComTresItens() {
         Inventario inventario = new Inventario();
@@ -333,7 +333,7 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Bracelete", 2));
         assertTrue(adaga.equals(inventario.buscar("Adaga")));
     }
-    
+
     @Test
     public void buscaENaoEncontraItemEmInventarioComTresItens() {
         Inventario inventario = new Inventario();
@@ -342,11 +342,52 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Bracelete", 2));
         assertTrue(inventario.buscar("Pistola") == null);
     }
-    
+
     @Test
     public void buscaENaoEncontraItemEmInventarioVazio() {
         Inventario inventario = new Inventario();
         assertTrue(inventario.buscar("Pistola") == null);
+    }
+
+    @Test
+    public void retornaMediaDaQuantidadeDosItensDoCliente() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 3));
+        inventario.adicionarItem(new Item("Poção HP", 4));
+        inventario.adicionarItem(new Item("Lança", 2));
+        int mediaQtds = inventario.getMediaQuantidades();
+        // mediaQtds => 3
+        assertEquals(3, mediaQtds);
+    }
+    
+    @Test
+    public void retornaMediaDaQuantidadeDosItensDeInventarioQualquer() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 6));
+        inventario.adicionarItem(new Item("Poção HP", 0));
+        inventario.adicionarItem(new Item("Lança", 12));
+        int mediaQtds = inventario.getMediaQuantidades();
+        // mediaQtds => 6
+        assertEquals(6, mediaQtds);
+    }
+    
+    @Test
+    public void retornaMediaDaQuantidadeDosItensInventarioDeItensComZeroDeQuantidade() {
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item("Espada", 0));
+        inventario.adicionarItem(new Item("Poção HP", 0));
+        inventario.adicionarItem(new Item("Lança", 0));
+        int mediaQtds = inventario.getMediaQuantidades();
+        // mediaQtds => 0
+        assertEquals(0, mediaQtds);
+    }
+    
+    @Test
+    public void retornaMediaDaQuantidadeDosItensInventarioVazio() {
+        Inventario inventario = new Inventario();
+        int mediaQtds = inventario.getMediaQuantidades();
+        // mediaQtds => 0
+        assertEquals(0, mediaQtds);
     }
 
     private boolean verificaSeInvenatarioEstaOrdemAscendente(Inventario inventario) {

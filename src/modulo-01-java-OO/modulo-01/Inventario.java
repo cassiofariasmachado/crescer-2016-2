@@ -64,6 +64,14 @@ public class Inventario {
         return descricaoIndice + "," + getDescricoesItens(indice + 1);
     }
 
+    public int getMediaQuantidades(){
+        int quantidadeTotalItens = 0;
+        for (Item itemAtual : itens) {
+            quantidadeTotalItens += itemAtual.getQuantidade();
+        }
+        return itens.isEmpty() ? 0 : quantidadeTotalItens / itens.size();
+    }
+    
     public Item retornarItemMaisPopular(){
         if (!itens.isEmpty()){
             int indice = 0;
