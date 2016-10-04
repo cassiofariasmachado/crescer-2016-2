@@ -5,13 +5,14 @@ import org.junit.Test;
 
 public class ElfoVerdeTest {
     @Test
-    public void elfoVerdeGanhaArcoEFlechaDeVidro() {
+    public void elfoVerdeNasceComArcoDeVidroEFlechaDeVidro() {
         // Act
         ElfoVerde elfoDoTeste = new ElfoVerde("Alleria");
-        elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro", 1));
         // Assert
-        assertTrue(elfoDoTeste.getArco() != null);
+        assertEquals("Arco de Vidro", elfoDoTeste.getArco().getDescricao());
+        assertEquals("Flecha de Vidro", elfoDoTeste.getFlecha().getDescricao());
         assertEquals(1, elfoDoTeste.getArco().getQuantidade());
+        assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
     
     @Test
@@ -41,19 +42,19 @@ public class ElfoVerdeTest {
         elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro", 40));
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
-        assertEquals(39, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(2, elfoDoTeste.getExperiencia());
     }
     
     @Test
-    public void elfoVerdeNaoAtiraFlechaPoisNaoTemArcoEFlecha() {
+    public void elfoVerdeNaoAtiraFlechaPoisNaoTemFlecha() {
         // Act
-        ElfoVerde elfoDoTeste = new ElfoVerde("Alleria");
+        ElfoVerde elfoDoTeste = new ElfoVerde("Alleria", 1);
+        elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
-        assertTrue(elfoDoTeste.getFlecha() == null);
-        assertTrue(elfoDoTeste.getArco() == null);
-        assertEquals(0, elfoDoTeste.getExperiencia());
+        assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(2, elfoDoTeste.getExperiencia());
     }
 
     @Test
@@ -65,7 +66,7 @@ public class ElfoVerdeTest {
         for (int i = 0; i < 10; i++)
             elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
-        assertEquals(30, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(32, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(20, elfoDoTeste.getExperiencia());
     }
 

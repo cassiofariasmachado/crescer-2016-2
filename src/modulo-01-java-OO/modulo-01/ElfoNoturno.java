@@ -4,6 +4,10 @@ public class ElfoNoturno extends Elfo {
         super(nome);
     }
     
+    public ElfoNoturno(String nome, int quantidadeFlechas) {
+        super(nome, quantidadeFlechas);
+    }
+    
     public void atirarFlecha(Dwarf dwarf){
         boolean temFlecha = this.getFlecha() != null && this.getFlecha().getQuantidade() > 0;
         if (temFlecha) {

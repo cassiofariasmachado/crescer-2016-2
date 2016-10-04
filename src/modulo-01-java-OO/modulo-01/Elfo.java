@@ -5,10 +5,6 @@ public class Elfo extends Personagem {
         this.vida = 100.;
     }
     
-    public Elfo() {
-        //TO-DO: revisar, possível gambi.
-    }
-    
     public Elfo(String nome) {
         // Chamando outro construtor 
         this(nome, 42);
@@ -16,8 +12,7 @@ public class Elfo extends Personagem {
 
     public Elfo(String nome, int quantidadeFlechas){
         super (nome);
-        this.inventario.adicionarItem(new Item("Arco", 1));
-        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas));
+        this.inicializarIventario(quantidadeFlechas);
     }
 
     public double getVida() {
@@ -54,6 +49,11 @@ public class Elfo extends Personagem {
         // return this.nome + " possui " + this.flecha.getQuantidade() + " flechas e " + this.experiencia + " níveis de experiência.";
     }
 
+    public void inicializarIventario(int quantidadeFlechas) {
+        this.inventario.adicionarItem(new Item("Arco", 1));
+        this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas));
+    }
+    
     /*public void atirarFlechaRefactory() {
     experiencia++;
     flecha.setQuantidade(flecha.getQuantidade()-1);
