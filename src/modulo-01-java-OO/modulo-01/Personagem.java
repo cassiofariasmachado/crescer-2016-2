@@ -25,6 +25,10 @@ public class Personagem {
         return this.nome;
     }
     
+    public int getVida() {
+        return this.vida;
+    }
+    
     public Inventario getInventario() {
         return this.inventario;
     }
