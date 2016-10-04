@@ -32,12 +32,17 @@ public class Inventario {
             itens.set(j + 1, atual);
         }   
     }
-    
+
     public Item buscar (String descricao) {
         for (Item itemAtual : itens)
-           if (descricao.equals(itemAtual.getDescricao()))
+            if (descricao.equals(itemAtual.getDescricao()))
                 return itemAtual;
         return null;
+    }
+
+    public void unir (Inventario inventario) {
+        for (Item itemAtual : inventario.getItens())
+            this.itens.add(itemAtual);
     }
 
     public void aumentar1000UnidadesDosItens() {
@@ -68,7 +73,7 @@ public class Inventario {
         int quantidadeTotalItens = this.getSomatorioQuantidades();
         return quantidadeTotalItens == 0 ? 0 : quantidadeTotalItens / itens.size();
     }
-    
+
     public int getSomatorioQuantidades() {
         int quantidadeTotalItens = 0;
         for (Item itemAtual : itens) {
@@ -76,7 +81,7 @@ public class Inventario {
         }
         return quantidadeTotalItens;
     }
-    
+
     public Item retornarItemMaisPopular(){
         if (!itens.isEmpty()){
             int indice = 0;

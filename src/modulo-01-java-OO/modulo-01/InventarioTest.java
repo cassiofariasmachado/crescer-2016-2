@@ -348,6 +348,46 @@ public class InventarioTest {
         Inventario inventario = new Inventario();
         assertTrue(inventario.buscar("Pistola") == null);
     }
+    
+    @Test
+    public void unirInventarios() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Bracelete", 2));
+        inventario2.adicionarItem(new Item("Adaga Envenenada", 3));
+        inventario2.adicionarItem(new Item("Escudo de Pedra", 1));
+        inventario2.adicionarItem(new Item("Bracelete sujo", 2));
+        inventario1.unir(inventario2);
+        assertEquals("Adaga,Escudo,Bracelete,Adaga Envenenada,Escudo de Pedra,Bracelete sujo", inventario1.getDescricoesItens());
+    }
+    
+    @Test
+    public void unirInventarioComInventarioVazio() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Bracelete", 2));
+        inventario1.unir(inventario2);
+        assertEquals("Adaga,Escudo,Bracelete", inventario1.getDescricoesItens());
+    }
+    
+    @Test
+    public void unirTresInventarios() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        Inventario inventario3 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Bracelete", 2));
+        inventario2.adicionarItem(new Item("Adaga Envenenada", 3));
+        inventario3.adicionarItem(new Item("Escudo de Pedra", 1));
+        inventario1.unir(inventario2);
+        inventario1.unir(inventario3);
+        assertEquals("Adaga,Escudo,Bracelete,Adaga Envenenada,Escudo de Pedra", inventario1.getDescricoesItens());
+    }
 
     @Test
     public void retornaMediaDaQuantidadeDosItensDoCliente() {
