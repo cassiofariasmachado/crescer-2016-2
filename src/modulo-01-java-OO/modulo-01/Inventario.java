@@ -44,6 +44,15 @@ public class Inventario {
         for (Item itemAtual : inventario.getItens())
             this.itens.add(itemAtual);
     }
+    
+    public Inventario diferenciar (Inventario inventario) {
+        // TO-DO: revisar e fazer mais testes
+        Inventario retorno = new Inventario();
+        for (Item itemAtual : this.getItens())
+            if (!inventario.getItens().contains(itemAtual))
+                retorno.adicionarItem(itemAtual);
+        return retorno;
+    }
 
     public void aumentar1000UnidadesDosItens() {
         for (Item itemAtual : itens)

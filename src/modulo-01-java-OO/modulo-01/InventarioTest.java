@@ -388,6 +388,22 @@ public class InventarioTest {
         inventario1.unir(inventario3);
         assertEquals("Adaga,Escudo,Bracelete,Adaga Envenenada,Escudo de Pedra", inventario1.getDescricoesItens());
     }
+    
+    @Test
+    public void diferenciarDoisInventarios() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        Item adaga = new Item("Adaga", 3);
+        Item escudo = new Item("Escudo", 1);
+        Item bracelete = new Item("Bracelete", 2);
+        inventario1.adicionarItem(adaga);
+        inventario1.adicionarItem(escudo);
+        inventario1.adicionarItem(bracelete);
+        inventario2.adicionarItem(adaga);
+        inventario2.adicionarItem(escudo);
+        Inventario inventario3 = inventario1.diferenciar(inventario2);
+        assertEquals("Bracelete", inventario3.getDescricoesItens());
+    }
 
     @Test
     public void retornaMediaDaQuantidadeDosItensDoCliente() {
