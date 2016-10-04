@@ -1,4 +1,6 @@
 public class Elfo extends Personagem {
+    protected int vida;
+    
     {
         this.vida = 100;
     }

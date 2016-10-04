@@ -1,4 +1,5 @@
 public class Dwarf extends Personagem{
+    protected int vida;
     protected DataTerceiraEra dataNascimento;
     
     public Dwarf (String nome) {
@@ -9,6 +10,10 @@ public class Dwarf extends Personagem{
         super (nome);
         this.vida = 110;
         this.dataNascimento = data;
+    }
+    
+    public int getVida() {
+        return this.vida;
     }
     
     public DataTerceiraEra getDataNascimento() {
