@@ -9,11 +9,10 @@ public class ElfoNoturno extends Elfo {
     }
     
     public void atirarFlecha(Dwarf dwarf){
-        boolean temFlecha = this.getFlecha() != null && this.getFlecha().getQuantidade() > 0;
-        if (temFlecha) {
+        if (this.status == Status.VIVO && this.getFlecha().getQuantidade() > 0) {
             super.atirarFlecha(dwarf);
             this.vida -= this.vida*0.05; //elfo noturno 5% perde vida
-            this.status = this.vida <= 0.9 ? status.MORTO : status.VIVO; // elfo noturno morre
+            this.status = (int)this.vida == 0 ? status.MORTO : status.VIVO; // elfo noturno morre
         }
     }
     

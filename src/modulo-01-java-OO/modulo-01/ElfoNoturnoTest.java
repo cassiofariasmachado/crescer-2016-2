@@ -50,8 +50,26 @@ public class ElfoNoturnoTest {
         for (int i = 0; i < 1000; i++)
             elfoDoTeste.atirarFlecha(dwarf);
         // Assert
-        assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
-        assertEquals(3000, elfoDoTeste.getExperiencia());
+        assertEquals(910, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(270, elfoDoTeste.getExperiencia());
         assertEquals(Status.MORTO, elfoDoTeste.getStatus());
     }
+    
+    @Test 
+    public void elfoNoturnoNaoAtiraSeEstaMorto() { 
+        ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 91);
+        for (int i = 0; i < 91; i++) 
+            elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1))); 
+         
+        assertEquals(270, elfoSuiçida.getExperiencia()); 
+    } 
+    
+    @Test 
+    public void elfoNoturnoNaoAtiraSeNaoTemFlechas() { 
+        ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 89);
+        for (int i = 0; i < 90; i++) 
+            elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1))); 
+        assertEquals(267, elfoSuiçida.getExperiencia());
+        assertEquals(Status.VIVO, elfoSuiçida.getStatus());
+    } 
 }
