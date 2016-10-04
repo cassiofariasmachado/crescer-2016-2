@@ -12,23 +12,21 @@ public class ElfoVerde extends Elfo {
     
     public void adicionarItem(Item item) {
         String descricaoItem = item.getDescricao();
-        if ("Espada de aço valiriano".equals(descricaoItem) || "Arco de Vidro".equals(descricaoItem) || "Flecha de Vidro".equals(descricaoItem))
+        if ("Espada de aço valiriano".equals(descricaoItem) || "Arco e Flecha de Vidro".equals(descricaoItem))
             super.adicionarItem(item);
     }
     
-    public Item getFlecha() {
+    public Item getArco() {
+        //TO-DO: possível gambiarra
         for (Item itemAtual : this.inventario.getItens()) {
-            if ("Flecha de Vidro".equals(itemAtual.getDescricao()))
+            if ("Arco e Flecha de Vidro".equals(itemAtual.getDescricao()))
                 return itemAtual;
         }
         return null;
     }
     
-    public Item getArco() {
-        for (Item itemAtual : this.inventario.getItens()) {
-            if ("Arco de Vidro".equals(itemAtual.getDescricao()))
-                return itemAtual;
-        }
-        return null;
+    public Item getFlecha() {
+        //TO-DO: possível gambiarra
+        return this.getArco();
     }
 }
