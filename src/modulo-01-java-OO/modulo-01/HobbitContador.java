@@ -57,5 +57,20 @@ public class HobbitContador {
     //public int obterMaiorMultiploDeTresAte(int n) {
     //    return n / 3 * 3;
     //}
+
+    // Exercício 2: Continua mitando
+    // Primeiro erro: o ArrayList múltiplos era uma matriz;
+    // Segundo erro: a condição está errada para não adicionar o número e nesse caso o break(sai realmente do laço) deveria ser um continue(volta a condição);
+    // Terceiro erro: variável limite não declarada nem inicializada, poderia ser substituida pelo próprio parâmetro;
+    // Quarto erro: variável i começa em 1, mas 0 é um multiplo de 3 segundo especificação do cliente;
+    public ArrayList<Integer> obterMultiplosDeTresAte(int numero) {
+        ArrayList<Integer> multiplos = new ArrayList<>();
+        for (int i = 0; i <= numero; i++) {
+            if (i % 3 != 0) 
+                continue;
+            multiplos.add(i);
+        }
+        return multiplos;
+    }
 }
 

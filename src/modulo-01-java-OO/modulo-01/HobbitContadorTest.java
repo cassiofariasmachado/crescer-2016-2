@@ -114,6 +114,36 @@ public class HobbitContadorTest {
         assertEquals(33, bolseiro.obterMaiorMultiploDeTresAte(33));
     }
     
+    @Test 
+    public void obterMultiplosDeTresAte10() {
+        HobbitContador bolseiro = criaHobbitContador();
+        ArrayList<Integer> multiplos = bolseiro.obterMultiplosDeTresAte(10);
+        // multiplos é [ 0, 3, 6, 9 ]
+        ArrayList<Integer> respostaEsperada = new ArrayList<Integer>();
+        respostaEsperada = new ArrayList<>(Arrays.asList(0, 3, 6, 9));
+        assertEquals(respostaEsperada, multiplos);
+    }
+    
+    @Test 
+    public void obterMultiplosDeTresAte20() {
+        HobbitContador bolseiro = criaHobbitContador();
+        ArrayList<Integer> multiplos = bolseiro.obterMultiplosDeTresAte(20);
+        // multiplos é [ 0, 3, 6, 9, 12, 15, 18]
+        ArrayList<Integer> respostaEsperada = new ArrayList<Integer>();
+        respostaEsperada = new ArrayList<>(Arrays.asList( 0, 3, 6, 9, 12, 15, 18));
+        assertEquals(respostaEsperada, multiplos);
+    }
+    
+    @Test 
+    public void obterMultiplosDeTresAte33() {
+        HobbitContador bolseiro = criaHobbitContador();
+        ArrayList<Integer> multiplos = bolseiro.obterMultiplosDeTresAte(33);
+        // multiplos é [ 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33]
+        ArrayList<Integer> respostaEsperada = new ArrayList<Integer>();
+        respostaEsperada = new ArrayList<>(Arrays.asList(0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33));
+        assertEquals(respostaEsperada, multiplos);
+    }
+    
     private HobbitContador criaHobbitContador() {
         return new HobbitContador();
     }
