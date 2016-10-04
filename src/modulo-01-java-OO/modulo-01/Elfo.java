@@ -1,8 +1,8 @@
 public class Elfo extends Personagem {
-    protected int vida;
+    protected double vida;
     
     {
-        this.vida = 100;
+        this.vida = 100.;
     }
     
     public Elfo() {
@@ -20,6 +20,10 @@ public class Elfo extends Personagem {
         this.inventario.adicionarItem(new Item("Flechas", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas));
     }
 
+    public double getVida() {
+        return vida;
+    }
+    
     public Item getArco() {
         return this.inventario.getItens().get(0);
     }
