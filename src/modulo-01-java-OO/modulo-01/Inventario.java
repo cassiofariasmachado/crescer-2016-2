@@ -65,11 +65,8 @@ public class Inventario {
     }
 
     public int getMediaQuantidades(){
-        int quantidadeTotalItens = 0;
-        for (Item itemAtual : itens) {
-            quantidadeTotalItens += itemAtual.getQuantidade();
-        }
-        return itens.isEmpty() ? 0 : quantidadeTotalItens / itens.size();
+        int quantidadeTotalItens = this.getSomatorioQuantidades();
+        return quantidadeTotalItens == 0 ? 0 : quantidadeTotalItens / itens.size();
     }
     
     public int getSomatorioQuantidades() {
