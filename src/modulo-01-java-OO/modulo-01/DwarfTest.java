@@ -10,7 +10,7 @@ public class DwarfTest {
         //Act
         Dwarf falstad = new Dwarf("SemCriatividade");
         //Assert
-        assertEquals(110, falstad.getVida());
+        assertEquals(110, falstad.getVida(), 0.);
     }
     
     @Test
@@ -47,7 +47,7 @@ public class DwarfTest {
         Dwarf gimli = new Dwarf("SemCriatividade");
         new Elfo("Legolas").atirarFlecha(gimli);
         // Assert
-        assertEquals (100, gimli.getVida());
+        assertEquals (100, gimli.getVida(), 0.);
     }
     
     @Test
@@ -57,7 +57,7 @@ public class DwarfTest {
         for (int i = 0; i < 10; i++)
             new Elfo("ElfoToSemCriatividade").atirarFlecha(anaoToSemCriatividade);
         // Assert
-        assertEquals (10, anaoToSemCriatividade.getVida());
+        assertEquals (10, anaoToSemCriatividade.getVida(), 0.);
     }
     
     @Test
@@ -67,7 +67,7 @@ public class DwarfTest {
         for (int i = 0; i < 20; i++)
             new Elfo("ElfoToSemCriatividade").atirarFlecha(anaoToSemCriatividade);
         // Assert
-        assertEquals (0, anaoToSemCriatividade.getVida());
+        assertEquals (0, anaoToSemCriatividade.getVida(), 0.);
     }
     
     @Test
@@ -115,7 +115,7 @@ public class DwarfTest {
         Dwarf dwarf = new Dwarf("Meireles", new DataTerceiraEra(12, 12, 2011));
         dwarf.receberFlecha();
         // Act and Assert
-        assertEquals(110, dwarf.getVida());
+        assertEquals(110, dwarf.getVida(), 0.);
         assertEquals(0, dwarf.getExperiencia());
     }
     
@@ -127,7 +127,7 @@ public class DwarfTest {
         new Elfo("ElfoToSemCriatividade").atirarFlecha(dwarf);
         dwarf.receberFlecha();
         // Act and Assert
-        assertEquals(90, dwarf.getVida());
+        assertEquals(90, dwarf.getVida(), 0.);
         assertEquals(2, dwarf.getExperiencia());
     }
     
@@ -140,7 +140,7 @@ public class DwarfTest {
         // Act and Assert
         assertEquals(101, dwarf.getNumeroSorte(), 0);
         assertEquals(0, dwarf.getExperiencia());
-        assertEquals(100, dwarf.getVida());
+        assertEquals(100, dwarf.getVida(), 0.);
     }
     
     @Test
@@ -183,7 +183,7 @@ public class DwarfTest {
         Elfo elfo = new Elfo("ElfoToSemCriatividade");
         for (int i = 0; i < 11; i++)
             elfo.atirarFlecha(dwarf);
-        assertEquals(0, dwarf.getVida());
+        assertEquals(0, dwarf.getVida(), 0.);
     }
     
     @Test
@@ -192,7 +192,7 @@ public class DwarfTest {
         Elfo elfo = new Elfo("ElfoToSemCriatividade");
         for (int i = 0; i < 12; i++)
             elfo.atirarFlecha(dwarf);
-        assertEquals(0, dwarf.getVida());
+        assertEquals(0, dwarf.getVida(), 0.);
     }
     
     @Test

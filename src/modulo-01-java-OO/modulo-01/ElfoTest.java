@@ -113,7 +113,7 @@ public class ElfoTest {
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(1, elfoDoTeste.getExperiencia());
-        assertEquals(100, dwarfDoTeste.getVida());
+        assertEquals(100, dwarfDoTeste.getVida(), 0.);
     }
 
     @Test
@@ -131,7 +131,7 @@ public class ElfoTest {
         assertEquals(32, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(10, elfoDoTeste.getExperiencia());
         for (Dwarf d : dwarves) {
-            assertEquals(100, d.getVida());
+            assertEquals(100, d.getVida(), 0.);
         }
     }
 

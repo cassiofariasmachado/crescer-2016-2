@@ -18,7 +18,7 @@ public class IrishDwarfTest {
         //Act
         IrishDwarf falstad = new IrishDwarf("SemCriatividade");
         //Assert
-        assertEquals(110, falstad.getVida());
+        assertEquals(110, falstad.getVida(), 0.);
     }
 
     @Test
