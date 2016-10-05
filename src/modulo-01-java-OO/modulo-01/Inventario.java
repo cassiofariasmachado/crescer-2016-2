@@ -53,6 +53,15 @@ public class Inventario {
                 retorno.adicionarItem(itemAtual);
         return retorno;
     }
+    
+    public Inventario cruzar (Inventario inventario) {
+        Inventario retorno = new Inventario();
+        ArrayList<Item> outroInventario = inventario.getItens();
+        for (Item itemAtual : this.getItens())
+            if (outroInventario.contains(itemAtual))
+                retorno.adicionarItem(itemAtual);
+        return retorno;
+    }
 
     public void aumentar1000UnidadesDosItens() {
         for (Item itemAtual : itens)
