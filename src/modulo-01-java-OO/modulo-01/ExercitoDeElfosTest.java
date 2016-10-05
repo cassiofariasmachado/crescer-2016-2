@@ -115,10 +115,10 @@ public class ExercitoDeElfosTest {
         assertFalse(verificaStatusDoExercito(exercito.buscar(Status.MORTO), Status.MORTO));
     }
     
-    private boolean verificaStatusDoExercito(ArrayList<Object> exercitoComEsseStatus, Status status){
+    private boolean verificaStatusDoExercito(ArrayList<Elfo> exercitoComEsseStatus, Status status){
         if (exercitoComEsseStatus.isEmpty()) return false;
-        for (Object objetoAtual : exercitoComEsseStatus) {
-            if (!((Elfo)objetoAtual).getStatus().equals(status))
+        for (Elfo elfoAtual : exercitoComEsseStatus) {
+            if (!elfoAtual.getStatus().equals(status))
                 return false;
         }
         return true;
