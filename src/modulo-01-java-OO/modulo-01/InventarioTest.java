@@ -149,7 +149,7 @@ public class InventarioTest {
     @Test
     public void naoRetornaItemMaisPopPoisInventarioVazio() {
         Inventario inventario = new Inventario();
-        assertFalse(new Item("Arco", 1).equals(inventario.retornarItemMaisPopular()));
+        assertTrue(inventario.retornarItemMaisPopular() == null);
     }
 
     @Test

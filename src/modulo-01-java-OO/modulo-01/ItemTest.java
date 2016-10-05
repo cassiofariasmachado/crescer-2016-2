@@ -18,27 +18,27 @@ public class ItemTest {
     public void somatorioAteQuantidadeDoItemComQuantidadeIgualAUm() {
         assertEquals(1, criaUmItemComUmaUnidade().getSomatorioAteQuantidade());
     }
-    
+
     @Test
     public void somatorioAteQuantidadeDoItemComQuantidadeIgualATres() {
         assertEquals(6, criaUmItemComTresUnidades().getSomatorioAteQuantidade());
     }
-    
+
     @Test
     public void somatorioAteQuantidadeDoItemComQuantidadeIgualACinco() {
         assertEquals(15, criaUmItemComCincoUnidades().getSomatorioAteQuantidade());
     }
-    
+
     @Test
     public void somatorioAteQuantidadeDoItemComQuantidadeIgualATresNegativo() {
         assertEquals(6, criaUmItemComTresUnidadesNegativas().getSomatorioAteQuantidade());
     }
-    
+
     @Test
     public void somatorioAteQuantidadeDoItemComQuantidadeIgualACincoNegativo() {
         assertEquals(15, criaUmItemComCincoUnidadesNegativas().getSomatorioAteQuantidade());
     }
-    
+
     @Test
     public void aumentaEm1000UnidadesQuantidadeItem(){
         // Arrange and Act
@@ -93,7 +93,7 @@ public class ItemTest {
         // Assert
         assertEquals(15005, item.getQuantidade());
     }
-    
+
     @Test
     public void aumentaQuantidadeDoItemComQuantidadeIgualAMenosTresEm1000VezesOSomatorio(){ //troca negativo
         // Arrange and Act
@@ -102,7 +102,7 @@ public class ItemTest {
         // Assert
         assertEquals(5997, item.getQuantidade());
     }
-    
+
     @Test
     public void aumentaQuantidadeDoItemComQuantidadeIgualAMenosCincoEm1000VezesOSomatorio(){ //troca negativo
         // Arrange and Act
@@ -112,6 +112,11 @@ public class ItemTest {
         assertEquals(14995, item.getQuantidade());
     }
 
+    @Test
+    public void igualdadeDeItens() {
+        assertEquals(new Item("Espada Z", 1), new Item("Espada Z", 1));
+    }
+
     private Item criaUmItemComUmaUnidade() {
         return new Item("Cantil", 1);
     }
@@ -119,15 +124,15 @@ public class ItemTest {
     private Item criaUmItemComTresUnidades() {
         return new Item("Garrafa de vinho", 3);
     }
-    
+
     private Item criaUmItemComCincoUnidades() {
         return new Item("Cerveja bem gelada", 5);
     }
-    
+
     private Item criaUmItemComTresUnidadesNegativas() {
         return new Item("Garrafa de vinho vazia", -3);
     }
-    
+
     private Item criaUmItemComCincoUnidadesNegativas() {
         return new Item("Cerveja bem gelada vazia", -5);
     }
