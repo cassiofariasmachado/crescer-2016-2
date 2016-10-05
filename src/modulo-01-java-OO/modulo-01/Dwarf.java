@@ -48,5 +48,8 @@ public class Dwarf extends Personagem{
     public void ganharExperiencia() {
         this.experiencia += 2;
     }
+    
+    protected void inicializarInventario(int quantidadeFlechas) {
+    }
 }
     

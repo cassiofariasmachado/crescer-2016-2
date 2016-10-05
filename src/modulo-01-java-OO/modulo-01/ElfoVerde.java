@@ -18,7 +18,7 @@ public class ElfoVerde extends Elfo {
             super.adicionarItem(item);
     }
     
-    public void inicializarIventario(int quantidadeFlechas) {
+    public void inicializarInventario(int quantidadeFlechas) {
         this.inventario.adicionarItem(new Item("Arco de Vidro", 1));
         this.inventario.adicionarItem(new Item("Flecha de Vidro", quantidadeFlechas <= 0 ? 42 : quantidadeFlechas));
     }
