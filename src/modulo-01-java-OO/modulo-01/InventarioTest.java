@@ -404,6 +404,100 @@ public class InventarioTest {
         Inventario inventario3 = inventario1.diferenciar(inventario2);
         assertEquals("Bracelete", inventario3.getDescricoesItens());
     }
+    
+    @Test
+    public void diferenciarTresInventarios() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        Inventario inventario3 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Cebola", 2));
+        inventario2.adicionarItem(new Item("Caderno", 3));
+        inventario2.adicionarItem(new Item("Escudo", 1));
+        inventario3.adicionarItem(new Item("Abobora", 3));
+        Inventario retornoDiferenciar = inventario1.diferenciar(inventario2).diferenciar(inventario3);
+        assertEquals("Adaga,Cebola", retornoDiferenciar.getDescricoesItens());
+    }
+    
+    @Test
+    public void diferenciarDoisInventariosIguais() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Bracelete", 2));
+        inventario2.adicionarItem(new Item("Adaga", 3));
+        inventario2.adicionarItem(new Item("Escudo", 1));
+        inventario2.adicionarItem(new Item("Bracelete", 2));
+        Inventario retornoDiferenciar = inventario1.diferenciar(inventario2);
+        assertEquals("", retornoDiferenciar.getDescricoesItens());
+    }
+    
+    @Test
+    public void diferenciarDoisInventariosVazios() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        Inventario retornoDiferenciar = inventario1.diferenciar(inventario2);
+        assertEquals("", retornoDiferenciar.getDescricoesItens());
+    }
+    
+    @Test
+    public void diferenciarDoisInventariosTotalmenteDiferentes() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Bracelete", 2));
+        inventario2.adicionarItem(new Item("Cebola", 3));
+        inventario2.adicionarItem(new Item("Alho", 1));
+        inventario2.adicionarItem(new Item("Olho", 2));
+        Inventario retornoDiferenciar = inventario1.diferenciar(inventario2);
+        assertEquals("Adaga,Escudo,Bracelete", retornoDiferenciar.getDescricoesItens());
+    }
+    
+    @Test
+    public void cruzarDoisInventariosDiferentes() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Bracelete", 2));
+        inventario2.adicionarItem(new Item("Adaga", 3));
+        inventario2.adicionarItem(new Item("Escudo", 1));
+        inventario2.adicionarItem(new Item("Olho", 2));
+        Inventario retornoDiferenciar = inventario1.cruzar(inventario2);
+        assertEquals("Adaga,Escudo", retornoDiferenciar.getDescricoesItens());
+    }
+    
+    @Test
+    public void cruzarTresInventarios() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        Inventario inventario3 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Cebola", 2));
+        inventario2.adicionarItem(new Item("Adaga", 3));
+        inventario2.adicionarItem(new Item("Escudo", 1));
+        inventario3.adicionarItem(new Item("Adaga", 3));
+        Inventario retornoDiferenciar = inventario1.cruzar(inventario2).cruzar(inventario3);
+        assertEquals("Adaga", retornoDiferenciar.getDescricoesItens());
+    }
+    
+    @Test
+    public void cruzarDoisInventariosTotalmenteDiferentes() {
+        Inventario inventario1 = new Inventario();
+        Inventario inventario2 = new Inventario();
+        inventario1.adicionarItem(new Item("Adaga", 3));
+        inventario1.adicionarItem(new Item("Escudo", 1));
+        inventario1.adicionarItem(new Item("Bracelete", 2));
+        inventario2.adicionarItem(new Item("Cebola", 3));
+        inventario2.adicionarItem(new Item("Alho", 1));
+        inventario2.adicionarItem(new Item("Olho", 2));
+        Inventario retornoDiferenciar = inventario1.cruzar(inventario2);
+        assertEquals("", retornoDiferenciar.getDescricoesItens());
+    }
 
     @Test
     public void retornaMediaDaQuantidadeDosItensDoCliente() {
