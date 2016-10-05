@@ -14,4 +14,13 @@ public class ExercitoDeElfos extends Exercito {
         }
         return null;
     }
+    
+    public ArrayList<Object> buscar(Status status) {
+        ArrayList<Object> exercitoComEsseStatus = new ArrayList<Object>();
+        for (Object soldadoAtual : this.exercito) {
+            if ( ( (Elfo)soldadoAtual ).getStatus().equals(status) )
+                exercitoComEsseStatus.add(soldadoAtual);
+        }
+        return exercitoComEsseStatus;
+    }
 }
