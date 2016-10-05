@@ -27,7 +27,7 @@ public class ExercitoDeElfosTest {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfo = new Elfo("Elfo sem clã");
         exercito.alistar(elfo);
-        assertTrue(exercito.buscar("Elfo sem clã") == null);
+        assertNull(exercito.buscar("Elfo sem clã"));
     }
     
     @Test
