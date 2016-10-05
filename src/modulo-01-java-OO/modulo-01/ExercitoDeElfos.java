@@ -10,7 +10,7 @@ public class ExercitoDeElfos {
     
     public Elfo buscar(String nome) {
         for (Elfo soldadoAtual : this.exercito) {
-            if ( ( (Elfo)soldadoAtual ).getNome().equals(nome) )
+            if ( soldadoAtual.getNome().equals(nome) )
                 return soldadoAtual;
         }
         return null;
@@ -19,7 +19,7 @@ public class ExercitoDeElfos {
     public ArrayList<Elfo> buscar(Status status) {
         ArrayList<Elfo> exercitoComEsseStatus = new ArrayList<>();
         for (Elfo soldadoAtual : this.exercito) {
-            if (soldadoAtual.getStatus().equals(status) )
+            if ( soldadoAtual.getStatus().equals(status) )
                 exercitoComEsseStatus.add(soldadoAtual);
         }
         return exercitoComEsseStatus;
