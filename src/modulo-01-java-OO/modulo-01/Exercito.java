@@ -7,4 +7,6 @@ public abstract class Exercito {
     
     abstract Object buscar(String nome);
     
+    abstract ArrayList<Object> buscar(Status status);
+    
 }
