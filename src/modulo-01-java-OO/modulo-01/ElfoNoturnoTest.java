@@ -4,6 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ElfoNoturnoTest {
+    @After
+    //executa após cada cenário de testes.
+    public void tearDown() {
+        System.gc();
+    }
+    
     @Test
     public void elfoVerdeAtiraUmaFlecha() {
         // Act
