@@ -5,6 +5,24 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class ExercitoDeElfosTest {
+    @Test
+    public void retornaExercitoComoArray() {
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        ElfoVerde elfo = new ElfoVerde("Verdao");
+        exercito.alistar(elfo);
+        assertEquals("Verdao", exercito.getExercito()[0].getNome());
+    }
+    
+    @Test
+    public void retornaExercitoDeDoisElfosComoArray() {
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        ElfoVerde elfo = new ElfoVerde("Verdao");
+        ElfoVerde elfo2 = new ElfoVerde("Azulao");
+        exercito.alistar(elfo);
+        exercito.alistar(elfo2);
+        assertTrue(exercito.getExercito()[0].getNome().equals("Verdao"));
+        assertTrue(exercito.getExercito()[1].getNome().equals("Azulao"));
+    }
     
     @Test
     public void alistaUmElfoVerde() {
