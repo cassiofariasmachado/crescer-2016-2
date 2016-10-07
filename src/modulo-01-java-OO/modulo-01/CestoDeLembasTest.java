@@ -18,11 +18,19 @@ public class CestoDeLembasTest {
     @Test
     public void testaPodeDividirEmPares(){
         // Act
+        CestoDeLembas cestoSmeagol = new CestoDeLembas(0);
         CestoDeLembas cestoFrodo = new CestoDeLembas(2);
         CestoDeLembas cestoSam = new CestoDeLembas(6);
+        CestoDeLembas cestoGimli = new CestoDeLembas(8);
+        CestoDeLembas cestoThorin = new CestoDeLembas(9);
+        CestoDeLembas cestoGandalf = new CestoDeLembas(10);
         // Assert
-        assertEquals(false, cestoFrodo.podeDividirEmPares());
-        assertEquals(true, cestoSam.podeDividirEmPares());   
+        assertFalse(cestoSmeagol.podeDividirEmPares());
+        assertFalse(cestoFrodo.podeDividirEmPares());
+        assertTrue(cestoSam.podeDividirEmPares());
+        assertTrue(cestoGimli.podeDividirEmPares());
+        assertFalse(cestoThorin.podeDividirEmPares()); 
+        assertTrue(cestoGandalf.podeDividirEmPares()); 
     }
     
 }
