@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ExercitoDeElfos {
+public class ExercitoDeElfos implements Exercito {
     ArrayList<Elfo> exercito = new ArrayList<>();
     
     public Elfo[] getExercito() { 
@@ -28,4 +28,8 @@ public class ExercitoDeElfos {
         }
         return exercitoComEsseStatus;
     }
+    
+    public void atacar() { 
+        System.out.println("Exército normal atacando"); 
+    } 
 }

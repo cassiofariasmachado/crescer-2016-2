@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class BatalhaoEspecialDeElfos {
+public class BatalhaoEspecialDeElfos implements Exercito {
     private HashMap<String, ArrayList<Elfo>> exercito = new HashMap<>();
     private HashMap<Status, ArrayList<Elfo>> exercitoPorStatus = new HashMap<>();
 
@@ -48,4 +48,8 @@ public class BatalhaoEspecialDeElfos {
         agruparPorStatus(); 
         return this.exercitoPorStatus.get(status); 
     } 
+    
+    public void atacar() {
+        System.out.println("Batalhão especial lacrando"); 
+    }
 }
