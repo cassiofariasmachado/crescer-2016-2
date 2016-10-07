@@ -7,9 +7,11 @@ public class ExercitoDeElfos {
         return exercito.toArray(new Elfo[exercito.size()]); 
     } 
     
-    public void alistar(Elfo novoSoldado) {
-        if (novoSoldado instanceof ElfoVerde || novoSoldado instanceof ElfoNoturno )
-            this.exercito.add(novoSoldado);
+    public void alistar(Elfo novoSoldado) throws NaoPodeAlistarException {
+        boolean podeAlistar = novoSoldado instanceof ElfoVerde || novoSoldado instanceof ElfoNoturno;
+        if (!podeAlistar)
+            throw new NaoPodeAlistarException();
+        this.exercito.add(novoSoldado);  
     }
     
     public Elfo buscar(String nome) {
