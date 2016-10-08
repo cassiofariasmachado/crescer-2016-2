@@ -3,7 +3,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ElfoTest {
+public class ElfoTest {    
+    @After
+    //executa após cada cenário de testes.
+    public void tearDown() {
+        System.gc();
+    }
+    
     @Test
     public void elfoNasceComNome() {
         // Arrange
@@ -44,7 +50,7 @@ public class ElfoTest {
     }
 
     @Test
-    public void lefoNasceInformandoZeroFlechas(){
+    public void elfoNasceInformandoZeroFlechas(){
         Elfo elfoDoTeste = new Elfo("Legolas", 0);
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
@@ -68,7 +74,41 @@ public class ElfoTest {
         assertEquals("Arco", elfo.getInventario().getItens().get(0).getDescricao());
         assertEquals("Flechas", elfo.getInventario().getItens().get(1).getDescricao());
     }
-
+    
+    @Test
+    public void atualizaContadorDeNascimentoDeUmElfo() {
+        new Elfo("Dwarf");
+        assertEquals(1, Elfo.getContadorElfos());
+    }
+    
+    @Test
+    public void atualizaContadorDeNascimentoDeTresElfos() {
+        for (int i = 0; i < 3; i++)
+            new Elfo("Dwarf");
+        assertEquals(3, Elfo.getContadorElfos());
+    }
+    
+    @Test
+    public void atualizaContadorDeNascimentoDeTresElfosDiversos() {
+        new Elfo("");
+        new ElfoVerde("");
+        new ElfoNoturno("");
+        assertEquals(3, Elfo.getContadorElfos());
+    }
+    
+    @Test
+    public void atualizaContadorDeNascimentoDeDezElfos() {
+        for (int i = 0; i < 10; i++)
+            new Elfo("Dwarf");
+        assertEquals(10, Elfo.getContadorElfos());
+    }
+    
+    @Test
+    public void naoAtualizaContadorPoisNaoNasceElfo() {
+        int numeroDeElfos = Elfo.getContadorElfos();
+        assertEquals(numeroDeElfos, Elfo.getContadorElfos());
+    }
+    
     @Test
     public void elfoAtiraFlecha() {
         // Act

@@ -1,8 +1,9 @@
 public class Elfo extends Personagem {
-    protected double vida;
+    private static int CONTADOR_ELFOS ;
     
     {
         this.vida = 100.;
+        CONTADOR_ELFOS++;
     }
     
     public Elfo(String nome) {
@@ -10,11 +11,16 @@ public class Elfo extends Personagem {
         this(nome, 42);
     }
 
-    public Elfo(String nome, int quantidadeFlechas){
+    public Elfo(String nome, int quantidadeFlechas) {
         super (nome);
         this.inicializarInventario(quantidadeFlechas);
     }
 
+    protected void finalize() throws Throwable {
+        super.finalize();
+        Elfo.CONTADOR_ELFOS--;
+    }
+    
     public double getVida() {
         return vida;
     }
@@ -25,6 +31,10 @@ public class Elfo extends Personagem {
 
     public Item getFlecha(){
         return this.inventario.getItens().get(1);
+    }
+    
+    public static int getContadorElfos() {
+        return Elfo.CONTADOR_ELFOS;
     }
     
     public void atirarFlecha(Dwarf dwarf){

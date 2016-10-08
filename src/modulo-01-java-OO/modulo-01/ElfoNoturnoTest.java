@@ -4,6 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ElfoNoturnoTest {
+    @After
+    //executa após cada cenário de testes.
+    public void tearDown() {
+        System.gc();
+    }
+    
     @Test
     public void elfoVerdeAtiraUmaFlecha() {
         // Act
@@ -37,7 +43,7 @@ public class ElfoNoturnoTest {
         // Assert
         assertEquals(37, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(15, elfoDoTeste.getExperiencia());
-        assertEquals(77.37809375, elfoDoTeste.getVida(), .0);
+        assertEquals(77.3, elfoDoTeste.getVida(), 0.09);
     }
     
     @Test

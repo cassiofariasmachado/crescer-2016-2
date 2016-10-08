@@ -7,14 +7,16 @@ public class ExercitoDeElfos implements Exercito {
         return exercito.toArray(new Elfo[exercito.size()]); 
     } 
     
-    public void alistar(Elfo novoSoldado) {
-        if (novoSoldado instanceof ElfoVerde || novoSoldado instanceof ElfoNoturno )
-            this.exercito.add(novoSoldado);
+    public void alistar(Elfo novoSoldado) throws NaoPodeAlistarException {
+        boolean podeAlistar = novoSoldado instanceof ElfoVerde || novoSoldado instanceof ElfoNoturno;
+        if (!podeAlistar)
+            throw new NaoPodeAlistarException();
+        this.exercito.add(novoSoldado);  
     }
     
     public Elfo buscar(String nome) {
         for (Elfo soldadoAtual : this.exercito) {
-            if ( ( (Elfo)soldadoAtual ).getNome().equals(nome) )
+            if ( soldadoAtual.getNome().equals(nome) )
                 return soldadoAtual;
         }
         return null;
@@ -23,7 +25,7 @@ public class ExercitoDeElfos implements Exercito {
     public ArrayList<Elfo> buscar(Status status) {
         ArrayList<Elfo> exercitoComEsseStatus = new ArrayList<>();
         for (Elfo soldadoAtual : this.exercito) {
-            if (soldadoAtual.getStatus().equals(status) )
+            if ( soldadoAtual.getStatus().equals(status) )
                 exercitoComEsseStatus.add(soldadoAtual);
         }
         return exercitoComEsseStatus;
