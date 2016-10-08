@@ -10,8 +10,9 @@ public class ExercitoDeElfosTest {
     public void tearDown() {
         System.gc();
     }
+    
     @Test
-    public void retornaExercitoComoArray() {
+    public void retornaExercitoComoArray() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoVerde elfo = new ElfoVerde("Verdao");
         exercito.alistar(elfo);
@@ -19,7 +20,7 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void retornaExercitoDeDoisElfosComoArray() {
+    public void retornaExercitoDeDoisElfosComoArray() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoVerde elfo = new ElfoVerde("Verdao");
         ElfoVerde elfo2 = new ElfoVerde("Azulao");
@@ -30,7 +31,7 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void alistaUmElfoVerde() {
+    public void alistaUmElfoVerde() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoVerde elfo = new ElfoVerde("Verdao");
         exercito.alistar(elfo);
@@ -38,15 +39,15 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void alistaUmElfoNoturno() {
+    public void alistaUmElfoNoturno() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoNoturno elfo = new ElfoNoturno("BlackElfo");
         exercito.alistar(elfo);
         assertEquals(elfo, exercito.buscar("BlackElfo"));
     }
     
-    @Test
-    public void alistaUmElfoComum() {
+    @Test(expected=NaoPodeAlistarException.class)
+    public void alistaUmElfoComum() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo elfo = new Elfo("Elfo sem clã");
         exercito.alistar(elfo);
@@ -54,7 +55,7 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void buscaElfoNoExercitoComElfosDeNomesIguais() {
+    public void buscaElfoNoExercitoComElfosDeNomesIguais() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoNoturno elfo1 = new ElfoNoturno("BlackElfo");
         ElfoVerde elfo2 = new ElfoVerde("Verdao");
@@ -70,7 +71,7 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void buscaElfoNoExercitoRetornaPrimeiroDeElfosIguais() {
+    public void buscaElfoNoExercitoRetornaPrimeiroDeElfosIguais() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoNoturno elfo1 = new ElfoNoturno("BlackElfo");
         ElfoVerde elfo2 = new ElfoVerde("Verdao");
@@ -86,7 +87,7 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void buscaElfosVivosNoExercito() {
+    public void buscaElfosVivosNoExercito() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoNoturno elfo1 = new ElfoNoturno("BlackElfo");
         ElfoVerde elfo2 = new ElfoVerde("Verdao");
@@ -102,7 +103,7 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void buscaElfosMortosNoExercito() {
+    public void buscaElfosMortosNoExercito() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoNoturno elfo1 = new ElfoNoturno("BlackElfo",90);
         ElfoNoturno elfo2 = new ElfoNoturno("Verdao",90);
@@ -123,7 +124,7 @@ public class ExercitoDeElfosTest {
     }
     
     @Test
-    public void buscaElfosMortosEmExercitoQueNaoTem() {
+    public void buscaElfosMortosEmExercitoQueNaoTem() throws NaoPodeAlistarException {
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         ElfoNoturno elfo1 = new ElfoNoturno("BlackElfo",90);
         ElfoNoturno elfo2 = new ElfoNoturno("Verdao",90);
