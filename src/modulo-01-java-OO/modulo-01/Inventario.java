@@ -46,7 +46,6 @@ public class Inventario {
     }
     
     public Inventario diferenciar (Inventario inventario) {
-        // TO-DO: revisar e fazer mais testes
         Inventario retorno = new Inventario();
         for (Item itemAtual : this.getItens())
             if (!inventario.getItens().contains(itemAtual))
