@@ -14,7 +14,7 @@ public class NoturnosPorUltimoTest {
                                               new ElfoVerde("Elfo verde"), 
                                               new ElfoVerde("Elfo verde"), 
                                               new ElfoNoturno("Elfo noturno") );
-        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes, null);
+        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes);
         assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
         assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
@@ -27,7 +27,7 @@ public class NoturnosPorUltimoTest {
     public void ordenaAtaqueQueJaEstaEmOrdem() {
         List<Elfo> atacantes = Arrays.asList( new ElfoVerde("Elfo verde"), 
                                               new ElfoNoturno("Elfo noturno") );
-        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes, null);
+        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes);
         assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoNoturno);
         assertTrue(verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
@@ -42,7 +42,7 @@ public class NoturnosPorUltimoTest {
                                               new ElfoVerde("Elfo verde"),
                                               this.criaElfoNoturnoEMataEle(),
                                               new ElfoNoturno("Elfo noturno") );
-        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes, null);
+        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes);
         assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
         assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
@@ -54,7 +54,7 @@ public class NoturnosPorUltimoTest {
     @Test
     public void ordenaAtaqueQueNaoTemElfos() {
         List<Elfo> atacantes = Arrays.asList();
-        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes, null);
+        List<Elfo> atacantesEmOrdem = new NoturnosPorUltimo().getOrdemDeAtaque(atacantes);
         assertTrue(atacantesEmOrdem.isEmpty());
     }
     
