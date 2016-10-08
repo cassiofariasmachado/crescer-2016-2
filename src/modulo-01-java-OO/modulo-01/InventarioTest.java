@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class InventarioTest {
 
     @Test
-    public void adicionarItemNoInventario(){
+    public void adicionarUmItemNoInventario(){
         // Arrange
         Inventario inventario = new Inventario();
         Item item = new Item("Mosquete", 1);
@@ -20,7 +20,7 @@ public class InventarioTest {
     }
 
     @Test
-    public void adicionarVariosItensNoInventario(){
+    public void adicionarDezItensNoInventario(){
         // Arrange
         Inventario inventario = new Inventario();
         Item item = new Item("Mosquete", 3);
@@ -68,7 +68,7 @@ public class InventarioTest {
     }
 
     @Test
-    public void removerVariosItensNoInventario(){
+    public void removerCincoItensNoInventario(){
         // Arrange
         Inventario inventario = new Inventario();
         Item item = new Item("Mosquete", 3);
@@ -149,7 +149,7 @@ public class InventarioTest {
     @Test
     public void naoRetornaItemMaisPopPoisInventarioVazio() {
         Inventario inventario = new Inventario();
-        assertTrue(inventario.retornarItemMaisPopular() == null);
+        assertNull(inventario.retornarItemMaisPopular());
     }
 
     @Test
@@ -340,13 +340,13 @@ public class InventarioTest {
         inventario.adicionarItem(new Item("Adaga", 3));
         inventario.adicionarItem(new Item("Escudo", 1));
         inventario.adicionarItem(new Item("Bracelete", 2));
-        assertTrue(inventario.buscar("Pistola") == null);
+        assertNull(inventario.buscar("Pistola"));
     }
 
     @Test
     public void buscaENaoEncontraItemEmInventarioVazio() {
         Inventario inventario = new Inventario();
-        assertTrue(inventario.buscar("Pistola") == null);
+        assertNull(inventario.buscar("Pistola"));
     }
     
     @Test
