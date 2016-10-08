@@ -45,7 +45,6 @@ public class ElfoVerdeTest {
     public void elfoVerdeAtiraUmaFlecha() {
         // Act
         ElfoVerde elfoDoTeste = new ElfoVerde("Alleria");
-        elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro", 40));
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
@@ -67,7 +66,6 @@ public class ElfoVerdeTest {
     public void elfoVerdeAtiraDezFlechas() {
         // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Sylvanas");
-        elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro", 40));
         // Act
         for (int i = 0; i < 10; i++)
             elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
@@ -80,7 +78,6 @@ public class ElfoVerdeTest {
     public void elfoVerdeAtira43Flechas(){
         // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Sylvanas");
-        elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro", 42));
         // Act
         for (int i = 0; i < 43; i++)
             elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
@@ -93,7 +90,6 @@ public class ElfoVerdeTest {
     public void elfoVerdeAtiraFlechaEmDwarf(){
         //Act
         ElfoVerde elfoDoTeste = new ElfoVerde("Lordaeron");
-        elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro", 42));
         Dwarf dwarfDoTeste = new Dwarf("SemCriatividade");
         elfoDoTeste.atirarFlecha(dwarfDoTeste);
         // Assert
@@ -106,7 +102,6 @@ public class ElfoVerdeTest {
     public void elfoVerdeAtiraFlechaEmVariosDwarfs(){
         // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Legolas");
-        elfoDoTeste.adicionarItem(new Item("Arco e Flecha de Vidro", 42));
         Dwarf [] dwarves = new Dwarf [10];
         for (int i = 0; i < 10; i++)
             dwarves[i] = new Dwarf("SemCriatividade");
