@@ -3,7 +3,7 @@ public class Elfo extends Personagem {
     
     {
         this.vida = 100.;
-        CONTADOR_ELFOS++;
+        Elfo.CONTADOR_ELFOS++;
     }
     
     public Elfo(String nome) {
@@ -14,14 +14,15 @@ public class Elfo extends Personagem {
     public Elfo(String nome, int quantidadeFlechas) {
         super (nome, quantidadeFlechas);
     }
-
+    
+    @Override
     protected void finalize() throws Throwable {
         super.finalize();
         Elfo.CONTADOR_ELFOS--;
     }
     
     public double getVida() {
-        return vida;
+        return this.vida;
     }
     
     public Item getArco() {
