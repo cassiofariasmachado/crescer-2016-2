@@ -13,10 +13,10 @@ public class AtaqueIntercaladoTest {
                                               new ElfoVerde("Elfo verde"), 
                                               new ElfoNoturno("Elfo noturno") );
         List<Elfo> atacantesEmOrdem = new AtaqueIntercalado().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(1) instanceof ElfoNoturno);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(3) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(3) instanceof ElfoVerde);
         assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
         assertEquals(4, atacantesEmOrdem.size());
     }
@@ -104,10 +104,10 @@ public class AtaqueIntercaladoTest {
                                               new ElfoNoturno("Elfo noturno"),
                                               this.criaElfoNoturnoEMataEle());
         List<Elfo> atacantesEmOrdem = new AtaqueIntercalado().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(1) instanceof ElfoNoturno);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(3) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(3) instanceof ElfoVerde);
         assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
         assertEquals(4, atacantesEmOrdem.size());
     }
