@@ -5,10 +5,12 @@ public abstract class Personagem {
     protected Status status;
     protected Inventario inventario;
     
-    public Personagem(String nome) {
+    public Personagem(String nome, int quantidadeFlechas) {
         this.nome = nome;
         this.status = Status.VIVO;
         this.inventario = new Inventario();
+        // chamar método inicializarInventario() aqui para que classes filhas não "esqueçam" de chama-lo
+        this.inicializarInventario(quantidadeFlechas); 
     }
     
     public void setNome(String nome) {

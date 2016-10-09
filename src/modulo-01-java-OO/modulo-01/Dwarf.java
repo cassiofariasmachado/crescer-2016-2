@@ -9,7 +9,7 @@ public class Dwarf extends Personagem{
     }
     
     public Dwarf (String nome, DataTerceiraEra data) {
-        super (nome);
+        super (nome, 0);
         this.vida = 110;
         this.dataNascimento = data;
     }

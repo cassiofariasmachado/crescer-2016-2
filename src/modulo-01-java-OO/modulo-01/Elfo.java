@@ -12,8 +12,7 @@ public class Elfo extends Personagem {
     }
 
     public Elfo(String nome, int quantidadeFlechas) {
-        super (nome);
-        this.inicializarInventario(quantidadeFlechas);
+        super (nome, quantidadeFlechas);
     }
 
     protected void finalize() throws Throwable {
