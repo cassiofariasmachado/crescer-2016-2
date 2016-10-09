@@ -17,6 +17,7 @@ public class EstrategiaLittleMumu implements Estrategia {
                 }
             }
         }
+        this.ordenarAtaquePorQuantidadeDeFlechas(elfosEmOrdem);
         return elfosEmOrdem;
     }
     
@@ -27,5 +28,18 @@ public class EstrategiaLittleMumu implements Estrategia {
                 contadorDeElfosValidos++;
         }
         return contadorDeElfosValidos;
+    }
+    
+    private void ordenarAtaquePorQuantidadeDeFlechas(List<Elfo> elfos) {
+        Elfo atual;
+        for (int i = 1; i < elfos.size(); i++){
+            atual = elfos.get(i);
+            int quantidadeFlechasAtual = atual.getFlecha().getQuantidade();
+            int j;
+            for (j = i - 1; j >= 0 && quantidadeFlechasAtual > elfos.get(j).getFlecha().getQuantidade(); j--){
+                elfos.set(j + 1, elfos.get(j));
+            }
+            elfos.set(j + 1, atual);
+        }   
     }
 }

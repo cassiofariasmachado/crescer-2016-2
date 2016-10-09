@@ -102,6 +102,36 @@ public class EstrategiaLittleMumuTest {
         assertTrue(atacantesEmOrdem.isEmpty());
     }
     
+    @Test
+    public void ordenaAtaqueElfosComQuantidadeDeFlechasDiferentes() throws ExercitoDesproporcionalException{
+        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno", 10), 
+                                              new ElfoVerde("Elfo verde", 5), 
+                                              new ElfoVerde("Elfo verde", 3), 
+                                              new ElfoNoturno("Elfo noturno", 4) );
+        List<Elfo> atacantesEmOrdem = new EstrategiaLittleMumu().getOrdemDeAtaque(atacantes);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
+        assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
+        assertTrue(this.verificaOrdemDeElfosComMaisFlechas(atacantesEmOrdem));
+        assertEquals(3, atacantesEmOrdem.size());
+    }
+    
+    @Test
+    public void ordenaAtaqueElfosComQuantidadeDeFlechasOrdenadasNaOrdemCrescente() throws ExercitoDesproporcionalException{
+        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno", 2), 
+                                              new ElfoVerde("Elfo verde", 10), 
+                                              new ElfoVerde("Elfo verde", 13), 
+                                              new ElfoNoturno("Elfo noturno", 22) );
+        List<Elfo> atacantesEmOrdem = new EstrategiaLittleMumu().getOrdemDeAtaque(atacantes);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
+        assertTrue(this.verificaOrdemDeElfosComMaisFlechas(atacantesEmOrdem));
+        assertEquals(3, atacantesEmOrdem.size());
+    }
+    
     private boolean verificaSeTodosElfosEstaoVivos(List<Elfo> elfos) {
         for (Elfo elfo : elfos) {
             if (elfo.getStatus().equals(Status.MORTO))
@@ -110,6 +140,17 @@ public class EstrategiaLittleMumuTest {
         return true;
     }
     
+    private boolean verificaOrdemDeElfosComMaisFlechas(List<Elfo> elfos) {
+        int quantidadeDeFlechasAnterior = 0;
+        for (int i = elfos.size() - 1; i >= 0; i--) {
+            int quantidadeDeFlechasAtual = elfos.get(i).getFlecha().getQuantidade();
+            if (quantidadeDeFlechasAnterior > quantidadeDeFlechasAtual)
+                return false;
+            quantidadeDeFlechasAnterior = quantidadeDeFlechasAtual;
+        }
+        return true;
+    }
+
     private ElfoNoturno criaElfoNoturnoEMataEle() {
         ElfoNoturno elfo = new ElfoNoturno("Elfo Noturno", 90);
         for (int i = 0; i < 90; i++) 
