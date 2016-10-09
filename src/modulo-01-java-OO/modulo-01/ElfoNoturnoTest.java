@@ -5,15 +5,16 @@ import org.junit.Test;
 
 public class ElfoNoturnoTest {
     @After
-    //executa após cada cenário de testes.
+    // Executa após cada cenário de teste.
     public void tearDown() {
         System.gc();
     }
     
     @Test
-    public void elfoVerdeAtiraUmaFlecha() {
-        // Act
+    public void elfoNoturnoAtiraUmaFlecha() {
+        // Arrange
         ElfoNoturno elfoDoTeste = new ElfoNoturno("Alleria");
+        // Act
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
@@ -23,8 +24,9 @@ public class ElfoNoturnoTest {
     
     @Test
     public void elfoNoturnoAtiraDuasFlechas() {
-        // Act
+        // Arrange
         ElfoNoturno elfoDoTeste = new ElfoNoturno("Alleria");
+        // Act
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
@@ -47,35 +49,42 @@ public class ElfoNoturnoTest {
     }
     
     @Test
-    public void elfoNoturnoComVidaNegativaAtira1000FlechasEMorre() {
+    public void elfoNoturnoAtira90FlechasEMorre() {
         // Arrange
-        ElfoNoturno elfoDoTeste = new ElfoNoturno("Sylvanas");
-        elfoDoTeste.getFlecha().setQuantidade(1000);
+        ElfoNoturno elfoDoTeste = new ElfoNoturno("Sylvanas", 90);
         Dwarf dwarf = new Dwarf("SemCriatividade");
         // Act
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 90; i++)
             elfoDoTeste.atirarFlecha(dwarf);
         // Assert
-        assertEquals(910, elfoDoTeste.getFlecha().getQuantidade());
+        assertEquals(0, elfoDoTeste.getFlecha().getQuantidade());
         assertEquals(270, elfoDoTeste.getExperiencia());
         assertEquals(Status.MORTO, elfoDoTeste.getStatus());
     }
     
     @Test 
     public void elfoNoturnoNaoAtiraSeEstaMorto() { 
+        // Arrange
         ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 91);
+        // Act
         for (int i = 0; i < 91; i++) 
             elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1))); 
-         
-        assertEquals(270, elfoSuiçida.getExperiencia()); 
+        // Assert
+        assertEquals(1, elfoSuiçida.getFlecha().getQuantidade());
+        assertEquals(270, elfoSuiçida.getExperiencia());
+        assertEquals(Status.MORTO, elfoSuiçida.getStatus());
     } 
     
     @Test 
     public void elfoNoturnoNaoAtiraSeNaoTemFlechas() { 
-        ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 89);
-        for (int i = 0; i < 90; i++) 
+        // Arrange
+        ElfoNoturno elfoSuiçida = new ElfoNoturno("Harakiri", 3);
+        // Act
+        for (int i = 0; i < 5; i++) 
             elfoSuiçida.atirarFlecha(new Dwarf("Joe Doein", new DataTerceiraEra(1,1,1))); 
-        assertEquals(267, elfoSuiçida.getExperiencia());
+        // Assert
+        assertEquals(0, elfoSuiçida.getFlecha().getQuantidade());
+        assertEquals(9, elfoSuiçida.getExperiencia());
         assertEquals(Status.VIVO, elfoSuiçida.getStatus());
     } 
 }
