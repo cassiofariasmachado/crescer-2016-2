@@ -4,34 +4,33 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class IrishDwarfTest {
-
     @Test
-    public void irishDwarvesNascemComNome() {
-        // Arrange and Act
+    public void irishDwarfNasceComNome() {
+        // Act
         IrishDwarf irishIrishDwarf = new IrishDwarf("IrishDwarf", new DataTerceiraEra(18, 2, 1014));
         // Assert
         assertEquals("IrishDwarf", irishIrishDwarf.getNome());
     }
 
     @Test
-    public void irishDwarvesNascemCom110DeVida(){
-        //Act
+    public void irishDwarfNasceCom110DeVida(){
+        // Act
         IrishDwarf falstad = new IrishDwarf("SemCriatividade");
-        //Assert
+        // Assert
         assertEquals(110, falstad.getVida(), 0.);
     }
 
     @Test
-    public void irishDwarvesNascemComZeroDeExperiencia(){
-        //Act
+    public void irishDwarvfNasceComZeroDeExperiencia(){
+        // Act
         IrishDwarf falstad = new IrishDwarf("SemCriatividade");
-        //Assert
+        // Assert
         assertEquals(0, falstad.getExperiencia());
     }
 
     @Test
-    public void irishDwarvesNascemComDataNascimento(){
-        // Arrange and Act
+    public void irishDwarfNasceComDataNascimento(){
+        // Act
         IrishDwarf gimli = new IrishDwarf("IrishDwarf", new DataTerceiraEra(18, 2, 1014));
         // Assert
         assertEquals(18, gimli.getDataNascimento().getDia());
@@ -40,8 +39,8 @@ public class IrishDwarfTest {
     }
 
     @Test
-    public void irishdwarvesNascemComDataNascimentoPadrao(){
-        // Arrange and Act
+    public void irishDwarfNasceComDataNascimentoPadrao(){
+        // Act
         IrishDwarf gimli = new IrishDwarf("SemCriatividade");
         // Assert
         assertEquals(1, gimli.getDataNascimento().getDia());
@@ -50,29 +49,32 @@ public class IrishDwarfTest {
     }
 
     @Test
-    public void irishDwarvesNascemVivo() {
+    public void irishDwarfNasceVivo() {
+        // Act and Assert
         assertEquals(Status.VIVO, new IrishDwarf("AnaoToSemCriatividade").getStatus());
     }
 
     @Test
     public void irishDwarvesNascemVivos() {
+        // Act and Assert
         for (int i = 0; i < 10; i++)
             assertEquals(Status.VIVO, new IrishDwarf("AnaoToSemCriatividade").getStatus());
     }
 
     @Test
-    public void irishDwarvesNaoNascemMorto() {
+    public void irishDwarfNaoNasceMorto() {
+        // Act and Assert
         assertFalse(Status.MORTO.equals(new IrishDwarf("AnaoToSemCriatividade").getStatus()));
     }
 
     @Test
-    public void irishDwarvesNascemComInventario(){
+    public void irishDwarfNasceComInventario(){
+        // Act and Assert
         IrishDwarf dwarf = new IrishDwarf("IrishDwarf");
         assertTrue(dwarf.getInventario() instanceof Inventario);
         assertEquals(0, dwarf.getInventario().getItens().size());
     }
-    
-    
+
     @Test
     public void irishDwarfAdicionaItemNoInventario(){
         // Arrange
@@ -85,7 +87,7 @@ public class IrishDwarfTest {
         assertEquals(item, dwarf.getInventario().getItens().get(0));
         assertEquals(1, dwarf.getInventario().getItens().get(0).getQuantidade());
     }
-    
+
     @Test
     public void irishDwarfPerdeItemDoInventario(){
         // Arrange
@@ -101,26 +103,32 @@ public class IrishDwarfTest {
         assertEquals(item2, dwarf.getInventario().getItens().get(0));
         assertEquals(10, dwarf.getInventario().getItens().get(0).getQuantidade());
     }
-    
+
     @Test
-    public void irishDwarfComSorte() {
+    public void irishDwarfTentaSorteETemSorte() {
+        // Arrange
         IrishDwarf dwarf = new IrishDwarf("Pete 'O Murphy", new DataTerceiraEra(1, 1, 2000));
         dwarf.adicionarItem(new Item("Pint de Guinness", 5));
         dwarf.receberFlecha();
         dwarf.receberFlecha();
         dwarf.receberFlecha();
+        // Act
         dwarf.tentarSorte();
+        // Assert
         assertEquals(15005, dwarf.getInventario().getItens().get(0).getQuantidade());
     }
 
     @Test
-    public void irishDwarfQuantidadeNegativaComSorte() {
+    public void irishDwarfTentaSorteETemSorteComQuantidadeNegativaDeItens() {
+        // Arrange
         IrishDwarf dwarf = new IrishDwarf("Pete 'O Murphy", new DataTerceiraEra(1, 1, 2000));
         dwarf.adicionarItem(new Item("Pint de Guinness", -5));
         dwarf.receberFlecha();
         dwarf.receberFlecha();
         dwarf.receberFlecha();
+        // Act
         dwarf.tentarSorte();
+        // Assert
         assertEquals(14995, dwarf.getInventario().getItens().get(0).getQuantidade());
     }
 }
