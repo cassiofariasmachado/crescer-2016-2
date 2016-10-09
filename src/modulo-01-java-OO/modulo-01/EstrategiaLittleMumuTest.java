@@ -124,9 +124,9 @@ public class EstrategiaLittleMumuTest {
                                               new ElfoVerde("Elfo verde", 13), 
                                               new ElfoNoturno("Elfo noturno", 22) );
         List<Elfo> atacantesEmOrdem = new EstrategiaLittleMumu().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
         assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
         assertTrue(this.verificaOrdemDeElfosComMaisFlechas(atacantesEmOrdem));
         assertEquals(3, atacantesEmOrdem.size());

@@ -4,20 +4,25 @@ import java.util.ArrayList;
 public class EstrategiaLittleMumu implements Estrategia {
     
     public List<Elfo> getOrdemDeAtaque(List<Elfo> atacantes) {
+        // Faz uma cópia dos lista de atacantes para não mexer diretamente nela.
+        ArrayList<Elfo> atacantesCopia = new ArrayList<>(atacantes);
         ArrayList<Elfo> elfosEmOrdem = new ArrayList<>();
-        int elfosValidos = this.getElfosValidos(atacantes);
+        // Conta a quantidade de elfos válidos e dopois calcula 30% disso.
+        int elfosValidos = this.getElfosValidos(atacantesCopia);
         int limiteDeElfosNoturnos = (int) (elfosValidos * 0.3);
-        for (Elfo elfo : atacantes) {
+        // Ordena a cópia dos atacantes pela quantidade de flechas dos elfos (descendente).
+        this.ordenarAtaquePorQuantidadeDeFlechas(atacantesCopia);
+        // Ordena o ataque adicionando os elfos verdes e os noturnos até o limite.
+        for (Elfo elfo : atacantesCopia) {
             if (elfo.getStatus().equals(Status.VIVO) && elfo.getFlecha().getQuantidade() > 0) {
                 if (elfo instanceof ElfoVerde)
                     elfosEmOrdem.add(elfo);
-                if (elfo instanceof ElfoNoturno && (int)limiteDeElfosNoturnos > 0) {
+                if (elfo instanceof ElfoNoturno && limiteDeElfosNoturnos > 0) {
                     elfosEmOrdem.add(elfo);
                     limiteDeElfosNoturnos--;
                 }
             }
         }
-        this.ordenarAtaquePorQuantidadeDeFlechas(elfosEmOrdem);
         return elfosEmOrdem;
     }
     
