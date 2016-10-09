@@ -5,11 +5,11 @@ import org.junit.Test;
 
 public class ElfoTest {    
     @After
-    //executa após cada cenário de testes.
+    // Executa após cada cenário de testes.
     public void tearDown() {
         System.gc();
     }
-    
+
     @Test
     public void elfoNasceComNome() {
         // Arrange
@@ -44,19 +44,19 @@ public class ElfoTest {
     }
 
     @Test
-    public void elfoNasceInformandoFlechasNegativas(){
+    public void elfoNasceComQuantidadeFlechasPadraoInformandoFlechasNegativas(){
         Elfo elfoDoTeste = new Elfo("Legolas", -10);
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
 
     @Test
-    public void elfoNasceInformandoZeroFlechas(){
+    public void elfoNasceComQuantidadedFlechasPadraoInformandoZeroFlechas(){
         Elfo elfoDoTeste = new Elfo("Legolas", 0);
         assertEquals(42, elfoDoTeste.getFlecha().getQuantidade());
     }
 
     @Test
-    public void elfoNasceComStatus(){
+    public void elfoNasceComStatusVivo(){
         assertEquals(Status.VIVO, new Elfo("Legolas").getStatus());
     }
 
@@ -68,26 +68,26 @@ public class ElfoTest {
     }
 
     @Test
-    public void elfoNasceComArcoEFlechasNoInventario(){
+    public void elfoNasceComArcoEFlechaNoInventario(){
         Elfo elfo = new Elfo("Dwarf");
         assertEquals(2, elfo.getInventario().getItens().size());
         assertEquals("Arco", elfo.getInventario().getItens().get(0).getDescricao());
         assertEquals("Flechas", elfo.getInventario().getItens().get(1).getDescricao());
     }
-    
+
     @Test
     public void atualizaContadorDeNascimentoDeUmElfo() {
         new Elfo("Dwarf");
         assertEquals(1, Elfo.getContadorElfos());
     }
-    
+
     @Test
     public void atualizaContadorDeNascimentoDeTresElfos() {
         for (int i = 0; i < 3; i++)
             new Elfo("Dwarf");
         assertEquals(3, Elfo.getContadorElfos());
     }
-    
+
     @Test
     public void atualizaContadorDeNascimentoDeTresElfosDiversos() {
         new Elfo("");
@@ -95,20 +95,14 @@ public class ElfoTest {
         new ElfoNoturno("");
         assertEquals(3, Elfo.getContadorElfos());
     }
-    
+
     @Test
     public void atualizaContadorDeNascimentoDeDezElfos() {
         for (int i = 0; i < 10; i++)
             new Elfo("Dwarf");
         assertEquals(10, Elfo.getContadorElfos());
     }
-    
-    @Test
-    public void naoAtualizaContadorPoisNaoNasceElfo() {
-        int numeroDeElfos = Elfo.getContadorElfos();
-        assertEquals(numeroDeElfos, Elfo.getContadorElfos());
-    }
-    
+
     @Test
     public void elfoAtiraFlecha() {
         // Act
@@ -122,15 +116,15 @@ public class ElfoTest {
     @Test
     public void elfoAtiraVariasFlechas() {
         // Arrange
-        int numeroDeFlechas = 10;
-        int restante = 42 - numeroDeFlechas;
+        int numeroDeFlechasDisparadas = 10;
+        int restante = 42 - numeroDeFlechasDisparadas;
         // Act
         Elfo elfoDoTeste = new Elfo("Sylvanas");
-        for (int i = 0; i < numeroDeFlechas; i++)
+        for (int i = 0; i < numeroDeFlechasDisparadas; i++)
             elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
         assertEquals(restante, elfoDoTeste.getFlecha().getQuantidade());
-        assertEquals(numeroDeFlechas, elfoDoTeste.getExperiencia());
+        assertEquals(numeroDeFlechasDisparadas, elfoDoTeste.getExperiencia());
     }
 
     @Test
@@ -204,12 +198,18 @@ public class ElfoTest {
         Elfo [] elfosDoTeste = new Elfo[10];
         // Act
         for (int i = 0; i < 10; i++){
-            elfosDoTeste[i] = new Elfo("elfo" + i);
+            elfosDoTeste[i] = new Elfo("Elfo" + i);
             String[] elfoEmStringArray = elfosDoTeste[i].toString().split(" ");
             // Arrange
-            assertEquals("elfo" + i, elfoEmStringArray[0]);
+            assertEquals("Elfo" + i, elfoEmStringArray[0]);
+            assertEquals("possui", elfoEmStringArray[1]);
             assertEquals("42", elfoEmStringArray[2]);
+            assertEquals("flechas", elfoEmStringArray[3]);
+            assertEquals("e", elfoEmStringArray[4]);
             assertEquals("0", elfoEmStringArray[5]);
+            assertEquals("níveis", elfoEmStringArray[6]);
+            assertEquals("de", elfoEmStringArray[7]);
+            assertEquals("experiência.", elfoEmStringArray[8]);
         }
     }
 
