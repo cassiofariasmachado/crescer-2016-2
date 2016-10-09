@@ -23,9 +23,10 @@ public class ElfoVerdeTest {
     
     @Test
     public void elfoVerdeGanhaEspadaDeAcoValiriano() {
-        // Act
+        // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Alleria");
         Item espada = new Item("Espada de aço valiriano", 1);
+        // Act
         elfoDoTeste.adicionarItem(espada);
         // Assert
         assertTrue(elfoDoTeste.getInventario().getItens().contains(espada));
@@ -33,9 +34,10 @@ public class ElfoVerdeTest {
     
     @Test
     public void elfoVerdeNaoGanhaItemQualquer() {
-        // Act
+        // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Alleria");
         Item itemQualquer = new Item("Qualquer item, ele nao ganha mesmo, muahahahahaha", 1);
+        // Act
         elfoDoTeste.adicionarItem(itemQualquer);
         // Assert
         assertFalse(elfoDoTeste.getInventario().getItens().contains(itemQualquer));
@@ -43,8 +45,9 @@ public class ElfoVerdeTest {
     
     @Test
     public void elfoVerdeAtiraUmaFlecha() {
-        // Act
+        // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Alleria");
+        // Act
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
@@ -53,8 +56,9 @@ public class ElfoVerdeTest {
     
     @Test
     public void elfoVerdeNaoAtiraFlechaPoisNaoTemFlecha() {
-        // Act
+        // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Alleria", 1);
+        // Act
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         elfoDoTeste.atirarFlecha(new Dwarf("SemCriatividade"));
         // Assert
@@ -88,9 +92,10 @@ public class ElfoVerdeTest {
 
     @Test
     public void elfoVerdeAtiraFlechaEmDwarf(){
-        //Act
+        // Arrange
         ElfoVerde elfoDoTeste = new ElfoVerde("Lordaeron");
         Dwarf dwarfDoTeste = new Dwarf("SemCriatividade");
+        // Act
         elfoDoTeste.atirarFlecha(dwarfDoTeste);
         // Assert
         assertEquals(41, elfoDoTeste.getFlecha().getQuantidade());
