@@ -4,13 +4,17 @@ public class Dwarf extends Personagem{
     private final DataTerceiraEra dataNascimento; 
     public final static double ALTURA_MAXIMA = 1.32;
     
+
+    {
+        this.vida = 110;
+    }
+
     public Dwarf (String nome) {
         this(nome, new DataTerceiraEra(1, 1, 1));
     }
     
     public Dwarf (String nome, DataTerceiraEra data) {
         super (nome, 0);
-        this.vida = 110;
         this.dataNascimento = data;
     }
     
