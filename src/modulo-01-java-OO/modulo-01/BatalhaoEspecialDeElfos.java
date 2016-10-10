@@ -12,7 +12,7 @@ public class BatalhaoEspecialDeElfos implements Exercito {
         return resultado.toArray(new Elfo[resultado.size()]); 
     }
 
-    public void alistar(Elfo elfo){
+    public void alistar(Elfo elfo) throws NaoPodeAlistarException {
         if (elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno) {
             ArrayList<Elfo> elfosComEsteNome = exercito.get(elfo.getNome()); 
             boolean aindaNaoTemElfoComEsteNome = elfosComEsteNome == null; 
@@ -22,13 +22,20 @@ public class BatalhaoEspecialDeElfos implements Exercito {
             } 
             elfosComEsteNome.add(elfo); 
         }
+        else 
+            throw new NaoPodeAlistarException();
     }
 
     public Elfo buscar(String nome){
         return this.exercito.containsKey(nome) ? this.exercito.get(nome).get(0) : null;
     }
     
-    public void agruparPorStatus() { 
+    public ArrayList<Elfo> buscar(Status status) { 
+        agruparPorStatus(); 
+        return this.exercitoPorStatus.get(status); 
+    }
+    
+    private void agruparPorStatus() { 
         this.exercitoPorStatus.clear(); 
         for (Map.Entry<String, ArrayList<Elfo>> par : this.exercito.entrySet()) { 
             for (Elfo elfo : par.getValue()) { 
@@ -42,11 +49,6 @@ public class BatalhaoEspecialDeElfos implements Exercito {
                 elfosDoStatus.add(elfo); 
             } 
         } 
-    } 
-
-    public ArrayList<Elfo> buscar(Status status) { 
-        agruparPorStatus(); 
-        return this.exercitoPorStatus.get(status); 
     } 
     
     public void atacar() {
