@@ -14,7 +14,7 @@ public class AtaqueIntercalado implements Estrategia {
         // Verifica se o se o elfo do meio da lista é um elfo verde, se for significa que existem mais elfos verdes que noturnos, então começa pelos verdes.
         // Se não, começa pelos noturnos.
         int meioDaLista = elfos.size() / 2;
-        boolean elfoAnteriorVerde = !(elfos.get(meioDaLista) instanceof ElfoVerde);
+        boolean elfoAnteriorVerde = false;
         // Vai removendo da lista de elfos até esvaziá-la.
         while (!elfos.isEmpty()) {
             if (elfoAnteriorVerde) {
@@ -50,8 +50,7 @@ public class AtaqueIntercalado implements Estrategia {
             }
         }
         // Se a diferença entre a quantidade de elfos for maior que um para mais ou para menos lança exception, senão retorna os elfos agrupados por tipo.
-        int diferencaEntreVerdesENoturnos = contadorVerdes - contadorNoturnos;
-        if (diferencaEntreVerdesENoturnos > 1 || diferencaEntreVerdesENoturnos < -1)
+        if (contadorVerdes != contadorNoturnos)
             throw new ExercitoDesproporcionalException();
         return elfos;
     }
