@@ -8,7 +8,8 @@ public class AtaqueIntercaladoTest {
 
     @Test
     public void ordenaAtaqueComQuantidadeDeVerdesENoturnosIguais() throws ExercitoDesproporcionalException{
-        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoNoturno("Elfo noturno"), 
                 new ElfoVerde("Elfo verde"), 
                 new ElfoVerde("Elfo verde"), 
                 new ElfoNoturno("Elfo noturno") );
@@ -23,24 +24,19 @@ public class AtaqueIntercaladoTest {
 
     @Test(expected=ExercitoDesproporcionalException.class)
     public void ordenaAtaqueComUmElfoVerdeAMais() throws ExercitoDesproporcionalException {
-        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoNoturno("Elfo noturno"), 
                 new ElfoVerde("Elfo verde"), 
                 new ElfoVerde("Elfo verde"),
                 new ElfoNoturno("Elfo noturno"),
                 new ElfoVerde("Elfo Verde") );
         List<Elfo> atacantesEmOrdem = new AtaqueIntercalado().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(1) instanceof ElfoNoturno);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(3) instanceof ElfoNoturno);
-        assertTrue(atacantesEmOrdem.get(4) instanceof ElfoVerde);
-        assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
-        assertEquals(5, atacantesEmOrdem.size());
     }
 
     @Test(expected=ExercitoDesproporcionalException.class)
     public void ordenaAtaqueComUmElfoNoturnoAMais() throws ExercitoDesproporcionalException {
-        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoNoturno("Elfo noturno"), 
                 new ElfoVerde("Elfo verde"), 
                 new ElfoVerde("Elfo verde"),
                 new ElfoNoturno("Elfo noturno"),
@@ -50,7 +46,8 @@ public class AtaqueIntercaladoTest {
 
     @Test(expected=ExercitoDesproporcionalException.class)
     public void ordenaAtaqueComApenasElfoVerdes() throws ExercitoDesproporcionalException {
-        List<Elfo> atacantes = Arrays.asList( new ElfoVerde("Elfo verde"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoVerde("Elfo verde"), 
                 new ElfoVerde("Elfo verde"),
                 new ElfoVerde("Elfo verde"),
                 new ElfoVerde("Elfo verde"));
@@ -59,7 +56,8 @@ public class AtaqueIntercaladoTest {
 
     @Test(expected=ExercitoDesproporcionalException.class)
     public void ordenaAtaqueComApenasElfoNoturnos() throws ExercitoDesproporcionalException {
-        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoNoturno("Elfo noturno"), 
                 new ElfoNoturno("Elfo noturno"),
                 new ElfoNoturno("Elfo noturno"),
                 new ElfoNoturno("Elfo noturno"));
@@ -68,7 +66,8 @@ public class AtaqueIntercaladoTest {
 
     @Test(expected=ExercitoDesproporcionalException.class)
     public void ordenaAtaqueComDoisElfoVerdesAMais() throws ExercitoDesproporcionalException {
-        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoNoturno("Elfo noturno"), 
                 new ElfoVerde("Elfo verde"), 
                 new ElfoVerde("Elfo verde"),
                 new ElfoVerde("Elfo verde"),
@@ -79,7 +78,8 @@ public class AtaqueIntercaladoTest {
 
     @Test(expected=ExercitoDesproporcionalException.class)
     public void ordenaAtaqueComDoisElfoNoturnosAMais() throws ExercitoDesproporcionalException {
-        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoNoturno("Elfo noturno"), 
                 new ElfoVerde("Elfo verde"), 
                 new ElfoVerde("Elfo verde"),
                 new ElfoNoturno("Elfo noturno"),
@@ -90,7 +90,8 @@ public class AtaqueIntercaladoTest {
 
     @Test
     public void ordenaAtaqueComDoisElfoNoturnosMortos() throws ExercitoDesproporcionalException {
-        List<Elfo> atacantes = Arrays.asList( new ElfoNoturno("Elfo noturno"), 
+        List<Elfo> atacantes = Arrays.asList( 
+                new ElfoNoturno("Elfo noturno"), 
                 new ElfoVerde("Elfo verde"), 
                 new ElfoVerde("Elfo verde"),
                 this.criaElfoNoturnoEMataEle(),

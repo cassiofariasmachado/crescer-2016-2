@@ -6,14 +6,17 @@ import java.util.ArrayList;
 public class AtaqueIntercalado implements Estrategia {
     
     public List<Elfo> getOrdemDeAtaque(List<Elfo> atacantes) throws ExercitoDesproporcionalException {
-        ArrayList<Elfo> elfosQueAtacarao = new ArrayList<Elfo>();
+        ArrayList<Elfo> elfosQueAtacarao = new ArrayList<>();
+        // TO-DO: revisar, talvez possa ser simplificado ainda mais..
         // Se o a lista de atacantes recebida for vazia, encerra a execução retornando uma lista vazia.
         if (atacantes.isEmpty()) 
             return elfosQueAtacarao;
-        ArrayList<Elfo> elfos = this.agrupaElfosVerdesENoturnos(atacantes);
-        // Verifica se o se o elfo do meio da lista é um elfo verde, se for significa que existem mais elfos verdes que noturnos, então começa pelos verdes.
-        // Se não, começa pelos noturnos.
-        int meioDaLista = elfos.size() / 2;
+        // Armazena na variável elfos somentes elfos noturnos e verdes vivos.
+        List<Elfo> elfos = OrdenarElfos.getElfosVerdesENoturnosVivos(atacantes);
+        // Se atacantes não forem 50% elfos verdes e 50% elfos noturnos lança exceção.
+        if (this.ehExercitoDesproporcional(elfos))
+            throw new ExercitoDesproporcionalException();
+        // Começa sempre pelos elfos verdes.
         boolean elfoAnteriorVerde = false;
         // Vai removendo da lista de elfos até esvaziá-la.
         while (!elfos.isEmpty()) {
@@ -28,31 +31,19 @@ public class AtaqueIntercalado implements Estrategia {
             } 
         }
         return elfosQueAtacarao;
-        }
+    }
     
-    private ArrayList<Elfo> agrupaElfosVerdesENoturnos(List<Elfo> atacantes) throws ExercitoDesproporcionalException {
-        // Agrupa os elfos vivos por tipo: elfos verdes no começo e elfos noturnos no fim.
-        ArrayList<Elfo> elfos = new ArrayList<Elfo>();
-        // Conta a quantidade de cada tipo de elfo.
+    private boolean ehExercitoDesproporcional(List<Elfo> atacantes) {
         int contadorVerdes = 0;
         int contadorNoturnos = 0;
-        for (Elfo elfo : atacantes) { 
-            if (elfo.getStatus().equals(Status.VIVO)) {
-                if (elfo instanceof ElfoVerde) {
-                    elfos.add(0, elfo);
-                    contadorVerdes++;
-                    continue;
-                }
-                if (elfo instanceof ElfoNoturno) {
-                    elfos.add(elfo);
-                    contadorNoturnos++;
-                }
-            }
+        for (Elfo elfo : atacantes) {
+            if (elfo instanceof ElfoVerde)
+                contadorVerdes++;
+            if (elfo instanceof ElfoNoturno)
+                contadorNoturnos++;
         }
-        // Se a diferença entre a quantidade de elfos for maior que um para mais ou para menos lança exception, senão retorna os elfos agrupados por tipo.
-        if (contadorVerdes != contadorNoturnos)
-            throw new ExercitoDesproporcionalException();
-        return elfos;
+        return contadorVerdes != contadorNoturnos;
     }
+        
 }
     
