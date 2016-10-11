@@ -8,7 +8,7 @@ SELECT NomeEmpregado as Nome,
 	   Salario * 12 as SalarioAnual
 FROM Empregado
 WHERE Cargo = 'Atendente' OR 
-	  SalarioAnual < 18000.00;
+	  Salario * 12 < 18000.00;
 	  
 -- Exercício 3 - Comandos SQL
 SELECT IDCidade
