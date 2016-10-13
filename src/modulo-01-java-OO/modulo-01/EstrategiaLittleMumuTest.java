@@ -13,9 +13,9 @@ public class EstrategiaLittleMumuTest {
                                               new ElfoVerde("Elfo verde"), 
                                               new ElfoNoturno("Elfo noturno") );
         List<Elfo> atacantesEmOrdem = new EstrategiaLittleMumu().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
         assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
         assertEquals(3, atacantesEmOrdem.size());
     }
@@ -54,9 +54,9 @@ public class EstrategiaLittleMumuTest {
                                               new ElfoNoturno("Elfo noturno"),
                                               this.criaElfoNoturnoEMataEle());
         List<Elfo> atacantesEmOrdem = new EstrategiaLittleMumu().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
         assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
         assertEquals(3, atacantesEmOrdem.size());
     }
@@ -70,9 +70,9 @@ public class EstrategiaLittleMumuTest {
                                               new ElfoVerde("Elfo verde"),
                                               this.criaElfoVerdeSemFlechas());
         List<Elfo> atacantesEmOrdem = new EstrategiaLittleMumu().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
         assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
         assertEquals(3, atacantesEmOrdem.size());
     }
@@ -88,9 +88,9 @@ public class EstrategiaLittleMumuTest {
                                               new ElfoVerde("Elfo verde"),
                                               this.criaElfoVerdeSemFlechas());
         List<Elfo> atacantesEmOrdem = new EstrategiaLittleMumu().getOrdemDeAtaque(atacantes);
-        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoVerde);
+        assertTrue(atacantesEmOrdem.get(0) instanceof ElfoNoturno);
         assertTrue(atacantesEmOrdem.get(1) instanceof ElfoVerde);
-        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoNoturno);
+        assertTrue(atacantesEmOrdem.get(2) instanceof ElfoVerde);
         assertTrue(this.verificaSeTodosElfosEstaoVivos(atacantesEmOrdem));
         assertEquals(3, atacantesEmOrdem.size());
     }
@@ -151,15 +151,15 @@ public class EstrategiaLittleMumuTest {
         return true;
     }
 
-    private ElfoNoturno criaElfoNoturnoEMataEle() {
-        ElfoNoturno elfo = new ElfoNoturno("Elfo Noturno", 90);
+    private Elfo criaElfoNoturnoEMataEle() {
+        Elfo elfo = new ElfoNoturno("Elfo Noturno", 90);
         for (int i = 0; i < 90; i++) 
             elfo.atirarFlecha(new Dwarf(""));
         return elfo;
     }
     
-    private ElfoNoturno criaElfoVerdeSemFlechas() {
-        ElfoNoturno elfo = new ElfoNoturno("Elfo Noturno", 1);
+    private Elfo criaElfoVerdeSemFlechas() {
+        Elfo elfo = new ElfoVerde("Elfo Verde", 1);
         elfo.atirarFlecha(new Dwarf(""));
         return elfo;
     }

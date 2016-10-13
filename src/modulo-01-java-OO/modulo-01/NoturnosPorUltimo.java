@@ -4,7 +4,10 @@ import java.util.ArrayList;
 public class NoturnosPorUltimo implements Estrategia {
     
     public List<Elfo> getOrdemDeAtaque(List<Elfo> atacantes) {
-        return OrdenarElfos.getElfosVerdesENoturnosVivos(atacantes);
+        List<Elfo> elfosVerdes = OrdenarElfos.getElfosVerdesVivos(atacantes);
+        List<Elfo> elfosNoturnos = OrdenarElfos.getElfosNoturnosVivos(atacantes);
+        elfosVerdes.addAll(elfosNoturnos);
+        return elfosVerdes;
     }
     
 }
