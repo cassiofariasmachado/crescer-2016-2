@@ -14,9 +14,23 @@ FROM Cidade
 GROUP BY UF;
 
 -- Exercicio 4
-SELECT Nome, 
-	   UF
-FROM Cidade C
-WHERE EXISTS( SELECT * 
-			  FROM Cidade AS Cid
-			  WHERE C.Nome = Cid.Nome AND C.UF = Cid.UF );
+SELECT Nome
+FROM Cidade
+GROUP BY Nome, UF
+HAVING COUNT(*) > 1;
+
+-- Exercicio 5
+SELECT MAX(IDAssociado) + 1 AS ProximoIDAssociado
+FROM Associado;
+
+-- Exercicio 6
+SELECT NomeEmpregado,
+	   Salario,
+	   CASE 
+			WHEN Salario < 1164.00     
+				THEN 0   
+			WHEN Salario > 2326.00
+				THEN 27.5
+			ELSE 15
+	   END AS PercentualDeImpostoRenda
+FROM Empregado;
