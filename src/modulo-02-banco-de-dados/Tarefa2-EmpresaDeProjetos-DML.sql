@@ -42,16 +42,16 @@ FROM Projeto
 WHERE ValorFaturado > ValorRealizado;
 
 -- Exercicio 3
-SELECT Projeto, 
+SELECT DISTINCT Projeto, 
 	   (valorFaturado - valorRealizado) / valorRealizado AS PercentualDePrejuizo
 FROM Projeto
 WHERE ValorFaturado < ValorRealizado;
 
 -- Exercicio 4
-SELECT Empregado AS NomeCompleto, 
+SELECT DISTINCT Empregado AS NomeCompleto, 
 	   CASE 
 			WHEN CHARINDEX(' ', Empregado) = 0
 				THEN Empregado
-				ELSE SUBSTRING(Empregado, 1, CHARINDEX(' ', Empregado))
+				ELSE SUBSTRING(Empregado, 1, CHARINDEX(' ', Empregado) - 1)
 	   END AS PrimeiroNome
 FROM Projeto;
