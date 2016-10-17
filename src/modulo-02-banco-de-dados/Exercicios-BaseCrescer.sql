@@ -105,12 +105,11 @@ GROUP BY SUBSTRING(Nome, 0, CHARINDEX(' ', Nome))
 ORDER BY Quantidade DESC;
 
 -- Exercicio 10 
--- TO-DO: Revisar esses updates mucho lokos
 UPDATE Produto
 SET Situacao = 'F'
 FROM Produto AS Pro
 INNER JOIN ( SELECT IDProduto 
-			 FROM ProdutoMaterial
+			 FROM	 ProdutoMaterial
 			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto;
 
 UPDATE Produto
@@ -118,10 +117,13 @@ SET Situacao = 'Q'
 FROM Produto AS Pro
 INNER JOIN PedidoItem AS PedIte
 ON Pro.IDProduto = PedIte.IDProduto
-INNER JOIN ( SELECT * 
+INNER JOIN ( SELECT IDProduto 
+			 FROM ProdutoMaterial
+			 WHERE IDMaterial NOT IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto
+INNER JOIN ( SELECT IDPedido
 		     FROM Pedido
-		     WHERE DataPedido < convert(datetime, '16/08/2016', 103) AND Situacao != 'F') AS Ped
-ON PedIte.IDPedido = Ped.IDPedido;
+		     WHERE DATEDIFF( MONTH, DataPedido, GETDATE() ) >= 2 ) AS Ped ON PedIte.IDPedido = Ped.IDPedido;
+
 
 UPDATE Produto
 SET Situacao = 'A'
@@ -132,4 +134,4 @@ INNER JOIN ( SELECT IDProduto
 INNER JOIN PedidoItem AS PedIte ON PedIte.IDProduto = Pro.IDProduto
 INNER JOIN ( SELECT IDPedido 
 		     FROM Pedido
-		     WHERE DataPedido > convert(datetime, '16/08/2016', 103) ) AS Ped ON PedIte.IDPedido = Ped.IDPedido;
+		     WHERE DATEDIFF( MONTH, DataPedido, GETDATE() ) < 2 ) AS Ped ON Ped.IDPedido = PedIte.IDPedido;
