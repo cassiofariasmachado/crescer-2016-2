@@ -52,42 +52,84 @@ GROUP BY Cid.UF
 ORDER BY QuantidadeClientes;
 
 -- Exercicio 7
--- B
-SELECT *
-FROM Pedido AS Ped
-INNER JOIN PedidoItem AS PedI
-ON Ped.IDPedido = PedI.IDPedido
+-- B)
+SELECT Ped.IDPedido,
+	   Ped.DataEntrega,
+	   Ped.ValorPedido,
+	   PedIte.Quantidade AS QuantidadeItens
+FROM PedidoItem AS PedIte
 INNER JOIN ( SELECT * 
-			 FROM ProdutoMaterial AS ProdM
-			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProdM
-ON PedI.IDProduto = ProdM.IDProduto
-WHERE Ped.DataEntrega BETWEEN convert(datetime, '01/10/2016', 103) AND
-				      convert(datetime, '31/10/2016', 103);
-
-SELECT *
-FROM PedidoItem AS PedI
-INNER JOIN (SELECT * 
-			FROM Pedido 
-			WHERE DataEntrega BETWEEN convert(datetime, '01/10/2016', 103) AND
-				      convert(datetime, '31/10/2016', 103)) AS Ped
-ON Ped.IDPedido = PedI.IDPedido
+			 FROM Pedido 
+			 WHERE DataEntrega BETWEEN convert(datetime, '01/10/2016', 103) AND
+				      convert(datetime, '31/10/2016', 103) ) AS Ped
+ON Ped.IDPedido = PedIte.IDPedido
 INNER JOIN ( SELECT * 
-			 FROM ProdutoMaterial AS ProdM
-			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProdM
-ON PedI.IDProduto = ProdM.IDProduto
+			 FROM ProdutoMaterial
+			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) AND Quantidade IS NOT NULL) AS ProMat
+ON PedIte.IDProduto = ProMat.IDProduto;
 
+-- C) 
+SELECT Cli.IDCliente,
+	   Cli.Nome,
+	   Cli.RazaoSocial,
+	   Cli.Endereco,
+	   Cli.Bairro,
+	   Cli.CEP,
+	   Cli.Situacao
+FROM PedidoItem AS PedIte
+INNER JOIN ( SELECT * 
+			 FROM Pedido 
+			 WHERE DataEntrega BETWEEN convert(datetime, '01/10/2016', 103) AND
+				      convert(datetime, '31/10/2016', 103) ) AS Ped
+ON Ped.IDPedido = PedIte.IDPedido
+INNER JOIN ( SELECT * 
+			 FROM ProdutoMaterial
+			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) AND Quantidade IS NOT NULL ) AS ProMat
+ON PedIte.IDProduto = ProMat.IDProduto
+INNER JOIN Cliente AS Cli
+ON Cli.IDCliente = Ped.IDCliente;
 
+-- Exercicio 8
+SELECT Pro.IDProduto,
+	   Pro.Nome
+FROM Produto AS Pro
+WHERE NOT EXISTS( SELECT IDProduto 
+                  FROM ProdutoMaterial AS ProMat
+			      WHERE ProMat.IDProduto = Pro.IDProduto );
 
+-- Exercício 9 
+SELECT TOP 1 WITH TIES SUBSTRING(Nome, 0, CHARINDEX(' ', Nome)) AS PrimeiroNome, 
+	   COUNT(1) AS Quantidade
+FROM Cliente AS Cli
+GROUP BY SUBSTRING(Nome, 0, CHARINDEX(' ', Nome))
+ORDER BY Quantidade DESC;
 
-SELECT *
-FROM Pedido;
+-- Exercicio 10 
+-- TO-DO: Revisar esses updates mucho lokos
+UPDATE Produto
+SET Situacao = 'F'
+FROM Produto AS Pro
+INNER JOIN ( SELECT IDProduto 
+			 FROM ProdutoMaterial
+			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto;
 
-SELECT *
-FROM PedidoItem;
+UPDATE Produto
+SET Situacao = 'Q'
+FROM Produto AS Pro
+INNER JOIN PedidoItem AS PedIte
+ON Pro.IDProduto = PedIte.IDProduto
+INNER JOIN ( SELECT * 
+		     FROM Pedido
+		     WHERE DataPedido < convert(datetime, '16/08/2016', 103) AND Situacao != 'F') AS Ped
+ON PedIte.IDPedido = Ped.IDPedido;
 
-SELECT *
-FROM ProdutoMaterial;
-
-
-
-
+UPDATE Produto
+SET Situacao = 'A'
+FROM Produto AS Pro
+INNER JOIN ( SELECT IDProduto
+			 FROM ProdutoMaterial
+			 WHERE IDMaterial NOT IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto
+INNER JOIN PedidoItem AS PedIte ON PedIte.IDProduto = Pro.IDProduto
+INNER JOIN ( SELECT IDPedido 
+		     FROM Pedido
+		     WHERE DataPedido > convert(datetime, '16/08/2016', 103) ) AS Ped ON PedIte.IDPedido = Ped.IDPedido;
