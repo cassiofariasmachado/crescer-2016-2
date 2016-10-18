@@ -98,6 +98,16 @@ GROUP BY SUBSTRING(Nome, 0, CHARINDEX(' ', Nome))
 ORDER BY Quantidade DESC;
 
 -- Exercicio 10 
+-- A)
+-- SELECT
+SELECT DISTINCT Pro.IDProduto,
+	   Pro.Nome,
+	   Pro.Situacao
+FROM Produto AS Pro
+INNER JOIN ( SELECT IDProduto 
+			 FROM	 ProdutoMaterial
+			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto;
+-- UPDATE
 UPDATE Produto
 SET Situacao = 'F'
 FROM Produto AS Pro
@@ -105,6 +115,21 @@ INNER JOIN ( SELECT IDProduto
 			 FROM	 ProdutoMaterial
 			 WHERE IDMaterial IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto;
 
+-- B)
+-- SELECT
+SELECT DISTINCT Pro.IDProduto,
+	   Pro.Nome,
+	   Pro.Situacao
+FROM Produto AS Pro
+INNER JOIN ( SELECT IDProduto
+			 FROM ProdutoMaterial
+			 WHERE IDMaterial NOT IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto
+INNER JOIN PedidoItem AS PedIte ON PedIte.IDProduto = ProMat.IDProduto
+INNER JOIN ( SELECT IDPedido
+		     FROM Pedido
+		     WHERE DATEDIFF( MONTH, DataPedido, GETDATE() ) >= 2 ) AS Ped ON Ped.IDPedido = PedIte.IDPedido;
+
+-- UPDATE
 UPDATE Produto
 SET Situacao = 'Q'
 FROM Produto AS Pro
@@ -116,7 +141,21 @@ INNER JOIN ( SELECT IDPedido
 		     FROM Pedido
 		     WHERE DATEDIFF( MONTH, DataPedido, GETDATE() ) >= 2 ) AS Ped ON Ped.IDPedido = PedIte.IDPedido;
 
+-- C)
+-- SELECT
+SELECT DISTINCT Pro.IDProduto,
+	   Pro.Nome,
+	   Pro.Situacao
+FROM Produto AS Pro
+INNER JOIN ( SELECT *
+			 FROM ProdutoMaterial
+			 WHERE IDMaterial NOT IN (14650, 15703, 15836, 16003, 16604, 17226) ) AS ProMat ON ProMat.IDProduto = Pro.IDProduto
+INNER JOIN PedidoItem AS PedIte ON PedIte.IDProduto = Pro.IDProduto
+INNER JOIN ( SELECT * 
+		     FROM Pedido
+		     WHERE DATEDIFF( MONTH, DataPedido, GETDATE() ) < 2 ) AS Ped ON Ped.IDPedido = PedIte.IDPedido;
 
+-- UPDATE
 UPDATE Produto
 SET Situacao = 'A'
 FROM Produto AS Pro
