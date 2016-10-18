@@ -2,15 +2,26 @@
 SELECT COUNT(*) 
 FROM   Pedido
 WHERE  DataPedido BETWEEN convert(datetime, '01/09/2016', 103) AND
-	   convert(datetime, '30/09/2016', 103);
+	   convert(datetime, '30/09/2016', 103) + .99999;
+-- Soma 0.99999 para pegar o ultimo horario da data
 
 -- Exercico 2
 SELECT Pro.IDProduto,
 	   Pro.Nome,
 	   Pro.Situacao
 FROM   ProdutoMaterial AS ProMat
-INNER JOIN Produto AS Pro ON     ProMat.IDProduto = Pro.IDProduto
+INNER JOIN Produto AS Pro ON ProMat.IDProduto = Pro.IDProduto
 WHERE  ProMat.IDMaterial = 15836;
+
+-- Melhor utilizar o exists, pois so utiliza informacoes de produto
+SELECT Pro.IDProduto,
+	   Pro.Nome,
+	   Pro.Situacao
+FROM Produto AS Pro
+WHERE EXISTS ( SELECT 1
+			   FROM ProdutoMaterial AS ProMat
+			   WHERE ProMat.IDProduto = Pro.IDProduto
+			   AND IDMaterial = 15836 )
 
 -- Exercicio 3
 SELECT Nome,
@@ -27,8 +38,16 @@ INSERT INTO Produto(Nome, PrecoCusto, PrecoVenda, Situacao)
 SELECT Pro.IDProduto,
 	   Pro.Nome
 FROM Produto AS Pro
-LEFT JOIN PedidoItem AS ProIte ON Pro.IDProduto = Pro.IDProduto
-WHERE ProIte.IDProduto IS NULL;
+LEFT JOIN PedidoItem AS PedIte ON PedIte.IDProduto = Pro.IDProduto
+WHERE PedIte.IDProduto IS NULL;
+
+-- Melhor fazer com not exists, pois so utiliza informacoes de Produto
+SELECT Pro.IDProduto,
+       Pro.Nome
+FROM Produto AS Pro
+WHERE NOT EXISTS ( SELECT 1
+				   FROM PedidoItem AS PedIte
+				   WHERE PedIte.IDProduto = Pro.IDProduto );
 
 -- Exercicio 6
 -- Cidade com mais clientes
