@@ -1,0 +1,132 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C27C0E30-BC6A-9EC0-5193-F841E71F19A0" name="Eleitor">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 23:54:09 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<abbreviation>Eleitor</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDEleitor" id="B24E154D-E793-4B7D-C53D-031377DDC414">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:00:12 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NomeCompleto" id="A1B9BD07-34F7-D26A-18D9-CBBF97704FFF">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:00:43 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TituloEleitor" id="F1DD34BD-9CD3-DC96-7ED2-5903CA9FBD75">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:02:05 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RG" id="40C7708D-948B-95E1-3F4C-A8688EEEF546">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:06:07 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DataNascimento" id="6576B7B6-3333-D060-ADCF-B3D5CFC19463">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:06:39 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Zona" id="E2FD134E-CCFF-6311-1B43-4B08070DE430">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:07:04 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Secao" id="2EC7FD77-655D-0B1F-9F83-85509A765FEE">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:07:33 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SituacaoVoto" id="A7546A21-3D03-3ED5-F4AE-1EFE29D62429">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:08:03 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0A3A3EAA-592F-DF99-408D-2CC3DDE1F1FE" name="PK_Eleitor_IDEleitor">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 00:00:12 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B24E154D-E793-4B7D-C53D-031377DDC414"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FB54DF71-1E84-8340-6841-AEBB02367D7F" name="UK_Eleitor_TituloEleitor">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 01:50:42 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F1DD34BD-9CD3-DC96-7ED2-5903CA9FBD75"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="62E291E2-C31A-9E7F-E039-EA36A22132F1" name="UK_Eleitor_RG">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 01:50:42 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="40C7708D-948B-95E1-3F4C-A8688EEEF546"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

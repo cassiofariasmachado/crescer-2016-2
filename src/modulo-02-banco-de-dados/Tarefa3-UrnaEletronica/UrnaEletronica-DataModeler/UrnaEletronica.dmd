@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="UrnaEletronica" id="4F585C3C-6CE9-8024-A88D-8D99A5EC2B4B" version="3.5">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 21:10:04 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>4F585C3C-6CE9-8024-A88D-8D99A5EC2B4B</designId>
+</OSDM_Design>

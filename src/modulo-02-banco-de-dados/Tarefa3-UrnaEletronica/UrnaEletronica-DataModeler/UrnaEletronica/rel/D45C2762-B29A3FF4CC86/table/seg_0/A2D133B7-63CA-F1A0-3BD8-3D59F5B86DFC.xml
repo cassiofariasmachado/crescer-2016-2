@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A2D133B7-63CA-F1A0-3BD8-3D59F5B86DFC" name="Partido">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 01:44:52 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<abbreviation>Partido</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDPartido" id="6DD57B1B-2668-3B87-F439-908CBF0763FC">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 01:45:10 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="FE857C15-CD04-98A4-B510-517ECCB7D6BA">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 01:45:30 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Sigla" id="23B5B087-DDF6-4B12-2D41-620D670E93CF">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 01:45:50 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4CE5977E-62BA-B601-29EE-E9E64D79C0C7" name="PK_Partido_IDPartido">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-19 01:45:10 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6DD57B1B-2668-3B87-F439-908CBF0763FC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

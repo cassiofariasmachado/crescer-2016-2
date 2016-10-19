@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="main_view" objectID="F8D436D0-4B8A-6D74-5F05-0808DDFB847C" name="UrnaEletronica-Relacional" visible="true"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

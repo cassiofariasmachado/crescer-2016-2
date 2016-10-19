@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="UrnaEletronica-Relacional" id="D45C2762-7470-992D-5931-B29A3FF4CC86" mainViewID="F8D436D0-4B8A-6D74-5F05-0808DDFB847C">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 21:10:31 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<shouldBeOpen>true</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+</relationalModel>

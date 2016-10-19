@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="45CE3DF9-5AD4-FF23-2AE2-A70A04D043BF" name="Estado">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 21:21:55 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<abbreviation>Estado</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDEstado" id="2A07BCB9-D8FE-AB22-0A05-A5EA31BD5A02">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 21:23:28 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="73448413-2F7B-A561-8B1D-E60A647D6A38">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 21:27:59 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="UF" id="E3D98A69-9F9F-7F91-B4AF-520946DB27AB">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 21:27:59 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="73A3E4DF-BFAE-2969-D51B-30004753B1E2" name="PK_Estado_IDEstado">
+<createdBy>Cassio</createdBy>
+<createdTime>2016-10-18 21:23:28 UTC</createdTime>
+<ownerDesignName>UrnaEletronica</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2A07BCB9-D8FE-AB22-0A05-A5EA31BD5A02"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
