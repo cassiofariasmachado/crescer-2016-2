@@ -1,0 +1,52 @@
+body {
+    font-family: arial;
+    background-color: white;
+    background-image: url(imagens/street-fighter.jpg);
+    background-position-x: center;
+    background-repeat: no-repeat
+}
+
+#menu {
+    width: 400px;
+    border-style: solid;
+    border-color: rgb(192,192,192);
+    border-width: 2px;
+    border-radius: 15px;
+    background-color: rgba(120,120,120,0.7);
+    margin: 250px auto 75px;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+    #menu .item-menu {
+        margin: 0px 10px; 
+    }
+
+    #menu a {
+        color:white; 
+        text-decoration:none;
+    }
+
+.conteudo {
+    width: 600px;
+    margin: auto;
+    padding: 10px;
+    text-align: justify;
+}
+
+    .conteudo.titulo {
+        background-color: #4e4e4e;
+        color: lightgrey;
+    }
+
+    .conteudo.corpo {
+        background-color: lightgrey;
+    }
+
+        .conteudo.corpo > ul {
+            list-style: none;
+        }
+
+        .conteudo.corpo > img {
+            float: left;
+        }
