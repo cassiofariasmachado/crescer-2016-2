@@ -1,0 +1,54 @@
+header, footer {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    background-color: seagreen;
+    left: 0;
+    z-index: 1;
+}
+
+    header {
+         top: 0;
+    }
+
+    footer {
+        bottom: 0;
+    }
+
+.conteudo {
+    margin: 150px auto;
+}
+
+.quadrado-grande {
+    position: relative;
+    margin: auto;
+    height: 300px;
+    width: 300px;
+    background-color: red;
+}
+
+.quadrado-pequeno {
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    background-color: yellow;
+}
+    .centro {
+        left: 110px;
+        top: 110px;
+    }
+    .superior {
+        top: -80px;
+    }
+
+    .inferior {
+        bottom: -80px;
+    }
+
+    .esquerda {
+        left: -150px;
+    }
+
+    .direita {
+        right: -150px;
+    }
