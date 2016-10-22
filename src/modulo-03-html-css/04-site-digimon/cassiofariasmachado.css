@@ -51,4 +51,54 @@ header {
         font-size: 45px;
         text-shadow: 4px 2px 5px white;
     }
+
+nav a {
+    text-decoration: none;
+}
+
+.autenticacao {
+    width: 100%;
+    margin: 5px auto;
+}
+
+    .autenticacao a {
+        color: black;
+        font-family: digimon;
+        border-style: solid;
+        border-color: black;
+        border-radius: 10px;
+        background-color: #FEC435;
+        padding: 3px;
+    }
+
+    .autenticacao a:hover {
+        background-color: #E8AF3F;
+    }
+
+body > nav {
+    width: 700px;
+    margin: 10px auto;
+}
+
+    body > nav a {
+        color: black;
+        font-family: digimon;
+        text-align: center;
+        border-style: solid;
+        border-color: black;
+        border-width: 2px;
+        border-radius: 5px;
+        background-color: silver;
+        transition-duration: 0.4s;
+        display: inline-block;
+        padding: 3px;
+    }
+
+    nav > a span {
+        display: inline-block;
+    }
+
+    nav > a:hover {
+        background-color: grey;
+    }
 }
