@@ -18,3 +18,11 @@ header span:last-child {
 .treinadores-pokemon {
    display: none;
 }
+
+/* Adicionando estilo ao html */
+
+@font-face {
+    font-family: digimon;
+    src: url("resources/digimon-font.ttf");
+}
+}
