@@ -101,4 +101,14 @@ body > nav {
     nav > a:hover {
         background-color: grey;
     }
+
+.historia-digimon, .content {
+    margin: 70px auto;
+    width: 800px;
+    background-color: silver;
+    border-color: grey;
+    border-style: solid;
+    border-radius: 52px;
+    padding: 30px;
+    opacity: 0.9;
 }
