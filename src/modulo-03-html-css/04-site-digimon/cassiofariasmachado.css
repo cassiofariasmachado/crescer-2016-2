@@ -1,0 +1,20 @@
+/* Removendo conteudo de Pokemon  */
+header span:last-child {
+  display: none;
+}
+
+.historia-pokemon {
+  display: none;
+}
+
+.personagens :first-child {
+  display: none;
+}
+
+.personagens ul:first-of-type {
+  display: none;
+}
+
+.treinadores-pokemon {
+   display: none;
+}
