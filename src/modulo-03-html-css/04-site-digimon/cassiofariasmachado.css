@@ -52,6 +52,10 @@ header {
         text-shadow: 4px 2px 5px white;
     }
 
+.historia-digimon, .content, .autenticacao a, body > nav a {
+    box-shadow: 5px 5px 10px 0px black;
+}
+
 nav a {
     text-decoration: none;
 }
