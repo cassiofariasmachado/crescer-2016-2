@@ -25,4 +25,30 @@ header span:last-child {
     font-family: digimon;
     src: url("resources/digimon-font.ttf");
 }
+
+body {
+    font-family: arial;
+    background-image: url("resources/digimon-background.png");
+    background-repeat: no-repeat;
+    background-color:#0580bb;
+}
+
+header {
+    margin: 20px auto;
+}
+
+    header div.logo {
+        background-image: url("resources/digimon-logo.png");
+        background-repeat: no-repeat;
+        float: right;
+        width: 380px;
+        height: 125px;
+    }
+
+    header h1:first-of-type {
+        display: inline;
+        font-family: digimon;
+        font-size: 45px;
+        text-shadow: 4px 2px 5px white;
+    }
 }
