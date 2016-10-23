@@ -116,3 +116,70 @@ body > nav {
     padding: 30px;
     opacity: 0.9;
 }
+
+.personagens ul, .digiescolhidos ul {
+    list-style-image: url("resources/digimon-icone.gif");
+}
+
+    .personagens ul li:hover  {
+        background-repeat: no-repeat;
+        background-position-x: 350px;
+        height: 200px; 
+    }
+
+    .personagens ul li:nth-child(1):hover {
+        background-image: url("resources/digimons/digimon-agumon.png");
+        
+    }
+
+    .personagens ul li:nth-child(2):hover {
+        background-image: url("resources/digimons/digimon-gabumon.png");
+    }
+
+    .personagens ul li:nth-child(3):hover {
+        background-image: url("resources/digimons/digimon-biyomon-e-tentomon.png");
+    }
+
+    .personagens ul li:nth-child(4):hover {
+        background-image: url("resources/digimons/digimon-gomamon-e-patamon.png");
+    }
+
+    .personagens ul li:nth-child(5):hover {
+        background-image: url("resources/digimons/digimon-gatomon.png");
+    }
+
+    .personagens ul li:nth-child(6):hover {
+        background-image: url("resources/digimons/digimon-veemon.png");
+    }
+
+    .personagens ul li:nth-child(7):hover {
+        background-image: url("resources/digimons/digimon-hawkmon.png");
+    }
+
+    .personagens ul li:nth-child(8):hover {
+        background-image: url("resources/digimons/digimon-armadillomon.png");
+    }
+
+    .personagens ul li:nth-child(9):hover {
+        background-image: url("resources/digimons/digimon-wormmon.png");
+    }
+
+    .personagens ul li:nth-child(10):hover {
+        background-image: url("resources/digimons/digimon-palmon.png");
+    }
+
+    .personagens ul li:nth-child(11):hover {
+        background-image: url("resources/digimons/digimon-renamon.png");
+    }   
+
+    .personagens ul li:nth-child(12):hover {
+        background-image: url("resources/digimons/digimon-guilmon.png");
+    }
+
+    .personagens ul li:nth-child(13):hover {
+        background-image: url("resources/digimons/digimon-lalamon.png");
+    }
+
+    .personagens ul li:nth-child(14):hover {
+        background-image: url("resources/digimons/digimon-falcomon.png");
+    }
