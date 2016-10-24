@@ -205,4 +205,10 @@ body > nav {
 
     }
 
+footer {
+    float: right;
+}
+
+    footer:after {
+        content: url(resources/digimon-icone.gif);
     }
