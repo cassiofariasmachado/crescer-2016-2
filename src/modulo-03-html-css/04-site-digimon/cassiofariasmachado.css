@@ -55,7 +55,7 @@ header {
         text-shadow: 0 0 40px white;
     }
 
-.historia-digimon, .content, .autenticacao a, body > nav a {
+.historia-digimon, .personagens, .digiescolhidos, .autenticacao a, body > nav a {
     box-shadow: 5px 5px 10px 0px black;
 }
 
@@ -103,7 +103,7 @@ body > nav {
         background-color: grey;
     }
 
-.historia-digimon, .content {
+.historia-digimon, .personagens, .digiescolhidos {
     margin: 70px auto;
     width: 800px;
     background-color: silver;
