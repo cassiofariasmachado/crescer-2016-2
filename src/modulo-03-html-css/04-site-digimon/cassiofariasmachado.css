@@ -199,10 +199,94 @@ body > nav {
     .personagens ul li:nth-child(14):hover:after {
         content: url("resources/digimons/digimon-falcomon.png");
     }
-    }   
 
+.digiescolhidos {
+    height: 600px;
+}
+
+.digiescolhidos ul {
+    list-style-type: none;
+    margin: auto 30px;
+}
+
+.digiescolhidos ul li {
+    display: inline-block;
+    background-color: #FEC435;
+    border-style: solid;
+    border-color: black;
+    padding: 2px;
+    font-family: digimon;
+}
+
+.digiescolhidos ul li:hover {
+    background-color: #E8AF3F;
+}
+
+.digiescolhidos ul li:hover:after  {
+    border-style: solid;
+    border-color: black;
+    border-radius: 52px;
+    background-color: white;
+    box-shadow: 5px 5px 10px 0px black;
+    position: absolute;
+    left: 530px;
+    top: 1500px;
+}
+
+    .digiescolhidos ul li:nth-child(1):hover:after {
+        content: url("resources/digiescolhidos/digimon-taichi.png");
     }
 
+    .digiescolhidos ul li:nth-child(2):hover:after {
+        content: url("resources/digiescolhidos/digimon-matt.png");
+    }
+
+    .digiescolhidos ul li:nth-child(3):hover:after {
+        content: url("resources/digiescolhidos/digimon-sora.png");
+    }
+
+    .digiescolhidos ul li:nth-child(4):hover:after {
+        content: url("resources/digiescolhidos/digimon-joe.png");
+    }
+
+    .digiescolhidos ul li:nth-child(5):hover:after {
+        content: url("resources/digiescolhidos/digimon-kari.png");
+    }
+
+    .digiescolhidos ul li:nth-child(6):hover:after {
+        content: url("resources/digiescolhidos/digimon-davis.png");
+    }
+
+    .digiescolhidos ul li:nth-child(7):hover:after {
+        content: url("resources/digiescolhidos/digimon-yolei.png");
+    }
+
+    .digiescolhidos ul li:nth-child(8):hover:after {
+        content: url("resources/digiescolhidos/digimon-cody.png");
+    }
+
+    .digiescolhidos ul li:nth-child(9):hover:after {
+        content: url("resources/digiescolhidos/digimon-ken.png");
+    }
+
+    .digiescolhidos ul li:nth-child(10):hover:after {
+        content: url("resources/digiescolhidos/digimon-mimi.png");
+    }
+
+    .digiescolhidos ul li:nth-child(11):hover:after {
+        content: url("resources/digiescolhidos/digimon-rika.png");
+    }   
+
+    .digiescolhidos ul li:nth-child(12):hover:after {
+        content: url("resources/digiescolhidos/digimon-takato.png");
+    }
+
+    .digiescolhidos ul li:nth-child(13):hover:after {
+        content: url("resources/digiescolhidos/digimon-yoshino.png");
+    }
+
+    .digiescolhidos ul li:nth-child(14):hover:after {
+        content: url("resources/digiescolhidos/digimon-keenan.png");
     }
 
 footer {
