@@ -1,5 +1,5 @@
 describe('find()', function() {
-    
+
     it ('find( [ 1, 2, 3 ], maiorIgualADois ) deve retornar [ 2, 3 ] ', function() {
         var resultado = find( [ 1, 2, 3 ], function(elemento) { return elemento >= 2; } );
         expect(resultado).toEqual( [ 2, 3 ] );
@@ -15,10 +15,9 @@ describe('find()', function() {
         expect(resultado).toEqual( [] );
     });
 
-    it ('find( [ 1, 2, 3 ], \'maior ou igual a dois\' ) deve retornar [ 1, 2, 3 ] ', function() {
+    it ('find( [ 1, 2, 3 ], \'maior ou igual a dois\' ) deve retornar [] ', function() {
         var resultado = find( [ 1, 2, 3 ], 'maior ou igual a dois' );
-        expect(resultado).toEqual( [1, 2, 3] );
+        expect(resultado).toEqual( [] );
     });
-    
-});
 
+});
