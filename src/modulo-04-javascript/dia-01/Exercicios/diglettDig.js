@@ -1,7 +1,7 @@
 // Exercicio 2
 function diglettDig() {
   for (var i = 1; i <= 100; i++) {
-    var valorImprimido = i;
+    let valorImprimido = i; // variável de bloco disponivel a partir do JS 6
     if ( divisivelPor15(i) )
       valorImprimido = 'Diglett dig, trio trio';
     else if ( divisivelPor3(i) )
