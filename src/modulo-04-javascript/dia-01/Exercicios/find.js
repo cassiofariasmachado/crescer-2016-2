@@ -1,14 +1,13 @@
 // Exericio 3
 function find(array, funcao) {
-  retorno = [];
-  for ( var i = 0, var len = array.length; i < len; i++ ) {
-    if ( funcao(array[i]) )
-      retorno.push(i);
+  var retorno = [];
+  for ( var i = 0, len = array.length; i < len; i++ ) {
+    var elementoAtual = array[i]
+    if ( typeof funcao === 'function') {
+      if ( funcao( elementoAtual ) )
+        retorno.push( elementoAtual );
+    } else
+        retorno.push( elementoAtual );
   }
+  return retorno;
 }
-
-function maiorIgualADois(elemento) {
-    return elemento >= 2;
-}
-
-//TO-DO: terminar
