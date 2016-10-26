@@ -5,15 +5,7 @@ class Herois {
   }
 
   foraDaGuerraCivil() {
-    function naoParticipouGuerraCivil (heroi) {
-      var items = heroi.events.items;
-      for (let i = 0, len = items.length; i < len; i++) {
-        if (items[i].name === "Civil War")
-          return false;
-      }
-      return true;
-    }
-    return this.arrayHerois.filter(naoParticipouGuerraCivil);
+    return this.arrayHerois.filter(heroi => heroi.events.items.every(element => element.name !== 'Civil War'));
   }
 
   maisPublicado() {
