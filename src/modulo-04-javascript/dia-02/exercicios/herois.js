@@ -16,4 +16,16 @@ class Herois {
     return this.arrayHerois.filter(naoParticipouGuerraCivil);
   }
 
+  maisPublicado() {
+    var availableMaisPublicado = 0;
+    var maisPublicado;
+    for (let indice in this.arrayHerois){
+      if (this.arrayHerois[indice].comics.available > availableMaisPublicado) {
+        maisPublicado = this.arrayHerois[indice];
+        availableMaisPublicado = maisPublicado.comics.available;
+      }
+    }
+    return maisPublicado;
+  }
+
 }
