@@ -41,4 +41,27 @@ class Herois {
     return totalPaginas / totalComics;
   }
 
+  seriesPorLongevidade() {
+    function longevidade (element1, element2) {
+      let longevidade1 = element1.endYear - element1.startYear;
+      let longevidade2 = element2.endYear - element2.startYear;
+      if (longevidade1 > longevidade2) {
+          return -1;
+      }
+      if (longevidade1 < longevidade2) {
+        return 1;
+      }
+      return 0;
+    }
+
+    let retorno = [];
+    for (let i in this.arrayHerois){
+      let items = this.arrayHerois[i].series.items;
+      for (let j in items) {
+          retorno = retorno.concat(items[j])
+      }
+    }
+
+    return retorno.sort(longevidade);
+  }
 }
