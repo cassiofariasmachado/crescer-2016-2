@@ -7,8 +7,8 @@ class Herois {
   foraDaGuerraCivil() {
     function naoParticipouGuerraCivil (heroi) {
       var items = heroi.events.items;
-      for (let indice in items) {
-        if (items[indice].name === "Civil War")
+      for (let i = 0, len = items.length; i < len; i++) {
+        if (items[i].name === "Civil War")
           return false;
       }
       return true;
@@ -19,9 +19,9 @@ class Herois {
   maisPublicado() {
     var availableMaisPublicado = 0;
     var maisPublicado;
-    for (let indice in this.arrayHerois){
-      if (this.arrayHerois[indice].comics.available > availableMaisPublicado) {
-        maisPublicado = this.arrayHerois[indice];
+    for (let i = 0, len = this.arrayHerois.length; i < len; i++){
+      if (this.arrayHerois[i].comics.available > availableMaisPublicado) {
+        maisPublicado = this.arrayHerois[i];
         availableMaisPublicado = maisPublicado.comics.available;
       }
     }
@@ -31,10 +31,10 @@ class Herois {
   mediaPaginas() {
     var totalPaginas = 0;
     var totalComics = 0;
-    for (let i in this.arrayHerois){
+    for (let i = 0, len = this.arrayHerois.length; i < len; i++){
       let items = this.arrayHerois[i].comics.items;
       totalComics += items.length;
-      for (let j in items) {
+      for (let j = 0, len = items.length; j < len; j++) {
           totalPaginas += items[j].pageCount;
       }
     }
@@ -55,9 +55,9 @@ class Herois {
     }
 
     let retorno = [];
-    for (let i in this.arrayHerois){
+    for (let i = 0, len = this.arrayHerois.length; i < len; i++){
       let items = this.arrayHerois[i].series.items;
-      for (let j in items) {
+      for (let j = 0, len = items.length; j < len; j++) {
           retorno = retorno.concat(items[j])
       }
     }
@@ -69,13 +69,13 @@ class Herois {
     let comicMaisCara;
     let valorComicMaisCara = 0;
 
-    for (let i in this.arrayHerois){
+    for (let i = 0, len = this.arrayHerois.length; i < len; i++){
       let comic = this.arrayHerois[i].comics;
-      let items = this.arrayHerois[i].comics.items;
+      let items = comic.items;
       let somaValorComicAtual = 0;
-      for (let j in items) {
+      for (let j = 0, len = items.length; j < len; j++ ) {
           let prices = items[j].prices;
-          for (let k in prices)
+          for (let k = 0, len = prices.length; k < len; k++)
             somaValorComicAtual += prices[k].price;
       }
       if (somaValorComicAtual > valorComicMaisCara) {
