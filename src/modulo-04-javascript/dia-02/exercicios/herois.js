@@ -28,4 +28,17 @@ class Herois {
     return maisPublicado;
   }
 
+  mediaPaginas() {
+    var totalPaginas = 0;
+    var totalComics = 0;
+    for (let i in this.arrayHerois){
+      let items = this.arrayHerois[i].comics.items;
+      totalComics += items.length;
+      for (let j in items) {
+          totalPaginas += items[j].pageCount;
+      }
+    }
+    return totalPaginas / totalComics;
+  }
+
 }
