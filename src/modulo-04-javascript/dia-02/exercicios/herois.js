@@ -64,4 +64,26 @@ class Herois {
 
     return retorno.sort(longevidade);
   }
+
+  comicMaisCara() {
+    let comicMaisCara;
+    let valorComicMaisCara = 0;
+
+    for (let i in this.arrayHerois){
+      let comic = this.arrayHerois[i].comics;
+      let items = this.arrayHerois[i].comics.items;
+      let somaValorComicAtual = 0;
+      for (let j in items) {
+          let prices = items[j].prices;
+          for (let k in prices)
+            somaValorComicAtual += prices[k].price;
+      }
+      if (somaValorComicAtual > valorComicMaisCara) {
+        comicMaisCara = comic;
+        valorComicMaisCara = somaValorComicAtual;
+      }
+    }
+    return comicMaisCara;
+  }
+
 }
