@@ -12,9 +12,19 @@ describe('foraDaGuerraCivil()', function() {
   }
 
   it('deve retornar apenas quem não participou da Guerra Civil', function() {
-    var herois = new Herois(marvel);
+    var arrayHerois = [ {events: {items: [{name:'Civil War'}]}},
+                        {events: {items: [{name:'Queda de Sauron'}]}},
+                        {events: {items: [{name:'Campeonato de truco'}]}}]
+    var herois = new Herois(arrayHerois);
     var resultado = herois.foraDaGuerraCivil();
     expect(verificaSeNaoParticiparamDaGuerraCivil(resultado)).toBeTruthy();
   });
+
+  it('deve retornar apenas quem não participou da Guerra Civil utilizando o arquivo marvel.js', function() {
+    var herois = new Herois();
+    var resultado = herois.foraDaGuerraCivil();
+    expect(verificaSeNaoParticiparamDaGuerraCivil(resultado)).toBeTruthy();
+  });
+
 
 });
