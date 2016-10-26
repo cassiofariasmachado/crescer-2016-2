@@ -1,0 +1,18 @@
+CREATE TABLE MESARIO (
+  IDMesario INTEGER       NOT NULL,
+  Nome      VARCHAR2(30)  NOT NULL,
+  CONSTRAINT PK_Mesario PRIMARY KEY (IDMesario)
+);
+
+CREATE SEQUENCE SEQ_Mesario;
+-- CREATE SEQUENCE SEQ_Mesario NOCACHE;
+
+INSERT INTO Mesario (IDMesario, Nome)
+VALUES (SEQ_MESARIO.NEXTVAL, 'Pedro de Souza');
+
+SELECT IDMesario,
+       Nome
+FROM Mesario;
+
+
+
