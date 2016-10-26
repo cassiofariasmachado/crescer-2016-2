@@ -9,15 +9,8 @@ class Herois {
   }
 
   maisPublicado() {
-    var availableMaisPublicado = 0;
-    var maisPublicado;
-    for (let i = 0, len = this.arrayHerois.length; i < len; i++){
-      if (this.arrayHerois[i].comics.available > availableMaisPublicado) {
-        maisPublicado = this.arrayHerois[i];
-        availableMaisPublicado = maisPublicado.comics.available;
-      }
-    }
-    return maisPublicado;
+    let herois = [].concat(this.arrayHerois);
+    return herois.sort( (herois1, herois2) => herois2.comics.available - herois1.comics.available)[0];
   }
 
   mediaPaginas() {
