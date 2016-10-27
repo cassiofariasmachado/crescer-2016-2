@@ -58,6 +58,14 @@ header {
         text-shadow: 0 0 40px white;
     }
 
+.historia-digimon a {
+    color: black;
+}
+
+    .historia-digimon a:hover {
+        color: white;
+    }
+
 .historia-digimon, .personagens, .digiescolhidos, .autenticacao a, body > nav a {
     box-shadow: 5px 5px 10px 0px black;
 }
