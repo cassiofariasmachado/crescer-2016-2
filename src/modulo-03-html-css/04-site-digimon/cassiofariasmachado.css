@@ -29,6 +29,10 @@ header, .historia-digimon h1, nav a, .personagens, .digiescolhidos {
     font-family: digimon;
 }
 
+.historia-digimon h1, .personagens h2, .digiescolhidos h3 {
+    text-align: center;
+}
+
 body {
     font-family: arial;
     background-image: url("resources/digimon-background.png");
