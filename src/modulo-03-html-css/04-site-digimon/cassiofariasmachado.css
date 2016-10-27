@@ -124,35 +124,40 @@ body > nav {
     opacity: 0.9;
 }
 
-.personagens ul {
+.personagens ul, .digiescolhidos ul{
     list-style-type: none;
     margin: auto 30px;
-    padding: 0;
 }
 
-.personagens ul li {
-    display: block;
-    width: 170px;
-    padding: 1px;
+.personagens ul li, .digiescolhidos ul li {
     background-color: #FEC435;
     border-style: solid;
     border-color: black;
+    padding: 2px;
 }
 
-.personagens ul li:hover {
+.personagens ul li:hover, .digiescolhidos ul li:hover {
     background-color: #E8AF3F;
 }
 
-.personagens ul li:hover::after {
+.personagens ul li:hover:after, .digiescolhidos ul li:hover:after {
     border-style: solid;
     border-color: black;
     border-radius: 52px;
     background-color: white;
     box-shadow: 5px 5px 10px 0px black;
     position: absolute;
-    left: 545px;
-    top: 800px;
+    left: 45%;
 }
+
+.personagens ul li {
+    display: block;
+    width: 170px;
+}
+
+    .personagens ul li:hover:after {
+        top: 800px;
+    }
 
     .personagens ul li:nth-child(1):hover:after {
         content: url("resources/digimons/digimon-agumon.png");
@@ -214,34 +219,13 @@ body > nav {
     height: 600px;
 }
 
-.digiescolhidos ul {
-    list-style-type: none;
-    margin: auto 30px;
-}
-
 .digiescolhidos ul li {
     display: inline-block;
-    background-color: #FEC435;
-    border-style: solid;
-    border-color: black;
-    padding: 2px;
-    font-family: digimon;
 }
 
-.digiescolhidos ul li:hover {
-    background-color: #E8AF3F;
-}
-
-.digiescolhidos ul li:hover:after  {
-    border-style: solid;
-    border-color: black;
-    border-radius: 52px;
-    background-color: white;
-    box-shadow: 5px 5px 10px 0px black;
-    position: absolute;
-    left: 530px;
-    top: 1500px;
-}
+    .digiescolhidos ul li:hover:after  {
+        top: 1500px;
+    }
 
     .digiescolhidos ul li:nth-child(1):hover:after {
         content: url("resources/digiescolhidos/digimon-taichi.png");
