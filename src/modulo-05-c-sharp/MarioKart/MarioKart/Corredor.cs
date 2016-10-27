@@ -16,7 +16,7 @@ namespace MarioKart
 
         public string Nome { get; private set; }
 
-        public NivelDeHabilidade NivelDeHabilidade { get; set; }
+        public NivelDeHabilidade NivelDeHabilidade { get; }
 
     }
 }
