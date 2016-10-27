@@ -72,16 +72,22 @@ header {
 
 nav a {
     text-decoration: none;
+    color: black;
 }
 
-
-.autenticacao a {
+.autenticacao a, body > nav a {
     color: black;
     border-style: solid;
     border-color: black;
+    transition-duration: 0.3s;
+    padding: 3px;
+}
+
+.autenticacao a {
+    border-width: 3px;
     border-radius: 10px;
     background-color: #FEC435;
-    padding: 3px;
+
 }
 
     .autenticacao a:hover {
@@ -89,21 +95,14 @@ nav a {
     }
 
 body > nav {
-
     margin: 10px auto;
 }
 
     body > nav a {
-        color: black;
-        text-align: center;
-        border-style: solid;
-        border-color: black;
+        display: inline-block;
         border-width: 2px;
         border-radius: 5px;
         background-color: silver;
-        transition-duration: 0.4s;
-        display: inline-block;
-        padding: 3px;
     }
 
     nav > a span {
