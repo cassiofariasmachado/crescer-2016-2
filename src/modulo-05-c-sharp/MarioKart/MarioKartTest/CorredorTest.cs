@@ -11,14 +11,14 @@ namespace MarioKartTest
         public void CorredorNasceComNome()
         {
             var corredor = new Corredor("Mario", NivelDeHabilidade.Noob);
-            Assert.AreEqual(corredor.Nome, "Mario");
+            Assert.AreEqual("Mario", corredor.Nome);
         }
 
         [TestMethod]
         public void CorredorNasceComNivelDeHabilidade()
         {
             var corredor = new Corredor("Mario", NivelDeHabilidade.Mediano);
-            Assert.AreEqual(corredor.NivelDeHabilidade, NivelDeHabilidade.Mediano);
+            Assert.AreEqual(NivelDeHabilidade.Mediano, corredor.NivelDeHabilidade);
         }
 
     }

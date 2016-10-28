@@ -11,7 +11,7 @@ namespace MarioKartTest.EquipamentosTest
         public void MotorABaseDeLavaTem3DeBonus()
         {
             var motorABaseDeLava = new MotorABaseDeLava();
-            Assert.AreEqual(motorABaseDeLava.Bonus, 3);
+            Assert.AreEqual(3, motorABaseDeLava.Bonus);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MarioKartTest.EquipamentosTest
         public void PneuDeCouroDeDragaoTem2DeBonus()
         {
             var pneusDeCouroDeDragao = new PneusDeCouroDeDragao();
-            Assert.AreEqual(pneusDeCouroDeDragao.Bonus, 2);
+            Assert.AreEqual(2, pneusDeCouroDeDragao.Bonus);
         }
     }
 }
