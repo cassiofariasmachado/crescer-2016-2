@@ -55,6 +55,7 @@
     <Compile Include="CorredorTest.cs" />
     <Compile Include="EquipamentosTest\PneusDeCouroDeDragaoTest.cs" />
     <Compile Include="EquipamentosTest\FogueteDePlutonioTest.cs" />
+    <Compile Include="EquipamentosTest\UltraPackTest.cs" />
     <Compile Include="KartsTest\KartSonnarTest.cs" />
     <Compile Include="KartsTest\KartLightTest.cs" />
     <Compile Include="KartsTest\KartDinamTest.cs" />
