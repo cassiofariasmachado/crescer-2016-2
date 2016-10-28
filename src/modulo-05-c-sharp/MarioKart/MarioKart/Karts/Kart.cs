@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarioKart
+namespace MarioKart.Karts
 {
     public class Kart
     {
@@ -19,9 +19,18 @@ namespace MarioKart
 
         public List<IEquipamento> Equipamentos { get; }
 
-        public int Velocidade {
+        public virtual int Velocidade {
             get
-            {
+            {   /*
+                 *  A velocidade de um kart é a seguinte soma: 
+                 *  3 + a soma dos bônus de todos os equipamentos 
+                 *  + bônus de habilidade do 
+                 *  Corredor (
+                 *              Noob: 3, 
+                 *              Mediano: 5, 
+                 *              Profissional: 6 + quantidade de equipamentos no kart
+                 *           ). 
+                 */ 
                 return 3 + this.GetSomaDosBonusDeTodosEquipamentos() + GetBonusHabilidadeCorredor(); 
             }
         }
