@@ -14,7 +14,7 @@ namespace MarioKart.Equipamentos
             this.Nivel = nivelEntreUmECinco ? nivel : 2;
         }
 
-        public int Bonus
+        public int BonusVelocidade
         {
             get
             {

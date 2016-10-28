@@ -32,7 +32,7 @@ namespace MarioKartTest.EquipamentosTest
         public void DeveRetornarBonusDeUmPorNivel()
         {
             var fogueteDePlutonio = new FogueteDePlutonio(5);
-            Assert.AreEqual(5, fogueteDePlutonio.Bonus);
+            Assert.AreEqual(5, fogueteDePlutonio.BonusVelocidade);
         }
 
     }

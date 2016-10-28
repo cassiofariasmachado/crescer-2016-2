@@ -13,11 +13,11 @@ namespace MarioKart.Equipamentos
             this.Equipamento = equipamento;
         }
 
-        public int Bonus
+        public int BonusVelocidade
         {
             get
             {
-                return (int) Math.Ceiling(Equipamento.Bonus * 1.2);
+                return (int) Math.Ceiling(Equipamento.BonusVelocidade * 1.2);
             }
         }
 

@@ -20,7 +20,7 @@ namespace MarioKartTest.EquipamentosTest
         {
             var pneuDeCouroDeDragao = new PneusDeCouroDeDragao();
             var ultraPack = new UltraPack(pneuDeCouroDeDragao);
-            Assert.AreEqual(3, ultraPack.Bonus);
+            Assert.AreEqual(3, ultraPack.BonusVelocidade);
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace MarioKartTest.EquipamentosTest
             var ultraPackComUltraPack = new UltraPack(ultraPack);
             Assert.AreEqual(pneuDeCouroDeDragao, ultraPack.Equipamento);
             Assert.AreEqual(ultraPack, ultraPackComUltraPack.Equipamento);
-            Assert.AreEqual(4, ultraPackComUltraPack.Bonus);
+            Assert.AreEqual(4, ultraPackComUltraPack.BonusVelocidade);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace MarioKart.Karts
         public int GetSomaDosBonusDeTodosEquipamentos()
         {
             int somaTodosBonus = 0;
-            this.Equipamentos.ForEach(equipamento => somaTodosBonus += equipamento.Bonus);
+            this.Equipamentos.ForEach(equipamento => somaTodosBonus += equipamento.BonusVelocidade);
             return somaTodosBonus;
         }
 
