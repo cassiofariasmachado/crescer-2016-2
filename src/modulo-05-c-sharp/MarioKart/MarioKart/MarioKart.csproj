@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Equipamentos\FogueteDePlutonio.cs" />
     <Compile Include="Equipamentos\IEquipamento.cs" />
     <Compile Include="Equipamentos\MotorABaseDeLava.cs" />
     <Compile Include="Equipamentos\PneusDeCouroDeDragao.cs" />
