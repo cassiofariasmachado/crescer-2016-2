@@ -47,7 +47,7 @@ namespace MarioKart.Karts
             return somaTodosBonus;
         }
 
-        public int GetBonusHabilidadeCorredor()
+        public virtual int GetBonusHabilidadeCorredor()
         {
             if (Corredor.NivelDeHabilidade.Equals(NivelDeHabilidade.Profissional))
                 return (int)this.Corredor.NivelDeHabilidade + this.Equipamentos.Count;
