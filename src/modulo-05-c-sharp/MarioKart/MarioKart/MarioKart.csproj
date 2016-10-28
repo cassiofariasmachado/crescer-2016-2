@@ -43,6 +43,7 @@
     <Compile Include="Equipamentos\IEquipamento.cs" />
     <Compile Include="Equipamentos\MotorABaseDeLava.cs" />
     <Compile Include="Equipamentos\PneusDeCouroDeDragao.cs" />
+    <Compile Include="Karts\KartLight.cs" />
     <Compile Include="Karts\KartSonnar.cs" />
     <Compile Include="Karts\Kart.cs" />
     <Compile Include="NivelDeHabilidade.cs" />
