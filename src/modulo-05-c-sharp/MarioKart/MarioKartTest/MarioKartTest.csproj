@@ -59,6 +59,7 @@
     <Compile Include="KartsTest\KartSonnarTest.cs" />
     <Compile Include="KartsTest\KartLightTest.cs" />
     <Compile Include="KartsTest\KartDinamTest.cs" />
+    <Compile Include="KartsTest\KartSkyFusionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EquipamentosTest\MotorABaseDeLavaTest.cs" />
     <Compile Include="KartsTest\KartTest.cs" />

@@ -47,6 +47,7 @@
     <Compile Include="Equipamentos\UltraPack.cs" />
     <Compile Include="Karts\KartDinam.cs" />
     <Compile Include="Karts\KartLight.cs" />
+    <Compile Include="Karts\KartSkyFusion.cs" />
     <Compile Include="Karts\KartSonnar.cs" />
     <Compile Include="Karts\Kart.cs" />
     <Compile Include="NivelDeHabilidade.cs" />
