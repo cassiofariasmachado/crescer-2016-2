@@ -5,13 +5,13 @@ using MarioKart.Equipamentos;
 namespace MarioKartTest.EquipamentosTest
 {
     [TestClass]
-    public class PneuDeCouroDeDragaoTest
+    public class PneusDeCouroDeDragaoTest
     {
         [TestMethod]
         public void PneuDeCouroDeDragaoTem2DeBonus()
         {
-            var pneuDeCouroDeDragao = new PneuDeCouroDeDragao();
-            Assert.AreEqual(pneuDeCouroDeDragao.Bonus, 2);
+            var pneusDeCouroDeDragao = new PneusDeCouroDeDragao();
+            Assert.AreEqual(pneusDeCouroDeDragao.Bonus, 2);
         }
     }
 }

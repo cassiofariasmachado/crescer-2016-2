@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Equipamentos\IEquipamento.cs" />
     <Compile Include="Equipamentos\MotorABaseDeLava.cs" />
-    <Compile Include="Equipamentos\PneuDeCouroDeDragao.cs" />
+    <Compile Include="Equipamentos\PneusDeCouroDeDragao.cs" />
     <Compile Include="Kart.cs" />
     <Compile Include="NivelDeHabilidade.cs" />
     <Compile Include="Corredor.cs" />
