@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="CorredorTest.cs" />
     <Compile Include="EquipamentosTest\PneusDeCouroDeDragaoTest.cs" />
+    <Compile Include="KartsTest\KartSonnarTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EquipamentosTest\MotorABaseDeLavaTest.cs" />
     <Compile Include="KartsTest\KartTest.cs" />
