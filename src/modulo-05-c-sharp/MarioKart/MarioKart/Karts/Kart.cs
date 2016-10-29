@@ -47,7 +47,7 @@ namespace MarioKart.Karts
             return somaTodosBonus;
         }
 
-        public virtual int GetBonusHabilidadeCorredor()
+        public virtual int GetBonusPorNivelDeHabilidadeDoCorredor()
         {
             // Bônus de habilidade do Corredor (Noob: 3, Mediano: 5, Profissional: 6 + quantidade de equipamentos no kart)
             if (Corredor.NivelDeHabilidade.Equals(NivelDeHabilidade.Profissional))

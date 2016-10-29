@@ -12,10 +12,10 @@ namespace MarioKart.Karts
         {
         }
 
-        public override int GetBonusHabilidadeCorredor()
+        public override int GetBonusPorNivelDeHabilidadeDoCorredor()
         {
             //Dinam: dobra o bônus de velocidade que o kart ganha do corredor (e apenas do corredor).
-            return base.GetBonusHabilidadeCorredor() * 2;
+            return base.GetBonusPorNivelDeHabilidadeDoCorredor() * 2;
         }
     }
 }
