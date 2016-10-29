@@ -17,7 +17,7 @@ namespace MarioKart.Equipamentos
         {
             get
             {
-                return (int) Math.Ceiling(Equipamento.BonusVelocidade * 1.2);
+                return Convert.ToInt32(Math.Ceiling(Equipamento.BonusVelocidade * 1.2));
             }
         }
 
