@@ -31,7 +31,7 @@ namespace MarioKart.Karts
                  *              Profissional: 6 + quantidade de equipamentos no kart
                  *           ). 
                  */ 
-                return 3 + this.GetSomaDosBonusDeTodosEquipamentos() + GetBonusHabilidadeCorredor(); 
+                return 3 + this.GetSomaDosBonusDeTodosEquipamentos() + GetBonusPorNivelDeHabilidadeDoCorredor(); 
             }
         }
 
@@ -42,9 +42,12 @@ namespace MarioKart.Karts
 
         public int GetSomaDosBonusDeTodosEquipamentos()
         {
-            int somaTodosBonus = 0;
-            this.Equipamentos.ForEach(equipamento => somaTodosBonus += equipamento.BonusVelocidade);
-            return somaTodosBonus;
+            int somaDosBonusDeTodosEquipamentos = 0;
+            foreach (var equipamento in this.Equipamentos)
+            {
+                somaDosBonusDeTodosEquipamentos += equipamento.BonusVelocidade;
+            }
+            return somaDosBonusDeTodosEquipamentos;
         }
 
         public virtual int GetBonusPorNivelDeHabilidadeDoCorredor()
