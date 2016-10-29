@@ -16,11 +16,11 @@ namespace MarioKart.Karts
         {
             get
             {
-                return base.Velocidade + this.GetBonusDoKartLight();
+                return base.Velocidade + this.GetBonusVelocidadeDoKartLight();
             }
         }
 
-        private int GetBonusDoKartLight()
+        private int GetBonusVelocidadeDoKartLight()
         {
             // Light: ganha velocidade + 3 se dirigido por um corredor Noob, perde 1 de velocidade se dirigido por um corredor Profissional
             bool corredorNoob = this.Corredor.NivelDeHabilidade.Equals(NivelDeHabilidade.Noob);
