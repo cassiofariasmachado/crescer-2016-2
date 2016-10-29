@@ -16,11 +16,11 @@ namespace MarioKart.Karts
         {
             get
             {
-                return base.Velocidade + this.GetBonusDoKartSonnar();
+                return base.Velocidade + this.GetBonusVelocidadeDoKartSonnar();
             }
         }
 
-        private int GetBonusDoKartSonnar()
+        private int GetBonusVelocidadeDoKartSonnar()
         {
             // Sonnar: possui + 2 de velocidade se possuir pelo menos 1 equipamento.
             bool possuiUmOuMaisEquipamentos = this.Equipamentos.Count > 0;
