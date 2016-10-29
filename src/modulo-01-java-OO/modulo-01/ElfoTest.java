@@ -21,6 +21,11 @@ public class ElfoTest {
     }
 
     @Test
+    public void elfoNasceCom100DeVida() {
+        assertEquals(100, new Elfo("Legolas").getVida(), 0.);
+    }
+
+    @Test
     public void elfoNasceComArco() {
         // Act
         Elfo elfoDoTeste = new Elfo("Elrond");
@@ -236,3 +241,5 @@ public class ElfoTest {
         assertEquals("Legolas possui 1 flecha e 41 níveis de experiência.", elfoEmString);
     }
 }
+
+
