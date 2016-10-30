@@ -118,7 +118,9 @@ namespace Repositorio
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            throw new NotImplementedException();
+            bool turnoEhNulo = turno == null;
+            var funcionariosPorTurno = this.Funcionarios.Where(funcionario => turnoEhNulo || funcionario.TurnoTrabalho.Equals(turno)).ToList();
+            return funcionariosPorTurno.Sum(funcionario => funcionario.Cargo.Salario) / funcionariosPorTurno.Count;
         }
 
         public IList<Funcionario> AniversariantesDoMes()
