@@ -97,7 +97,8 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            throw new NotImplementedException();
+            return this.Funcionarios.Where(funcionario => funcionario.Nome.Equals(nome))
+                                    .ToList();
         }        
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
