@@ -132,8 +132,8 @@ namespace Repositorio
 
         public IList<dynamic> BuscaRapida()
         {
-            return this.Funcionarios.Select(funcionario => new { NomeFuncionario = $"{funcionario.Nome}",
-                                                                 TituloCargo = $"{funcionario.Cargo.Titulo}" })
+            return this.Funcionarios.Select(funcionario => new { NomeFuncionario = funcionario.Nome,
+                                                                 TituloCargo = funcionario.Cargo.Titulo })
                                     .ToList<dynamic>();
         }
 
