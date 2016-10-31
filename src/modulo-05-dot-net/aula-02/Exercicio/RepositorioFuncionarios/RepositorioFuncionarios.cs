@@ -97,7 +97,8 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            return this.Funcionarios.Where(funcionario => funcionario.Nome.Equals(nome))
+            return this.Funcionarios.Where(funcionario => new Regex(nome, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)
+                                                          .IsMatch(funcionario.Nome))
                                     .ToList();
         }        
 
