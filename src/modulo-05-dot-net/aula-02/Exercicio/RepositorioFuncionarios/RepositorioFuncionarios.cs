@@ -147,7 +147,30 @@ namespace Repositorio
 
         public dynamic FuncionarioMaisComplexo()
         {
-            throw new NotImplementedException();
+            return this.Funcionarios.Where(funcionario => !funcionario.Cargo.Titulo.Equals("Desenvolvedor Júnior") && !funcionario.TurnoTrabalho.Equals(TurnoTrabalho.Tarde))
+                                    .OrderBy(funcionario => GetQuantidadeDeConsoantes(funcionario.Nome))
+                                    .Select(funcionario => new {
+                                                                 Nome = funcionario.Nome,
+                                                                 //DataNascimento(data denascimento do funcionário no formato "25/01/2016")
+                                                                 DataNascimento = funcionario.DataNascimento.ToLocalTime().ToString()
+                                                                //SalarioRS(salário do funcionário no formato brasileiro, exemplo: "R$ 999,99")
+                                                                //SalarioUS(salário do funcionário no formato americano, exemplo: ""$999.99")
+                                                                //QuantidadeMesmoCargo(quantidade de funcionários que estão no mesmo cargo que ele)
+                                                                }
+                                    );
+        }
+
+        private int GetQuantidadeDeConsoantes(string palavra)
+        {
+            int quantidadeConsoantes = 0;
+            var regexDeConsoantes = new Regex("bcdfghjklmnpqrstvwxyz", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            foreach (char letra in palavra)
+            {
+                bool ehConsoante = regexDeConsoantes.IsMatch(letra.ToString());
+                if (ehConsoante)
+                    quantidadeConsoantes++;
+            }
+            return quantidadeConsoantes;
         }
     }
 }
