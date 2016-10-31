@@ -100,22 +100,36 @@ namespace Repositorio
             return this.Funcionarios.Where(funcionario => new Regex(nome, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)
                                                           .IsMatch(funcionario.Nome))
                                     .ToList();
-        }        
+        }
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
         {
             return this.Funcionarios.Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho))
                                     .ToList();
-        }        
+        }
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-            return this.Funcionarios.Where(funcionario => {
-                                                                int idadeDoFuncionario = DateTime.Today.Year - funcionario.DataNascimento.Year;
-                                                                return idadeDoFuncionario >= idade - 5 && idadeDoFuncionario <= idade + 5;
-                                                           })
+            return this.Funcionarios.Where(funcionario =>
+            {
+                int idadeDoFuncionario = CalcularIdade(funcionario.DataNascimento);
+                return idadeDoFuncionario >= idade - 5 && idadeDoFuncionario <= idade + 5;
+            })
                                     .ToList();
-        }        
+        }
+
+        private int CalcularIdade(DateTime dataNascimento)
+        {
+            int anos = DateTime.Now.Year - dataNascimento.Year;
+            bool mesMenor = DateTime.Now.Month < dataNascimento.Month;
+            bool mesIgualEDiaMenor = DateTime.Now.Month == dataNascimento.Month && DateTime.Now.Day < dataNascimento.Day;
+
+            if (mesMenor || mesIgualEDiaMenor)
+            {
+                anos--;
+            }
+            return anos;
+        }
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
@@ -132,16 +146,22 @@ namespace Repositorio
 
         public IList<dynamic> BuscaRapida()
         {
-            return this.Funcionarios.Select(funcionario => new { NomeFuncionario = funcionario.Nome,
-                                                                 TituloCargo = funcionario.Cargo.Titulo })
+            return this.Funcionarios.Select(funcionario => new
+            {
+                NomeFuncionario = funcionario.Nome,
+                TituloCargo = funcionario.Cargo.Titulo
+            })
                                     .ToList<dynamic>();
         }
 
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
         {
             return this.Funcionarios.GroupBy(funcionario => funcionario.TurnoTrabalho)
-                                    .Select(grupo => new { Turno = grupo.Key,
-                                                           Quantidade = grupo.Count() } )
+                                    .Select(grupo => new
+                                    {
+                                        Turno = grupo.Key,
+                                        Quantidade = grupo.Count()
+                                    })
                                     .ToList<dynamic>();
         }
 
@@ -149,14 +169,15 @@ namespace Repositorio
         {
             return this.Funcionarios.Where(funcionario => !funcionario.Cargo.Titulo.Equals("Desenvolvedor Júnior") && !funcionario.TurnoTrabalho.Equals(TurnoTrabalho.Tarde))
                                     .OrderBy(funcionario => GetQuantidadeDeConsoantes(funcionario.Nome))
-                                    .Select(funcionario => new {
-                                                                 Nome = funcionario.Nome,
-                                                                 //DataNascimento(data denascimento do funcionário no formato "25/01/2016")
-                                                                 DataNascimento = funcionario.DataNascimento.ToLocalTime().ToString()
-                                                                //SalarioRS(salário do funcionário no formato brasileiro, exemplo: "R$ 999,99")
-                                                                //SalarioUS(salário do funcionário no formato americano, exemplo: ""$999.99")
-                                                                //QuantidadeMesmoCargo(quantidade de funcionários que estão no mesmo cargo que ele)
-                                                                }
+                                    .Select(funcionario => new
+                                    {
+                                        Nome = funcionario.Nome,
+                                        //DataNascimento(data denascimento do funcionário no formato "25/01/2016")
+                                        DataNascimento = funcionario.DataNascimento.ToLocalTime().ToString()
+                                        //SalarioRS(salário do funcionário no formato brasileiro, exemplo: "R$ 999,99")
+                                        //SalarioUS(salário do funcionário no formato americano, exemplo: ""$999.99")
+                                        //QuantidadeMesmoCargo(quantidade de funcionários que estão no mesmo cargo que ele)
+                                    }
                                     );
         }
 
