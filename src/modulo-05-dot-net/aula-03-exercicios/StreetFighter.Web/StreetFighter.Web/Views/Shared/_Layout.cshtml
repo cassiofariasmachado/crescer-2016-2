@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/street-style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="menu">
+
+        <span>
+            <a href="~/StreetFighter/">Início</a>
+        </span>
+
+        <span>
+            <a href="https://www.google.com.br/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#tbm=nws&q=street+fighter">Notícias</a>
+        </span>
+
+        <span>
+            <a href="~/StreetFighter/FichaTecnica">Ficha Técnica</a>
+        </span>
+
+        <span>
+            <a href="~/StreetFighter/Sobre">Sobre</a>
+        </span>
+
+    </div>
+
+    <div class="conteudo">
+
+        <div class="titulo">
+
+            <h3>@ViewBag.Title</h3>
+
+        </div>
+
+        @RenderBody();
+
+    </div>
+
+</body>
+
+</html>
