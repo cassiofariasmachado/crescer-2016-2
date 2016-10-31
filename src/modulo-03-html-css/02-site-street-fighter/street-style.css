@@ -44,10 +44,10 @@ body {
         background-color: lightgrey;
     }
 
-        .conteudo.corpo > ul {
+        .conteudo .corpo > ul {
             list-style: none;
         }
 
-        .conteudo.corpo > img {
+        .conteudo .corpo > img {
             float: left;
         }
