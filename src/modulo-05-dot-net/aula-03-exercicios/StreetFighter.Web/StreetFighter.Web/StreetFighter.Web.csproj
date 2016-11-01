@@ -101,6 +101,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SobreModel.cs" />
     <Compile Include="Models\TipoSanguineo.cs" />
     <Compile Include="Models\FichaTecnicaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +112,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\StreetFighter\Index.cshtml" />
     <Content Include="Views\StreetFighter\FichaTecnica.cshtml" />
+    <Content Include="Views\StreetFighter\Sobre.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

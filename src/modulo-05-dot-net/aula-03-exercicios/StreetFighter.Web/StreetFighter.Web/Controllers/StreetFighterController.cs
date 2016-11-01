@@ -42,5 +42,24 @@ namespace StreetFighter.Web.Controllers
             fichaTecnica.GolpesEspeciaisFamosos = "Electric Thunder, Rolling Attack.";
             return View(fichaTecnica);
         }
+
+        public ActionResult Sobre()
+        {
+            SobreModel sobre = new SobreModel();
+            sobre.Nome = "Cássio Farias Machado";
+            sobre.DataNascimento = DateTime.Parse("18/09/1996", new CultureInfo("pt-BR"));
+            sobre.Altura = 171;
+            sobre.Peso = 67;
+            sobre.TipoSanguineo = TipoSanguineo.A;
+            sobre.HabilidadesEspeciais = "Comer, bater palmas fora do ritmo e tentar programar";
+            sobre.Gosta = "Jogar video jogos, nadar e ler livros";
+            sobre.Desgosta = "Sopa de janta e ervilha";
+            sobre.FalaDeVitoria = "\"Pede pra nerfar noob!\"";
+            sobre.Nacionalidade = "Brasil";
+            sobre.Naturalidade = "Porto Alegre";
+            return View(sobre);
+        }
+
+
     }
 }

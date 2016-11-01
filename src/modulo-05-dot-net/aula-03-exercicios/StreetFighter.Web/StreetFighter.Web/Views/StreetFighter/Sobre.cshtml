@@ -1,0 +1,24 @@
+﻿@model StreetFighter.Web.Models.SobreModel
+@{
+    ViewBag.Title = "Sobre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="corpo">
+
+    <h1>@(Model.Nome)</h1>
+
+    <ul>
+        <li><strong>Nascimento:</strong> @(Model.DataNascimento.ToLongDateString()).</li>
+        <li><strong>Altura:</strong> @(Model.Altura)cm.</li>
+        <li><strong>Peso:</strong> @(Model.Peso)kg.</li>
+        <li><strong>Tipo sanguíneo:</strong> @(Model.TipoSanguineo).</li>
+        <li><strong>Habilidades especiais:</strong> @(Model.HabilidadesEspeciais).</li>
+        <li><strong>Gosta:</strong> @(Model.Gosta).</li>
+        <li><strong>Desgosta:</strong> @(Model.Desgosta).</li>
+        <li><strong>Uma fala de vitória:</strong> @(Model.FalaDeVitoria)</li>
+        <li><strong>Nacionalidade:</strong> @(Model.Nacionalidade).</li>
+        <li><strong>Naturalidade:</strong> @(Model.Naturalidade).</li>
+    </ul>
+
+</div>
