@@ -1,0 +1,38 @@
+﻿@model StreetFighter.Web.Models.FichaTecnicaModel
+@{
+    ViewBag.Title = "Ficha Técnica";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="corpo">
+    <h1>@(Model.Nome)</h1>
+
+ 
+    <img src="~/Content/Images/blanka.png" alt="Imagem do personagem Blanka"/>
+
+    <ul>
+        <li><strong>Primeira aparição:</strong>@(Model.PrimeiraAparicao)</li>
+        <li><strong>Nascimento:</strong> @(Model.DataNascimento.ToLongDateString())</li>
+        <li><strong>Altura:</strong> @(Model.Altura)cm.</li>
+        <li><strong>Peso:</strong> @(Model.Peso)kg.</li>
+        <li><strong>Medidas:</strong> B@(Model.MedidaBusto), C@(Model.MedidaCintura), Q@(Model.MedidaQuadril).</li>
+        <li><strong>Tipo sanguíneo:</strong> @(Model.TipoSanguineo).</li>
+        <li><strong>Habilidades especiais:</strong> @(Model.HabilidadesEspeciais)</li>
+        <li><strong>Gosta:</strong> @(Model.Gosta)</li>
+        <li><strong>Desgosta:</strong> @(Model.Desgosta)</li>
+        <li><strong>Estilo de luta:</strong> @(Model.EstiloDeLuta)</li>
+        <li><strong>Origem:</strong> @(Model.Origem)</li>
+        <li><strong>Uma fala de vitória:</strong> @(Model.FalaDeVitoria)</li>
+        <li><strong>SSF2 nickname:</strong> @(Model.NickNameDoSSF2). <br></li>
+        <li><strong>SFA3 nickname:</strong> @(Model.NickNameDoSFA3)</li>
+        <li><strong>SF4 nickname:</strong> @(Model.NickNameDoSF4)</li>
+        <li>
+            <strong>SFA3 stage:</strong> @(Model.StageDoSFA3)
+        </li>
+        <li><strong>SF2 stage:</strong> @(Model.StageDoSF2)</li>
+        <li><strong>Golpes especiais famosos:</strong> @(Model.GolpesEspeciaisFamosos) </li>
+        <li></li>
+    </ul>
+
+</div>
