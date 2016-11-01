@@ -15,7 +15,7 @@ namespace StreetFighter.Web.Models
         public int MedidaBusto { set; get; }
         public int MedidaCintura { set; get; }
         public int MedidaQuadril { set; get; }
-        public TipoSanguineo TipoSanguine { set; get; }
+        public TipoSanguineo TipoSanguineo { set; get; }
         public string HabilidadesEspeciais { set; get; }
         public string Gosta { set; get; }
         public string Desgosta { set; get; }
@@ -28,6 +28,5 @@ namespace StreetFighter.Web.Models
         public string StageDoSFA3 { set; get; }
         public string StageDoSF2 { set; get; }
         public string GolpesEspeciaisFamosos { set; get; }
-        public TipoSanguineo TipoSanguineo { get; internal set; }
     }
 }
