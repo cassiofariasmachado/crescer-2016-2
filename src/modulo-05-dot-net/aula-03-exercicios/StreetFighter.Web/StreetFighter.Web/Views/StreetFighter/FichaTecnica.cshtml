@@ -7,11 +7,10 @@
 
 <div class="corpo">
     <h1>@(Model.Nome)</h1>
+    
+    <img class="col-md-5 col-no-float" src="~/Content/Images/@Model.UrlDaImagem" width="260" height="480" alt="Imagem do personagem Blanka" />
 
- 
-    <img src="~/Content/Images/@Model.UrlDaImagem" alt="Imagem do personagem Blanka"/>
-
-    <ul>
+    <ul class="col-md-5 col-no-float">
         <li><strong>Nascimento: </strong> @(Model.DataNascimento.ToString("dd 'de' MMMM 'de' yyyy"))</li>
         <li><strong>Altura: </strong> @(Model.Altura)cm.</li>
         <li><strong>Peso: </strong> @(Model.Peso)kg.</li>
