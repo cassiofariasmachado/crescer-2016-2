@@ -14,37 +14,27 @@
 </head>
 
 <body>
-
-    <div id="menu">
-
-        <span>
-            <a href="~/StreetFighter/">Início</a>
-        </span>
-
-        <span>
-            <a href="~/StreetFighter/FichaTecnica">Ficha Técnica</a>
-        </span>
-
-        <span>
-            <a href="~/StreetFighter/Cadastro">Cadastro</a>
-        </span>
-
-        <span>
-            <a href="~/StreetFighter/Sobre">Sobre</a>
-        </span>
-
-    </div>
-
-    <div class="conteudo">
-
-        <div class="titulo">
-
-            <h3>@ViewBag.Title</h3>
-
+        <div class="col-xs-12 col-md-4 center-block col-no-float" id="menu">
+            <span class="col-sm-12 col-md-3 col-no-float">
+                <a href="~/StreetFighter/">Início</a>
+            </span>
+            <span class="col-sm-12 col-md-3 col-no-float">
+                <a href="~/StreetFighter/FichaTecnica">Ficha Técnica</a>
+            </span>
+            <span class="col-sm-12 col-md-3 col-no-float">
+                <a href="~/StreetFighter/Cadastro">Cadastro</a>
+            </span>
+            <span class="col-sm-12 col-md-3 col-no-float">
+                <a href="~/StreetFighter/Sobre">Sobre</a>
+            </span>
         </div>
 
-        @RenderBody();
 
+    <div class="conteudo col-sm-12 col-md-6 center-block col-no-float" >
+        <div class="titulo">
+            <h3>@ViewBag.Title</h3>
+        </div>
+        @RenderBody();
     </div>
 
 </body>

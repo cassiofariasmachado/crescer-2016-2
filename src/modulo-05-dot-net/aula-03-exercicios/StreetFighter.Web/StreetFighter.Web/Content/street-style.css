@@ -7,20 +7,16 @@ body {
 }
 
 #menu {
-    width: 400px;
+    position: center;
     border-style: solid;
     border-color: rgb(192,192,192);
     border-width: 2px;
     border-radius: 15px;
     background-color: rgba(120,120,120,0.7);
     margin: 250px auto 75px;
-    padding: 10px;
     font-weight: bold;
     text-align: center;
 }
-    #menu span {
-        margin: 0px 10px; 
-    }
 
     #menu a {
         color:white; 
@@ -28,7 +24,6 @@ body {
     }
 
 .conteudo {
-    width: 650px;
     margin: 100px auto;
     text-align: justify;
 }
@@ -45,9 +40,10 @@ body {
     }
 
         .conteudo .corpo > ul {
+            display: inline-block;
             list-style: none;
         }
 
-        .conteudo .corpo > img {
-            float: left;
-        }
+.col-no-float {
+    float: none;
+}
