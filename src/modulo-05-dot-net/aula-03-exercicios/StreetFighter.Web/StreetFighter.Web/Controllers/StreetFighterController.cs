@@ -46,6 +46,30 @@ namespace StreetFighter.Web.Controllers
             return View(sobre);
         }
 
+        public ActionResult Cadastro()
+        {
+            PopularOrigens();
+            return View();
+        }
 
+        private void PopularOrigens()
+        {
+            ViewBag.ListaDeOrigens = new List<SelectListItem>()
+            {
+                new SelectListItem() { Value = "AR", Text = "Argentina" },
+                new SelectListItem() { Value = "BO", Text = "Bolivia" },
+                new SelectListItem() { Value = "BR", Text = "Brasil" },
+                new SelectListItem() { Value = "CL", Text = "Chile" },
+                new SelectListItem() { Value = "CO", Text = "Colômbia" },
+                new SelectListItem() { Value = "EC", Text = "Equador" },
+                new SelectListItem() { Value = "GY", Text = "Guiana" },
+                new SelectListItem() { Value = "GF", Text = "Guiana Francesa" },
+                new SelectListItem() { Value = "PY", Text = "Paraguai" },
+                new SelectListItem() { Value = "PE", Text = "Peru" },
+                new SelectListItem() { Value = "SR", Text = "Suriname" },
+                new SelectListItem() { Value = "UY", Text = "Uruguai" },
+                new SelectListItem() { Value = "VE", Text = "Venezuela" },
+            };
+        }
     }
 }
