@@ -52,6 +52,20 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
+        public ActionResult SalvarCadastro(FichaTecnicaModel fichaModel)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.Mensagem = "Cadastro concluído com sucesso.";
+                return View("Detalhe", fichaModel);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Ocorreu algum erro. Tente novamente ou entre em contato com o administrador.");
+                return View("Cadastro");
+            }
+        }
+
         private void PopularOrigens()
         {
             ViewBag.ListaDeOrigens = new List<SelectListItem>()
