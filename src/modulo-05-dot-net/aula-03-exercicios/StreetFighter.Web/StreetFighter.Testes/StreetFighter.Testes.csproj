@@ -57,11 +57,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Aplicativo\PersonagemAplicativoTest.cs" />
+    <Compile Include="Dominio\PersonagemTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dominio\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
