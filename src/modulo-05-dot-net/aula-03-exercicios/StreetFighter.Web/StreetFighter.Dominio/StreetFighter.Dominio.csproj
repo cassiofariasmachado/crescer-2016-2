@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPersonagemRepositorio.cs" />
     <Compile Include="Personagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
