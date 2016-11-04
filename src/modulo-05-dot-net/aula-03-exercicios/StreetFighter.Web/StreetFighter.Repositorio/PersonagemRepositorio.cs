@@ -38,19 +38,55 @@ namespace StreetFighter.Repositorio
             File.WriteAllLines(CaminhoArquivo, personagensComoString);
         }
 
+        public List<Personagem> ListarPersonagens (string filtroNome = null)
+        {
+            List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
+
+            if (String.IsNullOrEmpty(filtroNome))
+                return personagens;
+
+            return personagens.Where(personagem => personagem.Nome.ToUpperInvariant().Contains(filtroNome.ToUpperInvariant()))
+                              .ToList();
+        }
+
         public void IncluirPersonagem (Personagem personagem)
         {
-            throw new NotImplementedException();
+            List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
+
+            personagens.Add(personagem);
+
+            this.salvarPersonagensNoArquivoCsv(personagens);
         }
 
         public void EditarPersonagem (Personagem personagem)
         {
-            throw new NotImplementedException();
+            List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
+
+            for (int i = 0; i < personagens.Count; i++)
+            {
+                if (personagens[i].Id == personagem.Id)
+                {
+                    personagens.RemoveAt(i);
+                    personagens.Insert(i, personagem);
+                }
+            }
+
+            this.salvarPersonagensNoArquivoCsv(personagens);
         }
 
         public void ExcluirPersonagem(Personagem personagem)
         {
-            throw new NotImplementedException();
+            List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
+
+            for (int i = 0; i < personagens.Count; i++)
+            {
+                if (personagens[i].Id == personagem.Id)
+                {
+                    personagens.RemoveAt(i);
+                }
+            }
+
+            this.salvarPersonagensNoArquivoCsv(personagens);
         }
     }
 }
