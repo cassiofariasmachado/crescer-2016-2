@@ -10,8 +10,6 @@ namespace StreetFighter.Dominio
     {
         public int Id { get; private set; }
 
-        public string UrlDaImagem { get; private set; }
-
         public string Nome { get; private set; }
 
         public DateTime DataNascimento { get; private set; }
@@ -25,6 +23,7 @@ namespace StreetFighter.Dominio
         public string GolpesEspeciais { get; private set; }
 
         public bool PersonagemOculto { get; private set; }
+        public string UrlDaImagem { get; private set; }
 
         public Personagem( int id, 
                            string nome,
@@ -49,7 +48,6 @@ namespace StreetFighter.Dominio
                            string urlDaImagem = "Não informado",
                            bool personagemOculto = false )
         {
-            this.UrlDaImagem = urlDaImagem;
             this.Nome = nome;
             this.DataNascimento = dataNascimento;
             this.Altura = altura;
@@ -57,6 +55,23 @@ namespace StreetFighter.Dominio
             this.Origem = origem;
             this.GolpesEspeciais = golpesEspeciais;
             this.PersonagemOculto = personagemOculto;
+            this.UrlDaImagem = urlDaImagem;
         }
+
+        public Personagem(string personagemComoString) 
+        {
+            string[] atributos = personagemComoString.Split(';');
+
+            this.Id = Convert.ToInt32(atributos[0]);
+            this.Nome = atributos[1];
+            this.DataNascimento = Convert.ToDateTime(atributos[2]);
+            this.Altura = Convert.ToInt32(atributos[3]);
+            this.Peso = Convert.ToDouble(atributos[4]);
+            this.Origem = atributos[5];
+            this.GolpesEspeciais = atributos[6];
+            this.UrlDaImagem = atributos[7];
+            this.PersonagemOculto = Convert.ToBoolean(atributos[8]);
+        }
+
     }
 }

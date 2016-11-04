@@ -102,5 +102,24 @@ namespace StreetFighter.Testes.Dominio
             Assert.AreEqual(personagem.UrlDaImagem, "Não informado");
             Assert.AreEqual(personagem.PersonagemOculto, false);
         }
+
+        [TestMethod]
+        public void CriaUmPersonagemRecebidoComoString()
+        {
+            String personagemComoString = @"1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true";
+
+            Personagem personagem = new Personagem(personagemComoString);
+
+            Assert.AreEqual(personagem.Id, 1);
+            Assert.AreEqual(personagem.Nome, "Chun-li");
+            Assert.AreEqual(personagem.DataNascimento, new DateTime(2012, 12, 12));
+            Assert.AreEqual(personagem.Altura, 170);
+            Assert.AreEqual(personagem.Peso, 59);
+            Assert.AreEqual(personagem.Origem, "China");
+            Assert.AreEqual(personagem.GolpesEspeciais, "Spining Bird Kick, Kikouken.");
+            Assert.AreEqual(personagem.UrlDaImagem, @"http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif");
+            Assert.AreEqual(personagem.PersonagemOculto, true);
+
+        }
     }
 }
