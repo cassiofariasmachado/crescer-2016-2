@@ -73,5 +73,9 @@ namespace StreetFighter.Dominio
             this.PersonagemOculto = Convert.ToBoolean(atributos[8]);
         }
 
+        public override string ToString()
+        {
+            return $"{Id};{Nome};{DataNascimento.ToString("dd/MM/yyyy")};{Altura};{Peso};{Origem};{GolpesEspeciais};{UrlDaImagem};{PersonagemOculto}";
+        }
     }
 }

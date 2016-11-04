@@ -106,7 +106,7 @@ namespace StreetFighter.Testes.Dominio
         [TestMethod]
         public void CriaUmPersonagemRecebidoComoString()
         {
-            String personagemComoString = @"1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true";
+            string personagemComoString = @"1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true";
 
             Personagem personagem = new Personagem(personagemComoString);
 
@@ -119,7 +119,16 @@ namespace StreetFighter.Testes.Dominio
             Assert.AreEqual("Spining Bird Kick, Kikouken.", personagem.GolpesEspeciais);
             Assert.AreEqual(@"http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif", personagem.UrlDaImagem);
             Assert.AreEqual(true, personagem.PersonagemOculto);
+        }
 
+        [TestMethod]
+        public void PersonagemToStringDeveRetornarUmaStringComTodosOsAtributosDePersonagem()
+        {
+            string personagemComoString = @"1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true";
+
+            Personagem personagem = new Personagem(personagemComoString);
+
+            Assert.AreEqual(personagemComoString.ToUpperInvariant(), personagem.ToString().ToUpperInvariant());
         }
     }
 }
