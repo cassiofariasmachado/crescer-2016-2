@@ -30,15 +30,15 @@ namespace StreetFighter.Testes.Dominio
                                                     urlDaImagem,
                                                     personagemOculto);
 
-            Assert.AreEqual(personagem.Id, id);
-            Assert.AreEqual(personagem.Nome, nome);
-            Assert.AreEqual(personagem.DataNascimento, dataNascimento);
-            Assert.AreEqual(personagem.Altura, altura);
-            Assert.AreEqual(personagem.Peso, peso);
-            Assert.AreEqual(personagem.Origem, origem);
-            Assert.AreEqual(personagem.GolpesEspeciais, golpesEspeciais);
-            Assert.AreEqual(personagem.UrlDaImagem, urlDaImagem);
-            Assert.AreEqual(personagem.PersonagemOculto, personagemOculto);
+            Assert.AreEqual(id, personagem.Id);
+            Assert.AreEqual(nome, personagem.Nome);
+            Assert.AreEqual(dataNascimento, personagem.DataNascimento);
+            Assert.AreEqual(altura, personagem.Altura);
+            Assert.AreEqual(peso, personagem.Peso);
+            Assert.AreEqual(origem, personagem.Origem);
+            Assert.AreEqual(golpesEspeciais, personagem.GolpesEspeciais);
+            Assert.AreEqual(urlDaImagem, personagem.UrlDaImagem);
+            Assert.AreEqual(personagemOculto, personagem.PersonagemOculto);
         }
 
         [TestMethod]
@@ -62,15 +62,15 @@ namespace StreetFighter.Testes.Dominio
                                                     urlDaImagem,
                                                     personagemOculto);
 
-            Assert.AreEqual(personagem.Id, 0);
-            Assert.AreEqual(personagem.Nome, nome);
-            Assert.AreEqual(personagem.DataNascimento, dataNascimento);
-            Assert.AreEqual(personagem.Altura, altura);
-            Assert.AreEqual(personagem.Peso, peso);
-            Assert.AreEqual(personagem.Origem, origem);
-            Assert.AreEqual(personagem.GolpesEspeciais, golpesEspeciais);
-            Assert.AreEqual(personagem.UrlDaImagem, urlDaImagem);
-            Assert.AreEqual(personagem.PersonagemOculto, personagemOculto);
+            Assert.AreEqual(0, personagem.Id);
+            Assert.AreEqual(nome, personagem.Nome);
+            Assert.AreEqual(dataNascimento, personagem.DataNascimento);
+            Assert.AreEqual(altura, personagem.Altura);
+            Assert.AreEqual(peso, personagem.Peso);
+            Assert.AreEqual(origem, personagem.Origem);
+            Assert.AreEqual(golpesEspeciais, personagem.GolpesEspeciais);
+            Assert.AreEqual(urlDaImagem, personagem.UrlDaImagem);
+            Assert.AreEqual(personagemOculto, personagem.PersonagemOculto);
         }
 
         [TestMethod]
@@ -92,15 +92,15 @@ namespace StreetFighter.Testes.Dominio
                                                     origem,
                                                     golpesEspeciais );
 
-            Assert.AreEqual(personagem.Id, id);
-            Assert.AreEqual(personagem.Nome, nome);
-            Assert.AreEqual(personagem.DataNascimento, dataNascimento);
-            Assert.AreEqual(personagem.Altura, altura);
-            Assert.AreEqual(personagem.Peso, peso);
-            Assert.AreEqual(personagem.Origem, origem);
-            Assert.AreEqual(personagem.GolpesEspeciais, golpesEspeciais);
-            Assert.AreEqual(personagem.UrlDaImagem, "Não informado");
-            Assert.AreEqual(personagem.PersonagemOculto, false);
+            Assert.AreEqual(id, personagem.Id);
+            Assert.AreEqual(nome, personagem.Nome);
+            Assert.AreEqual(dataNascimento, personagem.DataNascimento);
+            Assert.AreEqual(altura, personagem.Altura);
+            Assert.AreEqual(peso, personagem.Peso);
+            Assert.AreEqual(origem, personagem.Origem);
+            Assert.AreEqual(golpesEspeciais, personagem.GolpesEspeciais);
+            Assert.AreEqual("Não informado", personagem.UrlDaImagem);
+            Assert.AreEqual(false, personagem.PersonagemOculto);
         }
 
         [TestMethod]
@@ -110,15 +110,15 @@ namespace StreetFighter.Testes.Dominio
 
             Personagem personagem = new Personagem(personagemComoString);
 
-            Assert.AreEqual(personagem.Id, 1);
-            Assert.AreEqual(personagem.Nome, "Chun-li");
-            Assert.AreEqual(personagem.DataNascimento, new DateTime(2012, 12, 12));
-            Assert.AreEqual(personagem.Altura, 170);
-            Assert.AreEqual(personagem.Peso, 59);
-            Assert.AreEqual(personagem.Origem, "China");
-            Assert.AreEqual(personagem.GolpesEspeciais, "Spining Bird Kick, Kikouken.");
-            Assert.AreEqual(personagem.UrlDaImagem, @"http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif");
-            Assert.AreEqual(personagem.PersonagemOculto, true);
+            Assert.AreEqual(1, personagem.Id);
+            Assert.AreEqual("Chun-li", personagem.Nome);
+            Assert.AreEqual(new DateTime(2012, 12, 12), personagem.DataNascimento);
+            Assert.AreEqual(170, personagem.Altura);
+            Assert.AreEqual(59, personagem.Peso);
+            Assert.AreEqual("China", personagem.Origem);
+            Assert.AreEqual("Spining Bird Kick, Kikouken.", personagem.GolpesEspeciais);
+            Assert.AreEqual(@"http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif", personagem.UrlDaImagem);
+            Assert.AreEqual(true, personagem.PersonagemOculto);
 
         }
     }
