@@ -13,15 +13,29 @@ namespace StreetFighter.Repositorio
         const string CaminhoArquivo = @"C:\Users\Cassio\Documents\git\crescer-2016-2\src\modulo-05-dot-net\aula-03-exercicios\StreetFighter.Web\StreetFighter.Repositorio\repositorio-personagem.csv";
 
 
+        protected virtual List<Personagem> lerPersonagensDoArquivoCsv()
         {
+            string[] personagensComoString = File.ReadAllLines(CaminhoArquivo);
+            List<Personagem> personagens = new List<Personagem>();
 
+            foreach (string personagem in personagensComoString)
             {
+                personagens.Add(new Personagem(personagem));
             }
+
+            return personagens;
         }
 
-        public List<Personagem> ListarPersonagens (string filtroNome)
+        protected virtual void salvarPersonagensNoArquivoCsv(List<Personagem> personagens)
         {
-            throw new NotImplementedException();
+            List<string> personagensComoString = new List<string>();
+
+            foreach (Personagem personagem in personagens)
+            {
+                personagensComoString.Add(personagem.ToString());
+            }
+
+            File.WriteAllLines(CaminhoArquivo, personagensComoString);
         }
 
         public void IncluirPersonagem (Personagem personagem)
