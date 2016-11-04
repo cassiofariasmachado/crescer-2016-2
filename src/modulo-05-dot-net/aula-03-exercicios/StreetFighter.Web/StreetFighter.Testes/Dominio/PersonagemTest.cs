@@ -122,7 +122,7 @@ namespace StreetFighter.Testes.Dominio
         }
 
         [TestMethod]
-        public void PersonagemToStringDeveRetornarUmaStringComTodosOsAtributosDePersonagem()
+        public void PersonagemToStringDeveRetornarTodosOsAtributosDePersonagemComoString()
         {
             string personagemComoString = @"1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true";
 
