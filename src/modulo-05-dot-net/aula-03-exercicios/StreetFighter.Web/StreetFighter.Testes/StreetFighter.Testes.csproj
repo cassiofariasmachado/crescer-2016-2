@@ -59,6 +59,7 @@
     <Compile Include="Aplicativo\PersonagemAplicativoTest.cs" />
     <Compile Include="Dominio\PersonagemTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\PersonagemRepositorioMock.cs" />
     <Compile Include="Repositorio\PersonagemRepositorioTest.cs" />
   </ItemGroup>
   <ItemGroup />

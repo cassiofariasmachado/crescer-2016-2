@@ -11,21 +11,44 @@ namespace StreetFighter.Testes.Repositorio
     public class PersonagemRepositorioTest
     {
         [TestMethod]
-        public void CriarPersonagemRepositorioRecebendoUmaListaDeStrings()
+        public void ListarPersonagensDeveRetornarAkuma()
         {
-            List<string> personagens = new List<string>(new string[] 
-                                                                     {
-                                                                        "1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true",
-                                                                        "2;Akuma;13/01/1992;178;80;Japão;Gouhadouken, Goushoryuken.;http://www.streetfighter.com.br/upload/editor/20131018003126_319.png;true"
-                                                                     }
-                                                       );
+            PersonagemRepositorioMock repositorio = new PersonagemRepositorioMock();
 
-            var repositorio = new PersonagemRepositorio(personagens);
+            var personagens = repositorio.ListarPersonagens("Akuma");
 
-            Assert.AreEqual(1, repositorio.Personagens[0].Id);
-            Assert.AreEqual(2, repositorio.Personagens[1].Id);
+            Assert.AreEqual("Akuma", personagens[0].Nome);
         }
 
+        [TestMethod]
+        public void IncluirPersonagemDeveAdicionarUmNovoPersonagemNoFimDaLista()
+        {
+            PersonagemRepositorioMock repositorio = new PersonagemRepositorioMock();
+
+            repositorio.IncluirPersonagem(new Personagem(3, "Sagat", new DateTime(1991, 02, 17), 189, 89, "Africa do Sul", "Tiger Genocide.", @"http://www.streetfighter.com.br/upload/editor/20131104191626_170.png", false));
+
+            Assert.AreEqual("Sagat", repositorio.ListarPersonagens()[2].Nome);
+        }
+
+        [TestMethod]
+        public void EditarPersonagemDeveEditarONomeDoPersonagemComId2()
+        {
+            PersonagemRepositorioMock repositorio = new PersonagemRepositorioMock();
+
+            repositorio.EditarPersonagem(new Personagem(2, "Gouki", new DateTime(1992, 01, 13), 178, 80, "Japão", "Gouhadouken, Goushoryuken.", @"http://www.streetfighter.com.br/upload/editor/20131018003126_319.png", true));
+
+            Assert.AreEqual("Gouki", repositorio.ListarPersonagens()[1].Nome);
+        }
+
+        [TestMethod]
+        public void ExcluirPersonagemDeveExcluirPersonagemComId2()
+        {
+            PersonagemRepositorioMock repositorio = new PersonagemRepositorioMock();
+
+            repositorio.ExcluirPersonagem(new Personagem(2, "Akuma", new DateTime(1992, 01, 13), 178, 80, "Japão", "Gouhadouken, Goushoryuken.", @"http://www.streetfighter.com.br/upload/editor/20131018003126_319.png", true));
+
+            Assert.AreEqual(1, repositorio.ListarPersonagens().Count);
+        }
         
     }
 }
