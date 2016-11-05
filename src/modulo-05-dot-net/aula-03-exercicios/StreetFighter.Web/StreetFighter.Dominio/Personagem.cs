@@ -8,15 +8,15 @@ namespace StreetFighter.Dominio
 {
     public class Personagem
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         public string Nome { get; private set; }
 
         public DateTime DataNascimento { get; private set; }
 
-        public int Altura { get; private set; }
+        public int? Altura { get; private set; }
 
-        public double Peso { get; private set; }
+        public double? Peso { get; private set; }
 
         public string Origem { get; private set; }
   
@@ -41,8 +41,8 @@ namespace StreetFighter.Dominio
 
         public Personagem( string nome, 
                            DateTime dataNascimento,
-                           int altura, 
-                           double peso,
+                           int? altura, 
+                           double? peso,
                            string origem,
                            string golpesEspeciais,
                            string urlDaImagem = "Não informado",
