@@ -1,4 +1,6 @@
-﻿using StreetFighter.Web.Models;
+﻿using StreetFighter.Aplicativo;
+using StreetFighter.Dominio;
+using StreetFighter.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -64,6 +66,13 @@ namespace StreetFighter.Web.Controllers
                 ModelState.AddModelError("", "Ocorreu algum erro. Tente novamente ou entre em contato com o administrador.");
                 return View("Cadastro");
             }
+        }
+
+        public ActionResult ListaDePersonagens()
+        {
+            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+            List<Personagem> personagens = aplicativo.ListaPersonagens();
+            return View(personagens);
         }
 
         private void PopularOrigens()
