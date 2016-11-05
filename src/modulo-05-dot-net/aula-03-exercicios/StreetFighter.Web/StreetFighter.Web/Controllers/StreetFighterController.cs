@@ -22,15 +22,15 @@ namespace StreetFighter.Web.Controllers
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
-            
-            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel( personagem.Nome,
+
+            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel(personagem.Nome,
                                                                     personagem.DataNascimento,
                                                                     personagem.Altura,
                                                                     personagem.Peso,
                                                                     personagem.Origem,
                                                                     personagem.GolpesEspeciais,
                                                                     personagem.UrlDaImagem,
-                                                                    personagem.PersonagemOculto );
+                                                                    personagem.PersonagemOculto);
 
             return View(fichaTecnica);
         }
@@ -72,10 +72,11 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
-        public ActionResult ListaDePersonagens()
+        [HttpGet]
+        public ActionResult ListaDePersonagens(string filtro)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
-            List<Personagem> personagens = aplicativo.ListaPersonagens();
+            List<Personagem> personagens = aplicativo.ListaPersonagens(filtro);
             return View(personagens);
         }
 
