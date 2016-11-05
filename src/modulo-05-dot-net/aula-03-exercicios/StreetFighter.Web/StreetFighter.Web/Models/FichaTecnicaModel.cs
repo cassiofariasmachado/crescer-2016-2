@@ -21,10 +21,10 @@ namespace StreetFighter.Web.Models
         public DateTime DataNascimento { set; get; }
 
         [Required(ErrorMessage = "O campo altura é obrigatório.")]
-        public int Altura { set; get; }
+        public int? Altura { set; get; }
 
         [Required(ErrorMessage = "O campo peso é obrigatório.")]
-        public double Peso { set; get; }
+        public double? Peso { set; get; }
 
         [Required(ErrorMessage = "O campo origem é obrigatório.")]
         public string Origem { set; get; }
@@ -35,5 +35,24 @@ namespace StreetFighter.Web.Models
 
         [DisplayName("É um personagem oculto?")]
         public bool PersonagemOculto { set; get; }
+
+        public FichaTecnicaModel( string nome,
+                                  DateTime dataNascimento,
+                                  int altura,
+                                  double peso,
+                                  string origem,
+                                  string golpesEspeciais,
+                                  string urlDaImagem,
+                                  bool personagemOculto )
+        {
+            this.Nome = nome;
+            this.DataNascimento = dataNascimento;
+            this.Altura = altura;
+            this.Peso = peso;
+            this.Origem = origem;
+            this.GolpesEspeciais = golpesEspeciais;
+            this.PersonagemOculto = personagemOculto;
+            this.UrlDaImagem = urlDaImagem;
+        }
     }
 }
