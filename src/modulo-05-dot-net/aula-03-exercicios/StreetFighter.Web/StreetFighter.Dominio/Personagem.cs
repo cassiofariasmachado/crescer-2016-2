@@ -58,20 +58,17 @@ namespace StreetFighter.Dominio
             this.UrlDaImagem = urlDaImagem;
         }
 
-        public Personagem(string personagemComoString) 
-        {
-            string[] atributos = personagemComoString.Split(';');
-
-            this.Id = Convert.ToInt32(atributos[0]);
-            this.Nome = atributos[1];
-            this.DataNascimento = Convert.ToDateTime(atributos[2]);
-            this.Altura = Convert.ToInt32(atributos[3]);
-            this.Peso = Convert.ToDouble(atributos[4]);
-            this.Origem = atributos[5];
-            this.GolpesEspeciais = atributos[6];
-            this.UrlDaImagem = atributos[7];
-            this.PersonagemOculto = Convert.ToBoolean(atributos[8]);
-        }
+        public Personagem(string[] atributos) : 
+            this( Convert.ToInt32(atributos[0]),
+                  atributos[1],
+                  Convert.ToDateTime(atributos[2]),
+                  Convert.ToInt32(atributos[3]),
+                  Convert.ToDouble(atributos[4]),
+                  atributos[5],
+                  atributos[6],
+                  atributos[7],
+                  Convert.ToBoolean(atributos[8])) 
+        { }
 
         public override string ToString()
         {

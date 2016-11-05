@@ -108,7 +108,7 @@ namespace StreetFighter.Testes.Dominio
         {
             string personagemComoString = @"1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true";
 
-            Personagem personagem = new Personagem(personagemComoString);
+            Personagem personagem = new Personagem(personagemComoString.Split(';'));
 
             Assert.AreEqual(1, personagem.Id);
             Assert.AreEqual("Chun-li", personagem.Nome);
@@ -126,7 +126,7 @@ namespace StreetFighter.Testes.Dominio
         {
             string personagemComoString = @"1;Chun-li;12/12/2012;170;59;China;Spining Bird Kick, Kikouken.;http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif;true";
 
-            Personagem personagem = new Personagem(personagemComoString);
+            Personagem personagem = new Personagem(personagemComoString.Split(';'));
 
             Assert.AreEqual(personagemComoString.ToUpperInvariant(), personagem.ToString().ToUpperInvariant());
         }

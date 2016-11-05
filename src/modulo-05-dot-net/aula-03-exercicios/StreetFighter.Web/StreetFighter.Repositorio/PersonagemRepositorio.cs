@@ -20,7 +20,7 @@ namespace StreetFighter.Repositorio
 
             foreach (string personagem in personagensComoString)
             {
-                personagens.Add(new Personagem(personagem));
+                personagens.Add(new Personagem(personagem.Split(';')));
             }
 
             return personagens;
