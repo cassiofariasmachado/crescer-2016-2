@@ -10,7 +10,7 @@ namespace StreetFighter.Repositorio
 {
     public class PersonagemRepositorio : IPersonagemRepositorio
     {
-        const string CaminhoArquivo = @"C:\Users\Cassio\Documents\git\crescer-2016-2\src\modulo-05-dot-net\aula-03-exercicios\StreetFighter.Web\StreetFighter.Repositorio\repositorio-personagem.csv";
+        const string CaminhoArquivo = @"C:\Users\Cassio\Documents\git\crescer-2016-2\src\modulo-05-dot-net\aula-03-exercicios\StreetFighter.Web\StreetFighter.Repositorio\personagem-repositorio.csv";
 
 
         protected virtual List<Personagem> lerPersonagensDoArquivoCsv()
