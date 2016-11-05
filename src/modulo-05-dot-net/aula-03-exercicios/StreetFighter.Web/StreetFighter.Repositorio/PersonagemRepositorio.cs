@@ -88,5 +88,12 @@ namespace StreetFighter.Repositorio
 
             this.salvarPersonagensNoArquivoCsv(personagens);
         }
+
+        public Personagem BuscarPersonagemPorId(int id)
+        {
+            List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
+
+            return personagens.Find(personagem => personagem.Id == id);
+        }
     }
 }
