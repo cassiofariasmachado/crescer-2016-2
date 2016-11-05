@@ -96,19 +96,20 @@ namespace StreetFighter.Web.Controllers
         {
             ViewBag.ListaDeOrigens = new List<SelectListItem>()
             {
-                new SelectListItem() { Value = "AR", Text = "Argentina" },
-                new SelectListItem() { Value = "BO", Text = "Bolivia" },
-                new SelectListItem() { Value = "BR", Text = "Brasil" },
-                new SelectListItem() { Value = "CL", Text = "Chile" },
-                new SelectListItem() { Value = "CO", Text = "Colômbia" },
-                new SelectListItem() { Value = "EC", Text = "Equador" },
-                new SelectListItem() { Value = "GY", Text = "Guiana" },
-                new SelectListItem() { Value = "GF", Text = "Guiana Francesa" },
-                new SelectListItem() { Value = "PY", Text = "Paraguai" },
-                new SelectListItem() { Value = "PE", Text = "Peru" },
-                new SelectListItem() { Value = "SR", Text = "Suriname" },
-                new SelectListItem() { Value = "UY", Text = "Uruguai" },
-                new SelectListItem() { Value = "VE", Text = "Venezuela" },
+                new SelectListItem() { Value = "Argentina", Text = "Argentina" },
+                new SelectListItem() { Value = "Bolivia", Text = "Bolivia" },
+                new SelectListItem() { Value = "Brasil", Text = "Brasil" },
+                new SelectListItem() { Value = "Chile", Text = "Chile" },
+                new SelectListItem() { Value = "Colômbia", Text = "Colômbia" },
+                new SelectListItem() { Value = "Equador", Text = "Equador" },
+                new SelectListItem() { Value = "Guiana", Text = "Guiana" },
+                new SelectListItem() { Value = "Guiana Francesa", Text = "Guiana Francesa" },
+                new SelectListItem() { Value = "Paraguai", Text = "Paraguai" },
+                new SelectListItem() { Value = "Peru", Text = "Peru" },
+                new SelectListItem() { Value = "Suriname", Text = "Suriname" },
+                new SelectListItem() { Value = "Uruguai", Text = "Uruguai" },
+                new SelectListItem() { Value = "Venezuela", Text = "Venezuela" },
+                new SelectListItem() { Value = "Morro da Pedra", Text = "Morro da Pedra" },
             };
         }
     }
