@@ -15,12 +15,12 @@ namespace StreetFighter.Testes.Repositorio
                                                                         new Personagem(2,"Akuma",new DateTime(1992,01,13),178,80,"Japão","Gouhadouken, Goushoryuken.",@"http://www.streetfighter.com.br/upload/editor/20131018003126_319.png",true)
                                                                     };
 
-        protected override List<Personagem> lePersonagensDoArquivoCsv()
+        protected override List<Personagem> lerPersonagensDoArquivoCsv()
         {
             return this.personagens;
         }
 
-        protected override void salvaPersonagensNoArquivoCsv(List<Personagem> personagens)
+        protected override void salvarPersonagensNoArquivoCsv(List<Personagem> personagens)
         {
             this.personagens = personagens;
         }
