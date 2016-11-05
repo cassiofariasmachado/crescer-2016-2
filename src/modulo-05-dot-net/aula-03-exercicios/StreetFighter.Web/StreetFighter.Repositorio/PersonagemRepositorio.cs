@@ -53,6 +53,8 @@ namespace StreetFighter.Repositorio
         {
             List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
 
+            personagem.Id = personagens.Count + 1;
+
             personagens.Add(personagem);
 
             this.salvarPersonagensNoArquivoCsv(personagens);
