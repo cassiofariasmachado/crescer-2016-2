@@ -5,17 +5,17 @@
 }
 
 
+<div class="ficha-tecnica row">
     <h1>@(Model.Nome)</h1>
     
-    <img class="col-md-5 col-no-float" src="~/Content/Images/@Model.UrlDaImagem" width="260" height="480" alt="Imagem do personagem Blanka" />
+    <img class="col-md-5" width="260" height="480" src="@Model.UrlDaImagem" alt="Imagem do personagem @Model.Nome" />
 
-    <ul class="col-md-5 col-no-float">
+    <ul class="col-md-5">
         <li><strong>Nascimento: </strong> @(Model.DataNascimento.ToString("dd 'de' MMMM 'de' yyyy"))</li>
         <li><strong>Altura: </strong> @(Model.Altura) cm</li>
         <li><strong>Peso: </strong> @(Model.Peso) kg</li>
         <li><strong>Origem: </strong> @(Model.Origem)</li>
         <li><strong>Golpes especiais: </strong> @(Model.GolpesEspeciais)</li>
+        <li><strong>Personagem oculto: </strong>@(Model.PersonagemOculto ? "Sim" : "Não")</li>
     </ul>
-
-
 </div>
