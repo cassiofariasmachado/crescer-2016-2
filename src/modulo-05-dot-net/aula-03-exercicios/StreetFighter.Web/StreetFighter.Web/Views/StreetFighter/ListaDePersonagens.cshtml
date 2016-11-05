@@ -4,22 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using (Html.BeginForm("Cadastro", "StreetFighter"))
+{
+    <button class="btn btn-default" type="submit">Cadastro</button>
+}
+
 <h2>Clique sobre algum personagem para ver sua ficha técnica: </h2>
 
 
-<div class="row">
+<div class="personagens row">
     @using (Html.BeginForm("ListaDePersonagens", "StreetFighter", FormMethod.Get, new { @class = "form-horizontal" }))
     {
         <div class="col-sm-12">
             <div class="input-group">
-                @Html.TextBox("filtro","", new { @class ="form-control", @placeholder="Filtrar por..." } )
+                @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Filtrar por..." })
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Filtrar</button>
                 </span>
             </div>
         </div>
     }
-    <ul class="personagens">
+
+    <ul>
         @foreach (var personagem in Model)
             {
             <li class="col-md-3">@Html.ActionLink(personagem.Nome, $"FichaTecnica/{personagem.Id}")</li>
