@@ -21,7 +21,7 @@ namespace StreetFighter.Aplicativo
             this.repositorio = repositorio;
         }
 
-        public List<Personagem> ListaPersonagens(string filtroNome)
+        public List<Personagem> ListaPersonagens(string filtroNome = null)
         {
             return repositorio.ListarPersonagens(filtroNome);
         }
@@ -32,6 +32,11 @@ namespace StreetFighter.Aplicativo
                 repositorio.IncluirPersonagem(personagem);
             else
                 repositorio.EditarPersonagem(personagem);
+        }
+
+        public Personagem BuscarPersonagemPorId(int id)
+        {
+            return repositorio.BuscarPersonagemPorId(id);
         }
     }
 }
