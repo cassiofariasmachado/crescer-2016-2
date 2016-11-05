@@ -47,3 +47,15 @@ body {
 .col-no-float {
     float: none;
 }
+
+.ficha-tecnica li, .personagens li {
+    list-style: none;
+}
+
+.personagens li {
+    display: inline;
+}
+
+.personagens, .sobre, .ficha-tecnica {
+    padding: 0px 20px;
+}
