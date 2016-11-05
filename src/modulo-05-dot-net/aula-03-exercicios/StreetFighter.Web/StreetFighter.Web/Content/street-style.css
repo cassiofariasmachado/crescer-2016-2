@@ -19,8 +19,8 @@ body {
 }
 
     #menu a {
-        color:white; 
-        text-decoration:none;
+        color: white;
+        text-decoration: none;
     }
 
 .conteudo {
@@ -58,4 +58,8 @@ body {
 
 .personagens, .sobre, .ficha-tecnica {
     padding: 0px 20px;
+}
+
+.field-validation-error {
+    color: #a94442;
 }
