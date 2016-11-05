@@ -36,10 +36,13 @@ namespace StreetFighter.Web.Models
         [DisplayName("É um personagem oculto?")]
         public bool PersonagemOculto { set; get; }
 
+
+        public FichaTecnicaModel(){ }
+
         public FichaTecnicaModel( string nome,
                                   DateTime dataNascimento,
-                                  int altura,
-                                  double peso,
+                                  int? altura,
+                                  double? peso,
                                   string origem,
                                   string golpesEspeciais,
                                   string urlDaImagem,
