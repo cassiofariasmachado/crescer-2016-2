@@ -18,16 +18,20 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult FichaTecnica()
+        public ActionResult FichaTecnica(int id)
         {
-            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel();
-            fichaTecnica.UrlDaImagem = @"blanka.png";
-            fichaTecnica.Nome = "Blanka";
-            fichaTecnica.DataNascimento = DateTime.Parse("12/02/1966", new CultureInfo("pt-BR"));
-            fichaTecnica.Altura = 192;
-            fichaTecnica.Peso = 96;
-            fichaTecnica.Origem = "Brasil (lugar de nascença é provável como sendo Tailândia).";
-            fichaTecnica.GolpesEspeciais = "Electric Thunder, Rolling Attack.";
+            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+            Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
+            
+            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel( personagem.Nome,
+                                                                    personagem.DataNascimento,
+                                                                    personagem.Altura,
+                                                                    personagem.Peso,
+                                                                    personagem.Origem,
+                                                                    personagem.GolpesEspeciais,
+                                                                    personagem.UrlDaImagem,
+                                                                    personagem.PersonagemOculto );
+
             return View(fichaTecnica);
         }
 
