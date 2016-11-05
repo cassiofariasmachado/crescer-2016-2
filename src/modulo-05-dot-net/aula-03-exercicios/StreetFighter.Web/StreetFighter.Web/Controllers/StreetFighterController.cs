@@ -1,5 +1,6 @@
 ﻿using StreetFighter.Aplicativo;
 using StreetFighter.Dominio;
+using StreetFighter.Dominio.Exceptions;
 using StreetFighter.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -63,23 +64,32 @@ namespace StreetFighter.Web.Controllers
             if (ModelState.IsValid)
             {
                 ViewBag.Mensagem = "Cadastro concluído com sucesso.";
-
                 PersonagemAplicativo aplicativo = new PersonagemAplicativo();
-                Personagem personagem = new Personagem( fichaTecnicaModel.Nome,
-                                                        fichaTecnicaModel.DataNascimento,
-                                                        fichaTecnicaModel.Altura,
-                                                        fichaTecnicaModel.Peso,
-                                                        fichaTecnicaModel.Origem,
-                                                        fichaTecnicaModel.GolpesEspeciais,
-                                                        fichaTecnicaModel.UrlDaImagem,
-                                                        fichaTecnicaModel.PersonagemOculto );
-                aplicativo.Salvar(personagem);
+                try
+                {
+                    Personagem personagem = new Personagem( fichaTecnicaModel.Nome,
+                                                 fichaTecnicaModel.DataNascimento,
+                                                 fichaTecnicaModel.Altura,
+                                                 fichaTecnicaModel.Peso,
+                                                 fichaTecnicaModel.Origem,
+                                                 fichaTecnicaModel.GolpesEspeciais,
+                                                 fichaTecnicaModel.UrlDaImagem,
+                                                 fichaTecnicaModel.PersonagemOculto );
+                    aplicativo.Salvar(personagem);
 
+                }
+                catch (RegraDeNegocioException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                    PopularOrigens();
+                    return View("Cadastro");
+                }
                 return View("ListaDePersonagens", aplicativo.ListaPersonagens());
             }
             else
             {
                 ModelState.AddModelError("", "Ocorreu algum erro. Tente novamente ou entre em contato com o administrador.");
+                PopularOrigens();
                 return View("Cadastro");
             }
         }
