@@ -23,14 +23,14 @@ namespace StreetFighter.Web.Controllers
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
 
-            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel(personagem.Nome,
+            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel( personagem.Nome,
                                                                     personagem.DataNascimento,
                                                                     personagem.Altura,
                                                                     personagem.Peso,
                                                                     personagem.Origem,
                                                                     personagem.GolpesEspeciais,
                                                                     personagem.UrlDaImagem,
-                                                                    personagem.PersonagemOculto);
+                                                                    personagem.PersonagemOculto );
 
             return View(fichaTecnica);
         }
@@ -58,12 +58,24 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
-        public ActionResult SalvarCadastro(FichaTecnicaModel fichaModel)
+        public ActionResult SalvarCadastro(FichaTecnicaModel fichaTecnicaModel)
         {
             if (ModelState.IsValid)
             {
                 ViewBag.Mensagem = "Cadastro concluído com sucesso.";
-                return View("Detalhe", fichaModel);
+
+                PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+                Personagem personagem = new Personagem( fichaTecnicaModel.Nome,
+                                                        fichaTecnicaModel.DataNascimento,
+                                                        fichaTecnicaModel.Altura,
+                                                        fichaTecnicaModel.Peso,
+                                                        fichaTecnicaModel.Origem,
+                                                        fichaTecnicaModel.GolpesEspeciais,
+                                                        fichaTecnicaModel.UrlDaImagem,
+                                                        fichaTecnicaModel.PersonagemOculto );
+                aplicativo.Salvar(personagem);
+
+                return View("ListaDePersonagens", aplicativo.ListaPersonagens());
             }
             else
             {
