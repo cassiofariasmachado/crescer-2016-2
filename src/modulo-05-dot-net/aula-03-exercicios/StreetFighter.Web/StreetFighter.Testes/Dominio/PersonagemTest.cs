@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreetFighter.Dominio;
+using StreetFighter.Dominio.Exceptions;
 
 namespace StreetFighter.Testes.Dominio
 {
@@ -20,15 +21,7 @@ namespace StreetFighter.Testes.Dominio
             string urlDaImagem = @"http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif";
             bool personagemOculto = true;
 
-            Personagem personagem = new Personagem( id, 
-                                                    nome,
-                                                    dataNascimento,
-                                                    altura,
-                                                    peso,
-                                                    origem,
-                                                    golpesEspeciais,
-                                                    urlDaImagem,
-                                                    personagemOculto);
+            Personagem personagem = new Personagem(id, nome, dataNascimento, altura, peso, origem, golpesEspeciais, urlDaImagem, personagemOculto);
 
             Assert.AreEqual(id, personagem.Id);
             Assert.AreEqual(nome, personagem.Nome);
@@ -53,14 +46,7 @@ namespace StreetFighter.Testes.Dominio
             string urlDaImagem = @"http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif";
             bool personagemOculto = true;
 
-            Personagem personagem = new Personagem( nome,
-                                                    dataNascimento,
-                                                    altura,
-                                                    peso,
-                                                    origem,
-                                                    golpesEspeciais,
-                                                    urlDaImagem,
-                                                    personagemOculto);
+            Personagem personagem = new Personagem(nome, dataNascimento, altura, peso, origem, golpesEspeciais, urlDaImagem, personagemOculto);
 
             Assert.AreEqual(0, personagem.Id);
             Assert.AreEqual(nome, personagem.Nome);
@@ -84,13 +70,7 @@ namespace StreetFighter.Testes.Dominio
             string origem = "China";
             string golpesEspeciais = "Spining Bird Kick, Kikouken.";
 
-            Personagem personagem = new Personagem( id,
-                                                    nome,
-                                                    dataNascimento,
-                                                    altura,
-                                                    peso,
-                                                    origem,
-                                                    golpesEspeciais );
+            Personagem personagem = new Personagem(id, nome, dataNascimento, altura, peso, origem, golpesEspeciais);
 
             Assert.AreEqual(id, personagem.Id);
             Assert.AreEqual(nome, personagem.Nome);
@@ -119,6 +99,36 @@ namespace StreetFighter.Testes.Dominio
             Assert.AreEqual("Spining Bird Kick, Kikouken.", personagem.GolpesEspeciais);
             Assert.AreEqual(@"http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif", personagem.UrlDaImagem);
             Assert.AreEqual(true, personagem.PersonagemOculto);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (PalavraReservadaException), "Não é permitido cadastrar personagens overpowered.")]
+        public void CriarPesonagemComNomeNunesDeveLançarException()
+        {
+            int id = 1;
+            string nome = "Nunes";
+            DateTime dataNascimento = new DateTime(2012, 12, 12);
+            int altura = 140;
+            double peso = 70;
+            string origem = "Taquara";
+            string golpesEspeciais = "Piada fake.";
+
+            Personagem personagem = new Personagem(id, nome, dataNascimento, altura, peso, origem, golpesEspeciais);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(LocalDeOrigemException), "Somente um personagem pode ser dessa região e esse personagem não é o Bernardo.")]
+        public void CriarPesonagemComOrigemMorroDaPedraDeveLançarException()
+        {
+            int id = 1;
+            string nome = "Bernardo";
+            DateTime dataNascimento = new DateTime(2012, 12, 12);
+            int altura = 180;
+            double peso = 89;
+            string origem = "Morro da pedra";
+            string golpesEspeciais = "Transformar café e playlist de foco em código.";
+
+            Personagem personagem = new Personagem(id, nome, dataNascimento, altura, peso, origem, golpesEspeciais);
         }
 
         [TestMethod]

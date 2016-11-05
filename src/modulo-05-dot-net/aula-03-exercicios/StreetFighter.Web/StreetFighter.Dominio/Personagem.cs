@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StreetFighter.Dominio.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,11 @@ namespace StreetFighter.Dominio
                            string urlDaImagem = "Não informado",
                            bool personagemOculto = false )
         {
+            if (nome.ToUpperInvariant().Contains("NUNES"))
+                throw new PalavraReservadaException("Não é permitido cadastrar personagens overpowered.");
+            if (origem.ToUpperInvariant().Contains("MORRO DA PEDRA"))
+                throw new LocalDeOrigemException($"Somente um personagem pode ser dessa região e esse personagem não é o {nome}.");
+
             this.Nome = nome;
             this.DataNascimento = dataNascimento;
             this.Altura = altura;
