@@ -50,5 +50,18 @@ namespace StreetFighter.Testes.Aplicativo
                 .MustHaveHappened();
         }
 
+        [TestMethod]
+        public void BuscarPersonagemPorIdDeveBuscar()
+        {
+            var repositorioFake = A.Fake<IPersonagemRepositorio>();
+
+            var aplicativo = new PersonagemAplicativo(repositorioFake);
+
+            aplicativo.BuscarPersonagemPorId(3);
+
+            A.CallTo(() => repositorioFake.BuscarPersonagemPorId(3))
+                .MustHaveHappened();
+        }
+
     }
 }
