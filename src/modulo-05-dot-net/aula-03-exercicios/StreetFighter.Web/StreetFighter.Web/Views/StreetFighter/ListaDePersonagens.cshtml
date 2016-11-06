@@ -10,26 +10,28 @@
     <h3>@ViewBag.Mensagem</h3>
 }
 
-<h2>Clique sobre algum personagem para ver sua ficha técnica: </h2>
+<h3>Clique sobre algum personagem para ver sua ficha técnica: </h3>
 
 
-<div class="personagens row">
-    @using (Html.BeginForm("ListaDePersonagens", "StreetFighter", FormMethod.Get, new { @class = "form-horizontal" }))
-    {
-        <div class="col-sm-12">
-            <div class="input-group">
-                @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Filtrar por..." })
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">Filtrar</button>
-                </span>
+<div class="lista-de-personagens row">
+    <div class="filtro">
+        @using (Html.BeginForm("ListaDePersonagens", "StreetFighter", FormMethod.Get, new { @class = "form-horizontal" }))
+        {
+            <div class="col-sm-12">
+                <div class="input-group">
+                    @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Filtrar por..." })
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Filtrar</button>
+                    </span>
+                </div>
             </div>
-        </div>
-    }
-
-    <ul>
-        @foreach (var personagem in Model)
-            {
-            <li class="col-md-3">@Html.ActionLink(personagem.Nome, $"FichaTecnica/{personagem.Id}")</li>
         }
-    </ul>
+    </div>
+    <div class="personagens">
+        @foreach (var personagem in Model)
+        {
+            @Html.ActionLink($"{personagem.Nome}", "FichaTecnica", new { id = personagem.Id }, new { @class = "col-sm-10 btn btn-default" })
+            @Html.ActionLink("Excluir", "ExcluirPersonagem", new { id = personagem.Id }, new { @class = "col-sm-2 btn btn-danger" })
+        }
+    </div>
 </div>

@@ -48,16 +48,16 @@ body {
     float: none;
 }
 
-.ficha-tecnica li, .personagens li {
+.ficha-tecnica li, .sobre li {
     list-style: none;
 }
 
-.personagens li {
-    display: inline;
+.lista-de-personagens, .sobre, .ficha-tecnica {
+    padding: 0px 20px;
 }
 
-.personagens, .sobre, .ficha-tecnica {
-    padding: 0px 20px;
+.personagens {
+    margin: 80px 0px;
 }
 
 .field-validation-error {
