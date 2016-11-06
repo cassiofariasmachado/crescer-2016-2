@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("FazerLogin", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.TextBox("usuario", "", new { placeholder = "Usuário" });
+    @Html.Password("senha", "", new { placeholder = "Senha" });
+
+    <button type="submit">Entrar</button>
+}
