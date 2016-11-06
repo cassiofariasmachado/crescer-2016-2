@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="PersonagemRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">
@@ -51,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="personagem-repositorio.csv" />
+    <None Include="usuario-repositorio.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

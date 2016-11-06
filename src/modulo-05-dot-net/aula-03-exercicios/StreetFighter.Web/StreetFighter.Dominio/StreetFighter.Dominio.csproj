@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\LocalDeOrigemException.cs" />
     <Compile Include="Exceptions\RegraDeNegocioException.cs" />
+    <Compile Include="IUsuarioRepositorio.cs" />
     <Compile Include="IPersonagemRepositorio.cs" />
     <Compile Include="Personagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
