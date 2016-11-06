@@ -9,6 +9,8 @@ namespace StreetFighter.Web.Models
 {
     public class FichaTecnicaModel
     {
+        public int Id { get; set; }
+
         [DisplayName("Url da imagem")]
         public string UrlDaImagem { get; set; }
 
@@ -56,6 +58,20 @@ namespace StreetFighter.Web.Models
             this.GolpesEspeciais = golpesEspeciais;
             this.PersonagemOculto = personagemOculto;
             this.UrlDaImagem = urlDaImagem;
+        }
+
+        public FichaTecnicaModel( int id,
+                                  string nome,
+                                  DateTime dataNascimento,
+                                  int? altura,
+                                  double? peso,
+                                  string origem,
+                                  string golpesEspeciais,
+                                  string urlDaImagem,
+                                  bool personagemOculto) :
+            this(nome, dataNascimento, altura, peso, origem, golpesEspeciais, urlDaImagem, personagemOculto)
+        {
+            this.Id = id;
         }
     }
 }
