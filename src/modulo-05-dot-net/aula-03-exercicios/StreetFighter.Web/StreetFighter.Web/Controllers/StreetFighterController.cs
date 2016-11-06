@@ -19,6 +19,34 @@ namespace StreetFighter.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ListaDePersonagens(string filtro)
+        {
+            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+            List<Personagem> personagens = aplicativo.ListaPersonagens(filtro);
+
+            return View(personagens);
+        }
+
+        public ActionResult Sobre()
+        {
+            SobreModel sobre = new SobreModel();
+
+            sobre.Nome = "Cássio Farias Machado";
+            sobre.DataNascimento = DateTime.Parse("18/09/1996", new CultureInfo("pt-BR"));
+            sobre.Altura = 171;
+            sobre.Peso = 67;
+            sobre.TipoSanguineo = TipoSanguineo.A;
+            sobre.HabilidadesEspeciais = "Comer, bater palmas fora do ritmo e tentar programar";
+            sobre.Gosta = "Jogar video jogos, nadar e ler livros";
+            sobre.Desgosta = "Sopa de janta e ervilha";
+            sobre.FalaDeVitoria = "\"Pede pra nerfar noob!\"";
+            sobre.Nacionalidade = "Brasil";
+            sobre.Naturalidade = "Porto Alegre";
+
+            return View(sobre);
+        }
+
         public ActionResult FichaTecnica(int id)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
@@ -36,23 +64,6 @@ namespace StreetFighter.Web.Controllers
             return View(fichaTecnica);
         }
 
-        public ActionResult Sobre()
-        {
-            SobreModel sobre = new SobreModel();
-            sobre.Nome = "Cássio Farias Machado";
-            sobre.DataNascimento = DateTime.Parse("18/09/1996", new CultureInfo("pt-BR"));
-            sobre.Altura = 171;
-            sobre.Peso = 67;
-            sobre.TipoSanguineo = TipoSanguineo.A;
-            sobre.HabilidadesEspeciais = "Comer, bater palmas fora do ritmo e tentar programar";
-            sobre.Gosta = "Jogar video jogos, nadar e ler livros";
-            sobre.Desgosta = "Sopa de janta e ervilha";
-            sobre.FalaDeVitoria = "\"Pede pra nerfar noob!\"";
-            sobre.Nacionalidade = "Brasil";
-            sobre.Naturalidade = "Porto Alegre";
-            return View(sobre);
-        }
-
         public ActionResult Cadastro()
         {
             PopularOrigens();
@@ -64,6 +75,7 @@ namespace StreetFighter.Web.Controllers
             if (ModelState.IsValid)
             {
                 PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+
                 try
                 {
                     Personagem personagem = new Personagem( fichaTecnicaModel.Id,
@@ -75,6 +87,7 @@ namespace StreetFighter.Web.Controllers
                                                             fichaTecnicaModel.GolpesEspeciais,
                                                             fichaTecnicaModel.UrlDaImagem,
                                                             fichaTecnicaModel.PersonagemOculto );
+
                     if (personagem.Id == 0)
                         ViewBag.Mensagem = "Personagem cadastrado com sucesso.";
                     else
@@ -88,6 +101,7 @@ namespace StreetFighter.Web.Controllers
                     PopularOrigens();
                     return View("Cadastro");
                 }
+
                 return View("ListaDePersonagens", aplicativo.ListaPersonagens());
             }
             else
@@ -98,19 +112,14 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult ListaDePersonagens(string filtro)
-        {
-            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
-            List<Personagem> personagens = aplicativo.ListaPersonagens(filtro);
-            return View(personagens);
-        }
-
         public ActionResult ExcluirPersonagem(int id)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
-            aplicativo.ExcluirPersonagem(aplicativo.BuscarPersonagemPorId(id));
+            Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
+
+            aplicativo.ExcluirPersonagem(personagem);
             ViewBag.Mensagem = "Personagem excluído com sucesso.";
+
             List<Personagem> personagens = aplicativo.ListaPersonagens();
             return View("ListaDePersonagens", personagens);
         }
@@ -120,15 +129,16 @@ namespace StreetFighter.Web.Controllers
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
 
-            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel( personagem.Id, 
-                                                                    personagem.Nome, 
-                                                                    personagem.DataNascimento, 
-                                                                    personagem.Altura, 
-                                                                    personagem.Peso, 
-                                                                    personagem.Origem, 
+            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel( personagem.Id,
+                                                                    personagem.Nome,
+                                                                    personagem.DataNascimento,
+                                                                    personagem.Altura,
+                                                                    personagem.Peso,
+                                                                    personagem.Origem,
                                                                     personagem.GolpesEspeciais,
-                                                                    personagem.UrlDaImagem, 
+                                                                    personagem.UrlDaImagem,
                                                                     personagem.PersonagemOculto );
+
             PopularOrigens();
             return View("Cadastro", fichaTecnica);
         }
@@ -153,5 +163,6 @@ namespace StreetFighter.Web.Controllers
                 new SelectListItem() { Value = "Morro da Pedra", Text = "Morro da Pedra" },
             };
         }
+
     }
 }
