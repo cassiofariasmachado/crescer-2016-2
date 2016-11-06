@@ -102,6 +102,15 @@ namespace StreetFighter.Web.Controllers
             return View(personagens);
         }
 
+        public ActionResult ExcluirPersonagem(int id)
+        {
+            PersonagemAplicativo aplicativo = new PersonagemAplicativo();
+            aplicativo.ExcluirPersonagem(aplicativo.BuscarPersonagemPorId(id));
+            ViewBag.Mensagem = "Personagem excluído com sucesso.";
+            List<Personagem> personagens = aplicativo.ListaPersonagens();
+            return View("ListaDePersonagens", personagens);
+        }
+
         private void PopularOrigens()
         {
             ViewBag.ListaDeOrigens = new List<SelectListItem>()
