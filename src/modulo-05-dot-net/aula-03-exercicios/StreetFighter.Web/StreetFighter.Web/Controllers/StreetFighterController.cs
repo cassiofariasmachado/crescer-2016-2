@@ -1,6 +1,7 @@
 ﻿using StreetFighter.Aplicativo;
 using StreetFighter.Dominio;
 using StreetFighter.Dominio.Exceptions;
+using StreetFighter.Web.Filters;
 using StreetFighter.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace StreetFighter.Web.Controllers
         }
 
         [HttpGet]
+        [StreetFighterAutorizador]
         public ActionResult ListaDePersonagens(string filtro)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
@@ -28,6 +30,7 @@ namespace StreetFighter.Web.Controllers
             return View(personagens);
         }
 
+        [StreetFighterAutorizador]
         public ActionResult Sobre()
         {
             SobreModel sobre = new SobreModel();
@@ -47,6 +50,8 @@ namespace StreetFighter.Web.Controllers
             return View(sobre);
         }
 
+        [HttpGet]
+        [StreetFighterAutorizador]
         public ActionResult FichaTecnica(int id)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
@@ -63,13 +68,17 @@ namespace StreetFighter.Web.Controllers
 
             return View(fichaTecnica);
         }
-
+        
+        [StreetFighterAutorizador]
         public ActionResult Cadastro()
         {
             PopularOrigens();
             return View(new FichaTecnicaModel());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [StreetFighterAutorizador]
         public ActionResult SalvarCadastro(FichaTecnicaModel fichaTecnicaModel)
         {
             if (ModelState.IsValid)
@@ -112,6 +121,8 @@ namespace StreetFighter.Web.Controllers
             }
         }
 
+        [HttpGet]
+        [StreetFighterAutorizador]
         public ActionResult ExcluirPersonagem(int id)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
@@ -124,6 +135,8 @@ namespace StreetFighter.Web.Controllers
             return View("ListaDePersonagens", personagens);
         }
 
+        [HttpGet]
+        [StreetFighterAutorizador]
         public ActionResult EditarPersonagem(int id)
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
