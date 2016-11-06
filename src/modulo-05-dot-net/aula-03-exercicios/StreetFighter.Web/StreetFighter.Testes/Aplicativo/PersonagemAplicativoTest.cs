@@ -63,5 +63,19 @@ namespace StreetFighter.Testes.Aplicativo
                 .MustHaveHappened();
         }
 
+        [TestMethod]
+        public void ExcluirPersonagemDeveExcluir()
+        {
+            var repositorioFake = A.Fake<IPersonagemRepositorio>();
+
+            var aplicativo = new PersonagemAplicativo(repositorioFake);
+            var personagem = new Personagem(1, "João", new DateTime(1997, 08, 12), 159, 89.9, "São Leopoldo", "Soco forte");
+
+            aplicativo.ExcluirPersonagem(personagem);
+
+            A.CallTo(() => repositorioFake.ExcluirPersonagem(personagem))
+                .MustHaveHappened();
+        }
+
     }
 }
