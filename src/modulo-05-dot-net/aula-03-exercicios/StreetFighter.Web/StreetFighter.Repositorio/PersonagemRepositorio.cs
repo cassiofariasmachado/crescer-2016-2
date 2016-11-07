@@ -1,4 +1,5 @@
 ﻿using StreetFighter.Dominio;
+using StreetFighter.Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
