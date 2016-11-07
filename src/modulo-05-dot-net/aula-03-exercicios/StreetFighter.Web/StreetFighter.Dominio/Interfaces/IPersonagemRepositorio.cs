@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreetFighter.Dominio
+namespace StreetFighter.Dominio.Interfaces
 {
     public interface IPersonagemRepositorio
     {

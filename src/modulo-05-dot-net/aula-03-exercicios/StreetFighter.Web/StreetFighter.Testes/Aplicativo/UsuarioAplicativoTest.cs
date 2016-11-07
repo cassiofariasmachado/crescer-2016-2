@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreetFighter.Aplicativo;
 using StreetFighter.Dominio;
+using StreetFighter.Dominio.Interfaces;
 using FakeItEasy;
 
 namespace StreetFighter.Testes.Aplicativo

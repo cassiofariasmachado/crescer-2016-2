@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreetFighter.Dominio;
+using StreetFighter.Dominio.Interfaces;
 using StreetFighter.Aplicativo;
 using FakeItEasy;
 
