@@ -11,7 +11,7 @@ namespace StreetFighter.Repositorio
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
-        const string CaminhoArquivo = @"C:\Users\Cassio\Documents\git\crescer-2016-2\src\modulo-05-dot-net\aula-03-exercicios\StreetFighter.Web\StreetFighter.Repositorio\usuario-repositorio.csv";
+        const string CaminhoArquivo = @"C:\Users\Cassio\Documents\git\crescer-2016-2\src\modulo-05-dot-net\aula-03-exercicios\StreetFighter.Web\BaseArquivosCsv\usuario.csv";
 
         protected virtual List<Usuario> lerUsuariosDoArquivoCsv()
         {
