@@ -1,3 +1,4 @@
+-- Inserindo valores na tabela Personagem
 INSERT INTO Personagem (Nome, DataNascimento, Altura, Peso, Origem, GolpesEspeciais, UrlDaImagem, PersonagemOculto) 
 			VALUES ('Chun-li', CONVERT(DATETIME, '12/12/2012', 103), 170, 59, 'China', 'Spining Bird Kick, Kikouken.','http://www.streetfighter.com.br/upload/editor/20120623181304_27.gif', 0);
 INSERT INTO Personagem (Nome, DataNascimento, Altura, Peso, Origem, GolpesEspeciais, UrlDaImagem, PersonagemOculto) 
@@ -9,5 +10,6 @@ INSERT INTO Personagem (Nome, DataNascimento, Altura, Peso, Origem, GolpesEspeci
 INSERT INTO Personagem (Nome, DataNascimento, Altura, Peso, Origem, GolpesEspeciais, UrlDaImagem, PersonagemOculto) 
 			VALUES ('Blanka', CONVERT(DATETIME, '12/02/1966', 103), 192, 96, 'Brasil', 'Electric Thunder, Rolling Attack.', 'http://www.streetfighter.com.br/upload/editor/20120823194105_127.png', 0);
 
-
-
+-- Inserindo valores na tabela Usuário
+INSERT INTO Usuario (Nome, Email, Login, Senha)
+			VALUES ('Cassio', 'cassiofariasmachado@yahoo.com', 'cassio', '62ad493901722f192190203ba08e91bc');
