@@ -3,12 +3,15 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="row">
+    @using (Html.BeginForm("FazerLogin", "Login", FormMethod.Post, new { @class = "form-signin col-sm-6 center-block col-no-float" }))
+    {
+        @Html.AntiForgeryToken()
+        <span class="text-danger">@ViewBag.ErroLogin</span>
 
-@using (Html.BeginForm("FazerLogin", "Login", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    @Html.TextBox("usuario", "", new { placeholder = "Usuário" });
-    @Html.Password("senha", "", new { placeholder = "Senha" });
+        @Html.TextBox("usuario", "", new { placeholder = "Usuário", @class = "form-control" });
+        @Html.Password("senha", "", new { placeholder = "Senha", @class = "form-control" });
 
-    <button type="submit">Entrar</button>
-}
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
+    }
+</div>

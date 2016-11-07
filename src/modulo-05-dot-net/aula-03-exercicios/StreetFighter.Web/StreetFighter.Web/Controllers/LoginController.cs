@@ -31,7 +31,8 @@ namespace StreetFighter.Web.Controllers
                 return RedirectToAction("Index", "StreetFighter");
             }
 
-            return RedirectToAction("Index");
+            ViewBag.ErroLogin = "Usuário e/ou senha inválido.";
+            return View("Index");
         }
     }
 }
