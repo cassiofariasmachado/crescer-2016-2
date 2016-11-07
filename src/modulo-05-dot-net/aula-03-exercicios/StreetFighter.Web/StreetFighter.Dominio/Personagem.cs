@@ -9,7 +9,7 @@ namespace StreetFighter.Dominio
 {
     public class Personagem
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public string Nome { get; private set; }
 
@@ -26,7 +26,7 @@ namespace StreetFighter.Dominio
         public bool PersonagemOculto { get; private set; }
         public string UrlDaImagem { get; private set; }
 
-        public Personagem( int id, 
+        public Personagem( int? id, 
                            string nome,
                            DateTime dataNascimento,
                            int? altura,

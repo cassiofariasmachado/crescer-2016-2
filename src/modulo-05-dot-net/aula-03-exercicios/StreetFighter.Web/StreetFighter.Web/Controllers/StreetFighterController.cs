@@ -73,7 +73,7 @@ namespace StreetFighter.Web.Controllers
         public ActionResult Cadastro()
         {
             PopularOrigens();
-            return View(new FichaTecnicaModel());
+            return View();
         }
 
         [HttpPost]
@@ -87,7 +87,7 @@ namespace StreetFighter.Web.Controllers
 
                 try
                 {
-                    Personagem personagem = new Personagem( fichaTecnicaModel.Id,
+                    Personagem personagem = new Personagem( fichaTecnicaModel.Id == null? 0 : fichaTecnicaModel.Id,
                                                             fichaTecnicaModel.Nome,
                                                             fichaTecnicaModel.DataNascimento,
                                                             fichaTecnicaModel.Altura,

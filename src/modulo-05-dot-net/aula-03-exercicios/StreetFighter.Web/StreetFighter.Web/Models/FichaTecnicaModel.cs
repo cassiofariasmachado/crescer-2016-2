@@ -9,7 +9,7 @@ namespace StreetFighter.Web.Models
 {
     public class FichaTecnicaModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [DisplayName("Url da imagem")]
         public string UrlDaImagem { get; set; }
@@ -60,7 +60,7 @@ namespace StreetFighter.Web.Models
             this.UrlDaImagem = urlDaImagem;
         }
 
-        public FichaTecnicaModel( int id,
+        public FichaTecnicaModel( int? id,
                                   string nome,
                                   DateTime dataNascimento,
                                   int? altura,
