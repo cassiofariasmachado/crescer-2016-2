@@ -1,9 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using FakeItEasy;
-using StreetFighter.Repositorio;
 using StreetFighter.Dominio;
+using StreetFighter.Testes.Repositorio.Mocks;
 
 namespace StreetFighter.Testes.Repositorio
 {

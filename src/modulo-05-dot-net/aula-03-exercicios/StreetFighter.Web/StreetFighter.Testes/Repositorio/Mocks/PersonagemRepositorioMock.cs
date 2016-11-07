@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StreetFighter.Dominio;
 
-namespace StreetFighter.Testes.Repositorio
+namespace StreetFighter.Testes.Repositorio.Mocks
 {
     public class PersonagemRepositorioMock : PersonagemRepositorio
     {
