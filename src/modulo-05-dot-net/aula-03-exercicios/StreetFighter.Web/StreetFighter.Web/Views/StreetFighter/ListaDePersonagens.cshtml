@@ -17,13 +17,11 @@
     <div class="filtro">
         @using (Html.BeginForm("ListaDePersonagens", "StreetFighter", FormMethod.Get, new { @class = "form-horizontal" }))
         {
-            <div class="col-sm-12">
-                <div class="input-group">
-                    @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Filtrar por..." })
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Filtrar</button>
-                    </span>
-                </div>
+            <div class="col-sm-12 input-group">
+                @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Filtrar por..." })
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Filtrar</button>
+                </span>
             </div>
         }
     </div>
