@@ -14,7 +14,7 @@ namespace StreetFighter.Web.Controllers
 {
     public class StreetFighterController : Controller
     {
-        // GET: StreetFighter
+        [StreetFighterAutorizador]
         public ActionResult Index()
         {
             return View();
