@@ -38,6 +38,17 @@ namespace StreetFighter.Repositorio
             File.WriteAllLines(CaminhoArquivo, personagensComoString);
         }
 
+        private int gerarProximoId(List<Personagem> personagens)
+        {
+            int maiorId = 0;
+            foreach (var personagem in personagens)
+            {
+                if (personagem.Id > maiorId)
+                    maiorId = (int)personagem.Id;
+            }
+            return maiorId + 1;
+        }
+
         public List<Personagem> ListarPersonagens (string filtroNome = null)
         {
             List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
@@ -53,7 +64,7 @@ namespace StreetFighter.Repositorio
         {
             List<Personagem> personagens = this.lerPersonagensDoArquivoCsv();
 
-            personagem.Id = personagens.Count + 1;
+            personagem.Id = this.gerarProximoId(personagens);
 
             personagens.Add(personagem);
 
