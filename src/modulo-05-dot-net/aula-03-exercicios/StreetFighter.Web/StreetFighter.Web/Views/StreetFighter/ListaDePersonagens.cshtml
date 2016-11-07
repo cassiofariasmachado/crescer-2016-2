@@ -30,9 +30,9 @@
     <div class="personagens">
         @foreach (var personagem in Model)
         {
-            @Html.ActionLink($"{personagem.Nome}", "FichaTecnica", new { id = personagem.Id }, new { @class = "col-sm-8 btn btn-default" })
-            @Html.ActionLink("Editar", "EditarPersonagem", new { id = personagem.Id }, new { @class = "col-sm-2 btn btn-warning" })
-            @Html.ActionLink("Excluir", "ExcluirPersonagem", new { id = personagem.Id }, new { @class = "col-sm-2 btn btn-danger" })
+            @Html.ActionLink($"{personagem.Nome}", "FichaTecnica", new { id = personagem.Id }, new { @class = "col-xs-8 btn btn-default" })
+            @Html.ActionLink("Editar", "EditarPersonagem", new { id = personagem.Id }, new { @class = "col-xs-2 btn btn-warning" })
+            @Html.ActionLink("Excluir", "ExcluirPersonagem", new { id = personagem.Id }, new { @class = "col-xs-2 btn btn-danger" })
         }
     </div>
 </div>
