@@ -116,6 +116,7 @@ namespace StreetFighter.Web.Controllers
             else
             {
                 ModelState.AddModelError("", "Ocorreu algum erro. Tente novamente ou entre em contato com o administrador.");
+
                 PopularOrigens();
                 return View("Cadastro");
             }
@@ -129,10 +130,9 @@ namespace StreetFighter.Web.Controllers
             Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
 
             aplicativo.ExcluirPersonagem(personagem);
-            ViewBag.Mensagem = "Personagem excluído com sucesso.";
 
-            List<Personagem> personagens = aplicativo.ListaPersonagens();
-            return View("ListaDePersonagens", personagens);
+            ViewBag.Mensagem = "Personagem excluído com sucesso.";
+            return View("ListaDePersonagens", aplicativo.ListaPersonagens());
         }
 
         [HttpGet]
