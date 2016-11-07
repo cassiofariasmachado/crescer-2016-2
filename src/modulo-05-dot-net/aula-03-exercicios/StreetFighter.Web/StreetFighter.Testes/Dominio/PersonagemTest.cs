@@ -48,7 +48,7 @@ namespace StreetFighter.Testes.Dominio
 
             Personagem personagem = new Personagem(nome, dataNascimento, altura, peso, origem, golpesEspeciais, urlDaImagem, personagemOculto);
 
-            Assert.AreEqual(0, personagem.Id);
+            Assert.AreEqual(null, personagem.Id);
             Assert.AreEqual(nome, personagem.Nome);
             Assert.AreEqual(dataNascimento, personagem.DataNascimento);
             Assert.AreEqual(altura, personagem.Altura);

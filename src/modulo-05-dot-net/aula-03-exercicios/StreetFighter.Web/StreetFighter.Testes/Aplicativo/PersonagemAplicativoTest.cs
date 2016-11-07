@@ -16,7 +16,7 @@ namespace StreetFighter.Testes.Aplicativo
             var repositorioFake = A.Fake<IPersonagemRepositorio>();
 
             var aplicativo = new PersonagemAplicativo(repositorioFake);
-            var personagem = new Personagem("João", new DateTime(1997, 08, 12), 159, 89.9, "São Leopoldo", "Soco forte");
+            var personagem = new Personagem(0, "João", new DateTime(1997, 08, 12), 159, 89.9, "São Leopoldo", "Soco forte");
 
             aplicativo.Salvar(personagem);
 
