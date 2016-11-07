@@ -26,6 +26,8 @@ namespace StreetFighter.Web.Controllers
         {
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             List<Personagem> personagens = aplicativo.ListaPersonagens(filtro);
+            if (personagens.Count == 0)
+                ViewBag.Mensagem = "Nenhum personagem foi encontrado.";
 
             return View(personagens);
         }
