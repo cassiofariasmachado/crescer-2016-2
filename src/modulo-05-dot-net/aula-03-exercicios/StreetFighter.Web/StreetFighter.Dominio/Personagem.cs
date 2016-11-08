@@ -26,6 +26,8 @@ namespace StreetFighter.Dominio
         public bool PersonagemOculto { get; private set; }
         public string UrlDaImagem { get; private set; }
 
+        public Personagem() { }
+
         public Personagem( int? id, 
                            string nome,
                            DateTime dataNascimento,
