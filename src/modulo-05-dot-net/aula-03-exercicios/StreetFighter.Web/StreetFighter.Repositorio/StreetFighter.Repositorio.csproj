@@ -45,6 +45,7 @@
     <Compile Include="PersonagemRepositorioAdo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioRepositorio.cs" />
+    <Compile Include="UsuarioRepositorioAdo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">
