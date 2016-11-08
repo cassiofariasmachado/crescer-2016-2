@@ -85,14 +85,14 @@ namespace StreetFighter.Web.Controllers
 
                 try
                 {
-                    Personagem personagem = new Personagem( fichaTecnicaModel.Id == null? 0 : fichaTecnicaModel.Id,
+                    Personagem personagem = new Personagem( fichaTecnicaModel.Id == null ? 0 : fichaTecnicaModel.Id,
                                                             fichaTecnicaModel.Nome,
                                                             fichaTecnicaModel.DataNascimento,
                                                             fichaTecnicaModel.Altura,
                                                             fichaTecnicaModel.Peso,
                                                             fichaTecnicaModel.Origem,
                                                             fichaTecnicaModel.GolpesEspeciais,
-                                                            fichaTecnicaModel.UrlDaImagem,
+                                                            fichaTecnicaModel.UrlDaImagem == null ? "Não informado" : fichaTecnicaModel.UrlDaImagem,
                                                             fichaTecnicaModel.PersonagemOculto );
 
                     if (personagem.Id == 0)
