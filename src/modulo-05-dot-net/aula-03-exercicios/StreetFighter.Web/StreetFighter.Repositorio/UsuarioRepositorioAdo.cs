@@ -10,14 +10,13 @@ using System.Data.SqlClient;
 
 namespace StreetFighter.Repositorio
 {
-    public class UsuarioRepositorioAdo : IUsuarioRepositorio
+    public class UsuarioRepositorioAdo : RepositorioBase, IUsuarioRepositorio
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConnection"].ConnectionString;
         public Usuario BuscarUsuario(string login)
         {
             Usuario usuario = null;
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
 

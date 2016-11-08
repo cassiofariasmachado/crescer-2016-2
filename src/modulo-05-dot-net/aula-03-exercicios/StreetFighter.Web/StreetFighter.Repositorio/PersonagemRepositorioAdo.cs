@@ -10,14 +10,13 @@ using System.Data.SqlClient;
 
 namespace StreetFighter.Repositorio
 {
-    public class PersonagemRepositorioAdo : IPersonagemRepositorio
+    public class PersonagemRepositorioAdo : RepositorioBase, IPersonagemRepositorio
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["StreetFighterConnection"].ConnectionString;
         public Personagem BuscarPersonagemPorId(int id)
         {
             Personagem personagem = null;
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -40,7 +39,7 @@ namespace StreetFighter.Repositorio
 
         public void EditarPersonagem(Personagem personagem)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -72,7 +71,7 @@ namespace StreetFighter.Repositorio
 
         public void ExcluirPersonagem(Personagem personagem)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -89,7 +88,7 @@ namespace StreetFighter.Repositorio
 
         public void IncluirPersonagem(Personagem personagem)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
 
@@ -116,7 +115,7 @@ namespace StreetFighter.Repositorio
         {
             List<Personagem> personagens = new List<Personagem>();
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
 
