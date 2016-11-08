@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StreetFighter.Dominio;
+using System.Data.Entity;
 
 namespace StreetFighter.Repositorio
 {
@@ -21,17 +22,29 @@ namespace StreetFighter.Repositorio
 
         public void EditarPersonagem(Personagem personagem)
         {
-            throw new NotImplementedException();
+            using (var contexto = new DatabaseContext())
+            {
+                contexto.Entry<Personagem>(personagem).State = EntityState.Modified;
+                contexto.SaveChanges();
+            }
         }
 
         public void ExcluirPersonagem(Personagem personagem)
         {
-            throw new NotImplementedException();
+            using (var contexto = new DatabaseContext())
+            {
+                contexto.Entry<Personagem>(personagem).State = EntityState.Deleted;
+                contexto.SaveChanges();
+            }
         }
 
         public void IncluirPersonagem(Personagem personagem)
         {
-            throw new NotImplementedException();
+            using (var contexto = new DatabaseContext())
+            {
+                contexto.Entry<Personagem>(personagem).State = EntityState.Added;
+                contexto.SaveChanges();
+            }
         }
 
         public List<Personagem> ListarPersonagens(string filtroNome)
