@@ -14,7 +14,7 @@ namespace StreetFighter.Aplicativo
     {
         private readonly IUsuarioRepositorio repositorio;
 
-        public UsuarioAplicativo() : this(new UsuarioRepositorio())
+        public UsuarioAplicativo() : this(new UsuarioRepositorioAdo())
         {
         }
 

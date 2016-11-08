@@ -13,7 +13,7 @@ namespace StreetFighter.Aplicativo
     {
         private readonly IPersonagemRepositorio repositorio;
 
-        public PersonagemAplicativo() : this(new PersonagemRepositorio())
+        public PersonagemAplicativo() : this(new PersonagemRepositorioAdo())
         {
         }
 
