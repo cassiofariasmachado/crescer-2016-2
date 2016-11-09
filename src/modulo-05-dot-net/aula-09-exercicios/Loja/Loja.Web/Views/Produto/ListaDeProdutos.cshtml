@@ -1,0 +1,38 @@
+﻿@model Loja.Web.Models.ListaDeProdutosModel
+@{
+    ViewBag.Title = "Lista de Produtos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Produtos</h2>
+
+<h3>@TempData["Mensagem"]</h3>
+
+<div style="text-align: right; margin: 20px 10px;">
+    <a href="~/Produto/Manter" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Novo produto</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Personagem</th>
+            <th style="width: 40px;">Editar</th>
+            <th style="width: 40px;">Excluir</th>
+        </tr>
+    </thead>
+    @foreach (var produto in Model.Produtos)
+    {
+        <tr>
+
+            <td>
+                @produto.Nome
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-pencil" href="~/Produto/Manter/@produto.Id"></a>
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-trash" href="~/Produto/Excluir/@produto.Id"></a>
+            </td>
+        </tr>
+    }
+</table>

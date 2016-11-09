@@ -1,0 +1,42 @@
+﻿@model Loja.Web.Models.ProdutoModel
+@{
+    ViewBag.Title = "Cadastro de Produto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cadastro de Produto</h2>
+
+@using (Html.BeginForm("Salvar", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="hidden">
+        @Html.LabelFor(model => model.Id, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-8">
+            @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nome, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-8">
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", @placeholder = "Digite o nome do produto..." })
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Valor, new { @class = "col-sm-4 control-label" })
+        <div class="col-sm-8">
+            @Html.TextBoxFor(model => model.Valor, new { @class = "form-control", @placeholder = "Digite o valor..." })
+            @Html.ValidationMessageFor(model => model.Valor)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default pull-right">Salvar</button>
+        </div>
+    </div>
+}
