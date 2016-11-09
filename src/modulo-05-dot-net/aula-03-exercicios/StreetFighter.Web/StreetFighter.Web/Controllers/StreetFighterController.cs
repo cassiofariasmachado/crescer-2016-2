@@ -15,7 +15,7 @@ namespace StreetFighter.Web.Controllers
     [StreetFighterAutorizador]
     public class StreetFighterController : Controller
     {
-        
+
         public ActionResult Index()
         {
             return View();
@@ -57,18 +57,18 @@ namespace StreetFighter.Web.Controllers
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
 
-            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel( personagem.Nome,
-                                                                    personagem.DataNascimento,
-                                                                    personagem.Altura,
-                                                                    personagem.Peso,
-                                                                    personagem.Origem,
-                                                                    personagem.GolpesEspeciais,
-                                                                    personagem.UrlDaImagem,
-                                                                    personagem.PersonagemOculto );
+            FichaTecnicaModel model = new FichaTecnicaModel(personagem.Nome,
+                                                            personagem.DataNascimento,
+                                                            personagem.Altura,
+                                                            personagem.Peso,
+                                                            personagem.Origem,
+                                                            personagem.GolpesEspeciais,
+                                                            personagem.UrlDaImagem,
+                                                            personagem.PersonagemOculto);
 
-            return View(fichaTecnica);
+            return View(model);
         }
-        
+
         public ActionResult Cadastro()
         {
             PopularOrigens();
@@ -77,47 +77,58 @@ namespace StreetFighter.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SalvarCadastro(FichaTecnicaModel fichaTecnicaModel)
+        public ActionResult SalvarCadastro(FichaTecnicaModel model)
         {
             if (ModelState.IsValid)
             {
                 PersonagemAplicativo aplicativo = new PersonagemAplicativo();
-
                 try
                 {
-                    Personagem personagem = new Personagem( fichaTecnicaModel.Id == null ? 0 : fichaTecnicaModel.Id,
-                                                            fichaTecnicaModel.Nome,
-                                                            fichaTecnicaModel.DataNascimento,
-                                                            fichaTecnicaModel.Altura,
-                                                            fichaTecnicaModel.Peso,
-                                                            fichaTecnicaModel.Origem,
-                                                            fichaTecnicaModel.GolpesEspeciais,
-                                                            fichaTecnicaModel.UrlDaImagem == null ? "Não informado" : fichaTecnicaModel.UrlDaImagem,
-                                                            fichaTecnicaModel.PersonagemOculto );
+                    Personagem personagem;
+                    if (model.Id.HasValue)
+                    {
+                        personagem = new Personagem(model.Id.Value,
+                                                    model.Nome,
+                                                    model.DataNascimento,
+                                                    model.Altura.Value,
+                                                    model.Peso.Value,
+                                                    model.Origem,
+                                                    model.GolpesEspeciais,
+                                                    model.UrlDaImagem == null ? "Não informado" : model.UrlDaImagem,
+                                                    model.PersonagemOculto);
 
-                    if (personagem.Id == 0)
-                        ViewBag.Mensagem = "Personagem cadastrado com sucesso.";
-                    else
                         ViewBag.Mensagem = "Personagem editado com sucesso.";
+                    }
+                    else
+                    {
+                        personagem = new Personagem(model.Nome,
+                                                    model.DataNascimento,
+                                                    model.Altura.Value,
+                                                    model.Peso.Value,
+                                                    model.Origem,
+                                                    model.GolpesEspeciais,
+                                                    model.UrlDaImagem == null ? "Não informado" : model.UrlDaImagem,
+                                                    model.PersonagemOculto);
+
+                        ViewBag.Mensagem = "Personagem cadastrado com sucesso.";
+                    }
 
                     aplicativo.Salvar(personagem);
+
+                    return View("ListaDePersonagens", aplicativo.ListaPersonagens());
                 }
                 catch (RegraDeNegocioException ex)
                 {
                     ModelState.AddModelError("", ex.Message);
-                    PopularOrigens();
-                    return View("Cadastro");
-                }
-
-                return View("ListaDePersonagens", aplicativo.ListaPersonagens());
+                } 
             }
             else
-            {   
+            {
                 ModelState.AddModelError("", "Ocorreu algum erro. Tente novamente ou entre em contato com o administrador.");
-
-                PopularOrigens();
-                return View("Cadastro");
             }
+
+            PopularOrigens();
+            return View("Cadastro", model);
         }
 
         [HttpGet]
@@ -138,15 +149,15 @@ namespace StreetFighter.Web.Controllers
             PersonagemAplicativo aplicativo = new PersonagemAplicativo();
             Personagem personagem = aplicativo.BuscarPersonagemPorId(id);
 
-            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel( personagem.Id,
-                                                                    personagem.Nome,
-                                                                    personagem.DataNascimento,
-                                                                    personagem.Altura,
-                                                                    personagem.Peso,
-                                                                    personagem.Origem,
-                                                                    personagem.GolpesEspeciais,
-                                                                    personagem.UrlDaImagem,
-                                                                    personagem.PersonagemOculto );
+            FichaTecnicaModel fichaTecnica = new FichaTecnicaModel(personagem.Id,
+                                                                   personagem.Nome,
+                                                                   personagem.DataNascimento,
+                                                                   personagem.Altura,
+                                                                   personagem.Peso,
+                                                                   personagem.Origem,
+                                                                   personagem.GolpesEspeciais,
+                                                                   personagem.UrlDaImagem,
+                                                                   personagem.PersonagemOculto);
 
             PopularOrigens();
             return View("Cadastro", fichaTecnica);
