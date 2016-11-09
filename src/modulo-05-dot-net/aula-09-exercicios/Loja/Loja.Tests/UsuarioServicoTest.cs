@@ -24,5 +24,44 @@ namespace Loja.Tests
 
             Assert.IsNotNull(usuario);
         }
+
+        [TestMethod]
+        public void NaoDeveAutenticarComEmailInvalido()
+        {
+            var usuarioServico = new UsuarioServico(
+                new UsuarioRepositorioMock(),
+                new ServicoDeCriptografiaMock());
+
+            Usuario usuario = usuarioServico.BuscarPorAutenticacao(
+                "vegeta@yahoo.com", "abc123");
+
+            Assert.IsNull(usuario);
+        }
+
+        [TestMethod]
+        public void NaoDeveAutenticarComSenhaInvalida()
+        {
+            var usuarioServico = new UsuarioServico(
+                new UsuarioRepositorioMock(),
+                new ServicoDeCriptografiaMock());
+
+            Usuario usuario = usuarioServico.BuscarPorAutenticacao(
+                "goku@bol.com", "senhaErrada");
+
+            Assert.IsNull(usuario);
+        }
+
+        [TestMethod]
+        public void NaoDeveAutenticarComEmailESenhaInvalidos()
+        {
+            var usuarioServico = new UsuarioServico(
+                new UsuarioRepositorioMock(),
+                new ServicoDeCriptografiaMock());
+
+            Usuario usuario = usuarioServico.BuscarPorAutenticacao(
+                "emailErrado@hotmail.com", "senhaErrada");
+
+            Assert.IsNull(usuario);
+        }
     }
 }
