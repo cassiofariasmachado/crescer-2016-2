@@ -14,6 +14,7 @@ namespace StreetFighter.Dominio
         public string Login { get; set; }
         public string Senha { get; set; }
 
+        public Usuario() { }
         public Usuario(string nome, string email, string login, string senha)
         {
             this.Nome = nome;
