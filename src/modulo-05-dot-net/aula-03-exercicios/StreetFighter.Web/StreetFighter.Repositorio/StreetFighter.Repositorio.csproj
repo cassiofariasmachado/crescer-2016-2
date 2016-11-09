@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201611081744314_AdicionandoNomeEmailLoginESenhaAoUsuario.Designer.cs">
       <DependentUpon>201611081744314_AdicionandoNomeEmailLoginESenhaAoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611090152241_RemoverNullableDeAtributosDePersonagem.cs" />
+    <Compile Include="Migrations\201611090152241_RemoverNullableDeAtributosDePersonagem.Designer.cs">
+      <DependentUpon>201611090152241_RemoverNullableDeAtributosDePersonagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PersonagemRepositorio.cs" />
     <Compile Include="PersonagemRepositorioAdo.cs" />
@@ -67,6 +71,7 @@
     <Compile Include="RepositorioBase.cs" />
     <Compile Include="UsuarioRepositorio.cs" />
     <Compile Include="UsuarioRepositorioAdo.cs" />
+    <Compile Include="UsuarioRepositorioEF.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">
@@ -84,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611081744314_AdicionandoNomeEmailLoginESenhaAoUsuario.resx">
       <DependentUpon>201611081744314_AdicionandoNomeEmailLoginESenhaAoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611090152241_RemoverNullableDeAtributosDePersonagem.resx">
+      <DependentUpon>201611090152241_RemoverNullableDeAtributosDePersonagem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
