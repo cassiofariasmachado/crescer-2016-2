@@ -2,6 +2,7 @@
 using StreetFighter.Dominio.Interfaces;
 using StreetFighter.Infraestrutura;
 using StreetFighter.Repositorio;
+using StreetFighter.Repositorio.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

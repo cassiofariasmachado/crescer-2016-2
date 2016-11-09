@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreetFighter.Repositorio
+namespace StreetFighter.Repositorio.ADO
 {
     public abstract class RepositorioBase
     {

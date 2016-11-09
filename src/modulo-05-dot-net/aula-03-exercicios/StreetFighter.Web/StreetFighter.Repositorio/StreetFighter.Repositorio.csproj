@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="EntityFramework\DatabaseContext.cs" />
     <Compile Include="Migrations\201611081741470_Initial.cs" />
     <Compile Include="Migrations\201611081741470_Initial.Designer.cs">
       <DependentUpon>201611081741470_Initial.cs</DependentUpon>
@@ -64,14 +64,14 @@
       <DependentUpon>201611090152241_RemoverNullableDeAtributosDePersonagem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PersonagemRepositorio.cs" />
-    <Compile Include="PersonagemRepositorioAdo.cs" />
-    <Compile Include="PersonagemRepositorioEF.cs" />
+    <Compile Include="ArquivoCSV\PersonagemRepositorio.cs" />
+    <Compile Include="ADO\PersonagemRepositorioAdo.cs" />
+    <Compile Include="EntityFramework\PersonagemRepositorioEF.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositorioBase.cs" />
-    <Compile Include="UsuarioRepositorio.cs" />
-    <Compile Include="UsuarioRepositorioAdo.cs" />
-    <Compile Include="UsuarioRepositorioEF.cs" />
+    <Compile Include="ADO\RepositorioBase.cs" />
+    <Compile Include="ArquivoCSV\UsuarioRepositorio.cs" />
+    <Compile Include="ADO\UsuarioRepositorioAdo.cs" />
+    <Compile Include="EntityFramework\UsuarioRepositorioEF.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StreetFighter.Dominio\StreetFighter.Dominio.csproj">

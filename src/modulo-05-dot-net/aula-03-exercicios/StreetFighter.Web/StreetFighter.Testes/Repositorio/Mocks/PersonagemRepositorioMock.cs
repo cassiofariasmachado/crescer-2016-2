@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StreetFighter.Dominio;
+using StreetFighter.Repositorio.ArquivoCSV;
 
 namespace StreetFighter.Testes.Repositorio.Mocks
 {

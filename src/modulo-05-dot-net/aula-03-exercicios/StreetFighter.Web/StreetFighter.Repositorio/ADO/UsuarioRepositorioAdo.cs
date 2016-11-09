@@ -8,7 +8,7 @@ using StreetFighter.Dominio;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace StreetFighter.Repositorio
+namespace StreetFighter.Repositorio.ADO
 {
     public class UsuarioRepositorioAdo : RepositorioBase, IUsuarioRepositorio
     {

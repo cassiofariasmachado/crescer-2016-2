@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StreetFighter.Repositorio
+namespace StreetFighter.Repositorio.ArquivoCSV
 {
     public class PersonagemRepositorio : IPersonagemRepositorio
     {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StreetFighter.Dominio;
 
-namespace StreetFighter.Repositorio
+namespace StreetFighter.Repositorio.EntityFramework
 {
     public class UsuarioRepositorioEF : IUsuarioRepositorio
     {

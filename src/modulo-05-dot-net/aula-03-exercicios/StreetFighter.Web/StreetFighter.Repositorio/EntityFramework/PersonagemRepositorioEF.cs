@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using StreetFighter.Dominio;
 using System.Data.Entity;
 
-namespace StreetFighter.Repositorio
+namespace StreetFighter.Repositorio.EntityFramework
 {
     public class PersonagemRepositorioEF : IPersonagemRepositorio
     {

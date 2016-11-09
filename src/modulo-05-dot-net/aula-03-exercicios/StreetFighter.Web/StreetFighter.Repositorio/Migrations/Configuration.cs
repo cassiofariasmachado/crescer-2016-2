@@ -5,14 +5,14 @@ namespace StreetFighter.Repositorio.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<StreetFighter.Repositorio.DatabaseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<StreetFighter.Repositorio.EntityFramework.DatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(StreetFighter.Repositorio.DatabaseContext context)
+        protected override void Seed(StreetFighter.Repositorio.EntityFramework.DatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 
