@@ -1,4 +1,5 @@
 ﻿using Loja.Dominio;
+using Loja.Dominio.Exceptions;
 using Loja.Web.Filters;
 using Loja.Web.Models;
 using Loja.Web.Servicos;
@@ -44,17 +45,33 @@ namespace Loja.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Salvar(ProdutoModel model)
         {
-            ProdutoServico produtoServico = ServicoDeDependencias.MontarProdutoServico();
-            Produto produto = model.ConverterParaProduto();
-            
-            if (model.Id.HasValue)
-                TempData["Mensagem"] = "Produto editado com sucesso.";
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    ProdutoServico produtoServico = ServicoDeDependencias.MontarProdutoServico();
+                    Produto produto = model.ConverterParaProduto();
+
+                    if (model.Id.HasValue)
+                        TempData["Mensagem"] = "Produto editado com sucesso.";
+                    else
+                        TempData["Mensagem"] = "Produto cadatrado com sucesso.";
+
+                    produtoServico.Salvar(produto);
+
+                    return RedirectToAction("ListaDeProdutos");
+                }
+                catch (ProdutoException ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
             else
-                TempData["Mensagem"] = "Produto cadatrado com sucesso.";
+            {
+                ModelState.AddModelError("", "Ocorreu algum erro. Tente novamente ou entre em contato com o administrador.");
+            }
 
-            produtoServico.Salvar(produto);
-
-            return RedirectToAction("ListaDeProdutos");
+            return View("Manter", model);
         }
 
         public ActionResult Excluir(int id)
