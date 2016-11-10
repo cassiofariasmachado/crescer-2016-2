@@ -100,7 +100,7 @@ namespace Loja.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ProdutoComNomePequenoException))]
-        public void SalvarProdutoComTamanhoDeNomeMenorQue2DeveLancarException()
+        public void SalvarIncluindoProdutoComNomeDeTamanhoMenorQue2DeveLancarException()
         {
             ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
 
@@ -114,7 +114,23 @@ namespace Loja.Tests
         }
 
         [TestMethod]
-        public void SalvarProdutoComTamanhoDeNome3NaoDeveLancarException()
+        [ExpectedException(typeof(ProdutoComNomePequenoException))]
+        public void SalvarEditandoProdutoParaNomeComTamanhoMenorQue2DeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Id = 1,
+                Nome = "Nc",
+                Valor = 5.99M
+            };
+
+            produtoServico.Salvar(produto);
+        }
+
+        [TestMethod]
+        public void SalvarIncluindoProdutoComTamanhoDeNome3NaoDeveLancarException()
         {
             ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
 
@@ -125,13 +141,41 @@ namespace Loja.Tests
             };
 
             produtoServico.Salvar(produto);
+        }
 
-            Assert.AreEqual("Uva", produto.Nome);
+        [TestMethod]
+        [ExpectedException(typeof(ProdutoComNomePequenoException))]
+        public void SalvarIncluindoProdutoComNomeNuloDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Nome = null,
+                Valor = 6.99M
+            };
+
+            produtoServico.Salvar(produto);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ProdutoComNomePequenoException))]
+        public void SalvarIncluindoProdutoComNomeVazioDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Nome = "",
+                Valor = 6.99M
+            };
+
+            produtoServico.Salvar(produto);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ProdutoComValorZeradoException))]
-        public void ProdutoComValorZeroDeveLancarException()
+        public void SalvarIncluindoProdutoComValorZeroDeveLancarException()
         {
             ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
 
@@ -145,7 +189,23 @@ namespace Loja.Tests
         }
 
         [TestMethod]
-        public void ProdutoComValorZeroVirgulaUmNaoDeveLancarException()
+        [ExpectedException(typeof(ProdutoComValorZeradoException))]
+        public void SalvarEditandoProdutoParaValorZeroDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Id = 1,
+                Nome = "Nescau",
+                Valor = 0.0M
+            };
+
+            produtoServico.Salvar(produto);
+        }
+
+        [TestMethod]
+        public void SalvarIncluindoProdutoComValorZeroPontoTresNaoDeveLancarException()
         {
             ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
 
@@ -156,8 +216,36 @@ namespace Loja.Tests
             };
 
             produtoServico.Salvar(produto);
+        }
 
-            Assert.AreEqual(0.3M, produto.Valor);
+        [TestMethod]
+        [ExpectedException(typeof (ProdutoDuplicadoException))]
+        public void SalvarIncluindoProdutoComNomeJaExistenteDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Nome = "Nescau",
+                Valor = 5.99M
+            };
+
+            produtoServico.Salvar(produto);
+        }
+
+        [TestMethod]
+        public void SalvarEditandoProdutoENaoModificandoNomeNaoDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Id = 1,
+                Nome = "Nescau",
+                Valor = 7.99M
+            };
+
+            produtoServico.Salvar(produto);
         }
     }
 }
