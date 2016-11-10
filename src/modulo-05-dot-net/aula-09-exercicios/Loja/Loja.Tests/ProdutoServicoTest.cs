@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Loja.Dominio;
 using Loja.Tests.Mocks;
 using System.Collections.Generic;
+using Loja.Dominio.Exceptions;
 
 namespace Loja.Tests
 {
@@ -95,6 +96,68 @@ namespace Loja.Tests
             IList<Produto> produtos = produtoServico.ListarProdutos();
 
             Assert.AreEqual(3, produtos.Count);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ProdutoComNomePequenoException))]
+        public void SalvarProdutoComTamanhoDeNomeMenorQue2DeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Nome = "Ué",
+                Valor = 5.99M
+            };
+
+            produtoServico.Salvar(produto);
+        }
+
+        [TestMethod]
+        public void SalvarProdutoComTamanhoDeNome3NaoDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Nome = "Uva",
+                Valor = 6.99M
+            };
+
+            produtoServico.Salvar(produto);
+
+            Assert.AreEqual("Uva", produto.Nome);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ProdutoComValorZeradoException))]
+        public void ProdutoComValorZeroDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Nome = "Toddy",
+                Valor = 0.0M
+            };
+
+            produtoServico.Salvar(produto);
+        }
+
+        [TestMethod]
+        public void ProdutoComValorZeroVirgulaUmNaoDeveLancarException()
+        {
+            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+
+            Produto produto = new Produto()
+            {
+                Nome = "Toddy",
+                Valor = 0.3M
+            };
+
+            produtoServico.Salvar(produto);
+
+            Assert.AreEqual(0.3M, produto.Valor);
         }
     }
 }

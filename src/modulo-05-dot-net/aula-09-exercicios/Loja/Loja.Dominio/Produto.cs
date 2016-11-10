@@ -11,35 +11,9 @@ namespace Loja.Dominio
     {
         public int Id { get; set; }
 
-        private string nome;
-        public string Nome
-        {
-            get
-            {
-                return this.nome;
-            }
-            set
-            {
-                if (value.Count() < 3)
-                    throw new NomePequenoException();
-                this.nome = value;
-            }
-        }
+        public string Nome { get; set; }
 
-        private decimal valor;
-        public decimal Valor
-        {
-            get
-            {
-                return this.valor;
-            }
-            set
-            {
-                if (value == 0.0M)
-                    throw new ValorZeradoException();
-                this.valor = value;
-            }
-        }
+        public decimal Valor { get; set; }
 
     }
 }

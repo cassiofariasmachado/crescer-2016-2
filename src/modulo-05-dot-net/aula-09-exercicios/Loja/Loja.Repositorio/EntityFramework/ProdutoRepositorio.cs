@@ -19,6 +19,14 @@ namespace Loja.Repositorio.EntityFramework
             }
         }
 
+        public Produto BuscarProdutoPorNome(string nome)
+        {
+            using (var context = new ContextoDeDados())
+            {
+               return context.Produto.FirstOrDefault(personagem => personagem.Nome.Equals(nome));
+            }
+        }
+
         public IList<Produto> ListarProdutos()
         {
             using (var context = new ContextoDeDados())
@@ -53,5 +61,6 @@ namespace Loja.Repositorio.EntityFramework
                 context.SaveChanges();
             }
         }
+
     }
 }

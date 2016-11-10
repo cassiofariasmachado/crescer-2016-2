@@ -8,6 +8,6 @@ namespace Loja.Dominio.Exceptions
 {
     public class ProdutoException : Exception
     {
-        public ProdutoException(string mensagem) : base(mensagem){ }
+        public ProdutoException(string mensagem) : base(mensagem) { }
     }
 }

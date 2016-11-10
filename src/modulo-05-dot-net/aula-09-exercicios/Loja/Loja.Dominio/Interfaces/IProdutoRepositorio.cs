@@ -9,6 +9,7 @@ namespace Loja.Dominio.Interfaces
     public interface IProdutoRepositorio
     {
         Produto BuscarProdutoPorId(int id);
+        Produto BuscarProdutoPorNome(string nome);
         IList<Produto> ListarProdutos();
         void IncluirProduto(Produto produto);
         void EditarProduto(Produto produto);

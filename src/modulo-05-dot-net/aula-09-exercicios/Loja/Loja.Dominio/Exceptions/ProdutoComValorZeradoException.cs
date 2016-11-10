@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Loja.Dominio.Exceptions
 {
-    public class NomePequenoException : ProdutoException
+    public class ProdutoComValorZeradoException : ProdutoException
     {
-        public NomePequenoException() : base("Nome do produto não deve ter menos que 2 caracteres.") { }
+        public ProdutoComValorZeradoException() : base("Valor do produto não deve ser zero.") { }
     }
 }

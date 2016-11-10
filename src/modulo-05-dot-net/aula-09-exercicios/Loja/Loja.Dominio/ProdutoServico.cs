@@ -1,4 +1,5 @@
-﻿using Loja.Dominio.Interfaces;
+﻿using Loja.Dominio.Exceptions;
+using Loja.Dominio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,8 @@ namespace Loja.Dominio
 
         public void Salvar(Produto produto)
         {
+            this.validarProduto(produto);
+
             if (produto.Id == 0)
                 this.produtoRepositorio.IncluirProduto(produto);
             else
@@ -39,5 +42,16 @@ namespace Loja.Dominio
             this.produtoRepositorio.ExcluirProduto(produto);
         }
 
+        private void validarProduto(Produto produto)
+        {
+            if (produto.Valor == 0.0M)
+                throw new ProdutoComValorZeradoException();
+
+            if (produto.Nome.Count() < 3)
+                throw new ProdutoComNomePequenoException();
+
+            if (this.produtoRepositorio.BuscarProdutoPorNome(produto.Nome) != null)
+                throw new ProdutoDuplicadoException();
+        }
     }
 }

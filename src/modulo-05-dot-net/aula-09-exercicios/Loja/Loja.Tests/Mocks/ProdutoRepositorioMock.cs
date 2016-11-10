@@ -51,6 +51,11 @@ namespace Loja.Tests.Mocks
             return this.produtos.FirstOrDefault(produto => produto.Id == id);
         }
 
+        public Produto BuscarProdutoPorNome(string nome)
+        {
+            return this.produtos.FirstOrDefault(produto => produto.Nome.Equals(nome));
+        }
+
         public void EditarProduto(Produto produto)
         {
             for (int i = 0; i < produtos.Count; i++)
