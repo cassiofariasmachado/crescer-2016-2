@@ -10,11 +10,17 @@ namespace Loja.Tests
     [TestClass]
     public class ProdutoServicoTest
     {
+        private ProdutoServico produtoServico;
+
+        [TestInitialize]
+        public void InicializarProdutoServico()
+        {
+            produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
+        }
+
         [TestMethod]
         public void BuscarProdutoPorIdDeveRetornarProdutoComId1()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = produtoServico.BuscarProdutoPorId(1);
 
             Assert.AreEqual(1, produto.Id);
@@ -25,8 +31,6 @@ namespace Loja.Tests
         [TestMethod]
         public void BuscarProdutoPorIdQueNaoExisteDeveRetornarNull()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = produtoServico.BuscarProdutoPorId(10);
 
             Assert.IsNull(produto);
@@ -35,8 +39,6 @@ namespace Loja.Tests
         [TestMethod]
         public void SalvarComProdutoComIdDiferenteDe0DeveEditarProduto()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Id = 1,
@@ -56,8 +58,6 @@ namespace Loja.Tests
         [TestMethod]
         public void SalvarComProdutoComIdIgualAZeroDeveIncluirProduto()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Id = 0,
@@ -77,8 +77,6 @@ namespace Loja.Tests
         [TestMethod]
         public void ExcluirDeveRemoverOProduto()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = produtoServico.BuscarProdutoPorId(2);
 
             produtoServico.Excluir(produto);
@@ -91,8 +89,6 @@ namespace Loja.Tests
         [TestMethod]
         public void ListarProdutosDeveRetornarTodosOsProdutos()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             IList<Produto> produtos = produtoServico.ListarProdutos();
 
             Assert.AreEqual(3, produtos.Count);
@@ -102,8 +98,6 @@ namespace Loja.Tests
         [ExpectedException(typeof(ProdutoComNomePequenoException))]
         public void SalvarIncluindoProdutoComNomeDeTamanhoMenorQue2DeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Nome = "Ué",
@@ -117,8 +111,6 @@ namespace Loja.Tests
         [ExpectedException(typeof(ProdutoComNomePequenoException))]
         public void SalvarEditandoProdutoParaNomeComTamanhoMenorQue2DeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Id = 1,
@@ -132,8 +124,6 @@ namespace Loja.Tests
         [TestMethod]
         public void SalvarIncluindoProdutoComTamanhoDeNome3NaoDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Nome = "Uva",
@@ -147,8 +137,6 @@ namespace Loja.Tests
         [ExpectedException(typeof(ProdutoComNomePequenoException))]
         public void SalvarIncluindoProdutoComNomeNuloDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Nome = null,
@@ -162,8 +150,6 @@ namespace Loja.Tests
         [ExpectedException(typeof(ProdutoComNomePequenoException))]
         public void SalvarIncluindoProdutoComNomeVazioDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Nome = "",
@@ -177,8 +163,6 @@ namespace Loja.Tests
         [ExpectedException(typeof(ProdutoComValorZeradoException))]
         public void SalvarIncluindoProdutoComValorZeroDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Nome = "Toddy",
@@ -192,8 +176,6 @@ namespace Loja.Tests
         [ExpectedException(typeof(ProdutoComValorZeradoException))]
         public void SalvarEditandoProdutoParaValorZeroDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Id = 1,
@@ -207,8 +189,6 @@ namespace Loja.Tests
         [TestMethod]
         public void SalvarIncluindoProdutoComValorZeroPontoTresNaoDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Nome = "Toddy",
@@ -222,8 +202,6 @@ namespace Loja.Tests
         [ExpectedException(typeof (ProdutoDuplicadoException))]
         public void SalvarIncluindoProdutoComNomeJaExistenteDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Nome = "Nescau",
@@ -236,8 +214,6 @@ namespace Loja.Tests
         [TestMethod]
         public void SalvarEditandoProdutoENaoModificandoNomeNaoDeveLancarException()
         {
-            ProdutoServico produtoServico = new ProdutoServico(new ProdutoRepositorioMock());
-
             Produto produto = new Produto()
             {
                 Id = 1,

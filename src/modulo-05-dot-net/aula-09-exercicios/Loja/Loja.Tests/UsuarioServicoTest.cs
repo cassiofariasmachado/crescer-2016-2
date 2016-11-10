@@ -12,13 +12,19 @@ namespace Loja.Tests
     [TestClass]
     public class UsuarioServicoTest
     {
+        private UsuarioServico usuarioServico;
+
+        [TestInitialize]
+        public void InicilizarUsuarioServico()
+        {
+            this.usuarioServico = new UsuarioServico(
+                new UsuarioRepositorioMock(),
+                new ServicoDeCriptografiaMock());
+        }
+
         [TestMethod]
         public void DeveAutenticarComSucesso()
         {
-            var usuarioServico = new UsuarioServico(
-                new UsuarioRepositorioMock(),
-                new ServicoDeCriptografiaMock());
-
             Usuario usuario = usuarioServico.BuscarPorAutenticacao(
                 "goku@bol.com", "abc123");
 
@@ -28,10 +34,6 @@ namespace Loja.Tests
         [TestMethod]
         public void NaoDeveAutenticarComEmailInvalido()
         {
-            var usuarioServico = new UsuarioServico(
-                new UsuarioRepositorioMock(),
-                new ServicoDeCriptografiaMock());
-
             Usuario usuario = usuarioServico.BuscarPorAutenticacao(
                 "vegeta@yahoo.com", "abc123");
 
@@ -41,10 +43,6 @@ namespace Loja.Tests
         [TestMethod]
         public void NaoDeveAutenticarComSenhaInvalida()
         {
-            var usuarioServico = new UsuarioServico(
-                new UsuarioRepositorioMock(),
-                new ServicoDeCriptografiaMock());
-
             Usuario usuario = usuarioServico.BuscarPorAutenticacao(
                 "goku@bol.com", "senhaErrada");
 
@@ -54,10 +52,6 @@ namespace Loja.Tests
         [TestMethod]
         public void NaoDeveAutenticarComEmailESenhaInvalidos()
         {
-            var usuarioServico = new UsuarioServico(
-                new UsuarioRepositorioMock(),
-                new ServicoDeCriptografiaMock());
-
             Usuario usuario = usuarioServico.BuscarPorAutenticacao(
                 "emailErrado@hotmail.com", "senhaErrada");
 
