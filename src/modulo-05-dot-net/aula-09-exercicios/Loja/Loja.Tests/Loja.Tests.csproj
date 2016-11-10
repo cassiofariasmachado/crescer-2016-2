@@ -57,6 +57,7 @@
     <Compile Include="Mocks\UsuarioRepositorioMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProdutoServicoTest.cs" />
+    <Compile Include="ProdutoTest.cs" />
     <Compile Include="UsuarioServicoTest.cs" />
   </ItemGroup>
   <ItemGroup>
