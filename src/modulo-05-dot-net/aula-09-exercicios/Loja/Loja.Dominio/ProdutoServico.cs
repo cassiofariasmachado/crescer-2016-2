@@ -47,10 +47,12 @@ namespace Loja.Dominio
             if (produto.Valor == 0.0M)
                 throw new ProdutoComValorZeradoException();
 
-            if (produto.Nome.Count() < 3)
+            if (String.IsNullOrEmpty(produto.Nome) || produto.Nome.Count() < 3)
                 throw new ProdutoComNomePequenoException();
 
-            if (this.produtoRepositorio.BuscarProdutoPorNome(produto.Nome) != null)
+            Produto produtoExistente = this.produtoRepositorio.BuscarProdutoPorNome(produto.Nome);
+
+            if (produtoExistente != null && produto.Id != produtoExistente.Id)
                 throw new ProdutoDuplicadoException();
         }
     }
