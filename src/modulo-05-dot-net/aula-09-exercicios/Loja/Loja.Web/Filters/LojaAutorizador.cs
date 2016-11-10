@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Loja.Web.Filters
 {
@@ -21,7 +22,8 @@ namespace Loja.Web.Filters
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("~/Login");
+            filterContext.Controller.TempData["ErroLogin"] = "Você deve estar logado para acessar essa página.";
+            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index" }));
         }
     }
 }
