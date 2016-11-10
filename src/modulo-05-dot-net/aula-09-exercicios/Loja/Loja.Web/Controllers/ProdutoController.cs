@@ -68,7 +68,7 @@ namespace Loja.Web.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Ocorreu algum erro. Tente novamente ou entre em contato com o administrador.");
+                ModelState.AddModelError("", "Verifique os dados digitados.");
             }
 
             return View("Manter", model);
