@@ -8,6 +8,6 @@ namespace Loja.Dominio.Exceptions
 {
     public class ProdutoComNomePequenoException : ProdutoException
     {
-        public ProdutoComNomePequenoException() : base("Nome do produto não deve ter menos que 2 caracteres.") { }
+        public ProdutoComNomePequenoException() : base("Nome do produto não deve ter menos que 3 caracteres.") { }
     }
 }
