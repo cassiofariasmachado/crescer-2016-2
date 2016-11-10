@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\NomePequenoException.cs" />
+    <Compile Include="Exceptions\ProdutoException.cs" />
+    <Compile Include="Exceptions\ValorZeradoException.cs" />
     <Compile Include="ProdutoServico.cs" />
     <Compile Include="Interfaces\IProdutoRepositorio.cs" />
     <Compile Include="Interfaces\IServicoDeCriptografia.cs" />
