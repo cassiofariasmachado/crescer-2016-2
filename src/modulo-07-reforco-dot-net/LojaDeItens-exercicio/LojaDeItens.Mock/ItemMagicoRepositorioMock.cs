@@ -82,7 +82,8 @@ namespace LojaDeItens.Mock
 
         public void Atualizar(ItemMagicoEntidade item)
         {
-            throw new NotImplementedException();
+            ItemMagicoEntidade itemLista = itens.First(i => i.Id == item.Id);
+            itemLista = item;
         }
 
         public ItemMagicoEntidade BuscarPorId(int id)
@@ -92,7 +93,7 @@ namespace LojaDeItens.Mock
 
         public IList<ItemMagicoEntidade> BuscarPorNome(string nome)
         {
-            throw new NotImplementedException();
+            return itens.Where(i => i.Nome.Equals(nome)).ToList();
         }
 
         public IList<ItemMagicoEntidade> BuscarPorRaridade(bool raro)
@@ -109,7 +110,7 @@ namespace LojaDeItens.Mock
 
         public void Criar(ItemMagicoEntidade item)
         {
-            throw new NotImplementedException();
+            itens.Add(item);
         }
 
         public void Excluir(ItemMagicoEntidade item)
