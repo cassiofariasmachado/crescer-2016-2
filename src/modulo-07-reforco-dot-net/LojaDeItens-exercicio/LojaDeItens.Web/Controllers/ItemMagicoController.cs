@@ -5,6 +5,7 @@ using LojaDeItens.Web.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
@@ -44,7 +45,25 @@ namespace LojaDeItens.Web.Controllers
         [ValidateAntiForgeryToken]
         public JsonResult Salvar(ItemParaEdicaoViewModel model)
         {
-            return Json(new { Mensagem = "Cadastro efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
+            //TO-DO: Terminar
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    ItemMagicoEntidade item = model.ConverterParaItemMagicoEntidade();
+                    itemMagicoServico.Salvar(item);
+                    return Json(new { Mensagem = "Cadastro efetuado com sucesso." }, JsonRequestBehavior.AllowGet);
+                }
+                catch (ItemMagicoException exception)
+                {
+                    Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    return Json(new { Mensagem = exception.Message }, JsonRequestBehavior.AllowGet);
+                }
+                
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return Json(new { Mensagem = "Não foi possível cadastrar o item, verifique os dados digitados." }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
