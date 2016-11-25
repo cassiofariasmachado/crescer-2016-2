@@ -63,6 +63,6 @@ public class MeuStringUtil {
 
     public static boolean ehPalindromo(String palavra) {
         String palavraInvertida = inverterPalavra(palavra);
-        return palavraInvertida.toLowerCase().equals(palavra.toLowerCase());
+        return palavraInvertida.equalsIgnoreCase(palavra);
     }
 }
