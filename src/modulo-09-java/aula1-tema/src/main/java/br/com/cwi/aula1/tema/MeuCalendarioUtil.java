@@ -50,18 +50,16 @@ public class MeuCalendarioUtil {
     }
 
     public static String retornarTempoDecorridoAteHoje(Date data) {
-        //TO-DO: Terminar, não está calculando corretamente
         Calendar dataAtual = Calendar.getInstance();
-        dataAtual.setTime(new Date());
-        
-        dataAtual.add(Calendar.DATE, -data.getDate());
-        dataAtual.add(Calendar.MONTH, -data.getMonth());
-        dataAtual.add(Calendar.YEAR, -data.getYear());
+        Calendar dataInformada = Calendar.getInstance();
 
-        return String.format("%d ano(s), %d mes(es) e %d dia(s)",
-                dataAtual.get(Calendar.YEAR),
-                dataAtual.get(Calendar.MONTH),
-                dataAtual.get(Calendar.DATE));
+        dataInformada.setTime(data);
+
+        int ano = dataAtual.get(Calendar.YEAR) - dataInformada.get(Calendar.YEAR);
+        int mes = dataAtual.get(Calendar.MONTH) - dataInformada.get(Calendar.MONTH);
+        int dia = dataAtual.get(Calendar.DAY_OF_MONTH) - dataInformada.get(Calendar.DAY_OF_MONTH);
+
+        return String.format("%d ano(s), %d mes(es) e %d dia(s)", ano, mes, dia);
     }
 
     public static Date converterData(String data) {
