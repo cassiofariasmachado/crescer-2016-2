@@ -5,7 +5,7 @@
  */
 package br.com.cwi.crescer.aula2.exercicios;
 
-import br.com.cwi.aula1.tema.MeuStringUtil;
+import br.com.cwi.crescer.aula1.tema.MeuStringUtil;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
