@@ -5,6 +5,7 @@
  */
 package br.com.cwi.crescer.aula2.exercicios;
 
+import br.com.cwi.crescer.aula2.utils.ConnectionUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +20,23 @@ import java.util.List;
  */
 public class PessoaRepositorio {
 
+    public void criar() {
+        final String ddl = "CREATE TABLE PESSOA ("
+                + "Id INTEGER NOT NULL,"
+                + "Nome VARCHAR(100) NOT NULL,"
+                + "CONSTRAINT PK_Pessoa PRIMARY KEY(Id));";
+
+        try (final Connection connection = ConnectionUtils.getConnection()) {
+            try (final Statement statement = connection.createStatement()) {
+                statement.executeUpdate(ddl);
+            } catch (final SQLException e) {
+                System.err.format("SQLException: %s", e);
+            }
+        } catch (SQLException e) {
+            System.err.format("SQLException: %s", e);
+        }
+    }
+
     public void inserir(Pessoa pessoa) {
         final String insert = "INSERT INTO Pessoa(Id, Nome ) "
                 + "VALUES (SEQ_Pessoa.NEXTVAL, ?)";
@@ -31,12 +49,12 @@ public class PessoaRepositorio {
             System.err.format("SQLException: %s", e);
         }
     }
-    
+
     public void remover(Pessoa p) {
-        final String insert = "DELETE Pessoa WHERE Id = ?";
+        final String delete = "DELETE Pessoa WHERE Id = ?";
         try (
                 final Connection connection = ConnectionUtils.getConnection();
-                final PreparedStatement preparedStatement = connection.prepareStatement(insert)) {
+                final PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
 
             preparedStatement.setLong(1, p.getId());
             preparedStatement.executeUpdate();
