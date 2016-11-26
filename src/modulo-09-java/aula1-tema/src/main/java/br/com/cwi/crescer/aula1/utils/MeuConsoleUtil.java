@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula1.tema;
+package br.com.cwi.crescer.aula1.utils;
 
 import java.util.List;
 import java.util.Scanner;
@@ -24,5 +24,9 @@ public class MeuConsoleUtil {
     public static int lerOpcao(List<String> descricoes) {
         descricoes.forEach(descricao -> System.out.println(descricao));
         return SCANNER.nextInt();
+    }
+    
+    public static String lerComando() {
+        return SCANNER.nextLine();
     }
 }

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula1.tema;
+package br.com.cwi.crescer.aula1.utils;
 
+import br.com.cwi.crescer.aula1.utils.MeuConsoleUtil;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
