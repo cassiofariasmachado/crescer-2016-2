@@ -17,11 +17,7 @@ import java.util.List;
  *
  * @author cassio.machado
  */
-public class PessoaFactory {
-
-    public static void main(String[] args) {
-        
-    }
+public class PessoaRepositorio {
 
     public void inserir(Pessoa pessoa) {
         final String insert = "INSERT INTO Pessoa(Id, Nome ) "
