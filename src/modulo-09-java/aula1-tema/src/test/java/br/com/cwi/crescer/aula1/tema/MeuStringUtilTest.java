@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.aula1.tema;
+package br.com.cwi.crescer.aula1.tema;
 
+import br.com.cwi.crescer.aula1.tema.MeuStringUtil;
 import org.junit.Assert;
 import org.junit.Test;
 
