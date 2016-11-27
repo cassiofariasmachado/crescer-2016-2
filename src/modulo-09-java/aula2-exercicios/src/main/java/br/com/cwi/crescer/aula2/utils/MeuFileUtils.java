@@ -122,4 +122,9 @@ public class MeuFileUtils {
         return caminho[caminho.length - 1].contains(".");
     }
 
+    public static boolean ehArquivoTxt(String arquivo) {
+        String[] caminho = arquivo.split(File.pathSeparator);
+        return caminho[caminho.length - 1].matches(".+\\.txt");
+    }
+
 }
