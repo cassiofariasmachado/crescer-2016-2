@@ -28,8 +28,8 @@ public class MeuCalendarioUtilTest {
     @Test
     public void testTempoDecorrido() {
         final Calendar c = Calendar.getInstance();
-        c.set(2016, 0, 1 , 0, 0, 0);
-        assertEquals("Ano(s) 0, messes 10, dia(s) 24", new MeuCalendarioUtil().tempoDecorrido(of(2016, Month.JANUARY, 1)));
+        c.add(Calendar.MONTH, -10);
+        c.add(Calendar.DAY_OF_MONTH, -25);
         assertEquals("Ano(s) 0, messes 10, dia(s) 26", new MeuCalendarioUtil().tempoDecorrido(c.getTime()));
     }
     
