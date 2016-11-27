@@ -8,12 +8,11 @@ package br.com.cwi.crescer.aula2.utils;
 import br.com.cwi.crescer.aula1.utils.MeuConsoleUtil;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  *
@@ -104,13 +103,15 @@ public class MeuFileUtils {
         }
     }
 
-    private void moverArquivo(String arquivo, String destino) {
-        Path pathArquivo = FileSystems.getDefault().getPath(arquivo);
-        Path pathDestino = FileSystems.getDefault().getPath(destino);
-        File fileDestino = new File(destino);
+    private static void moverArquivo(String arquivo, String destino) {
+        Path pathArquivo = Paths.get(arquivo);
+        Path pathDestino = Paths.get(destino);
+
         try {
-            if (ehArquivo(arquivo) && fileDestino.isDirectory()) {
-                Files.move(pathArquivo, pathDestino, REPLACE_EXISTING);
+            if (ehArquivo(arquivo)) {
+                Files.move(pathArquivo, pathDestino.resolve(pathArquivo.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+            } else {
+                System.out.println("Erro: arquivo inválido.");
             }
         } catch (IOException e) {
             System.err.format("Erro: %s", e.getMessage());
