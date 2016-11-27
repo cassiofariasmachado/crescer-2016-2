@@ -24,7 +24,6 @@ public class MeuFileUtils {
 
         String comando;
         String[] comandos;
-        MeuFileUtils fileUtils = new MeuFileUtils();
 
         do {
             comando = MeuConsoleUtil.lerComando();
@@ -37,18 +36,17 @@ public class MeuFileUtils {
 
             switch (comandos[0]) {
                 case "mk":
-                    fileUtils.criarArquivoOuDiretorio(comandos[1]);
+                    criarArquivoOuDiretorio(comandos[1]);
                     break;
                 case "rm":
-                    fileUtils.removerArquivo(comandos[1]);
+                    removerArquivo(comandos[1]);
                     break;
                 case "ls":
-                    fileUtils.listar(comandos[1]);
+                    listar(comandos[1]);
                     break;
                 case "mv":
-                    fileUtils.moverArquivo(comandos[1], comandos[2]);
+                    moverArquivo(comandos[1], comandos[2]);
                     break;
-
                 default:
                     System.out.println("Erro: comando inválido!");
                     break;
@@ -57,7 +55,7 @@ public class MeuFileUtils {
         } while (!comandos[0].equals("exit"));
     }
 
-    public void criarArquivoOuDiretorio(String arquivoOuDiretorio) {
+    public static void criarArquivoOuDiretorio(String arquivoOuDiretorio) {
         try {
             File file = new File(arquivoOuDiretorio);
 
@@ -72,7 +70,7 @@ public class MeuFileUtils {
         }
     }
 
-    public void removerArquivo(String arquivo) {
+    public static void removerArquivo(String arquivo) {
         try {
             File file = new File(arquivo);
 
@@ -87,7 +85,7 @@ public class MeuFileUtils {
         }
     }
 
-    public void listar(String arquivoOuDiretorio) {
+    public static void listar(String arquivoOuDiretorio) {
 
         File file = new File(arquivoOuDiretorio);
 
@@ -119,7 +117,7 @@ public class MeuFileUtils {
 
     }
 
-    public boolean ehArquivo(String arquivo) {
+    public static boolean ehArquivo(String arquivo) {
         String[] caminho = arquivo.split(File.pathSeparator);
         return caminho[caminho.length - 1].contains(".");
     }
