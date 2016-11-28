@@ -58,13 +58,11 @@ public class MeuFileUtils {
     public static void criarArquivoOuDiretorio(String arquivoOuDiretorio) {
         try {
             File file = new File(arquivoOuDiretorio);
-
             if (ehArquivo(arquivoOuDiretorio)) {
                 file.createNewFile();
             } else {
                 file.mkdirs();
             }
-
         } catch (IOException e) {
             System.err.format("Erro: %s", e.getMessage());
         }
@@ -74,47 +72,45 @@ public class MeuFileUtils {
         try {
             File file = new File(arquivo);
 
-            if (file.isFile() && file.exists()) {
-                file.delete();
-            } else {
-                System.out.println("Erro: arquivo inválido.");
+            if (!(file.isFile() || file.exists())) {
+                throw new ArquivoInvalidoException("Arquivo inválido.");
             }
+            file.delete();
 
-        } catch (Exception e) {
+        } catch (ArquivoInvalidoException e) {
             System.err.format("Erro: %s", e.getMessage());
         }
     }
 
     public static void listar(String arquivoOuDiretorio) {
-
         File file = new File(arquivoOuDiretorio);
-
-        if (!file.exists()) {
-            System.out.println("Erro: arquivo ou pasta não existe.");
-            return;
-        }
-
-        if (file.isFile()) {
-            System.out.println(file.getAbsolutePath());
-        } else {
-            Arrays.asList(file.list()).forEach(arquivoOuPasta -> System.out.println(arquivoOuPasta));
+        try {
+            if (!file.exists()) {
+                throw new ArquivoInvalidoException("Arquivo não existe.");
+            }
+            if (file.isFile()) {
+                System.out.println(file.getAbsolutePath());
+            } else {
+                Arrays.asList(file.list()).forEach(arquivoOuPasta -> System.out.println(arquivoOuPasta));
+            }
+        } catch (ArquivoInvalidoException e) {
+            System.err.format("Erro: %s", e.getMessage());
         }
     }
 
     private static void moverArquivo(String arquivo, String destino) {
         Path pathArquivo = Paths.get(arquivo);
         Path pathDestino = Paths.get(destino);
-
         try {
-            if (ehArquivo(arquivo)) {
-                Files.move(pathArquivo, pathDestino.resolve(pathArquivo.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-            } else {
-                System.out.println("Erro: arquivo inválido.");
+            if (!ehArquivo(arquivo)) {
+                throw new ArquivoInvalidoException("Arquivo inválido.");
             }
+            Files.move(pathArquivo, pathDestino.resolve(pathArquivo.getFileName()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             System.err.format("Erro: %s", e.getMessage());
+        } catch (ArquivoInvalidoException e) {
+            System.err.format("Erro: %s", e.getMessage());
         }
-
     }
 
     public static boolean ehArquivo(String arquivo) {
@@ -126,7 +122,7 @@ public class MeuFileUtils {
         String[] caminho = arquivo.split(File.pathSeparator);
         return caminho[caminho.length - 1].matches(".+\\.txt");
     }
-    
+
     public static boolean ehArquivoSql(String arquivo) {
         String[] caminho = arquivo.split(File.pathSeparator);
         return caminho[caminho.length - 1].matches(".+\\.sql");
