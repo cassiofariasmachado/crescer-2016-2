@@ -21,42 +21,35 @@ import java.util.List;
  */
 public class MeuSQLUtils {
 
-    public static void main(String[] args) {
-        exibirQuery("SELECT * FROM PESSOA");
-    }
-
     public static void executarArquivoSql(String arquivo) {
         try {
             if (!MeuFileUtils.ehArquivoSql(arquivo)) {
                 throw new ArquivoInvalidoException("Arquivo não é SQL.");
             }
-            List<String> listaComandos = MeuReaderUtils.lerArquivo(arquivo);
+            List<String> arquivoSql = MeuReaderUtils.lerArquivo(arquivo);
             StringBuilder comandos = new StringBuilder();
-            listaComandos.forEach((comando) -> {
+            arquivoSql.forEach((comando) -> {
                 comandos.append(comando);
             });
-            List<String> listaComandosArquivo = Arrays.asList(comandos.toString().split(";"));
-            listaComandosArquivo.forEach(c -> executarComandoSql(c));
+            List<String> listaComandos = Arrays.asList(comandos.toString().split(";"));
+            listaComandos.forEach(comando -> executarComandoSql(comando));
         } catch (ArquivoInvalidoException e) {
             System.err.format("Erro: %s", e.getMessage());
         }
     }
 
     private static void executarComandoSql(String sql) {
-        try (final Connection connection = ConnectionUtils.getConnection()) {
-            try (final Statement statement = connection.createStatement()) {
-                statement.executeUpdate(sql);
-            } catch (final SQLException e) {
-                System.err.format("SQLException: %s", e);
-            }
+        try (final Connection connection = ConnectionUtils.getConnection();
+                final Statement statement = connection.createStatement()) {
+
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             System.err.format("SQLException: %s", e);
         }
     }
 
     public static List<List<String>> executarQuery(String query) {
-        try (
-                final Connection connection = ConnectionUtils.getConnection();
+        try (final Connection connection = ConnectionUtils.getConnection();
                 final Statement statement = connection.createStatement();
                 final ResultSet resultSet = statement.executeQuery(query);) {
 
@@ -71,7 +64,7 @@ public class MeuSQLUtils {
             tabela.add(nomeColunas);
 
             while (resultSet.next()) {
-                List<String> linha = new ArrayList<String>();
+                List<String> linha = new ArrayList<>();
                 for (int i = 1; i <= numeroColunas; i++) {
                     linha.add(resultSet.getString(i));
                 }
@@ -109,34 +102,28 @@ public class MeuSQLUtils {
         MeuWriterUtils.escreverArquivo(arquivo, conteudo);
     }
 
-    public static void importarCsv(String arquivo) {
+    public static void importarCsv(String tabela, String arquivo) {
         List<String> arquivoCsv = MeuReaderUtils.lerArquivo(arquivo);
         int quantidadeColunas = arquivoCsv.get(0).split(",").length;
-        StringBuilder sql = new StringBuilder("INSERT INTO PESSOA(");
-        sql.append(arquivoCsv.get(0));
-        sql.append(") VALUES(?");
+
+        StringBuilder sql = new StringBuilder("INSERT INTO ");
+        sql.append(tabela).append("(").append(arquivoCsv.get(0)).append(") VALUES(?");
         for (int i = 1; i < quantidadeColunas; i++) {
             sql.append(",?");
         }
         sql.append(")");
 
-        try (final Connection connection = ConnectionUtils.getConnection()) {
-
+        try (final Connection connection = ConnectionUtils.getConnection();
+                final PreparedStatement preStatement = connection.prepareStatement(sql.toString());) {
             for (int i = 1; i < arquivoCsv.size(); i++) {
-                try (final PreparedStatement preStatement = connection.prepareStatement(sql.toString())) {
-                    String[] colunas = arquivoCsv.get(i).split(",");
-                    for (int j = 1; j <= colunas.length; j++) {
-                        preStatement.setObject(j, colunas[j - 1]);
-                    }
-                    preStatement.executeUpdate();
-                } catch (final SQLException e) {
-                    System.err.format("SQLException: %s", e);
+                String[] colunas = arquivoCsv.get(i).split(",");
+                for (int j = 1; j <= colunas.length; j++) {
+                    preStatement.setObject(j, colunas[j - 1]);
                 }
+                preStatement.executeUpdate();
             }
-
         } catch (SQLException e) {
             System.err.format("SQLException: %s", e);
         }
     }
-
 }
