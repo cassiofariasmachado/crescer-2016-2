@@ -26,11 +26,6 @@ public class MeuReaderUtils {
     public static List<String> lerArquivo(String arquivo) {
         List<String> listaConteudoArquivo = new ArrayList<>();
         try {
-
-            if (!MeuFileUtils.ehArquivoTxt(arquivo)) {
-                throw new ArquivoInvalidoException();
-            }
-
             File file = new File(arquivo);
 
             BufferedReader buffer = new BufferedReader(new FileReader(file));
@@ -45,11 +40,20 @@ public class MeuReaderUtils {
             System.err.format("Erro: %s", e.getMessage());
         } catch (IOException e) {
             System.err.format("Erro: %s", e.getMessage());
-        } catch (ArquivoInvalidoException e) {
-            System.err.format("Erro: %s", e.getMessage());
         }
 
         return listaConteudoArquivo;
+    }
+
+    public static List<String> lerArquivoTxt(String arquivo) {
+        try {
+            if (!MeuFileUtils.ehArquivoTxt(arquivo)) {
+                throw new ArquivoInvalidoException();
+            }
+        } catch (ArquivoInvalidoException e) {
+            System.err.format("Erro: %s", e.getMessage());
+        }
+        return lerArquivo(arquivo);
     }
 
     public static void exibirConteudo(String arquivo) {

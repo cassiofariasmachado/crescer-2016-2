@@ -31,12 +31,7 @@ public class MeuWriterUtils {
 
     public static void escreverArquivo(String arquivo, List<String> conteudo) {
         try {
-            if (!MeuFileUtils.ehArquivoTxt(arquivo)) {
-                throw new ArquivoInvalidoException();
-            }
-
             File file = new File(arquivo);
-
             BufferedWriter buffer = new BufferedWriter(new FileWriter(file, true));
 
             if (conteudo != null) {
@@ -45,12 +40,20 @@ public class MeuWriterUtils {
                     buffer.append(linha);
                 }
             }
-            
             buffer.flush();
         } catch (FileNotFoundException e) {
             System.err.format("Erro: %s", e.getMessage());
         } catch (IOException e) {
             System.err.format("Erro: %s", e.getMessage());
+        }
+    }
+
+    public static void escreverArquivoTxt(String arquivo, List<String> conteudo) {
+        try {
+            if (!MeuFileUtils.ehArquivoTxt(arquivo)) {
+                throw new ArquivoInvalidoException();
+            }
+            escreverArquivo(arquivo, conteudo);
         } catch (ArquivoInvalidoException e) {
             System.err.format("Erro: %s", e.getMessage());
         }

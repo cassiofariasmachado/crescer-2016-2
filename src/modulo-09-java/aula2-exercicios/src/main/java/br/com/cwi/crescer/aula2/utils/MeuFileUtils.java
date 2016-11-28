@@ -126,5 +126,10 @@ public class MeuFileUtils {
         String[] caminho = arquivo.split(File.pathSeparator);
         return caminho[caminho.length - 1].matches(".+\\.txt");
     }
+    
+    public static boolean ehArquivoSql(String arquivo) {
+        String[] caminho = arquivo.split(File.pathSeparator);
+        return caminho[caminho.length - 1].matches(".+\\.sql");
+    }
 
 }

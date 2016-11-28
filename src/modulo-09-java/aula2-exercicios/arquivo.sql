@@ -1,0 +1,7 @@
+CREATE TABLE Teste (
+Id INTEGER NOT NULL,
+Nome VARCHAR(100) NOT NULL
+);
+
+INSERT INTO Teste(Id, Nome) VALUES (1, 'Pedro');
+INSERT INTO Teste(Id, Nome) VALUES (1, 'Pedro');
