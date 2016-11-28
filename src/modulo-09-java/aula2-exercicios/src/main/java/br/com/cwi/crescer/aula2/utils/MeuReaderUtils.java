@@ -19,10 +19,6 @@ import java.util.List;
  */
 public class MeuReaderUtils {
 
-    public static void main(String[] args) {
-        exibirConteudo("arquivo.txt");
-    }
-
     public static List<String> lerArquivo(String arquivo) {
         List<String> listaConteudoArquivo = new ArrayList<>();
         try {
