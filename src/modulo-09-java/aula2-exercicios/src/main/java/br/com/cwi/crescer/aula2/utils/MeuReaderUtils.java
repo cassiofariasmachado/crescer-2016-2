@@ -50,14 +50,15 @@ public class MeuReaderUtils {
             if (!MeuFileUtils.ehArquivoTxt(arquivo)) {
                 throw new ArquivoInvalidoException();
             }
+            return lerArquivo(arquivo);
         } catch (ArquivoInvalidoException e) {
             System.err.format("Erro: %s", e.getMessage());
         }
-        return lerArquivo(arquivo);
+        return null;
     }
 
-    public static void exibirConteudo(String arquivo) {
-        List<String> conteudoArquivo = lerArquivo(arquivo);
+    public static void exibirArquivoTxt(String arquivo) {
+        List<String> conteudoArquivo = lerArquivoTxt(arquivo);
 
         if (conteudoArquivo != null) {
             conteudoArquivo.forEach(p -> System.out.println(p));
