@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula3.entity;
+package br.com.cwi.crescer.aula3.entities;
 
 /**
  *
@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Table(name = "PESSOA")
 public class Pessoa implements Serializable {
 
-    @Id // Identifica a PK
+    @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_PESSOA")
     @SequenceGenerator(name = "SEQ_PESSOA", sequenceName = "SEQ_PESSOA", allocationSize = 1)
     @Basic(optional = false)

@@ -5,7 +5,7 @@
  */
 package br.com.cwi.crescer.aula3.dao;
 
-import br.com.cwi.crescer.aula3.entity.Pessoa;
+import br.com.cwi.crescer.aula3.entities.Pessoa;
 import java.util.List;
 import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
@@ -30,11 +30,7 @@ public class PessoaDao implements Dao<Pessoa, Long> {
     public void insert(Pessoa pessoa) {
         entityManager.getTransaction().begin();
         try {
-            if (pessoa.getIdPessoa() == null) {
-                entityManager.persist(pessoa);
-            } else {
-                entityManager.merge(pessoa);
-            }
+            entityManager.persist(pessoa);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             System.out.format("Erro: %s", e.getMessage());
@@ -55,16 +51,27 @@ public class PessoaDao implements Dao<Pessoa, Long> {
     }
 
     @Override
+    public void update(Pessoa pessoa) {
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.persist(pessoa);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.format("Erro: %s", e.getMessage());
+            entityManager.getTransaction().rollback();
+        }
+    }
+
+    @Override
     public Pessoa find(Long id) {
         return entityManager.find(Pessoa.class, id);
     }
 
     @Override
-    public List<Pessoa> findAll() {
+    public List<Pessoa> list() {
         return entityManager.createQuery("SELECT P FROM Pessoa P").getResultList();
     }
 
-    @Override
     public List<Pessoa> findByName(String nmPessoa) {
         Session session = entityManager.unwrap(Session.class);
         Criteria criteria = session.createCriteria(Pessoa.class);
@@ -72,7 +79,6 @@ public class PessoaDao implements Dao<Pessoa, Long> {
         return criteria.list();
     }
 
-    @Override
     public List<Pessoa> findByEntity(Pessoa pessoa) {
         Session session = entityManager.unwrap(Session.class);
         Criteria criteria = session.createCriteria(Pessoa.class);
