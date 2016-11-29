@@ -19,11 +19,9 @@ public interface Dao<T, ID> {
 
     void delete(T entity);
 
+    void update(T entity);
+
     T find(ID id);
 
-    List<T> findAll();
-
-    List<T> findByName(String name);
-
-    List<T> findByEntity(T entity);
+    List<T> list();
 }
