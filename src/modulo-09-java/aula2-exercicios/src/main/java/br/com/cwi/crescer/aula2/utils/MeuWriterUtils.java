@@ -36,8 +36,8 @@ public class MeuWriterUtils {
 
             if (conteudo != null) {
                 for (String linha : conteudo) {
-                    buffer.newLine();
                     buffer.append(linha);
+                    buffer.newLine();
                 }
             }
             buffer.flush();
