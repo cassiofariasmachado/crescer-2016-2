@@ -7,11 +7,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" type="text/css" href="bulma.css">
     </head>
     <body>
-        <%
-            String title = "CARLOS";
-        %>
-        <h1><%=title %></h1>
+        <div class="container">
+
+            <div class="box">
+                <form action="/aula4/pessoa" method="post">
+                    <p class="control">
+                        <label for="nome">Nome</label>
+                        <input class="input is-success" type="text" name="nome" placeholder="Digite o nome...">
+                    </p>
+
+                    <p class="control">
+                        <input id="botao-salvar" class="button is-primary is-left" type="submit" value="Salvar">
+                    <p>
+                </form>
+            </div>
+
+            <div class="box" id="lista-pessoas"></div>
+        </div>
     </body>
-</html>
+
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="pessoa.js"></script>
+</html>

@@ -26,23 +26,27 @@ public class PessoaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         try (final PrintWriter out = response.getWriter();) {
-            out.append("<!DOCTYPE html>");
-            out.append("<html>");
-            out.append("<head>");
-            out.append("<title>Java - aula5</title>");
-            out.append("<meta charset=\"UTF-8\">");
-            out.append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-            out.append("</head>");
-            out.append("<body>");
-            out.append("<h1>Pessoa</h1>");
-            
-            pessoaBean.findAll().forEach(p-> {
-                out.append("<div>").append(p.getNmPessoa()).append("</div>");
+
+            out.append("<table class=\"table is-narrow is-bordered\"><thead><tr><th>Nome</th></tr></thead><tbody>");
+            List<Pessoa> listaPessoas = pessoaBean.findAll();
+
+            listaPessoas.stream().forEach((p) -> {
+                out.append("<tr><th>").append(p.getNmPessoa()).append("</th></tr>");
             });
-            
-            out.append("</body>");
-            out.append("</html>");
+            out.append("</tbody></table>");
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        String nome = request.getParameter("nome");
+
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNmPessoa(nome);
+        pessoaBean.insert(pessoa);
+
+        response.sendRedirect("");
     }
 
 }
