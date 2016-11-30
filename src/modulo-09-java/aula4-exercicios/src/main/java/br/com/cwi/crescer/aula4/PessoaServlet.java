@@ -42,9 +42,11 @@ public class PessoaServlet extends HttpServlet {
         response.setContentType("text/html");
         String nome = request.getParameter("nome");
 
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNmPessoa(nome);
-        pessoaBean.insert(pessoa);
+        if (!nome.isEmpty()) {
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNmPessoa(nome);
+            pessoaBean.insert(pessoa);
+        }
 
         response.sendRedirect("");
     }
