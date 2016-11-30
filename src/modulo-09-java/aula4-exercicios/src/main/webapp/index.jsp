@@ -13,7 +13,7 @@
         <div class="container">
 
             <div class="box">
-                <form action="/aula4/pessoa" method="post">
+                <form action="/aula4-exercicios/pessoa" method="post">
                     <p class="control">
                         <label for="nome">Nome</label>
                         <input class="input is-success" type="text" name="nome" placeholder="Digite o nome...">
