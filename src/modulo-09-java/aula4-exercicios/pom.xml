@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.cwi.crescer</groupId>
-    <artifactId>aula4</artifactId>
+    <artifactId>aula4-exercicios</artifactId>
     <version>1.0.0.0</version>
     <packaging>war</packaging>
 
-    <name>aula4</name>
+    <name>aula4-exercicios</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
