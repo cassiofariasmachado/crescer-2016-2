@@ -3,25 +3,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    
+
     <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <title>Aula 6</title>
     </h:head>
-    
+
     <h:body>
+        <header>
+            <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                    <li><a href="/aula5-tema/faces/cadastroAtor.xhtml">Ator</a></li>
+                    <li><a href="/aula5-tema/faces/cadastroClassificacao.xhtml">Classificação</a></li>
+                    <li><a href="/aula5-tema/faces/cadastroElenco.xhtml">Elenco</a></li>
+                    <li><a href="/aula5-tema/faces/cadastroGenero.xhtml">Genero</a></li>
+                    <li><a href="/aula5-tema/faces/cadastroIdioma.xhtml">Idioma</a></li>
+                    <li><a href="/aula5-tema/faces/cadastroFilme.xhtml">Filme</a></li>
+                </ul>
+            </nav>
+        </header>
+
+
+
         <div class="container">
             <div class="col-md-12">
 
                 <h:form>
 
                     <ui:insert name="form">
-                        Aqui vai o conteudo do form
+                        Bem-vindo a este lindo site de filmes!
                     </ui:insert>            
 
                 </h:form>
