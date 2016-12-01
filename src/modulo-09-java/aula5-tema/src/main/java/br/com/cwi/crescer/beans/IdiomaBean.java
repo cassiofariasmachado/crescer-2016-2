@@ -6,7 +6,6 @@
 package br.com.cwi.crescer.beans;
 
 import br.com.cwi.crescer.daos.AbstractDao;
-import br.com.cwi.crescer.entidades.Ator;
 import br.com.cwi.crescer.entidades.Idioma;
 import java.math.BigInteger;
 import java.util.List;
