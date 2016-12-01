@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,9 +30,9 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "ELENCO")
 @NamedQueries({
-    @NamedQuery(name = "Elenco.findAll", query = "SELECT e FROM Elenco e")
-    , @NamedQuery(name = "Elenco.findById", query = "SELECT e FROM Elenco e WHERE e.id = :id")
-    , @NamedQuery(name = "Elenco.findByNome", query = "SELECT e FROM Elenco e WHERE e.nome = :nome")})
+    @NamedQuery(name = "Elenco.findAll", query = "SELECT e FROM Elenco e"),
+    @NamedQuery(name = "Elenco.findById", query = "SELECT e FROM Elenco e WHERE e.id = :id"),
+    @NamedQuery(name = "Elenco.findByNome", query = "SELECT e FROM Elenco e WHERE e.nome = :nome")})
 public class Elenco implements Serializable {
 
     @Id
@@ -48,7 +49,7 @@ public class Elenco implements Serializable {
     @Column(name = "NOME")
     private String nome;
 
-    @OneToMany(mappedBy = "elenco")
+    @OneToMany(cascade = ALL)
     private List<Ator> atores;
 
     public Elenco() {
