@@ -11,7 +11,7 @@
     <ui:define name="form">
 
         <div class="form-group"> 
-            <h:outputLabel for="nome" value="Nome do idioma:"></h:outputLabel>
+            <h:outputLabel for="nome" value="#{bundle.idioma_nome}"></h:outputLabel>
             <h:inputText id="nome" value="#{idiomas.idioma.nome}" styleClass="form-control"/>
         </div>
 
@@ -22,13 +22,13 @@
         <h:dataTable id="idiomas" value="#{idiomas.idiomas}" var="idioma" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="#{bundle.pessoa_id}"/>
+                    <h:outputText value="#{bundle.idioma_id}"/>
                 </f:facet>
                 <h:outputText value="#{idioma.id}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Nome"/>
+                    <h:outputText value="#{bundle.idioma_nome}"/>
                 </f:facet>
                 <h:outputText value="#{idioma.nome}"/>
             </h:column>
