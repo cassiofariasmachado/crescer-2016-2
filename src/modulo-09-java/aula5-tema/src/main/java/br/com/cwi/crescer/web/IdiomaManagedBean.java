@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class Idiomas {
+public class IdiomaManagedBean {
 
     @EJB
     private IdiomaBean idiomaBean;

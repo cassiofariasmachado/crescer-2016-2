@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class Classificacoes {
+public class ClassificacaoManagedBean {
 
     @EJB
     private ClassificacaoBean classificacaoBean;

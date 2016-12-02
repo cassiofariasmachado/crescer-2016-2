@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -22,7 +24,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class Elencos {
+public class ElencoManagedBean {
 
     @EJB
     private ElencoBean elencoBean;
@@ -42,7 +44,7 @@ public class Elencos {
         this.elencos = elencoBean.findAll();
         this.elencos.sort((a, b) -> a.getId().compareTo(b.getId()));
         this.atores = atorBean.findAll();
-        //this.atores.sort((a, b) -> a.getNome().compareTo(b.getNome()));
+        this.atores.sort((a, b) -> a.getNome().compareTo(b.getNome()));
     }
 
     public Elenco getElenco() {
@@ -78,10 +80,13 @@ public class Elencos {
     }
 
     public void adicionar() {
-        //TO-DO: revisar
-        List<Ator> listaAtores = new ArrayList<>();
+        if (idAtores.isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Você deve selecionar no mínimo um ator!", "filme"));
+            return;
+        }
 
-        for (Ator ator : listaAtores) {
+        List<Ator> listaAtores = new ArrayList<>();
+        for (Ator ator : this.atores) {
             String idAtor = ator.getId().toString();
 
             if (idAtores.contains(idAtor)) {
@@ -92,5 +97,6 @@ public class Elencos {
 
         elencoBean.insert(elenco);
         this.init();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Filme cadastrado com sucesso!", "filme"));
     }
 }

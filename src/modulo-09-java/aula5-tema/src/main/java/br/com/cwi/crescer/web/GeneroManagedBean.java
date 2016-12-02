@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @ViewScoped
-public class Generos {
+public class GeneroManagedBean {
 
     @EJB
     private GeneroBean generoBean;

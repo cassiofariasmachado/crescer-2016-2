@@ -10,8 +10,10 @@ import br.com.cwi.crescer.entidades.Ator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -19,7 +21,7 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class Atores {
+public class AtorManagedBean {
 
     @EJB
     private AtorBean atorBean;
@@ -53,5 +55,6 @@ public class Atores {
     public void adicionar() {
         atorBean.insert(ator);
         this.init();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ator cadastrado com sucesso!", "genero"));
     }
 }
