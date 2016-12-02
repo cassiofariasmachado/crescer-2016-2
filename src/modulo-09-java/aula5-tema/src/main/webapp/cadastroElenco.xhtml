@@ -4,29 +4,29 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-
     template="/templates/template.xhtml"
     xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
+        <h:messages id="messages"></h:messages>
 
         <div class="form-group"> 
             <h:outputLabel for="descricao" value="#{bundle.elenco_nome}"></h:outputLabel>
-            <h:inputText id="descricao" value="#{elencos.elenco.nome}" styleClass="form-control"/>
+            <h:inputText id="descricao" value="#{elencoManagedBean.elenco.nome}" styleClass="form-control"/>
         </div>
         <div class="form-group"> 
-            <!--TO-DO: revisar-->
             <h:outputLabel for="atores" value="#{bundle.elenco_atores}"></h:outputLabel>
-            <h:selectManyListbox id="atores" value="#{elencos.idAtores}">
-                <f:selectItems value="#{elencos.atores}" var="ator" itemValue="#{ator.id}" itemLabel="#{ator.nome}"/>
+            <h:selectManyListbox id="atores" value="#{elencoManagedBean.idAtores}" styleClass="form-control">
+                <f:selectItems value="#{elencoManagedBean.atores}" var="ator" 
+                               itemValue="#{ator.id}" itemLabel="#{ator.nome}"/>
             </h:selectManyListbox>
         </div>
 
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{elencos.adicionar}">    
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{elencoManagedBean.adicionar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
-        <h:dataTable id="elencos" value="#{elencos.elencos}" var="elenco" styleClass="table table-hover">
+        <h:dataTable id="elencos" value="#{elencoManagedBean.elencos}" var="elenco" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.elenco_id}"/>
@@ -43,15 +43,13 @@
                 <f:facet name="header">
                     <h:outputText value="#{bundle.elenco_atores}"/>
                 </f:facet>
-                <h:outputText value="#{elenco.atores}"/>
+                <ul>
+                    <ui:repeat value="#{elenco.atores}" var="ator">
+                        <li>#{ator.nome}</li>
+                    </ui:repeat>
+                </ul>
             </h:column>
         </h:dataTable>
-
-        <h:messages id="messages">
-
-        </h:messages>
-
-
     </ui:define>
 
 </ui:composition>
