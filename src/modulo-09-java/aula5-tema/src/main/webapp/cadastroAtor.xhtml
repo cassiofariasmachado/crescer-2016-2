@@ -4,22 +4,22 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-
     template="/templates/template.xhtml"
     xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
+        <h:messages id="messages"></h:messages>
 
         <div class="form-group"> 
             <h:outputLabel for="nome" value="#{bundle.ator_nome}"></h:outputLabel>
-            <h:inputText id="nome" value="#{atores.ator.nome}" styleClass="form-control"/>
+            <h:inputText id="nome" value="#{atorManagedBean.ator.nome}" styleClass="form-control"/>
         </div>
 
-        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{atores.adicionar}">    
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{atorManagedBean.adicionar}">    
             <f:ajax execute="@form" render="@form" />
         </h:commandButton>
 
-        <h:dataTable id="atores" value="#{atores.atores}" var="ator" styleClass="table table-hover">
+        <h:dataTable id="atores" value="#{atorManagedBean.atores}" var="ator" styleClass="table table-hover">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.ator_id}"/>
@@ -34,12 +34,6 @@
             </h:column>
 
         </h:dataTable>
-
-        <h:messages id="messages">
-
-        </h:messages>
-
-
     </ui:define>
 
 </ui:composition>
