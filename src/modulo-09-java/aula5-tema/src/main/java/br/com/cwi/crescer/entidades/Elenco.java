@@ -30,8 +30,10 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "ELENCO")
 @NamedQueries({
-    @NamedQuery(name = "Elenco.findAll", query = "SELECT e FROM Elenco e"),
-    @NamedQuery(name = "Elenco.findById", query = "SELECT e FROM Elenco e WHERE e.id = :id"),
+    @NamedQuery(name = "Elenco.findAll", query = "SELECT e FROM Elenco e")
+    ,
+    @NamedQuery(name = "Elenco.findById", query = "SELECT e FROM Elenco e WHERE e.id = :id")
+    ,
     @NamedQuery(name = "Elenco.findByNome", query = "SELECT e FROM Elenco e WHERE e.nome = :nome")})
 public class Elenco implements Serializable {
 
@@ -49,6 +51,8 @@ public class Elenco implements Serializable {
     @Column(name = "NOME")
     private String nome;
 
+    @Basic(optional = false)
+    @NotNull
     @OneToMany(cascade = ALL)
     private List<Ator> atores;
 
