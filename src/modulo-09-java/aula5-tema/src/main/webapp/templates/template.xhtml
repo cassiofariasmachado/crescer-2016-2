@@ -27,13 +27,12 @@
                         <li><a href="/aula5-tema/faces/cadastroFilme.xhtml">Filmes</a></li>
                         <li><a href="/aula5-tema/faces/cadastroUsuario.xhtml">Usuarios</a></li>
                     </ul>
-
-                    <button type="button" class="btn btn-default navbar-btn navbar-right">Logout</button>
+                    <h:form>
+                        <h:commandLink action="#{loginManagedBean.logout}" class="btn btn-default navbar-btn navbar-right">Logout</h:commandLink>
+                    </h:form>
                 </div>
             </nav>
         </header>
-
-
 
         <div class="container">
             <div class="col-md-12">

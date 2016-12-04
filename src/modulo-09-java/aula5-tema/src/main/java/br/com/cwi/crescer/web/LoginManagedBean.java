@@ -54,7 +54,7 @@ public class LoginManagedBean {
 
     public String logout() {
         FacesUtils.getSession().invalidate();
-        return "logout";
+        return "login";
     }
 
     public User getUser() {
