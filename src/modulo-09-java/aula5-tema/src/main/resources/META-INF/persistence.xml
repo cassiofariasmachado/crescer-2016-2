@@ -10,6 +10,7 @@
         <class>br.com.cwi.crescer.entidades.Idioma</class>
         <class>br.com.cwi.crescer.entidades.Pessoa</class>
         <class>br.com.cwi.crescer.entidades.Filho</class>
+        <class>br.com.cwi.crescer.entidades.Usuario</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <!--            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
