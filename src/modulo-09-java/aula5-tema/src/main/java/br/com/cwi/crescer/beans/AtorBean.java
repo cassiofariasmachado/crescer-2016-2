@@ -34,7 +34,6 @@ public class AtorBean extends AbstractDao<Ator, BigInteger> {
 
     @Override
     public List<Ator> findAll() {
-        return this.getEntityManager().createQuery("select a from Ator a").getResultList();
+        return this.getEntityManager().createQuery("SELECT a FROM Ator a").getResultList();
     }
 }
-

@@ -34,6 +34,6 @@ public class ClassificacaoBean extends AbstractDao<Classificacao, BigInteger> {
 
     @Override
     public List<Classificacao> findAll() {
-        return this.getEntityManager().createQuery("select c from Classificacao c").getResultList();
+        return this.getEntityManager().createQuery("SELECT c FROM Classificacao c").getResultList();
     }
 }

@@ -34,6 +34,6 @@ public class ElencoBean extends AbstractDao<Elenco, BigInteger> {
 
     @Override
     public List<Elenco> findAll() {
-        return this.getEntityManager().createQuery("select e from Elenco e").getResultList();
+        return this.getEntityManager().createQuery("SELECT e FROM Elenco e").getResultList();
     }
 }

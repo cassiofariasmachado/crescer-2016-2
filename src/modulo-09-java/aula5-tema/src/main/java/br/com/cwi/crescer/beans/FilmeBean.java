@@ -34,6 +34,6 @@ public class FilmeBean extends AbstractDao<Filme, BigInteger> {
 
     @Override
     public List<Filme> findAll() {
-        return this.getEntityManager().createQuery("select f from Filme f").getResultList();
+        return this.getEntityManager().createQuery("SELECT f FROM Filme f").getResultList();
     }
 }
