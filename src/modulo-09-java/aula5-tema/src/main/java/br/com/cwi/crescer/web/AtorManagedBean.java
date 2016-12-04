@@ -7,6 +7,7 @@ package br.com.cwi.crescer.web;
 
 import br.com.cwi.crescer.beans.AtorBean;
 import br.com.cwi.crescer.entidades.Ator;
+import br.com.cwi.crescer.utils.FacesUtils;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -55,6 +56,6 @@ public class AtorManagedBean {
     public void adicionar() {
         atorBean.insert(ator);
         this.init();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ator cadastrado com sucesso!", "genero"));
+        FacesUtils.addSuccessMessage("Ator cadastrado com sucesso!");
     }
 }

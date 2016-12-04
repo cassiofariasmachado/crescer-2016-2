@@ -7,6 +7,7 @@ package br.com.cwi.crescer.web;
 
 import br.com.cwi.crescer.beans.ClassificacaoBean;
 import br.com.cwi.crescer.entidades.Classificacao;
+import br.com.cwi.crescer.utils.FacesUtils;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -55,6 +56,6 @@ public class ClassificacaoManagedBean {
     public void adicionar() {
         classificacaoBean.insert(classificacao);
         this.init();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Classificação cadastrada com sucesso!", "genero"));
+        FacesUtils.addSuccessMessage("Classificação cadastrada com sucesso!");
     }
 }

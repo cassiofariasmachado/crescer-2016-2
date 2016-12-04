@@ -7,6 +7,7 @@ package br.com.cwi.crescer.web;
 
 import br.com.cwi.crescer.beans.GeneroBean;
 import br.com.cwi.crescer.entidades.Genero;
+import br.com.cwi.crescer.utils.FacesUtils;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -55,6 +56,6 @@ public class GeneroManagedBean {
     public void adicionar() {
         generoBean.insert(genero);
         this.init();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Genero cadastrado com sucesso!", "genero"));
+        FacesUtils.addSuccessMessage("Gênero cadastrado com sucesso!");
     }
 }

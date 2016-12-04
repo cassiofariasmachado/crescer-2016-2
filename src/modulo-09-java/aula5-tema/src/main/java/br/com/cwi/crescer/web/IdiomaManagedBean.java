@@ -7,13 +7,12 @@ package br.com.cwi.crescer.web;
 
 import br.com.cwi.crescer.beans.IdiomaBean;
 import br.com.cwi.crescer.entidades.Idioma;
+import br.com.cwi.crescer.utils.FacesUtils;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
@@ -55,6 +54,6 @@ public class IdiomaManagedBean {
     public void adicionar() {
         idiomaBean.insert(idioma);
         this.init();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Idioma cadastrado com sucesso!", "idioma"));
+        FacesUtils.addSuccessMessage("Idioma cadastrado com sucesso!");
     }
 }
