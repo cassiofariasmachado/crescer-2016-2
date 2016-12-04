@@ -15,10 +15,7 @@ import br.com.cwi.crescer.entidades.Elenco;
 import br.com.cwi.crescer.entidades.Filme;
 import br.com.cwi.crescer.entidades.Genero;
 import br.com.cwi.crescer.entidades.Idioma;
-import java.math.BigInteger;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import br.com.cwi.crescer.utils.FacesUtils;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -35,9 +32,6 @@ import javax.faces.context.FacesContext;
 @ViewScoped
 public class FilmeManagedBean {
 
-    private static final SimpleDateFormat FORMATO_DATA_ENTRADA = new SimpleDateFormat("yyyy-MM-dd");
-    private static final SimpleDateFormat FORMATO_DATA_SAIDA = new SimpleDateFormat("dd-MM-yyyy");
-
     @EJB
     private FilmeBean filmeBean;
     @EJB
@@ -52,16 +46,10 @@ public class FilmeManagedBean {
     private Filme filme;
     private List<Filme> filmes;
 
-    private String dataLancamento;
     private List<Classificacao> classificacoes;
     private List<Elenco> elencos;
     private List<Genero> generos;
     private List<Idioma> idiomas;
-
-    private String idClassificacao;
-    private String idElenco;
-    private String idGenero;
-    private String idIdiomas;
 
     @PostConstruct
     public void init() {
@@ -90,14 +78,6 @@ public class FilmeManagedBean {
 
     public void setFilmes(List<Filme> filmes) {
         this.filmes = filmes;
-    }
-
-    public String getDataLancamento() {
-        return dataLancamento;
-    }
-
-    public void setDataLancamento(String dataLancamento) {
-        this.dataLancamento = dataLancamento;
     }
 
     public List<Classificacao> getClassificacoes() {
@@ -132,74 +112,9 @@ public class FilmeManagedBean {
         this.idiomas = idiomas;
     }
 
-    public String getIdClassificacao() {
-        return idClassificacao;
-    }
-
-    public void setIdClassificacao(String idClassificacao) {
-        this.idClassificacao = idClassificacao;
-    }
-
-    public String getIdElenco() {
-        return idElenco;
-    }
-
-    public void setIdElenco(String idElenco) {
-        this.idElenco = idElenco;
-    }
-
-    public String getIdGenero() {
-        return idGenero;
-    }
-
-    public void setIdGenero(String idGenero) {
-        this.idGenero = idGenero;
-    }
-
-    public String getIdIdiomas() {
-        return idIdiomas;
-    }
-
-    public void setIdIdiomas(String idIdiomas) {
-        this.idIdiomas = idIdiomas;
-    }
-
     public void adicionar() {
-        Date dataLancamento = this.converterDataLancamento();
-        Classificacao classificacao = classificacoes.stream().filter(c -> c.getId().equals(new BigInteger(idClassificacao))).findFirst().get();
-        Elenco elenco = elencos.stream().filter(e -> e.getId().equals(new BigInteger(idElenco))).findFirst().get();
-        Genero genero = generos.stream().filter(g -> g.getId().equals(new BigInteger(idGenero))).findFirst().get();
-        Idioma idioma = idiomas.stream().filter(i -> i.getId().equals(new BigInteger(idIdiomas))).findFirst().get();
-
-        filme.setDatalancamento(dataLancamento);
-        filme.setClassificacao(classificacao);
-        filme.setElenco(elenco);
-        filme.setGenero(genero);
-        filme.setIdioma(idioma);
-
         filmeBean.insert(filme);
         this.init();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Filme cadastrado com sucesso!", "filme"));
-    }
-
-    public Date converterDataLancamento() {
-        try {
-            Date data = FORMATO_DATA_ENTRADA.parse(this.dataLancamento);
-            return data;
-        } catch (ParseException e) {
-            System.err.format("Erro: %s", e.getMessage());
-        }
-        return null;
-    }
-
-    public String converterDataLancamento(Filme filme) {
-        Date data = filme.getDatalancamento();
-
-        if (data == null) {
-            return "";
-        }
-
-        String dataSaida = FORMATO_DATA_SAIDA.format(data);
-        return dataSaida;
+        FacesUtils.addSuccessMessage("Filme cadastrado com sucesso!");
     }
 }
