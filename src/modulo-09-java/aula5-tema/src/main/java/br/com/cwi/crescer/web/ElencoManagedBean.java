@@ -38,8 +38,10 @@ public class ElencoManagedBean {
     @PostConstruct
     public void init() {
         this.elenco = new Elenco();
+
         this.elencos = elencoBean.findAll();
         this.elencos.sort((a, b) -> a.getId().compareTo(b.getId()));
+
         this.atores = atorBean.findAll();
         this.atores.sort((a, b) -> a.getNome().compareTo(b.getNome()));
     }
