@@ -30,20 +30,19 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Genero.findAll", query = "SELECT g FROM Genero g")
     , @NamedQuery(name = "Genero.findById", query = "SELECT g FROM Genero g WHERE g.id = :id")
     , @NamedQuery(name = "Genero.findByDescricao", query = "SELECT g FROM Genero g WHERE g.descricao = :descricao")})
-public class Genero implements Serializable {
+public class Genero implements Serializable, IEntidade {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_GENERO")
     @SequenceGenerator(name = "SEQ_FILME", sequenceName = "SEQ_FILME", allocationSize = 1)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private BigInteger id;
 
     @Basic(optional = false)
+    @Column(name = "DESCRICAO", nullable = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "DESCRICAO")
     private String descricao;
 
     public Genero() {
@@ -58,10 +57,12 @@ public class Genero implements Serializable {
         this.descricao = descricao;
     }
 
+    @Override
     public BigInteger getId() {
         return id;
     }
 
+    @Override
     public void setId(BigInteger id) {
         this.id = id;
     }

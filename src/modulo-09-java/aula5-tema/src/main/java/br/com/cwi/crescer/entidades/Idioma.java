@@ -28,22 +28,23 @@ import javax.validation.constraints.Size;
 @Table(name = "IDIOMA")
 @NamedQueries({
     @NamedQuery(name = "Idioma.findAll", query = "SELECT i FROM Idioma i")
-    , @NamedQuery(name = "Idioma.findById", query = "SELECT i FROM Idioma i WHERE i.id = :id")
-    , @NamedQuery(name = "Idioma.findByNome", query = "SELECT i FROM Idioma i WHERE i.nome = :nome")})
-public class Idioma implements Serializable {
+    ,
+    @NamedQuery(name = "Idioma.findById", query = "SELECT i FROM Idioma i WHERE i.id = :id")
+    ,
+    @NamedQuery(name = "Idioma.findByNome", query = "SELECT i FROM Idioma i WHERE i.nome = :nome")})
+public class Idioma implements Serializable, IEntidade {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_IDIOMA")
     @SequenceGenerator(name = "SEQ_IDIOMA", sequenceName = "SEQ_IDIOMA", allocationSize = 1)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private BigInteger id;
 
     @Basic(optional = false)
+    @Column(name = "NOME", nullable = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "NOME")
     private String nome;
 
     public Idioma() {
@@ -58,10 +59,12 @@ public class Idioma implements Serializable {
         this.nome = nome;
     }
 
+    @Override
     public BigInteger getId() {
         return id;
     }
 
+    @Override
     public void setId(BigInteger id) {
         this.id = id;
     }

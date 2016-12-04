@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
-import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,25 +34,23 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Elenco.findById", query = "SELECT e FROM Elenco e WHERE e.id = :id")
     ,
     @NamedQuery(name = "Elenco.findByNome", query = "SELECT e FROM Elenco e WHERE e.nome = :nome")})
-public class Elenco implements Serializable {
+public class Elenco implements Serializable, IEntidade {
 
     @Id
     @Basic(optional = false)
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ELENCO")
     @SequenceGenerator(name = "SEQ_ELENCO", sequenceName = "SEQ_ELENCO", allocationSize = 1)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private BigInteger id;
 
     @Basic(optional = false)
+    @Column(name = "NOME", nullable = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "NOME")
     private String nome;
 
-    @Basic(optional = false)
+    @OneToMany
     @NotNull
-    @OneToMany(cascade = ALL)
     private List<Ator> atores;
 
     public Elenco() {
@@ -68,10 +65,12 @@ public class Elenco implements Serializable {
         this.nome = nome;
     }
 
+    @Override
     public BigInteger getId() {
         return id;
     }
 
+    @Override
     public void setId(BigInteger id) {
         this.id = id;
     }

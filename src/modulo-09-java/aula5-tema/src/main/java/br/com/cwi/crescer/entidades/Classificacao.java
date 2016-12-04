@@ -31,25 +31,24 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Classificacao.findById", query = "SELECT c FROM Classificacao c WHERE c.id = :id")
     , @NamedQuery(name = "Classificacao.findByDescricao", query = "SELECT c FROM Classificacao c WHERE c.descricao = :descricao")
     , @NamedQuery(name = "Classificacao.findByIdade", query = "SELECT c FROM Classificacao c WHERE c.idade = :idade")})
-public class Classificacao implements Serializable {
+public class Classificacao implements Serializable, IEntidade {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLASSIFICACAO")
     @SequenceGenerator(name = "SEQ_CLASSIFICACAO", sequenceName = "SEQ_CLASSIFICACAO", allocationSize = 1)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private BigInteger id;
 
     @Basic(optional = false)
+    @Column(name = "DESCRICAO", nullable = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "DESCRICAO")
     private String descricao;
 
     @Basic(optional = false)
+    @Column(name = "IDADE", nullable = false)
     @NotNull
-    @Column(name = "IDADE")
     private BigInteger idade;
 
     public Classificacao() {
@@ -65,10 +64,12 @@ public class Classificacao implements Serializable {
         this.idade = idade;
     }
 
+    @Override
     public BigInteger getId() {
         return id;
     }
 
+    @Override
     public void setId(BigInteger id) {
         this.id = id;
     }

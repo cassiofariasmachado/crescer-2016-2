@@ -36,20 +36,19 @@ import javax.validation.constraints.Size;
     , @NamedQuery(name = "Filme.findById", query = "SELECT f FROM Filme f WHERE f.id = :id")
     , @NamedQuery(name = "Filme.findByTitulo", query = "SELECT f FROM Filme f WHERE f.titulo = :titulo")
     , @NamedQuery(name = "Filme.findByDatalancamento", query = "SELECT f FROM Filme f WHERE f.dataLancamento = :dataLancamento")})
-public class Filme implements Serializable {
+public class Filme implements Serializable, IEntidade {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FILME")
     @SequenceGenerator(name = "SEQ_FILME", sequenceName = "SEQ_FILME", allocationSize = 1)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private BigInteger id;
 
     @Basic(optional = false)
+    @Column(name = "TITULO", nullable = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "TITULO")
     private String titulo;
 
     @Temporal(TemporalType.DATE)
@@ -57,25 +56,29 @@ public class Filme implements Serializable {
     private Date dataLancamento;
 
     @Basic(optional = false)
+    @Column(name = "DIRETOR", nullable = false)
     @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "DIRETOR")
     private String diretor;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "ID_CLASSIFICACAO", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_CLASSIFICACAO", referencedColumnName = "ID", nullable = false)
+    @NotNull
     private Classificacao classificacao;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "ID_ELENCO", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_ELENCO", referencedColumnName = "ID", nullable = false)
+    @NotNull
     private Elenco elenco;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "ID_GENERO", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_GENERO", referencedColumnName = "ID", nullable = false)
+    @NotNull
     private Genero genero;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "ID_IDIOMA", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_IDIOMA", referencedColumnName = "ID", nullable = false)
+    @NotNull
     private Idioma idioma;
 
     public Filme() {
@@ -90,10 +93,12 @@ public class Filme implements Serializable {
         this.titulo = titulo;
     }
 
+    @Override
     public BigInteger getId() {
         return id;
     }
 
+    @Override
     public void setId(BigInteger id) {
         this.id = id;
     }

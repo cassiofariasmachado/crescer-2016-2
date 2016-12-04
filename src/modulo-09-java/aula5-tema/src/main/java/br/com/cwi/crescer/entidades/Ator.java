@@ -17,7 +17,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -27,23 +26,23 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "ATOR")
 @NamedQueries({
-    @NamedQuery(name = "Ator.findAll", query = "SELECT a FROM Ator a"),
-    @NamedQuery(name = "Ator.findById", query = "SELECT a FROM Ator a WHERE a.id = :id"),
+    @NamedQuery(name = "Ator.findAll", query = "SELECT a FROM Ator a")
+    ,
+    @NamedQuery(name = "Ator.findById", query = "SELECT a FROM Ator a WHERE a.id = :id")
+    ,
     @NamedQuery(name = "Ator.findByNome", query = "SELECT a FROM Ator a WHERE a.nome = :nome")})
-public class Ator implements Serializable {
+public class Ator implements Serializable, IEntidade {
 
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_ATOR")
     @SequenceGenerator(name = "SEQ_ATOR", sequenceName = "SEQ_ATOR", allocationSize = 1)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private BigInteger id;
 
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
-    @Column(name = "NOME")
+    @Column(name = "NOME", nullable = false)
     private String nome;
 
     public Ator() {
@@ -58,10 +57,12 @@ public class Ator implements Serializable {
         this.nome = nome;
     }
 
+    @Override
     public BigInteger getId() {
         return id;
     }
 
+    @Override
     public void setId(BigInteger id) {
         this.id = id;
     }
