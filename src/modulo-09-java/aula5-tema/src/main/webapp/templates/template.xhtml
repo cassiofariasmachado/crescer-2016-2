@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <title>Aula 6</title>
+        <title>#{bundle.site_titulo}</title>
     </h:head>
 
     <h:body>
@@ -19,16 +19,18 @@
             <nav class="navbar navbar-inverse navbar-default" >
                 <div class="container">
                     <ul class="nav navbar-nav">
-                        <li><a href="/aula5-tema/faces/cadastroAtor.xhtml">Atores</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroClassificacao.xhtml">Classificações</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroElenco.xhtml">Elencos</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroGenero.xhtml">Gêneros</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroIdioma.xhtml">Idiomas</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroFilme.xhtml">Filmes</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroUsuario.xhtml">Usuarios</a></li>
+                        <li><a href="/aula5-tema/faces/cadastroAtor.xhtml">#{bundle.ator_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/cadastroClassificacao.xhtml">#{bundle.classificacao_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/cadastroElenco.xhtml">#{bundle.elenco_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/cadastroGenero.xhtml">#{bundle.genero_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/cadastroIdioma.xhtml">#{bundle.idioma_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/cadastroFilme.xhtml">#{bundle.filme_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/cadastroUsuario.xhtml">#{bundle.usuario_menu}</a></li>
                     </ul>
                     <h:form>
-                        <h:commandLink action="#{loginManagedBean.logout}" class="btn btn-default navbar-btn navbar-right">Logout</h:commandLink>
+                        <h:commandLink action="#{loginManagedBean.logout}" 
+                                       class="btn btn-default navbar-btn navbar-right"
+                                       value="#{bundle.login_logout}"/>
                     </h:form>
                 </div>
             </nav>
