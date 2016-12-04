@@ -4,58 +4,69 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:jsf="http://xmlns.jcp.org/jsf"
     template="/templates/template.xhtml"
     xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
-        <h:messages id="messages"></h:messages>
+        <div class="row">
+            <h1 class="page-header">
+                <h:outputText value="#{bundle.filme_cadastro}"/>
+            </h1> 
+        </div>
+
+        <div class="messages">
+            <h:messages globalOnly="true" infoClass="alert alert-success" errorClass="alert alert-danger"/>
+        </div>
 
         <div class="form-group"> 
             <h:outputLabel for="titulo" value="#{bundle.filme_titulo}"></h:outputLabel>
             <h:inputText id="titulo" value="#{filmeManagedBean.filme.titulo}" class="form-control"/>
+            <h:message for="titulo" errorClass="text-danger"/>
         </div>
 
         <div class="form-group"> 
             <h:outputLabel for="data-lancamento" value="#{bundle.filme_dataLancamento}"></h:outputLabel>
-            <input id="data-lancamento" type="date" jsf:value="#{filmeManagedBean.dataLancamento}" class="form-control"/>
+            <h:inputText id="data-lancamento" value="#{filmeManagedBean.filme.datalancamento}" styleClass="form-control" converter="dateConverter">
+                <f:passThroughAttribute name="type" value="date"/>
+            </h:inputText>
+            <h:message for="data-lancamento" errorClass="text-danger"/>
         </div>
 
         <div class="form-group">
             <h:outputLabel for="diretor" value="#{bundle.filme_diretor}"></h:outputLabel>
             <h:inputText id="diretor" value="#{filmeManagedBean.filme.diretor}" styleClass="form-control"/>
+            <h:message for="diretor" errorClass="text-danger"/>
         </div>
 
         <div class="form-group"> 
             <h:outputLabel for="classificacao" value="#{bundle.filme_classificacao}"></h:outputLabel>
-            <h:selectOneMenu id="classificacao" value="#{filmeManagedBean.idClassificacao}" styleClass="form-control">
+            <h:selectOneMenu id="classificacao" value="#{filmeManagedBean.filme.classificacao}" styleClass="form-control" converter="classificacaoConverter">
                 <f:selectItems value="#{filmeManagedBean.classificacoes}" var="classificacao" 
-                               itemValue="#{classificacao.id}" itemLabel="#{classificacao.descricao}"/>
+                               itemValue="#{classificacao}" itemLabel="#{classificacao.descricao}"/>
             </h:selectOneMenu>
-
         </div>
 
         <div class="form-group">
             <h:outputLabel for="elenco" value="#{bundle.filme_elenco}"></h:outputLabel>
-            <h:selectOneMenu id="elenco" value="#{filmeManagedBean.idElenco}" styleClass="form-control">
+            <h:selectOneMenu id="elenco" value="#{filmeManagedBean.filme.elenco}" styleClass="form-control" converter="elencoConverter">
                 <f:selectItems value="#{filmeManagedBean.elencos}" var="elenco" 
-                               itemValue="#{elenco.id}" itemLabel="#{elenco.nome}"/>
+                               itemValue="#{elenco}" itemLabel="#{elenco.nome}"/>
             </h:selectOneMenu> 
         </div>
 
         <div class="form-group">
             <h:outputLabel for="genero" value="#{bundle.filme_genero}"></h:outputLabel>
-            <h:selectOneMenu id="genero" value="#{filmeManagedBean.idGenero}" styleClass="form-control">
+            <h:selectOneMenu id="genero" value="#{filmeManagedBean.filme.genero}" styleClass="form-control" converter="generoConverter">
                 <f:selectItems value="#{filmeManagedBean.generos}" var="genero" 
-                               itemValue="#{genero.id}" itemLabel="#{genero.descricao}"/>
+                               itemValue="#{genero}" itemLabel="#{genero.descricao}"/>
             </h:selectOneMenu>
         </div>
 
         <div class="form-group">
             <h:outputLabel for="idioma" value="#{bundle.filme_idioma}"></h:outputLabel>
-            <h:selectOneMenu id="idioma" value="#{filmeManagedBean.idIdiomas}" styleClass="form-control">
+            <h:selectOneMenu id="idioma" value="#{filmeManagedBean.filme.idioma}" styleClass="form-control" converter="idiomaConverter">
                 <f:selectItems value="#{filmeManagedBean.idiomas}" var="idioma" 
-                               itemValue="#{idioma.id}" itemLabel="#{idioma.nome}"/>
+                               itemValue="#{idioma}" itemLabel="#{idioma.nome}"/>
             </h:selectOneMenu> 
         </div>
 
@@ -83,7 +94,7 @@
                 <f:facet name="header">
                     <h:outputText value="#{bundle.filme_dataLancamento}"/>
                 </f:facet>
-                <h:outputText value="#{filmeManagedBean.converterDataLancamento(filme)}"/>
+                <h:outputText value="#{filme.datalancamento}" converter="dateConverter"/>
             </h:column>
 
             <h:column>
