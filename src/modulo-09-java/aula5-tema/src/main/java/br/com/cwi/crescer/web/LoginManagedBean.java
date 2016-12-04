@@ -42,7 +42,7 @@ public class LoginManagedBean {
     }
 
     public String login() {
-        user.setSenha(CriptografiaUtils.criptografar(user.getSenha()));
+        this.criptografarSenhaDoUsuario();
         Usuario usuario = usuarioBean.findUsuarioLogado(user.getEmail(), user.getSenha());
         if (usuario != null) {
             FacesUtils.getSession().setAttribute(USUARIO_AUTENTICADO, this.user);
@@ -54,6 +54,7 @@ public class LoginManagedBean {
 
     public String logout() {
         FacesUtils.getSession().invalidate();
+        FacesUtils.addSuccessMessage("Usuário deslogado com sucesso!");
         return "login";
     }
 
@@ -63,5 +64,11 @@ public class LoginManagedBean {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    private void criptografarSenhaDoUsuario() {
+        String senha = user.getSenha();
+        String senhaCriptografada = CriptografiaUtils.criptografar(senha);
+        user.setSenha(senhaCriptografada);
     }
 }
