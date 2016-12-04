@@ -8,15 +8,25 @@
     xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
-        <h:messages id="messages"></h:messages>
+        <div class="row">
+            <h1 class="page-header">
+                <h:outputText value="#{bundle.classificacao_cadastro}"/>
+            </h1> 
+        </div>
+
+        <div class="messages">
+            <h:messages globalOnly="true" infoClass="alert alert-success" errorClass="alert alert-danger"/>
+        </div>
 
         <div class="form-group"> 
             <h:outputLabel for="descricao" value="#{bundle.classificacao_descricao}"></h:outputLabel>
             <h:inputText id="descricao" value="#{classificacaoManagedBean.classificacao.descricao}" styleClass="form-control"/>
+            <h:message for="descricao" errorClass="text-danger"/>
         </div>
         <div class="form-group"> 
             <h:outputLabel for="idade" value="#{bundle.classificacao_idade}"></h:outputLabel>
             <h:inputText id="idade" value="#{classificacaoManagedBean.classificacao.idade}" styleClass="form-control"/>
+            <h:message for="idade" errorClass="text-danger"/>
         </div>
 
         <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{classificacaoManagedBean.adicionar}">    

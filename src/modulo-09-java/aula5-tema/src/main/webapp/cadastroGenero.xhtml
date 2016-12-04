@@ -8,11 +8,20 @@
     xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="form">
-        <h:messages id="messages"></h:messages>
+        <div class="row">
+            <h1 class="page-header">
+                <h:outputText value="#{bundle.genero_cadastro}"/>
+            </h1> 
+        </div>
+
+        <div class="messages">
+            <h:messages globalOnly="true" infoClass="alert alert-success" errorClass="alert alert-danger"/>
+        </div>
 
         <div class="form-group"> 
             <h:outputLabel for="nome" value="#{bundle.genero_descricao}"></h:outputLabel>
             <h:inputText id="nome" value="#{generoManagedBean.genero.descricao}" styleClass="form-control"/>
+            <h:message for="nome" errorClass="text-danger"/>
         </div>
 
         <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{generoManagedBean.adicionar}">    
