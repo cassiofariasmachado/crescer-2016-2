@@ -19,10 +19,8 @@ import br.com.cwi.crescer.utils.FacesUtils;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
@@ -59,9 +57,16 @@ public class FilmeManagedBean {
         this.filmes.sort((a, b) -> a.getId().compareTo(b.getId()));
 
         this.classificacoes = classificacaoBean.findAll();
+        this.classificacoes.sort((a, b) -> a.getDescricao().compareTo(b.getDescricao()));
+
         this.elencos = elencoBean.findAll();
+        this.elencos.sort((a, b) -> a.getNome().compareTo(b.getNome()));
+
         this.generos = generoBean.findAll();
+        this.generos.sort((a, b) -> a.getDescricao().compareTo(b.getDescricao()));
+
         this.idiomas = idiomaBean.findAll();
+        this.idiomas.sort((a, b) -> a.getNome().compareTo(b.getNome()));
     }
 
     public Filme getFilme() {
