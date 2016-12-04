@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/template.xhtml"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+    <ui:define name="form">
+        <div class="row">
+            <h1 class="page-header">
+                <h:outputText value="#{bundle.usuario_cadastro}"/>
+            </h1> 
+        </div>
+
+        <div class="messages">
+            <h:messages globalOnly="true" infoClass="alert alert-success" errorClass="alert alert-danger"/>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="nome" value="#{bundle.usuario_nome}"></h:outputLabel>
+            <h:inputText id="nome" value="#{usuarioManagedBean.usuario.nome}" styleClass="form-control"/>
+            <h:message for="nome" errorClass="text-danger"/>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="email" value="#{bundle.usuario_email}"></h:outputLabel>
+            <h:inputText id="email" value="#{usuarioManagedBean.usuario.email}" styleClass="form-control" validator="emailValidator"/>
+            <h:message for="email" errorClass="text-danger"/>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="senha" value="#{bundle.usuario_senha}"></h:outputLabel>
+            <h:inputSecret id="senha" value="#{usuarioManagedBean.usuario.senha}" styleClass="form-control">
+                <f:validator validatorId="senhaValidator" />
+                <f:attribute name="confirmacaoSenha" value="#{confirmacaoSenha}" />
+            </h:inputSecret>
+        </div>
+
+        <div class="form-group"> 
+            <h:outputLabel for="confirmacaoSenha" value="#{bundle.usuario_senha}"></h:outputLabel>
+            <h:inputSecret id="confirmacaoSenha" styleClass="form-control" binding="#{confirmacaoSenha}"/>
+        </div>
+
+        <h:commandButton type="submit" value="Enviar" styleClass="btn btn-success" action="#{usuarioManagedBean.adicionar}">    
+            <f:ajax execute="@form" render="@form" />
+        </h:commandButton>
+
+        <h:dataTable id="usuarios" value="#{usuarioManagedBean.usuarios}" var="usuario" styleClass="table table-hover">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.usuario_id}"/>
+                </f:facet>
+                <h:outputText value="#{usuario.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.usuario_nome}"/>
+                </f:facet>
+                <h:outputText value="#{usuario.nome}"/>
+            </h:column>
+
+        </h:dataTable>
+    </ui:define>
+
+</ui:composition>
