@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h:outputText value="#{bundle.filme_listagem}"/>
+        </div>
+        <div class="panel-body">
+            <h:dataTable id="filmes" value="#{filmeManagedBean.filmes}" var="filme" styleClass="table table-hover">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_titulo}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.titulo}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_dataLancamento}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.datalancamento}" converter="dateConverter"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_diretor}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.diretor}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_classificacao}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.classificacao.descricao}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_elenco}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.elenco.nome}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_genero}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.genero.descricao}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.filme_idioma}"/>
+                    </f:facet>
+                    <h:outputText value="#{filme.idioma.nome}"/>
+                </h:column>
+            </h:dataTable>       
+        </div>
+    </div>
+</ui:composition>
