@@ -61,6 +61,11 @@ public class Filme implements Serializable, IEntidade {
     @Size(min = 1, max = 100)
     private String diretor;
 
+    @Basic(optional = false)
+    @Column(name = "URL_THUMBNAIL", nullable = false)
+    @NotNull
+    private String urlThumbnail;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "ID_CLASSIFICACAO", referencedColumnName = "ID", nullable = false)
     @NotNull
@@ -111,12 +116,12 @@ public class Filme implements Serializable, IEntidade {
         this.titulo = titulo;
     }
 
-    public Date getDatalancamento() {
+    public Date getDataLancamento() {
         return dataLancamento;
     }
 
-    public void setDatalancamento(Date datalancamento) {
-        this.dataLancamento = datalancamento;
+    public void setDataLancamento(Date dataLancamento) {
+        this.dataLancamento = dataLancamento;
     }
 
     public String getDiretor() {
@@ -125,6 +130,14 @@ public class Filme implements Serializable, IEntidade {
 
     public void setDiretor(String diretor) {
         this.diretor = diretor;
+    }
+
+    public String getUrlThumbnail() {
+        return urlThumbnail;
+    }
+
+    public void setUrlThumbnail(String urlThumbnail) {
+        this.urlThumbnail = urlThumbnail;
     }
 
     public Classificacao getClassificacao() {
