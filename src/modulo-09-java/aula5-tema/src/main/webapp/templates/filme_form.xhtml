@@ -20,7 +20,7 @@
             </div>
             <div class="form-group"> 
                 <h:outputLabel for="data-lancamento" value="#{bundle.filme_dataLancamento}"></h:outputLabel>
-                <h:inputText id="data-lancamento" value="#{filmeManagedBean.filme.datalancamento}" styleClass="form-control" converter="dateConverter">
+                <h:inputText id="data-lancamento" value="#{filmeManagedBean.filme.dataLancamento}" styleClass="form-control" converter="dateConverter">
                     <f:passThroughAttribute name="type" value="date"/>
                 </h:inputText>
                 <h:message for="data-lancamento" errorClass="text-danger"/>
@@ -29,6 +29,11 @@
                 <h:outputLabel for="diretor" value="#{bundle.filme_diretor}"></h:outputLabel>
                 <h:inputText id="diretor" value="#{filmeManagedBean.filme.diretor}" styleClass="form-control"/>
                 <h:message for="diretor" errorClass="text-danger"/>
+            </div>
+            <div class="form-group">
+                <h:outputLabel for="url-thumbnail" value="#{bundle.filme_urlThumbnail}"></h:outputLabel>
+                <h:inputText id="url-thumbnail" value="#{filmeManagedBean.filme.urlThumbnail}" styleClass="form-control"/>
+                <h:message for="url-thumbnail" errorClass="text-danger"/>
             </div>
             <div class="form-group"> 
                 <h:outputLabel for="classificacao" value="#{bundle.filme_classificacao}"></h:outputLabel>
