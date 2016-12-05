@@ -18,6 +18,7 @@
             <nav class="navbar navbar-inverse navbar-default" >
                 <div class="container">
                     <ul class="nav navbar-nav">
+                        <li><a href="/aula5-tema/faces/index.xhtml">#{bundle.index_menu}</a></li>
                         <li><a href="/aula5-tema/faces/ator.xhtml">#{bundle.ator_menu}</a></li>
                         <li><a href="/aula5-tema/faces/classificacao.xhtml">#{bundle.classificacao_menu}</a></li>
                         <li><a href="/aula5-tema/faces/elenco.xhtml">#{bundle.elenco_menu}</a></li>
@@ -37,6 +38,11 @@
             <div class="col-md-12">
                 <h:form>
                     <ui:insert name="form"/>            
+                </h:form>
+            </div>
+            <div class="col-md-12">
+                <h:form>
+                    <ui:insert name="listagem-filmes"/>            
                 </h:form>
             </div>
         </div>
