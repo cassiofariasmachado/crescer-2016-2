@@ -13,36 +13,30 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <title>#{bundle.site_titulo}</title>
     </h:head>
-
     <h:body>
         <header>
             <nav class="navbar navbar-inverse navbar-default" >
                 <div class="container">
                     <ul class="nav navbar-nav">
-                        <li><a href="/aula5-tema/faces/cadastroAtor.xhtml">#{bundle.ator_menu}</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroClassificacao.xhtml">#{bundle.classificacao_menu}</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroElenco.xhtml">#{bundle.elenco_menu}</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroGenero.xhtml">#{bundle.genero_menu}</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroIdioma.xhtml">#{bundle.idioma_menu}</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroFilme.xhtml">#{bundle.filme_menu}</a></li>
-                        <li><a href="/aula5-tema/faces/cadastroUsuario.xhtml">#{bundle.usuario_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/ator.xhtml">#{bundle.ator_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/classificacao.xhtml">#{bundle.classificacao_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/elenco.xhtml">#{bundle.elenco_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/genero.xhtml">#{bundle.genero_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/idioma.xhtml">#{bundle.idioma_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/filme.xhtml">#{bundle.filme_menu}</a></li>
+                        <li><a href="/aula5-tema/faces/usuario.xhtml">#{bundle.usuario_menu}</a></li>
                     </ul>
                     <h:form>
-                        <h:commandLink action="#{loginManagedBean.logout}" 
-                                       class="btn btn-default navbar-btn navbar-right"
+                        <h:commandLink action="#{loginManagedBean.logout}" class="btn btn-default navbar-btn navbar-right"
                                        value="#{bundle.login_logout}"/>
                     </h:form>
                 </div>
             </nav>
         </header>
-
         <div class="container">
             <div class="col-md-12">
-
                 <h:form>
-                    <ui:insert name="form">
-                        Bem-vindo a este lindo site de filmes!
-                    </ui:insert>            
+                    <ui:insert name="form"/>            
                 </h:form>
             </div>
         </div>
