@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h:outputText value="#{bundle.usuario_listagem}"/>
+        </div>
+        <div class="panel-body">
+            <h:dataTable id="usuarios" value="#{usuarioManagedBean.usuarios}" var="usuario" styleClass="table table-hover">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.usuario_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{usuario.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.usuario_nome}"/>
+                    </f:facet>
+                    <h:outputText value="#{usuario.nome}"/>
+                </h:column>
+
+            </h:dataTable>
+        </div>
+    </div>
+</ui:composition>
