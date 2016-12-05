@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h:outputText value="#{bundle.elenco_listagem}"/>
+        </div>
+        <div class="panel-body">
+            <h:dataTable id="elencos" value="#{elencoManagedBean.elencos}" var="elenco" styleClass="table table-hover">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.elenco_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{elenco.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.elenco_nome}"/>
+                    </f:facet>
+                    <h:outputText value="#{elenco.nome}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.elenco_atores}"/>
+                    </f:facet>
+                    <ul>
+                        <ui:repeat value="#{elenco.atores}" var="ator">
+                            <li>#{ator.nome}</li>
+                        </ui:repeat>
+                    </ul>
+                </h:column>
+            </h:dataTable>
+        </div>
+    </div>
+</ui:composition>
