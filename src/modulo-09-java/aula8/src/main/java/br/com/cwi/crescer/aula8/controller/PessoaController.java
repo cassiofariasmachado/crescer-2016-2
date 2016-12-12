@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,10 @@ public class PessoaController {
 
     @Autowired
     PessoaService service;
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String get(Model model, @PathVariable Long id, Pageable p) {
+        return this.list(model, id, p);
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model, @RequestParam(required = false) Long id, Pageable p) {
@@ -33,6 +38,7 @@ public class PessoaController {
         Pessoa pessoa = new Pessoa();
         if (id != null) {
             pessoa = service.findOne(id);
+            pessoa = pessoa == null ? new Pessoa() : pessoa;
             pageable = null;
         }
         if (pageable == null) {
