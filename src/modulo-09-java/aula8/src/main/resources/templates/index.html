@@ -1,14 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    
+
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="@{/css/style.css}"/>
         <title th:text="#{title.pessoa}"></title>
     </head>
-    
+
     <body>
         <div class="container">
 
@@ -22,7 +23,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input class="btn btn-success" type="submit" th:value="#{form.submit}" /> 
+                    <input class="btn btn-success" type="submit" th:value="#{form.submit}" />
                     <input class="btn btn-primary" type="reset" th:value="#{form.reset}" />
                 </div>
             </form>
@@ -67,7 +68,7 @@
                                     <a th:if="${not contactsPage.firstPage}" th:href="@{${'/contacts'}(page=${contactsPage.number-1},size=${contactsPage.size})}">Previous</a>
                                     <a th:if="${contactsPage.firstPage}" href="javascript:void(0);">Previous</a>
                                 </li>
-            
+
                                 <li th:each="pageNo : ${#numbers.sequence(0, contactsPage.totalPages - 1)}" th:class="${contactsPage.number eq pageNo}? 'active' : ''">
                                     <a th:if="${contactsPage.number  eq pageNo}" href="javascript:void(0);">
                                         <span th:text="${pageNo + 1}"></span>
@@ -75,7 +76,7 @@
                                     <a th:if="${not (contactsPage.number  eq pageNo)}" th:href="@{${'/contacts'}(page=${pageNo},size=${contactsPage.size})}">
                                         <span th:text="${pageNo + 1}"></span>
                                     </a>
-            
+
                                 </li>
                                 <li th:class="${contactsPage.number + 1 ge contactsPage.totalPages} ? 'disabled' : ''">
                                     <a th:if="${not contactsPage.lastPage}" th:href="@{${'/contacts'}(page=${contactsPage.number+1},size=${contactsPage.size})}">Next</a>
