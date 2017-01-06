@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th th:text="#{pessoa.id}" />
+            <th th:text="#{pessoa.nome}" />
+            <th th:text="#{pessoa.nascimento}" />
+            <th th:text="#{pessoa.idade}" />
+            <th th:text="#{pessoa.vlPessoa}" />
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="p : ${pessoas}">
+            <td th:text="${p.id}">ID</td>
+            <td th:text="${p.nome}">NOME</td>
+            <td th:text="${#dates.format(p.nascimento, 'dd/MM/yyyy')}"></td>
+            <td th:text="${p.idade}">NOME</td>
+            <td th:text="${p.vlPessoa}">NOME</td>
+            <td>
+                <a th:href="@{${'/pessoa'}(id=${p.id})}" class="btn btn-default btn-xs">Editar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

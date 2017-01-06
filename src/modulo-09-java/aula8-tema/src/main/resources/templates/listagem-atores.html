@@ -1,0 +1,17 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th th:text="#{ator.id}" />
+            <th th:text="#{ator.nome}" />
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="ator : ${atores}">
+            <td th:text="${ator.id}">ID</td>
+            <td th:text="${ator.nome}">NOME</td>
+            <td>
+                <a th:href="@{${'/pessoa'}(id=${ator.id})}" class="btn btn-default btn-xs">Editar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

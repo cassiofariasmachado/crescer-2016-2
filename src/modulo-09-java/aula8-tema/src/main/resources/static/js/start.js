@@ -1,0 +1,4 @@
+new ListagemPessoas();
+new ListagemAtores();
+
+
